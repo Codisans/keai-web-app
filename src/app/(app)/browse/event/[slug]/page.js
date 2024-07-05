@@ -5,7 +5,7 @@ export const metadata = {
     title: 'Laravel - Dashboard',
 }
 
-async function getEvents() {
+async function getEvent(id) {
     const res = await fetch('http://localhost:8000/api/events')
 
     if (!res.ok) {
@@ -16,8 +16,8 @@ async function getEvents() {
     return res.json()
 }
 
-const Events = async () => {
-    const events = await getEvents()
+const Event = async ({ params }) => {
+    const data = await getEvent(params.slug)
 
     return (
         <>
@@ -25,12 +25,7 @@ const Events = async () => {
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
                     <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                         <div className="p-6 bg-white border-b border-gray-200">
-                            <div className="flex gap-6">
-                                <Link className="" href="/events/browse">
-                                    List
-                                </Link>
-                                <Link href="/events/map">Map</Link>
-                            </div>
+                            Event id: aaa
                         </div>
                     </div>
                 </div>
@@ -39,4 +34,4 @@ const Events = async () => {
     )
 }
 
-export default Events
+export default Event

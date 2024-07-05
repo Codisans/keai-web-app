@@ -1,5 +1,7 @@
 'use client'
 
+import kebabCase from '@/utils/kebabCase'
+
 const EventCard = props => {
     const { data } = props
 
@@ -16,9 +18,9 @@ const EventCard = props => {
                 <p>{data.date}</p>
                 <p>Desde: $ {data.price}</p>
             </div>
-            <button
-                onClick={() => console.log(data)}
-                className="absolute inset-0"></button>
+            <a
+                href={`/event/${kebabCase(data.name)}`}
+                className="absolute inset-0"></a>
         </div>
     )
 }

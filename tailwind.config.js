@@ -1,7 +1,31 @@
 module.exports = {
     content: ['./src/**/*.{js,jsx,ts,tsx}'],
-    plugins: [require('@tailwindcss/forms')],
+    plugins: [
+        require('@tailwindcss/forms'),
+        require('tailwindcss/plugin')(function ({ addVariant }) {
+            addVariant('active', ['.active &', '&.active'])
+        }),
+    ],
     theme: {
+        fontFamily: {
+            sans: [
+                "'ubuntu'",
+                'system-ui',
+                '-apple-system',
+                'BlinkMacSystemFont',
+                "'Segoe UI'",
+                ' Roboto',
+                'Oxygen',
+                'Ubuntu',
+                'Cantarell',
+                "'Open Sans'",
+                "'Helvetica Neue'",
+                'sans-serif',
+            ],
+        },
+        fontSize: {
+            h1: '2rem',
+        },
         extend: {
             spacing: {
                 nav: '4rem',
