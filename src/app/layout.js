@@ -1,10 +1,12 @@
-import { Nunito } from 'next/font/google'
 import '@/app/global.css'
+import Head from 'next/head'
 
 const RootLayout = ({ children }) => {
     return (
-        <html lang="en">
-            <body className="w-screen h-screen">{children}</body>
+        <html lang="en font-primary">
+            <body className="w-screen h-screen overflow-hidden">
+                {children}
+            </body>
         </html>
     )
 }

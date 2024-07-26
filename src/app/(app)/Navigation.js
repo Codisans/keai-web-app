@@ -1,11 +1,11 @@
 'use client'
-import NavLink from '@/components/NavLink'
 import { useParams, usePathname } from 'next/navigation'
-import Link from 'next/link'
+import { Button } from '@/components/partials/Button'
 import { useEffect } from 'react'
+import { ButtonLink } from '@/components/partials/Link'
 
 const Navigation = () => {
-    const path = usePathname()
+    const path = usePathname().concat('')
     const hash = useParams().hash
 
     useEffect(() => {
@@ -13,32 +13,32 @@ const Navigation = () => {
     }, [])
 
     return (
-        <nav className="h-nav flex-none z-50 bg-white relative flex items-center">
-            <ul className=" flex w-full items-center gap-6 px-6">
-                <li
-                    className={`grow active:hidden ${path.concat('') == '/browse' ? 'active' : ''}`}>
-                    <NavLink
-                        className="py-1.5 w-full items-center justify-center bg-black text-white flex rounded active:hidden"
-                        href="/browse">
-                        List
-                    </NavLink>
-                </li>
-                <li
-                    className={`grow active:hidden ${path.concat('') == '/map' ? 'active' : ''}`}>
-                    <NavLink
-                        className="py-1.5 w-full items-center justify-center bg-black text-white flex rounded active:hidden"
-                        href="/map">
-                        Map
-                    </NavLink>
-                </li>
-                <li
-                    className={`grow hidden active:block ${path.concat('') == '/map' ? 'active' : ''}`}>
-                    <Link
-                        className="py-1.5 w-full flex items-center justify-center bg-black text-white rounded"
-                        href="/map#filter">
-                        Filter
-                    </Link>
-                </li>
+        <nav className="h-nav flex-none z-50 bg-white relative flex">
+            <ul className="grid grid-cols-2 w-full items-center px-gutter gap-x-gutter">
+                {['/browse', '/dashboard'].includes(path) && (
+                    <li className={`col-span-1`}>
+                        <ButtonLink
+                            className="w-full block active:hidden"
+                            href="/map">
+                            Map
+                        </ButtonLink>
+                    </li>
+                )}
+                {['/map', '/dashboard'].includes(path) && (
+                    <li
+                        className={`col-span-1 active:hidden ${path == '/browse' ? 'active' : ''}`}>
+                        <ButtonLink
+                            className="w-full block active:hidden"
+                            href="/browse">
+                            List
+                        </ButtonLink>
+                    </li>
+                )}
+                {['/map'].includes(path) && (
+                    <li className="col-span-1 block">
+                        <Button className="w-full text-center">Filter</Button>
+                    </li>
+                )}
             </ul>
         </nav>
     )

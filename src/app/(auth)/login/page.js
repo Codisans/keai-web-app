@@ -1,14 +1,14 @@
 'use client'
 
-import Button from '@/components/Button'
+import { Button } from '@/components/partials/Button'
 import Input from '@/components/Input'
 import InputError from '@/components/InputError'
 import Label from '@/components/Label'
-import Link from 'next/link'
 import { useAuth } from '@/hooks/auth'
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import AuthSessionStatus from '@/app/(auth)/AuthSessionStatus'
+import { ButtonLink, TextLink } from '@/components/partials/Link'
 
 const Login = () => {
     const router = useRouter()
@@ -79,10 +79,7 @@ const Login = () => {
                         autoComplete="current-password"
                     />
 
-                    <InputError
-                        messages={errors.password}
-                        className="mt-2"
-                    />
+                    <InputError messages={errors.password} className="mt-2" />
                 </div>
 
                 {/* Remember Me */}
@@ -106,14 +103,12 @@ const Login = () => {
                     </label>
                 </div>
 
-                <div className="flex items-center justify-end mt-4">
-                    <Link
-                        href="/forgot-password"
-                        className="underline text-sm text-gray-600 hover:text-gray-900">
+                <div className="flex items-center justify-end gap-4 mt-4">
+                    <ButtonLink href="/register">Register</ButtonLink>
+                    <TextLink href="/forgot-password">
                         Forgot your password?
-                    </Link>
-
-                    <Button className="ml-3">Login</Button>
+                    </TextLink>
+                    <Button className="ml-3">Submit</Button>
                 </div>
             </form>
         </>

@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import AuthCard from '@/app/(auth)/AuthCard'
 import ApplicationLogo from '@/components/ApplicationLogo'
+import { Logo } from '@/components/blocks/Logo'
 
 export const metadata = {
     title: 'Laravel',
@@ -13,7 +14,7 @@ const Layout = ({ children }) => {
                 <AuthCard
                     logo={
                         <Link href="/">
-                            <span>FOMO</span>
+                            <Logo />
                         </Link>
                     }>
                     {children}

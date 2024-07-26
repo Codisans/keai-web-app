@@ -2,40 +2,30 @@
 
 import ApplicationLogo from '@/components/ApplicationLogo'
 import Link from 'next/link'
-import NavLink from '@/components/NavLink'
 import { useAuth } from '@/hooks/auth'
 import { usePathname } from 'next/navigation'
+import { Logo } from '@/components/blocks/Logo'
+import { ButtonLink } from '@/components/partials/Link'
+import { Button } from '@/components/partials/Button'
 
 function Header({ user }) {
     const { logout } = useAuth()
 
     return (
-        <header className="h-nav flex-none relative z-50 bg-white relative flex items-center justify-between px-6">
-            <nav>
-                <ul className="flex">
-                    <li className="flex-shrink-0 flex items-center">
-                        <Link href="/dashboard">
-                            <ApplicationLogo className="block h-10 w-auto fill-current text-gray-600" />
-                        </Link>
+        <header className="h-nav flex-none relative z-50 bg-white relative border-b">
+            <nav className="flex justify-between items-center h-full gap-x-gutter px-gutter">
+                <Link href="/dashboard">
+                    <Logo />
+                </Link>
+                <ul className="flex items-center justify-between gap-x-gutter">
+                    <li>
+                        <ButtonLink href="/dashboard">Dashboard</ButtonLink>
                     </li>
-
-                    <li className="space-x-8 sm:-my-px sm:ml-10 flex">
-                        <NavLink
-                            href="/dashboard"
-                            active={usePathname() === '/dashboard'}>
-                            Dashboard
-                        </NavLink>
+                    <li>
+                        <Button onClick={logout}>Logout</Button>
                     </li>
                 </ul>
             </nav>
-            <div className="flex items-center gap-6">
-                <div>{user?.name}</div>
-                <button
-                    className="bg-black px-4 py-1 text-white rounded"
-                    onClick={logout}>
-                    Logout
-                </button>
-            </div>
         </header>
     )
 }

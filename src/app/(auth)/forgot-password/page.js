@@ -1,6 +1,7 @@
 'use client'
 
-import Button from '@/components/Button'
+import { Button } from '@/components/partials/Button'
+import { ButtonLink } from '@/components/partials/Link'
 import Input from '@/components/Input'
 import InputError from '@/components/InputError'
 import Label from '@/components/Label'
@@ -28,8 +29,8 @@ const Page = () => {
         <>
             <div className="mb-4 text-sm text-gray-600">
                 Forgot your password? No problem. Just let us know your email
-                address and we will email you a password reset link that
-                will allow you to choose a new one.
+                address and we will email you a password reset link that will
+                allow you to choose a new one.
             </div>
 
             {/* Session Status */}
@@ -53,8 +54,9 @@ const Page = () => {
                     <InputError messages={errors.email} className="mt-2" />
                 </div>
 
-                <div className="flex items-center justify-end mt-4">
-                    <Button>Email Password Reset Link</Button>
+                <div className="flex flex-xol gap-4 mt-4">
+                    <ButtonLink href="/register">Register</ButtonLink>
+                    <Button>Submit</Button>
                 </div>
             </form>
         </>

@@ -1,12 +1,12 @@
 'use client'
 
-import Button from '@/components/Button'
+import { Button } from '@/components/partials/Button'
 import Input from '@/components/Input'
 import InputError from '@/components/InputError'
 import Label from '@/components/Label'
-import Link from 'next/link'
 import { useAuth } from '@/hooks/auth'
 import { useState } from 'react'
+import { TextLink } from '@/components/partials/Link'
 
 const Page = () => {
     const { register } = useAuth({
@@ -86,9 +86,7 @@ const Page = () => {
 
             {/* Confirm Password */}
             <div className="mt-4">
-                <Label htmlFor="passwordConfirmation">
-                    Confirm Password
-                </Label>
+                <Label htmlFor="passwordConfirmation">Confirm Password</Label>
 
                 <Input
                     id="passwordConfirmation"
@@ -108,13 +106,8 @@ const Page = () => {
             </div>
 
             <div className="flex items-center justify-end mt-4">
-                <Link
-                    href="/login"
-                    className="underline text-sm text-gray-600 hover:text-gray-900">
-                    Already registered?
-                </Link>
-
-                <Button className="ml-4">Register</Button>
+                <TextLink href="/login">Already registered?</TextLink>
+                <Button className="ml-4">Submit</Button>
             </div>
         </form>
     )

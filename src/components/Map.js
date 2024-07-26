@@ -17,6 +17,9 @@ function GoogleMaps(props) {
             <Map
                 defaultCenter={position}
                 defaultZoom={12}
+                defaultOptions={{
+                    fullscreenControl: false,
+                }}
                 mapId="d34b4647d4fcb0c">
                 <MapControl position={ControlPosition.TOP_LEFT}></MapControl>
                 <CustomMarker position={position} />

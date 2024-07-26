@@ -7,7 +7,11 @@ export const useAuth = ({ middleware, redirectIfAuthenticated } = {}) => {
     const router = useRouter()
     const params = useParams()
 
-    const { data: user, error, mutate } = useSWR('/api/user', () =>
+    const {
+        data: user,
+        error,
+        mutate,
+    } = useSWR('/api/user', () =>
         axios
             .get('/api/user')
             .then(res => res.data)
@@ -99,7 +103,28 @@ export const useAuth = ({ middleware, redirectIfAuthenticated } = {}) => {
         window.location.pathname = '/login'
     }
 
+    const sendFriendRequest = async targetUserId => {
+        //post account id and target account id
+        if (!error) {
+            await axios
+                .post(
+                    `/friend-request?user=${user.userId}&target=${targetUserId}`,
+                )
+                .then(() => mutate())
+        }
+    }
+
+    const saveEvent = async eventId => {
+        //post account id and target account id
+        if (!error) {
+            await axios
+                .post(`/user/${user.userId}/favourites/${eventId}`)
+                .then(() => mutate())
+        }
+    }
+
     useEffect(() => {
+        console.log(user)
         if (middleware === 'guest' && redirectIfAuthenticated && user)
             router.push(redirectIfAuthenticated)
         if (
@@ -118,5 +143,7 @@ export const useAuth = ({ middleware, redirectIfAuthenticated } = {}) => {
         resetPassword,
         resendEmailVerification,
         logout,
+        sendFriendRequest,
+        saveEvent,
     }
 }

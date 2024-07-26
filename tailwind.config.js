@@ -4,26 +4,24 @@ module.exports = {
         require('@tailwindcss/forms'),
         require('tailwindcss/plugin')(function ({ addVariant }) {
             addVariant('active', ['.active &', '&.active'])
+            addVariant('error', ['.error &', '&.error'])
+            addVariant('loading', ['.loding &', '&.loding'])
         }),
     ],
     theme: {
+        colors: {
+            black: '#141301',
+            white: '#fff',
+            blue: '#212FA1',
+            red: '#DA281B',
+            grey: { DEFAULT: '#e4e4e4', light: '#e4e4e4' },
+        },
         fontFamily: {
-            sans: [
-                "'ubuntu'",
-                'system-ui',
-                '-apple-system',
-                'BlinkMacSystemFont',
-                "'Segoe UI'",
-                ' Roboto',
-                'Oxygen',
-                'Ubuntu',
-                'Cantarell',
-                "'Open Sans'",
-                "'Helvetica Neue'",
-                'sans-serif',
-            ],
+            primary: ["'ubuntu'", 'system-ui', '-apple-system', 'sans-serif'],
+            secondary: ["'ubuntu'", 'system-ui', '-apple-system', 'sans-serif'],
         },
         fontSize: {
+            logo: '2rem',
             h1: '2rem',
         },
         extend: {
@@ -31,6 +29,7 @@ module.exports = {
                 nav: '4rem',
                 header: '4rem',
                 main: 'calc(100vh - 8rem)',
+                gutter: '0.75rem',
             },
             aspectRatio: {
                 '4/5': '4/5',
