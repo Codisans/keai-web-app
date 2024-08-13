@@ -1,30 +1,36 @@
-import Header from '@/app/(app)/Header'
-import NavLink from '@/components/NavLink'
-import Link from 'next/link'
 import { UserDetail } from './UserDetail'
+import { Button } from '@/components/atoms/Button'
 
 export const metadata = {
     title: 'KEAI | Cuenta',
 }
 
-const Dashboard = () => {
+const Cuenta = () => {
     return (
         <>
             <div className="py-12 flex flex-col gap-8 max-w-7xl mx-auto">
-                <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                    <div className="p-6 bg-white border-b border-gray-200">
-                        Configuration de cuenta
-                    </div>
-                    <div className="p-6 bg-white border-b border-gray-200">
+                <ul className="flex flex-col px-gutter gap-gutter">
+                    <li>Configuration de cuenta</li>
+                    <li>
                         <UserDetail />
-                    </div>
-                </div>
-                <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                    <div className="p-6 bg-white border-b border-gray-200"></div>
-                </div>
+                    </li>
+                    <li>
+                        <Button>Privacidad</Button>
+                    </li>
+                    <li>
+                        <Button href="/restablecer-clave">
+                            Preferencias marketing
+                        </Button>
+                    </li>
+                    <li>
+                        <Button href="/restablecer-clave">
+                            Restablecer clave
+                        </Button>
+                    </li>
+                </ul>
             </div>
         </>
     )
 }
 
-export default Dashboard
+export default Cuenta
