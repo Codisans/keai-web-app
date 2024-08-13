@@ -1,8 +1,8 @@
 'use client'
 
-import Input from '@/components/Input'
-import InputError from '@/components/InputError'
-import Label from '@/components/Label'
+import Input from '@/components/atoms/Input'
+import InputError from '@/components/atoms/InputError'
+import Label from '@/components/atoms/Label'
 import { useAuth } from '@/hooks/auth'
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'

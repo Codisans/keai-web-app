@@ -1,6 +1,5 @@
 'use client'
 
-import ApplicationLogo from '@/components/ApplicationLogo'
 import Link from 'next/link'
 import { useAuth } from '@/hooks/auth'
 import { usePathname } from 'next/navigation'

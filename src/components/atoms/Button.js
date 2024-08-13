@@ -1,4 +1,6 @@
+'use client'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 
 export const Button = ({
     href,
@@ -9,6 +11,7 @@ export const Button = ({
     type = 'submit',
     ...props
 }) => {
+    const path = usePathname()
     const styles = (function (s) {
         switch (s) {
             case 'icon':
@@ -23,7 +26,10 @@ export const Button = ({
 
     if (href) {
         return (
-            <Link href={href} className={`${className} ${styles}`} {...props}>
+            <Link
+                href={href}
+                className={`${className} ${styles} ${path == href ? 'active' : ''}`}
+                {...props}>
                 {icon || children}
             </Link>
         )
