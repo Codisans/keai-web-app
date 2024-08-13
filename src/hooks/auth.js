@@ -18,7 +18,7 @@ export const useAuth = ({ middleware, redirectIfAuthenticated } = {}) => {
             .catch(error => {
                 if (error.response.status !== 409) throw error
 
-                router.push('/verify-email')
+                router.push('/verificar-correo')
             }),
     )
 
@@ -100,7 +100,7 @@ export const useAuth = ({ middleware, redirectIfAuthenticated } = {}) => {
             await axios.post('/logout').then(() => mutate())
         }
 
-        window.location.pathname = '/login'
+        window.location.pathname = '/entrar'
     }
 
     const sendFriendRequest = async targetUserId => {
@@ -128,7 +128,7 @@ export const useAuth = ({ middleware, redirectIfAuthenticated } = {}) => {
         if (middleware === 'guest' && redirectIfAuthenticated && user)
             router.push(redirectIfAuthenticated)
         if (
-            window.location.pathname === '/verify-email' &&
+            window.location.pathname === '/verificar-correo' &&
             user?.email_verified_at
         )
             router.push(redirectIfAuthenticated)

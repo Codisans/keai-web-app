@@ -4,25 +4,30 @@ import ApplicationLogo from '@/components/ApplicationLogo'
 import Link from 'next/link'
 import { useAuth } from '@/hooks/auth'
 import { usePathname } from 'next/navigation'
-import { Logo } from '@/components/blocks/Logo'
-import { ButtonLink } from '@/components/partials/Link'
-import { Button } from '@/components/partials/Button'
+import { Logo } from '@/components/atoms/Logo'
+import { IconButton } from '@/components/atoms/IconButton'
+import PersonIcon from '@mui/icons-material/Person'
+import SettingsIcon from '@mui/icons-material/Settings'
+import LogoutIcon from '@mui/icons-material/Logout'
 
 function Header({ user }) {
     const { logout } = useAuth()
 
     return (
-        <header className="h-nav flex-none relative z-50 bg-white relative border-b">
+        <header className="h-nav flex-none relative z-50 bg-white relative">
             <nav className="flex justify-between items-center h-full gap-x-gutter px-gutter">
-                <Link href="/dashboard">
+                <Link href="/eventos">
                     <Logo />
                 </Link>
                 <ul className="flex items-center justify-between gap-x-gutter">
                     <li>
-                        <ButtonLink href="/dashboard">Dashboard</ButtonLink>
+                        <IconButton href="/cuenta" icon={<SettingsIcon />} />
                     </li>
                     <li>
-                        <Button onClick={logout}>Logout</Button>
+                        <IconButton href="/perfil" icon={<PersonIcon />} />
+                    </li>
+                    <li>
+                        <IconButton onClick={logout} icon={<LogoutIcon />} />
                     </li>
                 </ul>
             </nav>

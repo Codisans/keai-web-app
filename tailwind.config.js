@@ -1,3 +1,5 @@
+const { default: zIndex } = require('@mui/material/styles/zIndex')
+
 module.exports = {
     content: ['./src/**/*.{js,jsx,ts,tsx}'],
     plugins: [
@@ -10,9 +12,21 @@ module.exports = {
     ],
     theme: {
         colors: {
+            primary: '#31285b',
+            secondary: '#f8ac4c',
+            accent: '#fff',
+            canvas: '#fff',
+            'canvas-alt': '#e4e4e4',
             black: '#141301',
             white: '#fff',
-            blue: '#212FA1',
+            blue: {
+                DEFAULT: '#31285b',
+                dark: '#31285b',
+            },
+            yellow: {
+                DEFAULT: '#f8ac4c',
+                dark: '#f8ac4c',
+            },
             red: '#DA281B',
             grey: { DEFAULT: '#e4e4e4', light: '#e4e4e4' },
         },
@@ -22,7 +36,16 @@ module.exports = {
         },
         fontSize: {
             logo: '2rem',
+            sm: '0.75rem',
+            md: '1rem',
+            lg: '1.25rem',
+            xl: '1.5rem',
+            '2xl': '2rem',
+            icon: ['2rem', '1rem'],
+            caps: '0.75rem',
             h1: '2rem',
+            button: '1rem',
+            'big-button': '2rem',
         },
         extend: {
             spacing: {
@@ -34,10 +57,16 @@ module.exports = {
             aspectRatio: {
                 '4/5': '4/5',
             },
+            zIndex: {
+                filters: 20,
+                controls: 10,
+                info: 30,
+            },
             height: {
                 'screen-small': ['100vh', '100svh'],
                 'screen-large': ['100vh', '100lvh'],
                 'screen-dynamic': ['100vh', '100dvh'],
+                main: 'calc(100vh - 8rem)',
             },
             minHeight: {
                 'screen-small': ['100vh', '100svh'],
@@ -48,6 +77,7 @@ module.exports = {
                 'screen-small': ['100vh', '100svh'],
                 'screen-large': ['100vh', '100lvh'],
                 'screen-dynamic': ['100vh', '100dvh'],
+                main: 'calc(100vh - 8rem)',
             },
         },
     },

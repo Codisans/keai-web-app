@@ -1,17 +1,22 @@
-import { Logo } from '@/components/blocks/Logo'
-import LoginLinks from '@/components/LoginLinks'
+import { Logo } from '@/components/atoms/Logo'
 import 'swiper/css'
+import MuiTheme from './MuiTheme'
+import { MainMenu } from '@/components/molecules/MainMenu'
+
+export const metadata = {
+    title: 'KEAI',
+}
 
 const Home = () => {
     return (
-        <>
-            <div className="w-full h-full flex flex-col items-center py-10 gap-40">
+        <MuiTheme>
+            <div className="w-full h-full flex flex-col items-center py-10 gap-20">
                 <Logo />
-                <div className="flex flex-col gap-4 items-center">
-                    <LoginLinks />
+                <div className="w-full px-gutter flex grow">
+                    <MainMenu />
                 </div>
             </div>
-        </>
+        </MuiTheme>
     )
 }
 

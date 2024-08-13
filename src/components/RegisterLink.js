@@ -3,9 +3,9 @@ import Link from 'next/link'
 export const RegisterLink = () => {
     return (
         <Link
-            href="/register"
+            href="/crear-cuenta"
             className="text-button font-primary uppercase bg-black px-3 py-1 rounded text-white">
-            Register
+            Crear cuenta
         </Link>
     )
 }

@@ -11,9 +11,9 @@ export function middleware(request) {
     }
 
     // Redirect to login page if not authenticated
-    return NextResponse.redirect(new URL('/login', request.url))
+    return NextResponse.redirect(new URL('/entrar', request.url))
 }
 
 export const config = {
-    matcher: ['/dashboard', '/map/:path*', '/browse/:path', '/events/:path'],
+    matcher: ['/eventos', '/eventos/:path*', '/mapa/:path*', '/mapa'],
 }
