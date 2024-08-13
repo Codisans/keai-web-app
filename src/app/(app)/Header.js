@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { useAuth } from '@/hooks/auth'
 import { usePathname } from 'next/navigation'
 import { Logo } from '@/components/atoms/Logo'
-import { IconButton } from '@/components/atoms/IconButton'
+import { Button } from '@/components/atoms/Button'
 import PersonIcon from '@mui/icons-material/Person'
 import SettingsIcon from '@mui/icons-material/Settings'
 import LogoutIcon from '@mui/icons-material/Logout'
@@ -21,13 +21,13 @@ function Header({ user }) {
                 </Link>
                 <ul className="flex items-center justify-between gap-x-gutter">
                     <li>
-                        <IconButton href="/cuenta" icon={<SettingsIcon />} />
+                        <Button href="/cuenta" icon={<SettingsIcon />} />
                     </li>
                     <li>
-                        <IconButton href="/perfil" icon={<PersonIcon />} />
+                        <Button href="/perfil" icon={<PersonIcon />} />
                     </li>
                     <li>
-                        <IconButton onClick={logout} icon={<LogoutIcon />} />
+                        <Button onClick={logout} icon={<LogoutIcon />} />
                     </li>
                 </ul>
             </nav>

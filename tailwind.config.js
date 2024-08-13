@@ -35,7 +35,7 @@ module.exports = {
             secondary: ["'ubuntu'", 'system-ui', '-apple-system', 'sans-serif'],
         },
         fontSize: {
-            logo: '2rem',
+            logo: '1.75rem',
             sm: '0.75rem',
             md: '1rem',
             lg: '1.25rem',
@@ -78,6 +78,10 @@ module.exports = {
                 'screen-large': ['100vh', '100lvh'],
                 'screen-dynamic': ['100vh', '100dvh'],
                 main: 'calc(100vh - 8rem)',
+                0: '0px',
+            },
+            transitionProperty: {
+                maxHeight: 'max-height',
             },
         },
     },

@@ -10,13 +10,13 @@ export const FilterModal = () => {
 
     return (
         filterIsOpen && (
-            <div className="absolute bottom-0 inset-x-0 bg-white max-h-main">
+            <div className="relative">
                 <button
                     className="absolute top-gutter right-gutter"
                     onClick={() => setFilterIsOpen(s => !s)}>
                     <CloseIcon />
                 </button>
-                <div className="overflow-y w-full p-gutter pt-12 h-full">
+                <div className="overflow-y w-full p-gutter h-full">
                     <FilterForm />
                 </div>
             </div>

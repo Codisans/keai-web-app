@@ -1,19 +1,13 @@
-import * as React from 'react'
+'use client'
+
+import { useContext, useState } from 'react'
 import SearchInput from '@/components/atoms/SearchInput'
+import { FilterForm } from '@/components/organisms/FilterForm'
+import { Button } from '@/components/atoms/Button'
+import { MapContext } from '../AppContext'
 
-async function getTags() {
-    const res = await fetch('http://localhost:8000/api/tags')
-
-    if (!res.ok) {
-        // This will activate the closest `error.js` Error Boundary
-        throw new Error('Failed to fetch data')
-    }
-
-    return res.json()
-}
-
-const BrowseLayout = async ({ children }) => {
-    const tags = await getTags()
+const EventsLayout = ({ children }) => {
+    const { filterIsOpen, setFilterIsOpen } = useContext(MapContext)
 
     return (
         <>
@@ -21,10 +15,12 @@ const BrowseLayout = async ({ children }) => {
                 <section className="sticky top-0 w-full p-gutter bg-white z-10">
                     <SearchInput />
                 </section>
-                {children}
+                <section className="px-gutter h-max pt-4">
+                    {filterIsOpen ? <FilterForm /> : children}
+                </section>
             </div>
         </>
     )
 }
 
-export default BrowseLayout
+export default EventsLayout

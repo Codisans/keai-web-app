@@ -4,7 +4,7 @@ import { useContext, useEffect } from 'react'
 import MapIcon from '@mui/icons-material/Map'
 import ListIcon from '@mui/icons-material/List'
 import FilterAltIcon from '@mui/icons-material/FilterAlt'
-import { IconButton } from '@/components/atoms/IconButton'
+import { Button } from '@/components/atoms/Button'
 import { MapContext } from './AppContext'
 import { useAuth } from '@/hooks/auth'
 
@@ -22,28 +22,28 @@ const Navigation = () => {
         user && (
             <nav className="h-nav flex-none z-50 bg-white relative flex">
                 <ul className="grid grid-cols-2 w-full items-center px-gutter gap-x-gutter">
-                    {['', '/mapa', '/perfil', '/cuenta'].includes(path) && (
+                    {['/mapa', '/perfil', '/cuenta'].includes(path) && (
                         <li
                             className={`col-span-1 active:hidden ${path == '/eventos' ? 'active' : ''}`}>
-                            <IconButton
-                                className="active:hidden"
+                            <Button
+                                className="w-full active:hidden"
                                 href="/eventos"
                                 icon={<ListIcon />}
                             />
                         </li>
                     )}
-                    {['', '/eventos', '/perfil', '/cuenta'].includes(path) && (
+                    {['/eventos', '/perfil', '/cuenta'].includes(path) && (
                         <li className={`col-span-1 flex justify-cenetr`}>
-                            <IconButton
+                            <Button
                                 className="w-full active:hidden"
                                 href="/mapa"
                                 icon={<MapIcon />}
                             />
                         </li>
                     )}
-                    {['', '/mapa'].includes(path) && (
+                    {['/eventos', '/mapa'].includes(path) && (
                         <li className="col-span-1">
-                            <IconButton
+                            <Button
                                 onClick={() => setFilterIsOpen(s => !s)}
                                 className="w-full active:hidden"
                                 icon={<FilterAltIcon />}
