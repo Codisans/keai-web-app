@@ -2,7 +2,7 @@
 
 import { FreeMode } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import EventCard from './EventCard'
+import EventCard from '../atoms/EventCard'
 import { useEffect } from 'react'
 
 export const EventCarousel = ({ heading, events, className = '' }) => {

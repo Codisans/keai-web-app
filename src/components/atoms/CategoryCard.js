@@ -8,7 +8,7 @@ export const CategoryCard = ({ category }) => {
 
     return (
         <div
-            className={`${path == url ? 'active' : ''} flex flex-col gap-1 items-center relative w-[5rem]`}>
+            className={`${path == url ? 'active' : ''} flex flex-col gap-1 items-center relative w-[5rem] rounded-card active:bg-grey`}>
             <EventIcon fontSize="large" />
             <h2 className="text-small text-wrap text-center">
                 {category.name}

@@ -6,7 +6,7 @@ const EventCard = props => {
     const { event } = props
 
     return (
-        <div className="flex flex-col relative group/card w-64 bg-grey-light overflow-hidden rounded-2xl">
+        <div className="flex flex-col relative group/card w-64 bg-grey-light overflow-hidden rounded-card">
             <div className="w-full aspect-[1/1] relative overflow-hidden">
                 <img
                     className="absolute inset-0 w-full h-full object-cover group-hover/card:scale-105 transition-transform ease-in-out duration-500"

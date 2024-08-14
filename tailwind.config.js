@@ -55,7 +55,10 @@ module.exports = {
         },
         extend: {
             borderRadius: {
-                DEFAULT: '0.25rem',
+                DEFAULT: '0.5rem',
+                card: '0.5rem',
+                button: '0.5rem',
+                ui: '0.5rem',
             },
             spacing: {
                 nav: '4rem',

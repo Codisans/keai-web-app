@@ -22,7 +22,7 @@ export const FilterModal = () => {
                 <span className="sr-only">Cerrar</span>
             </button>
             <div className="pointer-events-none relative mt-auto max-h-[100%] pt-28 w-full z-1 flex">
-                <div className="grow bg-white w-full pointer-events-auto translate-y-full transition-transform duration-500 ease-in-out open:translate-y-0">
+                <div className="grow bg-white rounded-t-ui overflow-hidden w-full pointer-events-auto translate-y-full transition-transform duration-500 ease-in-out open:translate-y-0">
                     <FilterForm />
                 </div>
             </div>
