@@ -7,7 +7,8 @@ module.exports = {
         require('tailwindcss/plugin')(function ({ addVariant }) {
             addVariant('active', ['.active &', '&.active'])
             addVariant('error', ['.error &', '&.error'])
-            addVariant('loading', ['.loding &', '&.loding'])
+            addVariant('loading', ['.loading &', '&.loading'])
+            addVariant('open', ['.open &', '&.open'])
         }),
     ],
     theme: {
@@ -28,26 +29,34 @@ module.exports = {
                 dark: '#f8ac4c',
             },
             red: '#DA281B',
-            grey: { DEFAULT: '#e4e4e4', light: '#e4e4e4' },
+            grey: { DEFAULT: '#ebebeb', light: '#ebebeb' },
         },
         fontFamily: {
             primary: ["'ubuntu'", 'system-ui', '-apple-system', 'sans-serif'],
             secondary: ["'ubuntu'", 'system-ui', '-apple-system', 'sans-serif'],
         },
         fontSize: {
+            body: ['1rem', '1.1rem'],
+            button: ['1rem', '1rem'],
+            'big-button': '2rem',
+            caps: ['0.75rem', '0.75rem'],
+            h1: ['2rem', '2.25rem'],
+            h2: ['1.5rem', '1.7rem'],
+            h3: ['1.25rem', '1.4rem'],
+            icon: ['2rem', '1rem'],
+            'icon-lg': ['3rem', '1.5rem'],
             logo: '1.75rem',
+            small: ['0.75rem', '0.75rem'],
             sm: '0.75rem',
             md: '1rem',
             lg: '1.25rem',
             xl: '1.5rem',
             '2xl': '2rem',
-            icon: ['2rem', '1rem'],
-            caps: '0.75rem',
-            h1: '2rem',
-            button: '1rem',
-            'big-button': '2rem',
         },
         extend: {
+            borderRadius: {
+                DEFAULT: '0.25rem',
+            },
             spacing: {
                 nav: '4rem',
                 header: '4rem',
@@ -61,6 +70,8 @@ module.exports = {
                 filters: 20,
                 controls: 10,
                 info: 30,
+                'main-menu': 50,
+                nav: 50,
             },
             height: {
                 'screen-small': ['100vh', '100svh'],

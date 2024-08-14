@@ -1,5 +1,5 @@
-export const getCategories = async () => {
-    const res = await fetch('http://localhost:8000/api/categories')
+export const getEvent = async id => {
+    const res = await fetch(`http://localhost:8000/api/events/${id}`)
 
     if (!res.ok) {
         // This will activate the closest `error.js` Error Boundary

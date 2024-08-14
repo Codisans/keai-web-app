@@ -1,13 +1,13 @@
 'use client'
 
 import { useContext, useEffect } from 'react'
-import { MapContext } from '@/app/(app)/AppContext'
+import { UiContext } from '@/app/AppContext'
 import { RadioButton } from '../atoms/RadioButton'
 import { getTags } from '@/api/getTags'
 import { Button } from '../atoms/Button'
 
 export const FilterForm = () => {
-    const { filterIsOpen, setFilterIsOpen } = useContext(MapContext)
+    const { filterIsOpen, setFilterIsOpen } = useContext(UiContext)
     const tags = getTags()
 
     const handleSubmit = () => {
@@ -23,9 +23,9 @@ export const FilterForm = () => {
     }, [])
 
     return (
-        <form className="flex flex-col gap-gutter relative">
-            <div className="flex justify-between h-max sticky top-0">
-                <p className="text-caps uppercase">Filtros:</p>
+        <form className="relative h-full overflow-y-auto">
+            <div className="flex justify-between sticky top-0 w-full p-gutter bg-white shadow">
+                <p className="text-h2">Filtros:</p>
                 <div className="flex gap-gutter">
                     <Button
                         type="button"
@@ -39,7 +39,7 @@ export const FilterForm = () => {
                     </Button>
                 </div>
             </div>
-            <div className="flex flex-col shrink overflow-y-auto gap-gutter">
+            <div className="w-full flex flex-col gap-gutter p-gutter">
                 <fieldset className="flex flex-col shrink">
                     <legend>Fechas</legend>
                     <div className="flex flex-wrap gap-x-3 gap-y-1.5">

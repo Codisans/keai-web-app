@@ -1,23 +1,28 @@
-'use client'
+// 'use client'
 
-import { useAuth } from '@/hooks/auth'
-import Navigation from '@/app/(app)/Navigation'
-import Loading from '@/app/(app)/Loading'
-import Header from './Header'
-import { AppContext } from './AppContext'
+// import { useAuth } from '@/hooks/auth'
+import { Navigation } from '@/components/organisms/Navigation'
+import { AppContext } from '../AppContext'
+import { CategoryBar } from '@/components/molecules/CategoryBar'
+import { MainMenu } from '@/components/organisms/MainMenu'
 
 const AppLayout = ({ children }) => {
-    const { user } = useAuth({ middleware: 'auth' })
+    // const { user } = useAuth({ middleware: 'auth' })
 
-    if (!user) {
-        return <Loading />
-    }
+    // if (!user) {
+    //     return <Loading />
+    // }
 
     return (
         <AppContext>
-            <Header />
-            <main className="h-main relative overflow-hidden">{children}</main>
-            <Navigation user={user} />
+            <div className="flex flex-col h-full w-full">
+                <CategoryBar />
+                <main className="grow relative overflow-hidden">
+                    {children}
+                </main>
+                <Navigation />
+                <MainMenu />
+            </div>
         </AppContext>
     )
 }

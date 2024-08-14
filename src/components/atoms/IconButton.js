@@ -13,7 +13,7 @@ export const IconButton = ({
             <MuiTheme>
                 <Link
                     href={href}
-                    className={`${className} block text-center text-icon px-3 py-1 rounded-md bg-blue text-white hover:text-yellow`}
+                    className={`${className} block text-center text-icon px-3 py-1 rounded bg-blue text-white hover:text-yellow`}
                     {...props}>
                     {icon || children}
                 </Link>
@@ -24,7 +24,7 @@ export const IconButton = ({
     return (
         <MuiTheme>
             <button
-                className={`${className} block text-center text-icon px-3 py-1 rounded-md bg-blue text-white hover:text-yellow`}
+                className={`${className} block text-center text-icon px-3 py-1 rounded bg-blue text-white hover:text-yellow`}
                 {...props}>
                 {icon || children}
             </button>

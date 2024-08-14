@@ -1,62 +1,26 @@
-import Header from '@/app/(app)/Header'
-import Tags from './Tags'
 import { EventCarousel } from '@/components/molecules/EventCarousel'
-import { CategoryCards } from '@/components/molecules/CategoryCards'
+import { getEvents } from '@/api/getEvents'
+import { CategoryBar } from '@/components/molecules/CategoryBar'
 
 export const metadata = {
     title: 'KEAI | Eventos',
 }
 
-async function getEvents() {
-    const res = await fetch('http://localhost:8000/api/events')
-
-    if (!res.ok) {
-        // This will activate the closest `error.js` Error Boundary
-        throw new Error('Failed to fetch data')
-    }
-
-    return res.json()
-}
-
-async function getCategories() {
-    const res = await fetch('http://localhost:8000/api/categories')
-
-    if (!res.ok) {
-        // This will activate the closest `error.js` Error Boundary
-        throw new Error('Failed to fetch data')
-    }
-
-    return res.json()
-}
-
 const Events = async () => {
-    const events = await getEvents()
-    const categories = await getCategories()
-
-    function onlyUnique(value, index, array) {
-        return array.indexOf(value) === index
-    }
-
-    // const tags = events
-    //     ?.map(event => event.tags)
-    //     .flat()
-    //     .filter(onlyUnique)
+    const events = await getEvents('pasatiempos')
 
     return (
         <>
-            <section className="flex">
-                <CategoryCards categories={categories} />
-            </section>
+            {/* <CategoryBar /> */}
             <div className="w-full py-12 flex flex-col gap-y-8">
+                <EventCarousel heading="Para ti" events={events.data} />
+                <EventCarousel heading="Hoy" events={events.data} />
                 {/* <Tags data={tags} /> */}
-                {/* <EventList data={events} /> */}
-                {/* <EventCarousel heading="Para ti" events={events} />
-                <EventCarousel heading="Hoy" events={events} />
-                <EventCarousel heading="Este fin de semana" events={events} />
-                <EventCarousel heading="Fiesta" events={events} />
-                <EventCarousel heading="Deportivo" events={events} />
-                <EventCarousel heading="Comida" events={events} />
-                <EventCarousel heading="Talleres" events={events} /> */}
+                {/* <EventCarousel heading="Este fin de semana" events={events} /> */}
+                {/* <EventCarousel heading="Fiesta" events={events} /> */}
+                {/* <EventCarousel heading="Deportivo" events={events} /> */}
+                {/* <EventCarousel heading="Comida" events={events} /> */}
+                {/* <EventCarousel heading="Talleres" events={events} /> */}
             </div>
         </>
     )

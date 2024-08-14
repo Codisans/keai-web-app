@@ -1,7 +1,7 @@
 'use client'
 
 import { useAuth } from '@/hooks/auth'
-import Navigation from '@/app/(app)/Navigation'
+import Navigation from '@/components/organisms/Navigation'
 import Loading from '@/app/(app)/Loading'
 import Header from './Header'
 

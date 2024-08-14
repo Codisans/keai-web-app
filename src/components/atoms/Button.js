@@ -15,12 +15,12 @@ export const Button = ({
     const styles = (function (s) {
         switch (s) {
             case 'icon':
-                return 'inline-flex justify-center items-center text-icon px-3 h-10 rounded-md bg-grey text-black'
+                return 'inline-flex justify-center items-center text-icon px-3 h-10 rounded bg-grey text-black'
             case 'big':
-                return 'w-full flex items-center justify-center h-28 text-big-button rounded-md bg-grey text-black'
+                return 'w-full flex items-center justify-center h-28 text-big-button rounded bg-grey text-black'
             case 'regular':
             default:
-                return 'inline-flex justify-center items-center text-button px-3 h-10 rounded-md bg-grey text-black'
+                return 'inline-flex justify-center items-center text-button px-3 h-10 rounded bg-grey text-black'
         }
     })(style)
 

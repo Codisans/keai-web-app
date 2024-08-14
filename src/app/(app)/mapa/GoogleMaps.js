@@ -35,12 +35,12 @@ export const MapControls = () => {
     return (
         <div className="absolute z-10 top-gutter right-gutter flex flex-col gap-gutter text-icon">
             <button
-                className="bg-white text-black rounded-md p-1.5"
+                className="bg-white text-black rounded p-1.5"
                 onClick={() => map?.setZoom(map?.getZoom() + 1)}>
                 <AddIcon />
             </button>
             <button
-                className="bg-white text-black rounded-md p-1.5"
+                className="bg-white text-black rounded p-1.5"
                 onClick={() => map?.setZoom(map?.getZoom() - 1)}>
                 <RemoveIcon />
             </button>

@@ -3,9 +3,12 @@
 import { FreeMode } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import EventCard from './EventCard'
+import { useEffect } from 'react'
 
 export const EventCarousel = ({ heading, events, className = '' }) => {
-    if (events == null) return
+    useEffect(() => {
+        console.log(events)
+    }, [])
 
     return (
         <div className={`${className} flex flex-col gap-y-gutter`}>
@@ -18,7 +21,7 @@ export const EventCarousel = ({ heading, events, className = '' }) => {
                 spaceBetween={12}
                 className="w-full px-gutter">
                 {events?.map((event, i) => (
-                    <SwiperSlide className="w-max" key={i}>
+                    <SwiperSlide key={i} className="w-min">
                         <EventCard event={event} />
                     </SwiperSlide>
                 ))}

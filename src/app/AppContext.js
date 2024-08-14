@@ -1,20 +1,26 @@
+'use client'
 import { createContext, useState } from 'react'
 
-export const MapContext = createContext({
+export const UiContext = createContext({
     filterIsOpen: false,
     setFilterIsOpen: () => {},
+    menuIsOpen: false,
+    setMenuIsOpen: () => {},
 })
 
 export const AppContext = ({ children }) => {
     const [filterIsOpen, setFilterIsOpen] = useState(false)
+    const [menuIsOpen, setMenuIsOpen] = useState(false)
 
     return (
-        <MapContext.Provider
+        <UiContext.Provider
             value={{
                 filterIsOpen,
                 setFilterIsOpen,
+                menuIsOpen,
+                setMenuIsOpen,
             }}>
             {children}
-        </MapContext.Provider>
+        </UiContext.Provider>
     )
 }

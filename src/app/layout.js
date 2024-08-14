@@ -3,8 +3,8 @@ import Head from 'next/head'
 
 const RootLayout = ({ children }) => {
     return (
-        <html lang="en font-primary">
-            <body className="w-screen h-screen overflow-hidden">
+        <html lang="es">
+            <body className="w-screen h-screen overflow-y-auto">
                 {children}
             </body>
         </html>

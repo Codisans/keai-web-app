@@ -3,7 +3,7 @@
 import { useAuth } from '@/hooks/auth'
 import { Button } from '@/components/atoms/Button'
 
-export const MainMenu = () => {
+export const HomeMenu = () => {
     const { user } = useAuth({ middleware: 'guest' })
 
     return (

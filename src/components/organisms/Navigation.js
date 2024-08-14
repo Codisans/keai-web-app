@@ -5,14 +5,15 @@ import MapIcon from '@mui/icons-material/Map'
 import ListIcon from '@mui/icons-material/List'
 import FilterAltIcon from '@mui/icons-material/FilterAlt'
 import { Button } from '@/components/atoms/Button'
-import { MapContext } from './AppContext'
+import { UiContext } from '../../app/AppContext'
 import { useAuth } from '@/hooks/auth'
+import ManageAccountsIcon from '@mui/icons-material/ManageAccounts'
 
-const Navigation = () => {
+export const Navigation = () => {
     const user = useAuth()
     const path = usePathname().concat('')
     const hash = useParams().hash
-    const { setFilterIsOpen } = useContext(MapContext)
+    const { setFilterIsOpen, setMenuIsOpen } = useContext(UiContext)
 
     useEffect(() => {
         console.log(path, hash)
@@ -20,8 +21,8 @@ const Navigation = () => {
 
     return (
         user && (
-            <nav className="h-nav flex-none z-50 bg-white relative flex">
-                <ul className="grid grid-cols-2 w-full items-center px-gutter gap-x-gutter">
+            <nav className="sticky bottom-0 inset-x-0 z-nav bg-white border-t border-grey-light">
+                <ul className="grid grid-cols-3 w-full items-center p-gutter gap-x-gutter">
                     {['/mapa', '/perfil', '/cuenta'].includes(path) && (
                         <li
                             className={`col-span-1 active:hidden ${path == '/eventos' ? 'active' : ''}`}>
@@ -50,10 +51,15 @@ const Navigation = () => {
                             />
                         </li>
                     )}
+                    <li className="col-span-1">
+                        <Button
+                            onClick={() => setMenuIsOpen(s => !s)}
+                            className="w-full active:hidden"
+                            icon={<ManageAccountsIcon />}
+                        />
+                    </li>
                 </ul>
             </nav>
         )
     )
 }
-
-export default Navigation
