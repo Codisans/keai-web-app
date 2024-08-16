@@ -26,15 +26,15 @@ export const EventDetail = ({ event }) => {
                 </div>
             </div>
             <div className="grid grid-cols-12 gap-gutter pt-4">
-                <div className="col-span-12 flex gap-1.5 text-caps uppercase">
+                <ul className="col-span-12 flex gap-1.5 text-caps uppercase">
                     {event.tags?.map((tag, i) => (
-                        <span
+                        <li
                             key={i}
-                            className="py-1 px-1.5 bg-grey-4 text-white rounded">
+                            className="py-0.5 px-1.5 bg-grey-4 text-white rounded">
                             {tag.name}
-                        </span>
+                        </li>
                     ))}
-                </div>
+                </ul>
                 <div className="col-span-12 py-4">
                     <p>{event.description}</p>
                 </div>
