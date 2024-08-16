@@ -1,5 +1,6 @@
 'use client'
-import { createContext, useState } from 'react'
+import { usePathname } from 'next/navigation'
+import { createContext, useState, useEffect } from 'react'
 
 export const UiContext = createContext({
     filterIsOpen: false,
@@ -11,9 +12,14 @@ export const UiContext = createContext({
 })
 
 export const AppContext = ({ children }) => {
+    const path = usePathname()
     const [filterIsOpen, setFilterIsOpen] = useState(false)
     const [menuIsOpen, setMenuIsOpen] = useState(false)
     const [selectedEvent, setSelectedEvent] = useState(null)
+
+    useEffect(() => {
+        setMenuIsOpen(false)
+    }, [path])
 
     return (
         <UiContext.Provider

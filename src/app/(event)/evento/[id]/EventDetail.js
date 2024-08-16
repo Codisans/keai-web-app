@@ -12,10 +12,10 @@ export const EventDetail = ({ event }) => {
     }, [])
 
     return (
-        <div className="flex flex-col px-gutter">
+        <div className="flex flex-col px-gutter pt-gutter pb-12">
             <div className="flex flex-col-reverse">
                 <h1 className="text-h1">{event.name}</h1>
-                <span className="uppercase text-caps text-grey-4">
+                <span className="uppercase text-body text-grey-4 pb-1">
                     {event.province}
                 </span>
                 <div className="aspect-video relative w-full overflow-hidden rounded-card mb-4">
@@ -26,31 +26,23 @@ export const EventDetail = ({ event }) => {
                 </div>
             </div>
             <div className="grid grid-cols-12 gap-gutter pt-4">
-                <div className="col-span-12 flex gap-1.5 text-caps uppercase pb-3">
+                <div className="col-span-12 flex gap-1.5 text-caps uppercase">
                     {event.tags?.map((tag, i) => (
                         <span
                             key={i}
-                            className="py-1 px-1.5 bg-grey text-black rounded">
+                            className="py-1 px-1.5 bg-grey-4 text-white rounded">
                             {tag.name}
                         </span>
                     ))}
                 </div>
-                {/* <div className="col-span-3 text-caps uppercase text-right">
-                    Fecha:
+                <div className="col-span-12 py-4">
+                    <p>{event.description}</p>
                 </div>
-                <div className="col-span-9 text-body">
-                    {startDate.toDateString()}
-                </div> */}
-                {/* <div className="col-span-1 text-caps uppercase text-right">
-                    Inicio:
-                </div>
-                <div className="col-span-1 text-body">
-                    {startDate.toTimeString()}
-                </div> */}
-                <div className="col-span-4 text-caps uppercase text-right">
-                    Direccion
-                </div>
-                <div className="col-span-8 text-body">
+                <div className="col-span-12 flex flex-col">
+                    <h3 className="text-caps uppercase text-grey-4 pb-2">
+                        Direccion
+                    </h3>
+
                     <p className="flex flex-col">
                         {event.full_address.split(',').map((line, i) => (
                             <span
@@ -60,9 +52,6 @@ export const EventDetail = ({ event }) => {
                             </span>
                         ))}
                     </p>
-                </div>
-                <div className="col-span-12">
-                    <p className="py-3">{event.description}</p>
                 </div>
             </div>
         </div>

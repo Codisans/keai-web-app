@@ -1,22 +1,10 @@
 'use client'
-import {
-    APIProvider,
-    AdvancedMarker,
-    ControlPosition,
-    Map,
-    Marker,
-    Pin,
-    useMap,
-} from '@vis.gl/react-google-maps'
+
+import { APIProvider, Map, useMap } from '@vis.gl/react-google-maps'
 import AddIcon from '@mui/icons-material/Add'
 import RemoveIcon from '@mui/icons-material/Remove'
-import { useEffect } from 'react'
 
-export const GoogleMaps = ({ apiKey, position, events }) => {
-    useEffect(() => {
-        console.log(events)
-    }, [])
-
+export const GoogleMaps = ({ apiKey, position, children }) => {
     return (
         <APIProvider apiKey={apiKey}>
             <Map
@@ -27,9 +15,7 @@ export const GoogleMaps = ({ apiKey, position, events }) => {
                 minZoom={10}
                 maxZoom={20}
                 mapId="d34b4647d4fcb0c">
-                {events?.map(event => (
-                    <CustomMarker event={event} />
-                ))}
+                {children}
             </Map>
             <MapControls />
         </APIProvider>
@@ -52,55 +38,5 @@ export const MapControls = () => {
                 <RemoveIcon />
             </button>
         </div>
-    )
-}
-
-export const CustomMarker = ({ event }) => {
-    const position = {
-        lat: event.coordinates[0].latitude,
-        lng: event.coordinates[1].longitude,
-    }
-
-    return (
-        <AdvancedMarker position={position}>
-            <Pin background={'#000'} borderColor={'#fff'} glyphColor={'#fff'} />
-        </AdvancedMarker>
-    )
-}
-
-export const MarkerWithInfoWindow = ({ position }) => {
-    // `markerRef` and `marker` are needed to establish the connection between
-    // the marker and infowindow (if you're using the Marker component, you
-    // can use the `useMarkerRef` hook instead).
-    const [markerRef, marker] = useAdvancedMarkerRef()
-
-    const [infoWindowShown, setInfoWindowShown] = useState(false)
-
-    // clicking the marker will toggle the infowindow
-    const handleMarkerClick = useCallback(
-        () => setInfoWindowShown(isShown => !isShown),
-        [],
-    )
-
-    // if the maps api closes the infowindow, we have to synchronize our state
-    const handleClose = useCallback(() => setInfoWindowShown(false), [])
-
-    return (
-        <>
-            <AdvancedMarker
-                ref={markerRef}
-                position={position}
-                onClick={handleMarkerClick}
-            />
-
-            {infoWindowShown && (
-                <InfoWindow anchor={marker} onClose={handleClose}>
-                    <h2>InfoWindow content!</h2>
-                    <p>
-                        Some arbitrary html to be rendered into the InfoWindow.
-                    </p>
-                </InfoWindow>
-            )}
-        </>
     )
 }

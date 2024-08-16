@@ -1,20 +1,16 @@
-'use client'
-
-import { useAuth } from '@/hooks/auth'
-import Loading from '@/app/(app)/Loading'
-// import { FilterModal } from './FilterModal'
+import { GoogleMaps } from './GoogleMaps'
 
 const MapLayout = ({ children }) => {
-    const { user } = useAuth({ middleware: 'auth' })
-
-    if (!user) {
-        return <Loading />
-    }
-
     return (
         <>
-            <div className="w-full h-auto">{children}</div>
-            {/* <FilterModal /> */}
+            <div className="w-full h-auto">
+                <GoogleMaps
+                    // events={events.data}
+                    apiKey={process.env.GOOGLE_CLOUD_API_KEY}
+                    position={{ lat: -33.4489, lng: -70.6693 }}>
+                    {children}
+                </GoogleMaps>
+            </div>
         </>
     )
 }

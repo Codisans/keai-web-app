@@ -1,22 +1,13 @@
-// 'use client'
-
-// import { useAuth } from '@/hooks/auth'
-import { MainMenu } from '@/components/molecules/MainMenu'
 import { Header } from './Header'
 import { Footer } from './Footer'
 import { FilterModal } from './FilterModal'
+import { MenuPullout } from '@/components/molecules/MenuPullout'
 
 const AppLayout = ({ children }) => {
-    // const { user } = useAuth({ middleware: 'auth' })
-
-    // if (!user) {
-    //     return <Loading />
-    // }
-
     return (
         <div className="w-full flex flex-col min-h-screen">
             <Header />
-            <MainMenu />
+            <MenuPullout />
             <main className="w-full grow relative flex">{children}</main>
             <FilterModal />
             <Footer />
