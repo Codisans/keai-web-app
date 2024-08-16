@@ -7,21 +7,27 @@ import { useEffect } from 'react'
 
 export const EventCarousel = ({ heading, events, className = '' }) => {
     useEffect(() => {
-        console.log(events)
+        console.log('EEE', events)
     }, [])
 
+    const items = Array.isArray(events) ? events : [events]
+
+    if (items == null) return
+
     return (
-        <div className={`${className} flex flex-col gap-y-gutter`}>
+        <div className={`${className} py-4 flex flex-col gap-y-gutter`}>
             {heading && <h2 className="px-gutter text-h1">{heading}</h2>}
 
             <Swiper
-                freeMode={true}
+                // modules={[FreeMode]}
+                // freeMode={true}
                 slidesPerView="auto"
-                modules={[FreeMode]}
-                spaceBetween={12}
                 className="w-full px-gutter">
-                {events?.map((event, i) => (
-                    <SwiperSlide key={i} className="w-min">
+                {items?.map((event, i) => (
+                    <SwiperSlide
+                        key={i}
+                        className="pr-3 last:pr-0"
+                        style={{ width: '16rem' }}>
                         <EventCard event={event} />
                     </SwiperSlide>
                 ))}

@@ -1,20 +1,27 @@
 'use client'
 
-import { useContext, useEffect } from 'react'
+import { useContext, useEffect, useState, useRef } from 'react'
 import { UiContext } from '@/app/AppContext'
 import { RadioButton } from '../atoms/RadioButton'
 import { getTags } from '@/api/getTags'
 import { Button } from '../atoms/Button'
 
-export const FilterForm = () => {
+export const FilterForm = ({ tagOptions }) => {
     const { filterIsOpen, setFilterIsOpen } = useContext(UiContext)
-    const tags = getTags()
+    const formRef = useRef(null)
+
+    const [price, setPrice] = useState(null)
+    const [dates, setDates] = useState(null)
+    const [tags, setTags] = useState([])
 
     const handleSubmit = () => {
         console.log('submit filter form')
     }
 
     const handleClear = () => {
+        setPrice(null)
+        setDates(null)
+        setTags([])
         console.log('clear filters')
     }
 
@@ -23,7 +30,7 @@ export const FilterForm = () => {
     }, [])
 
     return (
-        <form className="relative h-full overflow-y-auto">
+        <form ref={formRef} className="relative h-full overflow-y-auto">
             <div className="flex justify-between sticky top-0 w-full p-gutter bg-white shadow">
                 <p className="text-h2">Filtros:</p>
                 <div className="flex gap-gutter">
@@ -33,6 +40,7 @@ export const FilterForm = () => {
                         Restablecer
                     </Button>
                     <Button
+                        className="!bg-black text-white"
                         type="button"
                         onClick={() => setFilterIsOpen(s => !s)}>
                         Aplicar
@@ -60,20 +68,6 @@ export const FilterForm = () => {
                             className="hidden peer-checked:block"
                             type="range"
                         />
-                    </div>
-                </fieldset>
-                <fieldset className="flex flex-col">
-                    <legend>Categorias</legend>
-                    <div className="flex flex-wrap gap-x-3 gap-y-1.5">
-                        <label>
-                            <input type="checkbox" /> Category 1
-                        </label>
-                        <label>
-                            <input type="checkbox" /> Category 2
-                        </label>
-                        <label>
-                            <input type="checkbox" /> Category 3
-                        </label>
                     </div>
                 </fieldset>
                 <fieldset className="flex flex-col">

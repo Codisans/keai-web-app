@@ -7,6 +7,7 @@ export const Button = ({
     className = '',
     icon,
     children,
+    active,
     style = icon ? 'icon' : 'regular',
     type = 'submit',
     ...props
@@ -15,12 +16,12 @@ export const Button = ({
     const styles = (function (s) {
         switch (s) {
             case 'icon':
-                return 'inline-flex justify-center items-center text-icon px-3 h-10 rounded-button bg-grey text-black'
+                return 'inline-flex justify-center items-center text-icon px-3 h-10 rounded-button bg-white border border-grey-3 text-black hover:bg-grey-3'
             case 'big':
-                return 'w-full flex items-center justify-center h-28 text-big-button rounded-button bg-grey text-black'
+                return 'w-full flex items-center justify-center h-28 text-big-button rounded-button bg-white border border-grey-3 text-black hover:bg-grey-3'
             case 'regular':
             default:
-                return 'inline-flex justify-center items-center text-button px-3 h-10 rounded-button bg-grey text-black'
+                return 'inline-flex justify-center items-center text-button px-3 h-10 rounded-button bg-white border border-grey-3 text-black hover:bg-grey-3'
         }
     })(style)
 
@@ -28,7 +29,7 @@ export const Button = ({
         return (
             <Link
                 href={href}
-                className={`${className} ${styles} ${path == href ? 'active' : ''}`}
+                className={`${className} ${styles} ${href ? (path == href ? 'active' : '') : ''} active:text-black/20 active:pointer-events-none`}
                 {...props}>
                 {icon || children}
             </Link>
@@ -36,7 +37,10 @@ export const Button = ({
     }
 
     return (
-        <button className={`${className} ${styles}`} type={type} {...props}>
+        <button
+            className={`${className} ${styles} ${active ? 'active' : ''}`}
+            type={type}
+            {...props}>
             {icon || children}
         </button>
     )

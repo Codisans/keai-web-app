@@ -1,11 +1,12 @@
 import '@/app/global.css'
 import Head from 'next/head'
+import { AppContext } from './AppContext'
 
 const RootLayout = ({ children }) => {
     return (
         <html lang="es">
             <body className="w-screen h-screen overflow-y-auto">
-                {children}
+                <AppContext>{children}</AppContext>
             </body>
         </html>
     )

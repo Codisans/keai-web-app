@@ -16,9 +16,9 @@ export const SortForm = () => {
         console.log('clear filters')
     }
 
-    useEffect(() => {
-        console.log(tags)
-    }, [])
+    // useEffect(() => {
+    //     console.log(tags)
+    // }, [])
 
     return (
         <form className="flex flex-col gap-gutter">

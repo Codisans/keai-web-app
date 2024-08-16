@@ -6,13 +6,14 @@ export const metadata = {
     title: 'KEAI | Eventos',
 }
 
-const Events = async () => {
-    const events = await getEvents()
+const CategoryPage = async ({ params }) => {
+    if (params.category == null) return
+
+    const events = await getEvents(params.category)
 
     return (
         <>
             <div className="w-full py-4 flex flex-col">
-                <TagSearch />
                 <EventCarousel heading="Para ti" events={events.data} />
                 <EventCarousel heading="Hoy" events={events.data} />
                 {/* <Tags data={tags} /> */}
@@ -26,4 +27,4 @@ const Events = async () => {
     )
 }
 
-export default Events
+export default CategoryPage

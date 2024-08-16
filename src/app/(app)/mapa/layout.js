@@ -2,7 +2,7 @@
 
 import { useAuth } from '@/hooks/auth'
 import Loading from '@/app/(app)/Loading'
-import { FilterModal } from './FilterModal'
+// import { FilterModal } from './FilterModal'
 
 const MapLayout = ({ children }) => {
     const { user } = useAuth({ middleware: 'auth' })
@@ -13,8 +13,8 @@ const MapLayout = ({ children }) => {
 
     return (
         <>
-            {children}
-            <FilterModal />
+            <div className="w-full h-auto">{children}</div>
+            {/* <FilterModal /> */}
         </>
     )
 }

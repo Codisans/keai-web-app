@@ -15,9 +15,9 @@ export const Navigation = () => {
     const hash = useParams().hash
     const { setFilterIsOpen, setMenuIsOpen } = useContext(UiContext)
 
-    useEffect(() => {
-        console.log(path, hash)
-    }, [])
+    // useEffect(() => {
+    //     console.log(path, hash)
+    // }, [])
 
     return (
         user && (

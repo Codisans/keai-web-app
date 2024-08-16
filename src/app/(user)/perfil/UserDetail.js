@@ -5,5 +5,5 @@ import { useAuth } from '@/hooks/auth'
 export const UserDetail = () => {
     const { user } = useAuth()
 
-    return <div>Usuario: {user.name}!</div>
+    return <div>Welcome back {user?.name}!</div>
 }

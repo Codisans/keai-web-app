@@ -2,9 +2,8 @@
 
 // import { useAuth } from '@/hooks/auth'
 import { MainMenu } from '@/components/molecules/MainMenu'
-import { Header } from './Header'
-import { Footer } from './Footer'
-import { FilterModal } from './FilterModal'
+import { UserHeader } from './UserHeader'
+import { UserFooter } from './UserFooter'
 
 const AppLayout = ({ children }) => {
     // const { user } = useAuth({ middleware: 'auth' })
@@ -15,11 +14,12 @@ const AppLayout = ({ children }) => {
 
     return (
         <div className="w-full flex flex-col min-h-screen">
-            <Header />
+            <UserHeader />
             <MainMenu />
-            <main className="w-full grow relative flex">{children}</main>
-            <FilterModal />
-            <Footer />
+            <main className="w-full grow relative flex flex-col">
+                {children}
+            </main>
+            <UserFooter />
         </div>
     )
 }
