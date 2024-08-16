@@ -1,6 +1,4 @@
-import Link from 'next/link'
-
-const EventCard = props => {
+const EventItem = props => {
     const { event } = props
 
     return (
@@ -16,11 +14,9 @@ const EventCard = props => {
                 <p>{event.date}</p>
                 <p>Desde: $ {event.price}</p>
             </div>
-            <Link
-                href={`/evento/${event.id}`}
-                className="absolute inset-0"></Link>
+            <a href={`/evento/${event.id}`} className="absolute inset-0"></a>
         </div>
     )
 }
 
-export default EventCard
+export default EventItem

@@ -6,7 +6,7 @@ import { CategoryCard } from '../atoms/CategoryCard'
 
 export const CategoryNav = ({ categories }) => {
     return (
-        <nav className="py-gutter">
+        <nav className="pt-gutter">
             <Swiper
                 freeMode={true}
                 slidesPerView="auto"

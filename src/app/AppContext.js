@@ -19,6 +19,7 @@ export const AppContext = ({ children }) => {
 
     useEffect(() => {
         setMenuIsOpen(false)
+        setFilterIsOpen(false)
     }, [path])
 
     return (

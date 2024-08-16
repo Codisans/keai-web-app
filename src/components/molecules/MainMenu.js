@@ -11,8 +11,8 @@ export const MainMenu = () => {
     // const categories = getCategories()
 
     return (
-        <div className="w-full h-full overflow-y-auto flex flex-col p-gutter pr-12">
-            <div className="py-gutter">
+        <div className="w-full h-full overflow-y-auto flex flex-col px-gutter pr-12">
+            <div className="py-8">
                 <Link href="/events">
                     <Logo />
                 </Link>
@@ -34,7 +34,7 @@ export const MainMenu = () => {
                     </li>
                 </ul>
             </nav>
-            <ul className="flex flex-col gap-gutter py-gutter border-t border-grey-3 mt-auto">
+            <ul className="flex flex-col items-end gap-gutter py-gutter border-t border-grey-3 mt-auto">
                 <li>
                     <Button className="gap-2" href="/cuenta">
                         <SettingsIcon />
