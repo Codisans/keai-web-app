@@ -1,28 +1,23 @@
-import { EventCarousel } from '@/components/molecules/EventCarousel'
 import { getEvents } from '@/api/getEvents'
-import { TagSearch } from '@/components/molecules/TagSearch'
+import { EventMarker } from '../EventMarker'
 
 export const metadata = {
-    title: 'KEAI | Eventos',
+    title: 'KEAI | Mapa ',
 }
 
 const MapCategory = async ({ params }) => {
     if (params.category == null) return
 
     const events = await getEvents(params.category)
+    const items = Array.isArray(events) ? events : [events]
+
+    if (items == null) return
 
     return (
         <>
-            <div className="w-full py-4 flex flex-col">
-                <EventCarousel heading="Para ti" events={events.data} />
-                <EventCarousel heading="Hoy" events={events.data} />
-                {/* <Tags data={tags} /> */}
-                {/* <EventCarousel heading="Este fin de semana" events={events} /> */}
-                {/* <EventCarousel heading="Fiesta" events={events} /> */}
-                {/* <EventCarousel heading="Deportivo" events={events} /> */}
-                {/* <EventCarousel heading="Comida" events={events} /> */}
-                {/* <EventCarousel heading="Talleres" events={events} /> */}
-            </div>
+            {items?.map(event => (
+                <EventMarker event={event.data} />
+            ))}
         </>
     )
 }
