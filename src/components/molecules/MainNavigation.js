@@ -7,10 +7,12 @@ import HomeIcon from '@mui/icons-material/Home'
 import FilterAltIcon from '@mui/icons-material/FilterAlt'
 import MenuIcon from '@mui/icons-material/Menu'
 import FavoriteIcon from '@mui/icons-material/Favorite'
+import { usePathname } from 'next/navigation'
 
 export const MainNavigation = () => {
     const { setFilterIsOpen, filterIsOpen, menuIsOpen, setMenuIsOpen } =
         useContext(UiContext)
+    const path = usePathname()
 
     return (
         <nav className="">
@@ -41,6 +43,11 @@ export const MainNavigation = () => {
                     <Button
                         onClick={() => setFilterIsOpen(s => !s)}
                         className="w-full "
+                        disabled={path
+                            .split('/')
+                            ?.some(x =>
+                                ['favoritos', 'perfil', 'cuenta'].includes(x),
+                            )}
                         active={filterIsOpen}
                         icon={<FilterAltIcon />}
                     />

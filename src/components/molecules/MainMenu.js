@@ -18,8 +18,8 @@ export const MainMenu = () => {
                 </Link>
             </div>
             <nav className="border-t border-grey-3">
-                <ul className="flex flex-col gap-gutter py-gutter">
-                    <li className="uppercase text-caps">Categorias</li>
+                <h2 className="uppercase text-caps py-gutter">Categorias</h2>
+                <ul className="flex flex-col gap-gutter pb-gutter pl-8">
                     <li>
                         <TextLink href="/eventos/2">Deportes</TextLink>
                     </li>

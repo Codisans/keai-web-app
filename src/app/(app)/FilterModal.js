@@ -3,9 +3,8 @@
 import { useContext, useEffect } from 'react'
 import { UiContext } from '../AppContext'
 import CloseIcon from '@mui/icons-material/Close'
-import { FilterForm } from '@/components/organisms/FilterForm'
 
-export const FilterModal = () => {
+export const FilterModal = ({ children }) => {
     const { filterIsOpen, setFilterIsOpen } = useContext(UiContext)
 
     useEffect(() => {
@@ -15,7 +14,7 @@ export const FilterModal = () => {
 
     return (
         <div
-            className={`absolute flex inset-0 h-full overflow-hidden z-filter invisible open:visible transition-visibility duration-500 ${filterIsOpen ? 'open' : ''}`}>
+            className={`fixed flex inset-0 h-full overflow-hidden z-filter invisible open:visible transition-visibility duration-500 ${filterIsOpen ? 'open' : ''}`}>
             <button
                 onClick={() => setFilterIsOpen(s => !s)}
                 className="absolute inset-0 block bg-black/40 transition-opacity duration-500 ease-in-out opacity-0 open:opacity-100">
@@ -23,7 +22,7 @@ export const FilterModal = () => {
             </button>
             <div className="pointer-events-none relative mt-auto max-h-[100%] pt-28 pb-16 w-full z-1 flex">
                 <div className="grow bg-white rounded-t-ui overflow-hidden w-full pointer-events-auto translate-y-full transition-transform duration-500 ease-in-out open:translate-y-0">
-                    <FilterForm />
+                    {children}
                 </div>
             </div>
         </div>

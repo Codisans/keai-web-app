@@ -7,7 +7,7 @@ import { CategoryCard } from '../atoms/CategoryCard'
 
 export const CategoryCarousel = ({ categories }) => {
     useEffect(() => {
-        console.log(categories)
+        // console.log(categories)
     }, [])
 
     return (

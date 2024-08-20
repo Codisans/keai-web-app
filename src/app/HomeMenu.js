@@ -7,7 +7,7 @@ export const HomeMenu = () => {
     const { user } = useAuth({ middleware: 'guest' })
 
     return (
-        <ul className="w-full h-max grid grid-cols-2 gap-gutter">
+        <ul className="w-full h-max grid grid-cols-2 gap-gutter my-auto">
             {user ? (
                 <>
                     <li className="col-span-1">
@@ -34,13 +34,13 @@ export const HomeMenu = () => {
             ) : (
                 <>
                     <li className="col-span-1">
-                        <Button style="big" href="/entrar">
-                            Ingresar
+                        <Button style="big" href="/crear-cuenta">
+                            Registrar
                         </Button>
                     </li>
                     <li className="col-span-1">
-                        <Button style="big" href="/crear-cuenta">
-                            Registrar
+                        <Button style="big" href="/entrar">
+                            Ingresar
                         </Button>
                     </li>
                 </>

@@ -9,19 +9,20 @@ export const Button = ({
     children,
     active,
     style = icon ? 'icon' : 'regular',
-    type = 'submit',
+    type = 'button',
+    disabled = false,
     ...props
 }) => {
     const path = usePathname()
     const styles = (function (s) {
         switch (s) {
             case 'icon':
-                return 'inline-flex justify-center items-center text-icon px-3 h-10 rounded-button bg-white border border-grey-3 text-black hover:bg-grey-3'
+                return 'inline-flex justify-center items-center text-icon px-3 h-10 rounded-button bg-white border border-grey-3 text-black active:bg-black/10'
             case 'big':
-                return 'w-full flex items-center justify-center h-28 text-big-button rounded-button bg-white border border-grey-3 text-black hover:bg-grey-3'
+                return 'w-full flex items-center justify-center h-28 text-big-button rounded-button bg-white border border-grey-3 text-black active:bg-black/10'
             case 'regular':
             default:
-                return 'inline-flex justify-center items-center text-button px-3 h-10 rounded-button bg-white border border-grey-3 text-black hover:bg-grey-3'
+                return 'inline-flex justify-center items-center text-button px-3 h-10 rounded-button bg-white border border-grey-3 text-black active:bg-black/10'
         }
     })(style)
 
@@ -29,7 +30,7 @@ export const Button = ({
         return (
             <Link
                 href={href}
-                className={`${className} ${styles} ${href ? (path == href ? 'active' : '') : ''} active:text-black/20 active:pointer-events-none`}
+                className={`${className} ${styles} ${href ? (path == href ? 'active' : '') : ''} active:bg-black/10 active:pointer-events-none`}
                 {...props}>
                 {icon || children}
             </Link>
@@ -38,8 +39,9 @@ export const Button = ({
 
     return (
         <button
-            className={`${className} ${styles} ${active ? 'active' : ''}`}
+            className={`${className} ${styles} ${active ? 'active' : ''} ${disabled ? 'disabled' : ''} disabled:text-black/10 disabled:-pointer-events-none`}
             type={type}
+            disabled={disabled}
             {...props}>
             {icon || children}
         </button>

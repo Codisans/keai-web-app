@@ -6,9 +6,9 @@ import EventCard from '../atoms/EventCard'
 import { useEffect } from 'react'
 
 export const EventCarousel = ({ heading, events, className = '' }) => {
-    useEffect(() => {
-        console.log('EEE', events)
-    }, [])
+    // useEffect(() => {
+    //     console.log('EEE', events)
+    // }, [])
 
     const items = Array.isArray(events) ? events : [events]
 
@@ -22,7 +22,7 @@ export const EventCarousel = ({ heading, events, className = '' }) => {
                 // modules={[FreeMode]}
                 // freeMode={true}
                 slidesPerView="auto"
-                className="w-full px-gutter">
+                className="w-full px-[calc(2*var(--gutter))]">
                 {items?.map((event, i) => (
                     <SwiperSlide
                         key={i}

@@ -4,6 +4,7 @@ module.exports = {
         require('@tailwindcss/forms'),
         require('tailwindcss/plugin')(function ({ addVariant }) {
             addVariant('active', ['.active &', '&.active'])
+            addVariant('disabled', ['.disabled &', '&.disabled'])
             addVariant('error', ['.error &', '&.error'])
             addVariant('loading', ['.loading &', '&.loading'])
             addVariant('open', ['.open &', '&.open'])
@@ -16,7 +17,7 @@ module.exports = {
             accent: '#fff',
             canvas: '#fff',
             'canvas-alt': '#e4e4e4',
-            black: '#141301',
+            black: { DEFAULT: '#2B2B2B', true: '#000' },
             white: '#fff',
             blue: {
                 DEFAULT: '#31285b',
@@ -26,7 +27,7 @@ module.exports = {
                 DEFAULT: '#f8ac4c',
                 dark: '#f8ac4c',
             },
-            red: { DEFAULT: '#e34a4a' },
+            red: { DEFAULT: '#FF4A5C' },
             error: '#e34a4a',
             green: {
                 DEFAULT: '#115748',
@@ -82,7 +83,7 @@ module.exports = {
                 nav: '4rem',
                 header: '4rem',
                 main: 'calc(100vh - 8rem)',
-                gutter: '0.75rem',
+                gutter: 'var(--gutter, 0.75rem)',
             },
             aspectRatio: {
                 cover: '16 / 9',

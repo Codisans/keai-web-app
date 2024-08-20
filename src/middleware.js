@@ -3,7 +3,6 @@ import { NextResponse } from 'next/server'
 export function middleware(request) {
     // const isAuthenticated = authenticate(request)
     const isAuthenticated = true
-    console.log('middle')
 
     // If the user is authenticated, continue as normal
     if (isAuthenticated) {

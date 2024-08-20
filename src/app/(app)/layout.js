@@ -2,6 +2,7 @@ import { Header } from './Header'
 import { Footer } from './Footer'
 import { FilterModal } from './FilterModal'
 import { MenuPullout } from '@/components/molecules/MenuPullout'
+import { FilterForm } from '@/components/organisms/FilterForm'
 
 const AppLayout = ({ children }) => {
     return (
@@ -9,7 +10,9 @@ const AppLayout = ({ children }) => {
             <Header />
             <MenuPullout />
             <main className="w-full grow relative flex">{children}</main>
-            <FilterModal />
+            <FilterModal>
+                <FilterForm />
+            </FilterModal>
             <Footer />
         </div>
     )

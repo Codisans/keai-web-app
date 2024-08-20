@@ -1,6 +1,6 @@
 import { Logo } from '@/components/atoms/Logo'
 import 'swiper/css'
-import { HomeMenu } from '@/components/molecules/HomeMenu'
+import { HomeMenu } from './HomeMenu'
 
 export const metadata = {
     title: 'KEAI',
@@ -8,14 +8,15 @@ export const metadata = {
 
 const Home = () => {
     return (
-        <>
-            <div className="w-full h-full flex flex-col items-center py-10 gap-20">
+        <div className="min-h-screen flex flex-col">
+            <section className="w-full px-gutter flex justify-center py-10">
+                <h1 className="sr-only">KEAI</h1>
                 <Logo />
-                <div className="w-full px-gutter flex grow">
-                    <HomeMenu />
-                </div>
-            </div>
-        </>
+            </section>
+            <section className="w-full mx-auto px-gutter pb-20 flex grow max-w-lg">
+                <HomeMenu />
+            </section>
+        </div>
     )
 }
 

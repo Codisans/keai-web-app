@@ -4,9 +4,9 @@ import { AdvancedMarker, Pin } from '@vis.gl/react-google-maps'
 import { useEffect } from 'react'
 
 export const EventMarker = ({ event }) => {
-    useEffect(() => {
-        console.log(event)
-    }, [event])
+    // useEffect(() => {
+    //     console.log(event)
+    // }, [event])
     if (event.coordinates == null) return
 
     const position = {
