@@ -39,7 +39,7 @@ export const Button = ({
 
     return (
         <button
-            className={`${className} ${styles} ${active ? 'active' : ''} ${disabled ? 'disabled' : ''} disabled:text-black/10 disabled:-pointer-events-none`}
+            className={`${className} ${styles} ${active ? 'active' : ''} ${disabled ? 'disabled' : ''} disabled:text-black/10 disabled:-pointer-events-none ring-black/80 active:ring-2`}
             type={type}
             disabled={disabled}
             {...props}>
