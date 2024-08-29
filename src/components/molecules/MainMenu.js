@@ -13,7 +13,7 @@ export const MainMenu = () => {
     return (
         <div className="w-full h-full overflow-y-auto flex flex-col px-gutter pr-12">
             <div className="py-8">
-                <Link href="/events">
+                <Link href="/eventos">
                     <Logo />
                 </Link>
             </div>

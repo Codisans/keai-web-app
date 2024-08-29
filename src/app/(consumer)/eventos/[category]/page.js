@@ -7,8 +7,6 @@ export const metadata = {
 }
 
 const CategoryPage = async ({ params }) => {
-    if (params.category == null) return
-
     const events = await getEvents(params.category)
 
     return (

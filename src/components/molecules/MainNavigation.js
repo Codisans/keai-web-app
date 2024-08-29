@@ -3,16 +3,14 @@ import { useContext } from 'react'
 import { Button } from '@/components/atoms/Button'
 import { UiContext } from '@/app/AppContext'
 import MapIcon from '@mui/icons-material/Map'
-import HomeIcon from '@mui/icons-material/Home'
-import FilterAltIcon from '@mui/icons-material/FilterAlt'
+import GridViewIcon from '@mui/icons-material/GridView'
 import MenuIcon from '@mui/icons-material/Menu'
 import FavoriteIcon from '@mui/icons-material/Favorite'
-import { usePathname } from 'next/navigation'
+import { FilterToggle } from '@/components/atoms/FilterToggle'
 
 export const MainNavigation = () => {
-    const { setFilterIsOpen, filterIsOpen, menuIsOpen, setMenuIsOpen } =
+    const { menuIsOpen, setMenuIsOpen, selectedCategory, setSelectedCategory } =
         useContext(UiContext)
-    const path = usePathname()
 
     return (
         <nav className="">
@@ -20,14 +18,22 @@ export const MainNavigation = () => {
                 <li className={`col-span-1`}>
                     <Button
                         className="w-full"
-                        href="/eventos"
-                        icon={<HomeIcon />}
+                        href={
+                            selectedCategory
+                                ? `/eventos/${selectedCategory}`
+                                : '/eventos'
+                        }
+                        icon={<GridViewIcon />}
                     />
                 </li>
                 <li className={`col-span-1 flex justify-cenetr`}>
                     <Button
                         className="w-full"
-                        href="/mapa"
+                        href={
+                            selectedCategory
+                                ? `/mapa/${selectedCategory}`
+                                : '/mapa'
+                        }
                         icon={<MapIcon />}
                     />
                 </li>
@@ -40,17 +46,7 @@ export const MainNavigation = () => {
                     />
                 </li>
                 <li className="col-span-1">
-                    <Button
-                        onClick={() => setFilterIsOpen(s => !s)}
-                        className="w-full "
-                        disabled={path
-                            .split('/')
-                            ?.some(x =>
-                                ['favoritos', 'perfil', 'cuenta'].includes(x),
-                            )}
-                        active={filterIsOpen}
-                        icon={<FilterAltIcon />}
-                    />
+                    <FilterToggle />
                 </li>
                 <li className="col-span-1">
                     <Button

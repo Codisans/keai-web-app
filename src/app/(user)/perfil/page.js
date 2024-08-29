@@ -18,7 +18,7 @@ const Profile = () => {
                         <Button>Tags favoritos</Button>
                     </li>
                     <li>
-                        <Button>Eventos guardados</Button>
+                        <Button href="/favoritos">Eventos guardados</Button>
                     </li>
                     <li>
                         <Button>Eventos historicos</Button>
