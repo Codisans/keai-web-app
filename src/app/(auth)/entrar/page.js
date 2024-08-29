@@ -104,7 +104,7 @@ const Login = () => {
                 </div>
 
                 <div className="flex flex-col items-center gap-4 mt-4">
-                    <Button>Entrar</Button>
+                    <Button type="submit">Entrar</Button>
                     <TextLink href="/recuperar-clave">Recuperar clave</TextLink>
                     <Button href="/crear-cuenta">Crear cuenta</Button>
                 </div>
