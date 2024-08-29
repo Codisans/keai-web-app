@@ -2,7 +2,7 @@
 
 import { useAuth } from '@/hooks/auth'
 import Navigation from '@/components/organisms/Navigation'
-import Loading from '@/app/(app)/Loading'
+import Loading from '@/app/(consumer)/Loading'
 import Header from './Header'
 
 const AppLayout = ({ children }) => {

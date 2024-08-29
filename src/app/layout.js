@@ -5,7 +5,7 @@ import { AppContext } from './AppContext'
 const RootLayout = ({ children }) => {
     return (
         <html lang="es">
-            <body className="w-screen h-screen overflow-y-auto">
+            <body className="w-full h-screen overflow-y-auto">
                 <AppContext>{children}</AppContext>
             </body>
         </html>

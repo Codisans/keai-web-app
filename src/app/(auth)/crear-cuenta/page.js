@@ -18,6 +18,7 @@ const Page = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [passwordConfirmation, setPasswordConfirmation] = useState('')
+    const [accountType, setAccountType] = useState('consumer')
     const [errors, setErrors] = useState([])
 
     const submitForm = event => {
@@ -103,6 +104,42 @@ const Page = () => {
                     messages={errors.password_confirmation}
                     className="mt-2"
                 />
+            </div>
+
+            {/* Account type */}
+            <div className="mt-4 flex gap-gutter">
+                <div>
+                    <Input
+                        className="hidden peer"
+                        id="consumer"
+                        value="consumer"
+                        name="account-type"
+                        onChange={event => setAccountType(event.target.value)}
+                        type="radio"
+                        checked={accountType == 'consumer'}
+                    />
+                    <Label
+                        className="inline-flex justify-center items-center text-button px-3 h-10 rounded-button bg-white border border-grey-3 text-black peer-checked:bg-black/10"
+                        htmlFor="consumer">
+                        Consumidor
+                    </Label>
+                </div>
+                <div>
+                    <Input
+                        className="hidden peer"
+                        id="manager"
+                        value="manager"
+                        name="account-type"
+                        onChange={event => setAccountType(event.target.value)}
+                        type="radio"
+                        checked={accountType == 'manager'}
+                    />
+                    <Label
+                        className="inline-flex justify-center items-center text-button px-3 h-10 rounded-button bg-white border border-grey-3 text-black peer-checked:bg-black/10"
+                        htmlFor="manager">
+                        Administrador
+                    </Label>
+                </div>
             </div>
 
             <div className="flex items-center justify-end mt-4 gap-4">
