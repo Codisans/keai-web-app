@@ -2,12 +2,13 @@ import { MainMenu } from '@/components/molecules/MainMenu'
 import { UserHeader } from './UserHeader'
 import { UserFooter } from './UserFooter'
 import { MenuPullout } from '@/components/molecules/MenuPullout'
+import { getCategories } from '@/api/getCategories'
 
-const AppLayout = ({ children }) => {
+const UserLayout = async ({ children }) => {
+    const categories = await getCategories()
     return (
         <div className="w-full flex flex-col min-h-screen">
             <UserHeader />
-            <MenuPullout />
             <main className="w-full grow relative flex flex-col">
                 {children}
             </main>
@@ -16,4 +17,4 @@ const AppLayout = ({ children }) => {
     )
 }
 
-export default AppLayout
+export default UserLayout
