@@ -9,8 +9,8 @@ import { CategoryLink } from '@/components/atoms/CategoryLink'
 export const MainMenu = ({ categories }) => {
     return (
         <div className="w-full h-full overflow-y-auto flex flex-col px-gutter pr-12">
-            <div className="py-8">
-                <Link href="/eventos">
+            <div className="pt-8 pb-4 mb-4 sticky top-0 bg-white">
+                <Link className="block" href="/eventos">
                     <Logo />
                 </Link>
             </div>
@@ -27,6 +27,12 @@ export const MainMenu = ({ categories }) => {
                 </ul>
             </nav>
             <ul className="flex flex-col items-end gap-gutter py-gutter border-t border-grey-3 mt-auto">
+                <li>
+                    <Button href="/dashboard">Dashboard</Button>
+                </li>
+                <li>
+                    <Button href="/mis-eventos">Mis eventos</Button>
+                </li>
                 <li>
                     <Button className="gap-2" href="/cuenta">
                         <SettingsIcon />
