@@ -1,11 +1,11 @@
 'use client'
 
 import { useContext, useEffect } from 'react'
-import { UiContext } from '../AppContext'
-import CloseIcon from '@mui/icons-material/Close'
+import { ConsumerContext } from '@/app/(consumer)/ConsumerContext'
+// import CloseIcon from '@mui/icons-material/Close'
 
 export const FilterModal = ({ children }) => {
-    const { filterIsOpen, setFilterIsOpen } = useContext(UiContext)
+    const { filterIsOpen, setFilterIsOpen } = useContext(ConsumerContext)
 
     useEffect(() => {
         setFilterIsOpen(false)

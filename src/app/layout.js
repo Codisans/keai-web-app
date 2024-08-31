@@ -1,29 +1,18 @@
 import '@/app/global.css'
-import Head from 'next/head'
-import { AppContext } from './AppContext'
-import { getCategories } from '@/api/getCategories'
-import { MenuPullout } from '@/components/molecules/MenuPullout'
-import { MainMenu } from '@/components/molecules/MainMenu'
+import { AppContextProvider } from './AppContext'
 
-const RootLayout = async ({ children }) => {
-    const categories = await getCategories()
-
+const RootLayout = ({ children }) => {
     return (
         <html lang="es">
             <body className="w-full h-screen overflow-y-auto">
-                <AppContext>
-                    {children}
-                    <MenuPullout>
-                        <MainMenu categories={categories} />
-                    </MenuPullout>
-                </AppContext>
+                <AppContextProvider>{children}</AppContextProvider>
             </body>
         </html>
     )
 }
 
 export const metadata = {
-    title: 'Laravel',
+    title: 'KEAI',
 }
 
 export default RootLayout

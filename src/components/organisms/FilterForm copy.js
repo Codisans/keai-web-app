@@ -1,13 +1,13 @@
 'use client'
 import { useContext, useEffect, useState, useRef } from 'react'
-import { UiContext } from '@/app/AppContext'
+import { ConsumerContext } from '@/app/(consumer)/ConsumerContext'
 import { RadioButton } from '../atoms/RadioButton'
 import { getTags } from '@/api/getTags'
 import { Button } from '../atoms/Button'
 import { TagSearch } from '../molecules/TagSearch'
 
 export const FilterForm = ({ tagOptions }) => {
-    const { filterIsOpen, setFilterIsOpen } = useContext(UiContext)
+    const { filterIsOpen, setFilterIsOpen } = useContext(ConsumerContext)
     const formRef = useRef(null)
 
     const [price, setPrice] = useState(null)

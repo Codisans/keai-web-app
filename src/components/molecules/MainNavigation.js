@@ -1,7 +1,7 @@
 'use client'
 import { useContext } from 'react'
 import { Button } from '@/components/atoms/Button'
-import { UiContext } from '@/app/AppContext'
+import { ConsumerContext } from '@/app/(consumer)/ConsumerContext'
 import MapIcon from '@mui/icons-material/Map'
 import GridViewIcon from '@mui/icons-material/GridView'
 import MenuIcon from '@mui/icons-material/Menu'
@@ -10,7 +10,7 @@ import { FilterToggle } from '@/components/atoms/FilterToggle'
 
 export const MainNavigation = () => {
     const { menuIsOpen, setMenuIsOpen, selectedCategory, setSelectedCategory } =
-        useContext(UiContext)
+        useContext(ConsumerContext)
 
     return (
         <nav className="">

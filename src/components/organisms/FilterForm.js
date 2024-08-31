@@ -1,14 +1,14 @@
 'use client'
 
 import { useContext } from 'react'
-import { UiContext } from '@/app/AppContext'
+import { ConsumerContext } from '@/app/(consumer)/ConsumerContext'
 import { RadioButton } from '../atoms/RadioButton'
 import { getTags } from '@/api/getTags'
 import { Button } from '../atoms/Button'
 import { TagSearch } from '../molecules/TagSearch'
 
 export const FilterForm = () => {
-    const { filterIsOpen, setFilterIsOpen } = useContext(UiContext)
+    const { filterIsOpen, setFilterIsOpen } = useContext(ConsumerContext)
     const minDate = new Date().toISOString().split('T')[0]
     // const formRef = useRef(null)
 

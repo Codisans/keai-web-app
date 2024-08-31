@@ -1,6 +1,6 @@
 'use client'
 import { useContext } from 'react'
-import { UiContext } from '@/app/AppContext'
+import { ConsumerContext } from '@/app/(consumer)/ConsumerContext'
 import EventIcon from '@mui/icons-material/Event'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
@@ -10,7 +10,8 @@ import HomeIcon from '@mui/icons-material/Home'
 export const CategoryCard = ({ category }) => {
     const path = usePathname()
     const router = useRouter()
-    const { selectedCategory, setSelectedCategory } = useContext(UiContext)
+    const { selectedCategory, setSelectedCategory } =
+        useContext(ConsumerContext)
 
     const isMap = path.split('/').includes('mapa')
     const parent = isMap ? 'mapa' : 'eventos'

@@ -1,43 +1,8 @@
 'use client'
-import { usePathname } from 'next/navigation'
-import { createContext, useState, useEffect } from 'react'
+import { createContext } from 'react'
 
-export const UiContext = createContext({
-    filterIsOpen: false,
-    setFilterIsOpen: () => {},
-    menuIsOpen: false,
-    setMenuIsOpen: () => {},
-    selectedCategory: null,
-    setSelectedCategory: () => {},
-    selectedEvent: null,
-    setSelectedEvent: () => {},
-})
+export const AppContext = createContext({})
 
-export const AppContext = ({ children }) => {
-    const path = usePathname()
-    const [filterIsOpen, setFilterIsOpen] = useState(false)
-    const [menuIsOpen, setMenuIsOpen] = useState(false)
-    const [selectedEvent, setSelectedEvent] = useState(null)
-    const [selectedCategory, setSelectedCategory] = useState(null)
-
-    useEffect(() => {
-        setMenuIsOpen(false)
-        setFilterIsOpen(false)
-    }, [path])
-
-    return (
-        <UiContext.Provider
-            value={{
-                filterIsOpen,
-                setFilterIsOpen,
-                menuIsOpen,
-                setMenuIsOpen,
-                selectedCategory,
-                setSelectedCategory,
-                selectedEvent,
-                setSelectedEvent,
-            }}>
-            {children}
-        </UiContext.Provider>
-    )
+export const AppContextProvider = ({ children }) => {
+    return <AppContext.Provider value={{}}>{children}</AppContext.Provider>
 }

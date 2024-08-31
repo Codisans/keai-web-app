@@ -1,9 +1,9 @@
 'use client'
-import { UiContext } from '@/app/AppContext'
+import { ConsumerContext } from '@/app/(consumer)/ConsumerContext'
 import { useContext, useEffect } from 'react'
 
 export const EventDetail = ({ event }) => {
-    const { setSelectedEvent } = useContext(UiContext)
+    const { setSelectedEvent } = useContext(ConsumerContext)
 
     useEffect(() => {
         // console.log(event)

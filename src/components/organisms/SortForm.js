@@ -1,7 +1,6 @@
 'use client'
 
 import { useContext, useEffect } from 'react'
-import { UiContext } from '@/app/AppContext'
 import { RadioButton } from '../atoms/RadioButton'
 import { getTags } from '@/api/getTags'
 

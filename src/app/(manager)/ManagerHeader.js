@@ -6,16 +6,8 @@ import SettingsIcon from '@mui/icons-material/Settings'
 import { LogoutButton } from '@/components/atoms/LogoutButton'
 import { Logo } from '@/components/atoms/Logo'
 import Link from 'next/link'
-import { useContext, useEffect } from 'react'
-import { UiContext } from '../AppContext'
 
 export const ManagerHeader = () => {
-    const { setSelectedCategory } = useContext(UiContext)
-
-    useEffect(() => {
-        setSelectedCategory(null)
-    }, [])
-
     return (
         <header className="sticky top-0 inset-0 shadow z-header bg-white shrink">
             <nav className="w-full p-gutter">

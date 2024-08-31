@@ -1,21 +1,24 @@
-import { Header } from './Header'
-import { Footer } from './Footer'
-import { FilterModal } from './FilterModal'
+import '@/app/global.css'
+import { ConsumerContextProvider } from './ConsumerContext'
+import { getCategories } from '@/api/getCategories'
 import { MenuPullout } from '@/components/molecules/MenuPullout'
-import { FilterForm } from '@/components/organisms/FilterForm'
 import { MainMenu } from '@/components/molecules/MainMenu'
 
-const AppLayout = ({ children }) => {
+const ConsumerLayout = async ({ children }) => {
+    const categories = await getCategories()
+
     return (
-        <div className="w-full flex flex-col min-h-screen">
-            <Header />
-            <main className="w-full grow relative flex">{children}</main>
-            <FilterModal>
-                <FilterForm />
-            </FilterModal>
-            <Footer />
-        </div>
+        <ConsumerContextProvider>
+            <MenuPullout>
+                <MainMenu categories={categories} />
+            </MenuPullout>
+            {children}
+        </ConsumerContextProvider>
     )
 }
 
-export default AppLayout
+export const metadata = {
+    title: 'KEAI',
+}
+
+export default ConsumerLayout

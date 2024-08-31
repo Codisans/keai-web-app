@@ -1,6 +1,6 @@
 import { Logo } from '@/components/atoms/Logo'
 import 'swiper/css'
-import { HomeMenu } from './HomeMenu'
+import { RootMenu } from './RootMenu'
 
 export const metadata = {
     title: 'KEAI',
@@ -14,7 +14,7 @@ const Home = () => {
                 <Logo />
             </section>
             <section className="w-full mx-auto px-gutter pb-20 flex grow max-w-lg">
-                <HomeMenu />
+                <RootMenu />
             </section>
         </div>
     )

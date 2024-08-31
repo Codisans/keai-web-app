@@ -7,10 +7,10 @@ import { LogoutButton } from '@/components/atoms/LogoutButton'
 import { Logo } from '@/components/atoms/Logo'
 import Link from 'next/link'
 import { useContext, useEffect } from 'react'
-import { UiContext } from '../AppContext'
+import { ConsumerContext } from '@/app/(consumer)/ConsumerContext'
 
 export const UserHeader = () => {
-    const { setSelectedCategory } = useContext(UiContext)
+    const { setSelectedCategory } = useContext(ConsumerContext)
 
     useEffect(() => {
         setSelectedCategory(null)

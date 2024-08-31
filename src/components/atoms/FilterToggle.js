@@ -1,13 +1,13 @@
 'use client'
 import { useContext } from 'react'
 import { Button } from '@/components/atoms/Button'
-import { UiContext } from '@/app/AppContext'
+import { ConsumerContext } from '@/app/(consumer)/ConsumerContext'
 import { usePathname } from 'next/navigation'
 import FilterAltIcon from '@mui/icons-material/FilterAlt'
 
 export const FilterToggle = () => {
     const { setFilterIsOpen, filterIsOpen, menuIsOpen, setMenuIsOpen } =
-        useContext(UiContext)
+        useContext(ConsumerContext)
     const path = usePathname()
 
     return (
