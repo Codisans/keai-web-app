@@ -18,7 +18,7 @@ const AdminUsersLayout = ({ children }) => {
 
     return (
         <div className="grid grid-cols-12 h-full w-full">
-            <div className="row-start-1 col-start-5 relative col-end-13 flex flex-col overflow-y-auto">
+            <div className="row-start-1 col-start-4 relative col-end-13 flex flex-col overflow-y-auto">
                 {children}
             </div>
             <UsersSideBar />

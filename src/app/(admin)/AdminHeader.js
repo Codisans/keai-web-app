@@ -8,12 +8,12 @@ import { NavLink } from '@/components/atoms/NavLink'
 export const AdminHeader = () => {
     return (
         <header className="w-full h-min bg-white-alt grid-cols-12 grid">
-            <div className="col-start-1 col-end-5 flex items-center px-gutter">
+            <div className="col-start-1 col-end-4 flex items-center px-gutter">
                 <Link className="text-h2" href="/eventos" target="_blank">
                     <Logo />
                 </Link>
             </div>
-            <nav className="col-start-5 col-end-13 h-full">
+            <nav className="col-start-4 col-end-13 h-full">
                 <ul className="flex items-end">
                     <li className="">
                         <AdminNavLink href="/admin" label="Admin" />
@@ -31,13 +31,13 @@ export const AdminHeader = () => {
                         <AdminNavLink href="/admin/tags" label="Tags" />
                     </li>
                     <li className="">
+                        <AdminNavLink href="/admin/users" label="Users" />
+                    </li>
+                    <li className="">
                         <AdminNavLink
                             href="/admin/dashboard"
                             label="Dashboard"
                         />
-                    </li>
-                    <li className="">
-                        <AdminNavLink href="/admin/users" label="Users" />
                     </li>
                     <li className="p-gutter ml-auto">
                         <LogoutButton className="w-full" />
