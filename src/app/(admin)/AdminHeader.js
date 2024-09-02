@@ -19,7 +19,22 @@ export const AdminHeader = () => {
                         <AdminNavLink href="/admin" label="Admin" />
                     </li>
                     <li className="">
+                        <AdminNavLink
+                            href="/admin/webscraper"
+                            label="Webscraper"
+                        />
+                    </li>
+                    <li className="">
                         <AdminNavLink href="/admin/events" label="Events" />
+                    </li>
+                    <li className="">
+                        <AdminNavLink href="/admin/tags" label="Tags" />
+                    </li>
+                    <li className="">
+                        <AdminNavLink
+                            href="/admin/dashboard"
+                            label="Dashboard"
+                        />
                     </li>
                     <li className="">
                         <AdminNavLink href="/admin/users" label="Users" />

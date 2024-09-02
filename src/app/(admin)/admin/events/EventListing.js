@@ -1,13 +1,12 @@
 'use client'
 
+import { Loading } from '@/app/Loading'
 import { useEffect } from 'react'
 
 export const EventListing = ({ events }) => {
     useEffect(() => {
         console.log(events[0])
     }, [events])
-
-    if (!events) return
 
     return (
         <div className="w-full grow relative">
@@ -17,11 +16,15 @@ export const EventListing = ({ events }) => {
                 <li className="col-span-3">Name</li>
                 <li className="col-span-2">Date</li>
             </ul>
-            <ul className="">
-                {events?.map((event, i) => (
-                    <EventRow key={i} event={event} />
-                ))}
-            </ul>
+            {events ? (
+                <ul className="">
+                    {events?.map((event, i) => (
+                        <EventRow key={i} event={event} />
+                    ))}
+                </ul>
+            ) : (
+                <Loading />
+            )}
         </div>
     )
 }
