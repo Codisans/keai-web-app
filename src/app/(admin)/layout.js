@@ -1,24 +1,15 @@
-'use client'
+import { AdminContextProvider } from './AdminContext'
+import { AdminHeader } from './AdminHeader'
 
-import { useAuth } from '@/hooks/auth'
-import Navigation from '@/components/organisms/Navigation'
-import Loading from '@/app/(consumer)/(browse)/Loading'
-import Header from './Header'
-
-const AppLayout = ({ children }) => {
-    const { user } = useAuth({ middleware: 'auth' })
-
-    if (!user) {
-        return <Loading />
-    }
-
+const AdminLayout = ({ children }) => {
     return (
-        <>
-            <Header />
-            <main className="h-main relative">{children}</main>
-            <Navigation user={user} />
-        </>
+        <AdminContextProvider>
+            <div className="h-screen flex flex-col">
+                <AdminHeader />
+                <main className="overflow-hidden grow">{children}</main>
+            </div>
+        </AdminContextProvider>
     )
 }
 
-export default AppLayout
+export default AdminLayout

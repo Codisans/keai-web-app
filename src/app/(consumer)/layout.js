@@ -1,4 +1,3 @@
-import '@/app/global.css'
 import { ConsumerContextProvider } from './ConsumerContext'
 import { getCategories } from '@/api/getCategories'
 import { MenuPullout } from '@/components/molecules/MenuPullout'
@@ -15,10 +14,6 @@ const ConsumerLayout = async ({ children }) => {
             {children}
         </ConsumerContextProvider>
     )
-}
-
-export const metadata = {
-    title: 'KEAI',
 }
 
 export default ConsumerLayout

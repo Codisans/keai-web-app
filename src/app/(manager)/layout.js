@@ -1,4 +1,3 @@
-import { MainMenu } from '@/components/molecules/MainMenu'
 import { ManagerHeader } from './ManagerHeader'
 import { ManagerFooter } from './ManagerFooter'
 import { MenuPullout } from '@/components/molecules/MenuPullout'

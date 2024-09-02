@@ -12,22 +12,32 @@ export const RootMenu = () => {
                 <>
                     <li className="col-span-1">
                         <Button style="big" href="/cuenta">
-                            Cuenta
+                            Cuenta (consumer)
                         </Button>
                     </li>
                     <li className="col-span-1">
                         <Button style="big" href="/perfil">
-                            Perfil
+                            Perfil (consumer)
                         </Button>
                     </li>
                     <li className="col-span-1">
                         <Button style="big" href="/eventos">
-                            Eventos
+                            Eventos (consumer)
                         </Button>
                     </li>
                     <li className="col-span-1">
                         <Button style="big" href="/mapa">
-                            Mapa
+                            Mapa (consumer)
+                        </Button>
+                    </li>
+                    <li className="col-span-1">
+                        <Button style="big" href="/dashboard">
+                            Dashboard (manager)
+                        </Button>
+                    </li>
+                    <li className="col-span-1">
+                        <Button style="big" href="/mapa">
+                            Account (manager)
                         </Button>
                     </li>
                 </>

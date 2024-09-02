@@ -18,7 +18,7 @@ module.exports = {
             canvas: '#fff',
             'canvas-alt': '#e4e4e4',
             black: { DEFAULT: '#2B2B2B', true: '#000' },
-            white: '#fff',
+            white: { DEFAULT: '#fff', alt: '#ededed' },
             blue: {
                 DEFAULT: '#31285b',
                 dark: '#31285b',
