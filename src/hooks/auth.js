@@ -24,6 +24,21 @@ export const useAuth = ({ middleware, redirectIfAuthenticated } = {}) => {
 
     const csrf = () => axios.get('/sanctum/csrf-cookie')
 
+    const createEvent = async ({ setErrors, formData }) => {
+        await csrf()
+
+        setErrors([])
+
+        axios
+            .post('/api/events', formData)
+            .then(() => mutate())
+            .catch(error => {
+                if (error.response.status !== 422) throw error
+
+                setErrors(error.response.data.errors)
+            })
+    }
+
     const register = async ({ setErrors, ...props }) => {
         await csrf()
 
@@ -136,6 +151,7 @@ export const useAuth = ({ middleware, redirectIfAuthenticated } = {}) => {
 
     return {
         user,
+        createEvent,
         register,
         login,
         forgotPassword,
