@@ -2,11 +2,13 @@
 
 import { useRouter } from 'next/navigation'
 import { useAuth } from '@/hooks/auth'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Input from '@/components/atoms/Input'
 import InputError from '@/components/atoms/InputError'
 import Label from '@/components/atoms/Label'
 import { Button } from '@/components/atoms/Button'
+import { getCategories } from '@/api/getCategories'
+import { getTags } from '@/api/getTags'
 
 const CrearEvento = () => {
     const router = useRouter()
@@ -23,15 +25,47 @@ const CrearEvento = () => {
     const [latitude, setLatitude] = useState('')
     const [longitude, setLongitude] = useState('')
     const [link, setLink] = useState('')
-    const [tags, setTags] = useState('')
+    const [tags, setTags] = useState([])
     const [categories, setCategories] = useState([])
     const [cover, setCover] = useState(null)
     const [errors, setErrors] = useState([])
+    const [availableTags, setAvailableTags] = useState([])
+    const [availableCategories, setAvailableCategories] = useState([])
 
     const { createEvent } = useAuth({ middleware: 'auth' })
 
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const tagsData = await getTags()
+                const categoriesData = await getCategories()
+                setAvailableTags(tagsData)
+                setAvailableCategories(categoriesData)
+            } catch (error) {
+                console.error('Error fetching data:', error)
+            }
+        }
+        fetchData()
+    }, [])
+
     const handleFileChange = event => {
         setCover(event.target.files[0])
+    }
+
+    const handleTagChange = event => {
+        const selectedTags = Array.from(
+            event.target.selectedOptions,
+            option => option.value,
+        )
+        setTags(selectedTags)
+    }
+
+    const handleCategoryChange = event => {
+        const selectedCategories = Array.from(
+            event.target.selectedOptions,
+            option => option.value,
+        )
+        setCategories(selectedCategories)
     }
 
     const submitForm = async event => {
@@ -51,8 +85,10 @@ const CrearEvento = () => {
         formData.append('latitude', latitude)
         formData.append('longitude', longitude)
         formData.append('link', link)
-        formData.append('tags[]', tags)
-        formData.append('categories[]', categories)
+        tags.forEach(tag => formData.append('tags[]', tag))
+        categories.forEach(category =>
+            formData.append('categories[]', category),
+        )
         formData.append('cover', cover)
 
         try {
@@ -300,36 +336,37 @@ const CrearEvento = () => {
                         <InputError messages={errors.link} className="mt-2" />
                     </div>
 
-                    {/* Testing */}
                     <div>
-                        <Label htmlFor="tags">tags</Label>
-
+                        <Label htmlFor="tags">Tags</Label>
                         <select
                             id="tags"
+                            multiple
                             value={tags}
                             className="block w-full mt-1"
-                            onChange={event => setTags(event.target.value)}
-                            required
-                            autoFocus>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
+                            onChange={handleTagChange}
+                            required>
+                            {availableTags.map(tag => (
+                                <option key={tag.id} value={tag.id}>
+                                    {tag.name}
+                                </option>
+                            ))}
                         </select>
                     </div>
 
                     <div>
-                        <Label htmlFor="categories">categories</Label>
-
+                        <Label htmlFor="categories">Categories</Label>
                         <select
                             id="categories"
+                            multiple
                             value={categories}
                             className="block w-full mt-1"
-                            onChange={event =>
-                                setCategories(event.target.value)
-                            }
-                            required
-                            autoFocus>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
+                            onChange={handleCategoryChange}
+                            required>
+                            {availableCategories.map(category => (
+                                <option key={category.id} value={category.id}>
+                                    {category.name}
+                                </option>
+                            ))}
                         </select>
                     </div>
 
