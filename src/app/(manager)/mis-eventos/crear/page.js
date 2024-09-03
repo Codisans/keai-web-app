@@ -1,5 +1,6 @@
 'use client'
 
+import { useRouter } from 'next/navigation'
 import { useAuth } from '@/hooks/auth'
 import { useState } from 'react'
 import Input from '@/components/atoms/Input'
@@ -8,6 +9,7 @@ import Label from '@/components/atoms/Label'
 import { Button } from '@/components/atoms/Button'
 
 const CrearEvento = () => {
+    const router = useRouter()
     const [venue_id, setVenue_id] = useState('')
     const [name, setName] = useState('')
     const [startDate, setStartDate] = useState('')
@@ -32,7 +34,7 @@ const CrearEvento = () => {
         setCover(event.target.files[0])
     }
 
-    const submitForm = event => {
+    const submitForm = async event => {
         event.preventDefault()
 
         const formData = new FormData()
@@ -53,15 +55,20 @@ const CrearEvento = () => {
         formData.append('categories[]', categories)
         formData.append('cover', cover)
 
-        createEvent({ formData, setErrors })
+        try {
+            await createEvent({ formData, setErrors })
+            router.push('/mis-eventos')
+        } catch (error) {
+            console.error('Error creating event:', error)
+        }
     }
 
     return (
         <>
             <section className="py-12 px-gutter">
-                <h1 className="text-h1">Crear nuevo evento</h1>
+                <h1 className="pb-12 text-h1">Crear nuevo evento</h1>
 
-                <form onSubmit={submitForm}>
+                <form onSubmit={submitForm} className="space-y-6">
                     <div>
                         <Label htmlFor="venueId">Venue Id</Label>
 
