@@ -2,7 +2,7 @@
 
 import { useContext, useEffect } from 'react'
 import { ConsumerContext } from '@/app/(consumer)/ConsumerContext'
-import CloseIcon from '@mui/icons-material/Close'
+// import CloseIcon from '@mui/icons-material/Close'
 import { FilterForm } from '@/components/organisms/FilterForm'
 
 export const FilterModal = () => {

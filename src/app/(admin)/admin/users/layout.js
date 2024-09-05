@@ -3,14 +3,14 @@
 import { useAuth } from '@/hooks/auth'
 import { Loading } from '@/app/Loading'
 import { UsersSideBar } from './UsersSideBar'
-import { useEffect } from 'react'
+// import { useEffect } from 'react'
 
 const AdminUsersLayout = ({ children }) => {
     const { user } = useAuth({ middleware: 'auth' })
 
-    useEffect(() => {
-        console.log(user)
-    }, [user])
+    // useEffect(() => {
+    //     console.log(user)
+    // }, [user])
 
     if (!user) {
         return <Loading />

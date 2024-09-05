@@ -5,7 +5,7 @@ export const metadata = {
     title: 'KEAI | Evento',
 }
 
-const Eventos = async ({ params }) => {
+const MisEventos = async ({ params }) => {
     const { data } = await getEvent(params.evento)
 
     return (
@@ -17,4 +17,4 @@ const Eventos = async ({ params }) => {
     )
 }
 
-export default Event
+export default MisEventos

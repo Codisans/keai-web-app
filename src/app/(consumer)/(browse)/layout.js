@@ -1,9 +1,7 @@
 import { Header } from './Header'
 import { Footer } from './Footer'
 import { FilterModal } from './FilterModal'
-import { MenuPullout } from '@/components/molecules/MenuPullout'
 import { FilterForm } from '@/components/organisms/FilterForm'
-import { MainMenu } from '@/components/molecules/MainMenu'
 
 const AppLayout = ({ children }) => {
     return (

@@ -1,7 +1,7 @@
 'use client'
 
 import { AdvancedMarker, Pin } from '@vis.gl/react-google-maps'
-import { useEffect } from 'react'
+// import { useEffect } from 'react'
 
 export const EventMarker = ({ event }) => {
     // useEffect(() => {

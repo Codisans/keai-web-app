@@ -1,7 +1,6 @@
 'use client'
 import { useContext } from 'react'
 import { ConsumerContext } from '@/app/(consumer)/ConsumerContext'
-import { MainMenu } from './MainMenu'
 import { Pullout } from '../templates/Pullout'
 
 export const MenuPullout = ({ children }) => {

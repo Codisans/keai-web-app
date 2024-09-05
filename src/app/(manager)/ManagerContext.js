@@ -1,6 +1,6 @@
 'use client'
-import { usePathname } from 'next/navigation'
-import { createContext, useState, useEffect } from 'react'
+// import { usePathname } from 'next/navigation'
+import { createContext } from 'react'
 
 export const ManagerContext = createContext({})
 

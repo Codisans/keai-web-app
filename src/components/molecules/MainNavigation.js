@@ -9,7 +9,7 @@ import FavoriteIcon from '@mui/icons-material/Favorite'
 import { FilterToggle } from '@/components/atoms/FilterToggle'
 
 export const MainNavigation = () => {
-    const { menuIsOpen, setMenuIsOpen, selectedCategory, setSelectedCategory } =
+    const { menuIsOpen, setMenuIsOpen, selectedCategory } =
         useContext(ConsumerContext)
 
     return (

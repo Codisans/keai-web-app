@@ -52,7 +52,9 @@ const EventList = ({ events }) => {
 
                         <Link
                             href={`/evento/${event.id}`}
-                            className="absolute inset-0"></Link>
+                            className="absolute inset-0">
+                            <span className="sr-only">{event.name}</span>
+                        </Link>
                     </div>
                 </li>
             ))}

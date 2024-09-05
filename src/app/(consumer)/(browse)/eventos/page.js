@@ -1,6 +1,6 @@
 import { EventCarousel } from '@/components/molecules/EventCarousel'
 import { getEvents } from '@/api/getEvents'
-import { TagSearch } from '@/components/molecules/TagSearch'
+// import { TagSearch } from '@/components/molecules/TagSearch'
 
 export const metadata = {
     title: 'KEAI | Eventos',

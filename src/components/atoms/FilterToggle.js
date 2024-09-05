@@ -6,8 +6,7 @@ import { usePathname } from 'next/navigation'
 import FilterAltIcon from '@mui/icons-material/FilterAlt'
 
 export const FilterToggle = () => {
-    const { setFilterIsOpen, filterIsOpen, menuIsOpen, setMenuIsOpen } =
-        useContext(ConsumerContext)
+    const { setFilterIsOpen, filterIsOpen } = useContext(ConsumerContext)
     const path = usePathname()
 
     return (

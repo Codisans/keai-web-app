@@ -9,7 +9,7 @@ export const metadata = {
 const AdminUsers = async () => {
     const { events } = await getEvents()
 
-    // if (!events) return <Loading />
+    if (!events) return <Loading />
 
     return (
         <div className="w-full">

@@ -1,5 +1,4 @@
 import { getEvents } from '@/api/getEvents'
-import Link from 'next/link'
 import { Price } from '@/components/atoms/Price'
 import { DateTime } from '@/components/atoms/DateTime'
 import DeleteIcon from '@mui/icons-material/Delete'

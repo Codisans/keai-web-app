@@ -1,12 +1,12 @@
 'use client'
 
 import { Loading } from '@/app/Loading'
-import { useEffect } from 'react'
+// import { useEffect } from 'react'
 
 export const EventListing = ({ events }) => {
-    useEffect(() => {
-        console.log(events[0])
-    }, [events])
+    // useEffect(() => {
+    //     console.log(events[0])
+    // }, [events])
 
     return (
         <div className="w-full grow relative">

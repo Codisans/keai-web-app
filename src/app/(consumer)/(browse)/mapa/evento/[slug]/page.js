@@ -1,4 +1,4 @@
-async function getEvent(id) {
+async function getEvent() {
     const res = await fetch('http://localhost:8000/api/events')
 
     if (!res.ok) {
