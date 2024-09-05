@@ -1,10 +1,3 @@
-import Header from '@/app/Header'
-import Link from 'next/link'
-
-export const metadata = {
-    title: 'Laravel - Dashboard',
-}
-
 async function getEvent(id) {
     const res = await fetch('http://localhost:8000/api/events')
 

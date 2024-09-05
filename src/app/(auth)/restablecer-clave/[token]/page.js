@@ -1,6 +1,6 @@
 'use client'
 
-import { Button } from '@/components/partials/Button'
+import { Button } from '@/components/atoms/Button'
 import Input from '@/components/atoms/Input'
 import InputError from '@/components/atoms/InputError'
 import Label from '@/components/atoms/Label'
