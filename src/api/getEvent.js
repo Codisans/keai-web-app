@@ -1,5 +1,7 @@
 export const getEvent = async id => {
-    const res = await fetch(`http://localhost:8000/api/events/${id}`)
+    const res = await fetch(
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/events/${id}`,
+    )
 
     if (!res.ok) {
         // This will activate the closest `error.js` Error Boundary

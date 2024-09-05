@@ -1,5 +1,5 @@
 export const getEvents = async category => {
-    const baseUrl = `http://localhost:8000/api/events`
+    const baseUrl = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/events`
     const url = category ? `${baseUrl}/${category}` : baseUrl
     const res = await fetch(url)
 

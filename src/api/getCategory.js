@@ -1,5 +1,7 @@
 export const getCategory = async () => {
-    const res = await fetch('http://localhost:8000/api/categories')
+    const res = await fetch(
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/categories`,
+    )
 
     if (!res.ok) {
         // This will activate the closest `error.js` Error Boundary
