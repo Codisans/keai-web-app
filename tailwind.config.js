@@ -8,11 +8,17 @@ module.exports = {
             addVariant('error', ['.error &', '&.error'])
             addVariant('loading', ['.loading &', '&.loading'])
             addVariant('open', ['.open &', '&.open'])
+            addVariant('header-open', ['.header-open &', '&.header-open'])
+            addVariant('header-visible', [
+                '.header-visible &',
+                '&.header-visible',
+            ])
+            addVariant('page-scrolled', ['.page-scrolled &', '&.page-scrolled'])
         }),
     ],
     theme: {
         colors: {
-            primary: '#31285b',
+            primary: '#faac4a',
             secondary: '#f8ac4c',
             accent: '#fff',
             canvas: '#fff',
