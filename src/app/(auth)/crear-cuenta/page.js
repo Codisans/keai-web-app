@@ -144,7 +144,7 @@ const Page = () => {
 
             <div className="flex items-center justify-end mt-4 gap-4">
                 <TextLink href="/entrar">Ya tienes una cuenta?</TextLink>
-                <Button>Crear</Button>
+                <Button type="submit">Crear</Button>
             </div>
         </form>
     )

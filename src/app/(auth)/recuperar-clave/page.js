@@ -56,7 +56,7 @@ const Page = () => {
 
                 <div className="flex flex-xol gap-4 mt-4">
                     <TextLink href="/crear-cuenta">Crear cuenta</TextLink>
-                    <Button>Recuperar</Button>
+                    <Button type="submit">Recuperar</Button>
                 </div>
             </form>
         </>
