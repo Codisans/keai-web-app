@@ -11,7 +11,7 @@ const MapPage = async () => {
 
     if (!events)
         return (
-            <div className="absolute translate-x-0 bottom-gutter right-gutter w-16 h-16 z-10 pointer-events-none">
+            <div className="absolute translate-x-0 bottom-gg right-gg w-16 h-16 z-10 pointer-events-none">
                 <Loading />
             </div>
         )

@@ -14,7 +14,7 @@ export const MainNavigation = () => {
 
     return (
         <nav className="">
-            <ul className="grid grid-cols-5 w-full items-center p-gutter gap-x-gutter">
+            <ul className="grid grid-cols-5 w-full items-center p-gg gap-x-gg">
                 <li className={`col-span-1`}>
                     <Button
                         className="w-full"

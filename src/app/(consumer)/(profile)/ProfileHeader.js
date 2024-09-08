@@ -16,8 +16,8 @@ export const ProfileHeader = () => {
 
     return (
         <header className="sticky top-0 inset-0 shadow z-header bg-white shrink">
-            <nav className="w-full p-gutter">
-                <ul className="w-full grid grid-cols-5 gap-gutter">
+            <nav className="w-full p-gg">
+                <ul className="w-full grid grid-cols-5 gap-gg">
                     <li className="col-span-3 flex items-center">
                         <Link className="block w-max" href="/eventos">
                             <Logo />

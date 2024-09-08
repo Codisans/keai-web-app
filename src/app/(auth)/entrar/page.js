@@ -49,7 +49,7 @@ const Login = () => {
 
     return (
         <form className="w-full" onSubmit={submitForm}>
-            <AuthSessionStatus className="py-gutter" status={status} />
+            <AuthSessionStatus className="py-gg" status={status} />
             {/* Email Address */}
             <div className={`pb-4 ${errors.email ? 'error' : ''}`}>
                 <Label htmlFor="email">Correo</Label>

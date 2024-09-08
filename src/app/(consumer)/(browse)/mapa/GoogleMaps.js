@@ -26,7 +26,7 @@ export const MapControls = () => {
     const map = useMap('map')
 
     return (
-        <div className="absolute z-10 top-gutter right-gutter flex flex-col gap-gutter text-icon">
+        <div className="absolute z-10 top-gg right-gg flex flex-col gap-gg text-icon">
             <button
                 className="bg-white text-black rounded p-1.5 border-grey-3 border"
                 onClick={() => map?.setZoom(map?.getZoom() + 1)}>

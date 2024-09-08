@@ -10,7 +10,7 @@ export const RootMenu = () => {
     if (!user) return <Loading />
 
     return (
-        <ul className="w-full h-max grid grid-cols-2 gap-gutter my-auto">
+        <ul className="w-full h-max grid grid-cols-2 gap-gg my-auto">
             {user ? (
                 <>
                     <li className="col-span-1">

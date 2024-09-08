@@ -20,7 +20,7 @@ export const SortForm = () => {
     // }, [])
 
     return (
-        <form className="flex flex-col gap-gutter">
+        <form className="flex flex-col gap-gg">
             <h2 className="text-caps uppercase">Ordenar por</h2>
             <fieldset className="flex flex-col">
                 <legend>Parametro</legend>

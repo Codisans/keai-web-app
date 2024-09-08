@@ -8,7 +8,7 @@ import { NavLink } from '@/components/atoms/NavLink'
 export const AdminHeader = () => {
     return (
         <header className="w-full h-min bg-white-alt grid-cols-12 grid">
-            <div className="col-start-1 col-end-4 flex items-center px-gutter">
+            <div className="col-start-1 col-end-4 flex items-center px-gg">
                 <Link className="block w-max" href="/">
                     <Logo />
                 </Link>
@@ -39,7 +39,7 @@ export const AdminHeader = () => {
                             label="Dashboard"
                         />
                     </li>
-                    <li className="p-gutter ml-auto">
+                    <li className="p-gg ml-auto">
                         <LogoutButton className="w-full" />
                     </li>
                 </ul>

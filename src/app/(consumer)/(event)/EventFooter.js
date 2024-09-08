@@ -7,7 +7,7 @@ import { Price } from '@/components/atoms/Price'
 export const EventFooter = ({ event }) => {
     return (
         <footer className="sticky bottom-0 inset-x-0 z-footer border-t border-grey-3 bg-white shrink">
-            <div className="flex items-center justify-between p-gutter">
+            <div className="flex items-center justify-between p-gg">
                 <div className="flex flex-col leading-tight">
                     <DateTime value={event?.start_time} />
                     <DateTime value={event?.start_time} type="time" />

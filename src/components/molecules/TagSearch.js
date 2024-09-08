@@ -7,7 +7,7 @@ export const TagSearch = async () => {
         .catch(err => console.log(err))
 
     return (
-        <section className="py-4 px-gutter">
+        <section className="py-4 px-gg">
             <SearchInput
                 options={tags?.map(
                     tag => new Object({ id: tag.id, label: tag.name }),

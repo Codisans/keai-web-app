@@ -16,7 +16,7 @@ const FavouritesLayout = ({ children }) => {
     return (
         <div className="flex flex-col w-full">
             <h1 className="sr-only">Perfil</h1>
-            <section className="grid grid-cols-12 p-gutter gap-gutter">
+            <section className="grid grid-cols-12 p-gg gap-gg">
                 <div className="col-span-4">
                     <div className="w-full pt-[100%] relative rounded-full overflow-hidden">
                         <div className="bg-grey absolute inset-0 w-full h-full"></div>
@@ -27,9 +27,9 @@ const FavouritesLayout = ({ children }) => {
                     <span>{}</span>
                 </div>
             </section>
-            <h1 className="p-gutter text-h1">Eventos guardados</h1>
-            <section className="w-full p-gutter bg-white z-10 border-b border-grey-2 sticky top-14">
-                <ul className="w-full grid grid-cols-2 gap-gutter pt-gutter">
+            <h1 className="p-gg text-h1">Eventos guardados</h1>
+            <section className="w-full p-gg bg-white z-10 border-b border-grey-2 sticky top-14">
+                <ul className="w-full grid grid-cols-2 gap-gg pt-gg">
                     <li className="col-span-1">
                         <Button
                             className="flex gap-2 w-full active:bg-grey-3 active:text-black"

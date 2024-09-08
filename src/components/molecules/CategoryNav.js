@@ -6,13 +6,13 @@ import { CategoryCard } from '../atoms/CategoryCard'
 
 export const CategoryNav = ({ categories }) => {
     return (
-        <nav className="pt-gutter">
+        <nav className="pt-gg">
             <Swiper
                 freeMode={true}
                 slidesPerView="auto"
                 modules={[FreeMode]}
                 spaceBetween={12}
-                className="w-full px-gutter">
+                className="w-full px-gg">
                 <SwiperSlide style={{ width: '5rem' }}>
                     <CategoryCard />
                 </SwiperSlide>

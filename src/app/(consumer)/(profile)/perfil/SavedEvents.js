@@ -8,8 +8,8 @@ export const SavedEvents = ({ events }) => {
     return (
         <ul className="w-full flex flex-col">
             {events.map((event, i) => (
-                <li className="w-full border-t border-grey-2 py-gutter" key={i}>
-                    <div className="grid grid-cols-12 gap-gutter relative group/card w-full">
+                <li className="w-full border-t border-grey-2 py-gg" key={i}>
+                    <div className="grid grid-cols-12 gap-gg relative group/card w-full">
                         <div className="col-start-1 col-end-4 aspect-square relative rounded-card overflow-hidden">
                             <img
                                 className="absolute inset-0 w-full h-full object-cover group-hover/card:scale-105 transition-transform ease-in-out duration-500"
@@ -25,7 +25,7 @@ export const SavedEvents = ({ events }) => {
                                 <DateTime date={event.start_date} />
                                 <DateTime date={event.start_date} type="time" />
                             </div>
-                            <div className="flex flex-col items-end gap-gutter justify-between">
+                            <div className="flex flex-col items-end gap-gg justify-between">
                                 <Price
                                     className="font-small text-grey-4"
                                     value={event.price}

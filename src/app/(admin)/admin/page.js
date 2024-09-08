@@ -7,7 +7,7 @@ export const metadata = {
 const Admin = () => {
     return (
         <>
-            <div className="py-12 px-gutter">This is the admin home</div>
+            <div className="py-12 px-gg">This is the admin home</div>
         </>
     )
 }

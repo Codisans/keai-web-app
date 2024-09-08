@@ -107,7 +107,7 @@ const Page = () => {
             </div>
 
             {/* Account type */}
-            <div className="mt-4 flex gap-gutter">
+            <div className="mt-4 flex gap-gg">
                 <div>
                     <Input
                         className="hidden peer"

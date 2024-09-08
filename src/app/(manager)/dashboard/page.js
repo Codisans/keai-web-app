@@ -8,7 +8,7 @@ const Dashboard = () => {
     return (
         <>
             <div className="py-12 flex flex-col gap-8 max-w-7xl mx-auto">
-                <ul className="grid grid-cols-2 gap-gutter px-gutter">
+                <ul className="grid grid-cols-2 gap-gg px-gg">
                     <li className="col-span-1">
                         <Button className="w-full" href="/mis-eventos">
                             Mis Eventos

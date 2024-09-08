@@ -17,7 +17,7 @@ export const ConsumerFooter = () => {
     return (
         <footer className="sticky bottom-0 inset-x-0 z-footer border-t border-grey-3 bg-white shrink">
             <nav>
-                <ul className="grid grid-cols-5 w-full items-center p-gutter gap-x-gutter">
+                <ul className="grid grid-cols-5 w-full items-center p-gg gap-x-gg">
                     <li className={`col-span-1`}>
                         <Button
                             className="w-full"

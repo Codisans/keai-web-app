@@ -10,7 +10,7 @@ const Profile = async () => {
 
     return (
         <>
-            <section className="flex flex-col p-gutter grow overflow-y-auto">
+            <section className="flex flex-col p-gg grow overflow-y-auto">
                 <SavedEvents events={events.data} />
             </section>
         </>

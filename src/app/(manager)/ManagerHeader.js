@@ -10,8 +10,8 @@ import Link from 'next/link'
 export const ManagerHeader = () => {
     return (
         <header className="sticky top-0 inset-0 shadow z-header bg-white shrink">
-            <nav className="w-full p-gutter">
-                <ul className="w-full grid grid-cols-5 gap-gutter">
+            <nav className="w-full p-gg">
+                <ul className="w-full grid grid-cols-5 gap-gg">
                     <li className="col-span-2">
                         <Link className="flex text-h2" href="/eventos">
                             <Logo />

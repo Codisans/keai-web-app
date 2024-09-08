@@ -5,7 +5,7 @@ export const metadata = {
 const Webscraper = () => {
     return (
         <>
-            <div className="py-12 px-gutter">This is the Webscraper</div>
+            <div className="py-12 px-gg">This is the Webscraper</div>
         </>
     )
 }

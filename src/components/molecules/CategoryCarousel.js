@@ -16,7 +16,7 @@ export const CategoryCarousel = ({ categories }) => {
             slidesPerView="auto"
             modules={[FreeMode]}
             spaceBetween={12}
-            className="w-full px-gutter">
+            className="w-full px-gg">
             {categories?.map((category, i) => (
                 <SwiperSlide key={i} className="w-min">
                     <CategoryCard category={category} />

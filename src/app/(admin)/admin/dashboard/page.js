@@ -5,7 +5,7 @@ export const metadata = {
 const AdminDashboard = () => {
     return (
         <>
-            <div className="py-12 px-gutter">This is the Dashboard</div>
+            <div className="py-12 px-gg">This is the Dashboard</div>
         </>
     )
 }

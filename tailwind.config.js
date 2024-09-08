@@ -93,7 +93,8 @@ module.exports = {
                 nav: '4rem',
                 header: '4rem',
                 main: 'calc(100vh - 8rem)',
-                gutter: 'var(--gutter, 0.75rem)',
+                gutter: 'var(--gutter, 1rem)',
+                gg: 'var(--grid-gap, 0.75rem)',
             },
             aspectRatio: {
                 cover: '16 / 9',
