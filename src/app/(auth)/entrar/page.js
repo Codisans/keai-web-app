@@ -44,7 +44,9 @@ const Login = () => {
             remember: shouldRemember,
             setErrors,
             setStatus,
-        }).then(() => setIsLoading(false))
+        })
+            .then(() => setIsLoading(false))
+            .catch(() => setIsLoading(false))
     }
 
     return (
