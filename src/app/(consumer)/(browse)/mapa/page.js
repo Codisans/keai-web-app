@@ -1,3 +1,4 @@
+import Loading from '@/app/Loading'
 import { EventMarker } from './EventMarker'
 import { getEvents } from '@/api/getEvents'
 
@@ -7,6 +8,13 @@ export const metadata = {
 
 const MapPage = async () => {
     const events = await getEvents()
+
+    if (!events)
+        return (
+            <div className="absolute translate-x-0 bottom-gutter right-gutter w-16 h-16 z-10 pointer-events-none">
+                <Loading />
+            </div>
+        )
 
     return (
         <>
