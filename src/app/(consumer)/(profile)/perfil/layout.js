@@ -14,7 +14,7 @@ const FavouritesLayout = ({ children }) => {
     }
 
     return (
-        <div className="flex flex-col w-full">
+        <>
             <h1 className="sr-only">Perfil</h1>
             <section className="grid grid-cols-12 p-gg gap-gg">
                 <div className="col-span-4">
@@ -49,7 +49,7 @@ const FavouritesLayout = ({ children }) => {
                 </ul>
             </section>
             {children}
-        </div>
+        </>
     )
 }
 

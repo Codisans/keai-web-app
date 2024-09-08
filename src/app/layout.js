@@ -5,7 +5,7 @@ import { SpeedInsights } from '@vercel/speed-insights/next'
 const RootLayout = ({ children }) => {
     return (
         <html className="overscroll-none select-none" lang="es">
-            <body className="w-full max-h-screen-small h-screen-small overflow-y-auto font-sans">
+            <body className="overscroll-none w-full h-screen-small overflow-y-auto font-sans flex flex-col">
                 <SpeedInsights />
                 <AppContextProvider>{children}</AppContextProvider>
             </body>
