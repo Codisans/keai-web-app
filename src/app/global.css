@@ -35,3 +35,7 @@ html {
         'Helvetica Neue',
         sans-serif;
 }
+
+.typo-pre {
+    @apply text-pre uppercase;
+}

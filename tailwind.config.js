@@ -69,6 +69,7 @@ module.exports = {
             h2: ['1.5rem', '1.7rem'],
             h3: ['1.25rem', '1.4rem'],
             icon: ['2rem', '1rem'],
+            pre: ['1rem', '1rem'],
             'icon-lg': ['3rem', '1.5rem'],
             indicator: '0.75rem',
             logo: '2rem',
