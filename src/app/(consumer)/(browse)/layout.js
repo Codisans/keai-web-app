@@ -5,7 +5,7 @@ import { ConsumerFooter } from '../ConsumerFooter'
 
 const AppLayout = ({ children }) => {
     return (
-        <div className="w-full flex flex-col min-h-screen">
+        <div className="w-full flex flex-col min-h-screen-small">
             <Header />
             <main className="w-full grow relative flex">{children}</main>
             <FilterModal>

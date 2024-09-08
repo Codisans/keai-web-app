@@ -4,7 +4,7 @@ import { AdminHeader } from './AdminHeader'
 const AdminLayout = ({ children }) => {
     return (
         <AdminContextProvider>
-            <div className="h-screen flex flex-col">
+            <div className="h-screen-small flex flex-col">
                 <AdminHeader />
                 <main className="overflow-hidden grow">{children}</main>
             </div>
