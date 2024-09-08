@@ -129,12 +129,24 @@ export const useAuth = ({ middleware, redirectIfAuthenticated } = {}) => {
         }
     }
 
-    const saveEvent = async eventId => {
-        //post account id and target account id
+    const favoriteEvent = async eventId => {
         if (!error) {
             await axios
-                .post(`/user/${user.userId}/favourites/${eventId}`)
+                .post(`/api/events/${eventId}/favorite`)
                 .then(() => mutate())
+        }
+    }
+
+    const getFavoriteEvents = async () => {
+        if (!error) {
+            return await axios
+                .get('/api/favorites')
+                .then(res => res.data.data)
+                .catch(error => {
+                    if (error.response.status !== 409) throw error
+
+                    router.push('/entrar')
+                })
         }
     }
 
@@ -159,6 +171,7 @@ export const useAuth = ({ middleware, redirectIfAuthenticated } = {}) => {
         resendEmailVerification,
         logout,
         sendFriendRequest,
-        saveEvent,
+        favoriteEvent,
+        getFavoriteEvents,
     }
 }
