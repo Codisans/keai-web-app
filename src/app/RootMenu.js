@@ -2,42 +2,38 @@
 
 import { useAuth } from '@/hooks/auth'
 import { Button } from '@/components/atoms/Button'
+import { Loading } from './Loading'
 
 export const RootMenu = () => {
     const { user } = useAuth({ middleware: 'guest' })
+
+    if (!user) return <Loading />
 
     return (
         <ul className="w-full h-max grid grid-cols-2 gap-gutter my-auto">
             {user ? (
                 <>
                     <li className="col-span-1">
-                        <Button style="big" href="/cuenta">
-                            Cuenta (consumer)
-                        </Button>
-                    </li>
-                    <li className="col-span-1">
                         <Button style="big" href="/perfil">
-                            Perfil (consumer)
-                        </Button>
-                    </li>
-                    <li className="col-span-1">
-                        <Button style="big" href="/eventos">
-                            Eventos (consumer)
-                        </Button>
-                    </li>
-                    <li className="col-span-1">
-                        <Button style="big" href="/mapa">
-                            Mapa (consumer)
+                            Consumer
                         </Button>
                     </li>
                     <li className="col-span-1">
                         <Button style="big" href="/dashboard">
-                            Dashboard (manager)
+                            Manager
                         </Button>
                     </li>
                     <li className="col-span-1">
-                        <Button style="big" href="/mapa">
-                            Account (manager)
+                        <Button style="big" href="/admin">
+                            Admin (FE)
+                        </Button>
+                    </li>
+                    <li className="col-span-1">
+                        <Button
+                            style="big"
+                            href="https://api.swiddashboard.info/admin"
+                            taget="_blank">
+                            Admin (BE)
                         </Button>
                     </li>
                 </>

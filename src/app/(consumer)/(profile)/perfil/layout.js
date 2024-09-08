@@ -1,17 +1,41 @@
+'use client'
+
+import { useAuth } from '@/hooks/auth'
 import { Button } from '@/components/atoms/Button'
 import HistoryIcon from '@mui/icons-material/History'
 import EventIcon from '@mui/icons-material/Event'
+import { Loading } from '@/app/Loading'
+import { usePathname } from 'next/navigation'
 
 const FavouritesLayout = ({ children }) => {
+    const { user } = useAuth()
+    const path = usePathname()
+
+    if (!user) {
+        return <Loading />
+    }
+
     return (
         <div className="flex flex-col w-full">
+            <h1 className="sr-only">Perfil</h1>
+            <section className="grid grid-cols-12 p-gutter gap-gutter">
+                <div className="col-span-4">
+                    <div className="w-full pt-[100%] relative rounded-full overflow-hidden">
+                        <div className="bg-grey absolute inset-0 w-full h-full"></div>
+                    </div>
+                </div>
+                <div className="col-span-8 flex flex-col justify-center">
+                    <h2 className="text-h2 font-tenerite">{user?.name}</h2>
+                    <span>{}</span>
+                </div>
+            </section>
             <h1 className="p-gutter text-h1">Favoritos</h1>
             <section className="w-full p-gutter bg-white z-10 border-b border-grey-2 sticky top-14">
                 <ul className="w-full grid grid-cols-2 gap-gutter pt-gutter">
                     <li className="col-span-1">
                         <Button
                             className="flex gap-2 w-full active:bg-grey-3 active:text-black"
-                            href="/favoritos/historicos">
+                            href="/perfil/historicos">
                             <HistoryIcon />
                             <span>Historicos</span>
                         </Button>
@@ -19,7 +43,7 @@ const FavouritesLayout = ({ children }) => {
                     <li className="col-span-1">
                         <Button
                             className="w-full flex gap-2 active:bg-grey-3 active:text-black"
-                            href="/favoritos">
+                            href="/perfil">
                             <EventIcon />
                             <span>Siguentes</span>
                         </Button>

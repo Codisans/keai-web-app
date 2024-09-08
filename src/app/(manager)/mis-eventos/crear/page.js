@@ -9,6 +9,7 @@ import Label from '@/components/atoms/Label'
 import { Button } from '@/components/atoms/Button'
 import { getCategories } from '@/api/getCategories'
 import { getTags } from '@/api/getTags'
+import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker'
 
 const CrearEvento = () => {
     const router = useRouter()
@@ -105,6 +106,8 @@ const CrearEvento = () => {
                 <h1 className="pb-12 text-h1">Crear nuevo evento</h1>
 
                 <form onSubmit={submitForm} className="space-y-6">
+                    <DateTimePicker label="Inicio" />
+                    <DateTimePicker label="Termino" />
                     <div>
                         <Label htmlFor="venueId">Venue Id</Label>
 

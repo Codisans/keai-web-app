@@ -3,7 +3,7 @@ import { useContext } from 'react'
 import { ConsumerContext } from '@/app/(consumer)/ConsumerContext'
 import { Pullout } from '../templates/Pullout'
 
-export const MenuPullout = ({ children }) => {
+export const PulloutMenu = ({ children }) => {
     const { menuIsOpen, setMenuIsOpen } = useContext(ConsumerContext)
 
     return (

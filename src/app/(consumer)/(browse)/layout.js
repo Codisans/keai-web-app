@@ -1,7 +1,7 @@
 import { Header } from './Header'
-import { Footer } from './Footer'
 import { FilterModal } from './FilterModal'
 import { FilterForm } from '@/components/organisms/FilterForm'
+import { ConsumerFooter } from '../ConsumerFooter'
 
 const AppLayout = ({ children }) => {
     return (
@@ -11,7 +11,7 @@ const AppLayout = ({ children }) => {
             <FilterModal>
                 <FilterForm />
             </FilterModal>
-            <Footer />
+            <ConsumerFooter />
         </div>
     )
 }

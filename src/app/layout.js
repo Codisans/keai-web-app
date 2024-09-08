@@ -4,7 +4,7 @@ import { AppContextProvider } from './AppContext'
 const RootLayout = ({ children }) => {
     return (
         <html lang="es">
-            <body className="w-full h-screen overflow-y-auto">
+            <body className="w-full h-screen overflow-y-auto font-sans">
                 <AppContextProvider>{children}</AppContextProvider>
             </body>
         </html>

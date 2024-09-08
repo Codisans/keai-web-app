@@ -9,7 +9,7 @@ export const AdminHeader = () => {
     return (
         <header className="w-full h-min bg-white-alt grid-cols-12 grid">
             <div className="col-start-1 col-end-4 flex items-center px-gutter">
-                <Link className="text-h2" href="/eventos" target="_blank">
+                <Link className="block w-max" href="/">
                     <Logo />
                 </Link>
             </div>

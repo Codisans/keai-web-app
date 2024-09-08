@@ -3,6 +3,8 @@ import { usePathname } from 'next/navigation'
 import { createContext, useState, useEffect } from 'react'
 
 export const ConsumerContext = createContext({
+    categories: [],
+    tags: [],
     filterIsOpen: false,
     setFilterIsOpen: () => {},
     menuIsOpen: false,
@@ -13,7 +15,7 @@ export const ConsumerContext = createContext({
     setSelectedEvent: () => {},
 })
 
-export const ConsumerContextProvider = ({ children }) => {
+export const ConsumerContextProvider = ({ children, categories, tags }) => {
     const path = usePathname()
     const [filterIsOpen, setFilterIsOpen] = useState(false)
     const [menuIsOpen, setMenuIsOpen] = useState(false)
@@ -28,6 +30,8 @@ export const ConsumerContextProvider = ({ children }) => {
     return (
         <ConsumerContext.Provider
             value={{
+                categories,
+                tags,
                 filterIsOpen,
                 setFilterIsOpen,
                 menuIsOpen,

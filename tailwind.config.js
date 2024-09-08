@@ -18,9 +18,12 @@ module.exports = {
     ],
     theme: {
         colors: {
+            theme: {
+                DEFAULT: '#faac4a',
+                accent: '#fff',
+            },
             primary: '#faac4a',
             secondary: '#f8ac4c',
-            accent: '#fff',
             canvas: '#fff',
             'canvas-alt': '#e4e4e4',
             black: { DEFAULT: '#2B2B2B', true: '#000' },
@@ -54,8 +57,8 @@ module.exports = {
             },
         },
         fontFamily: {
-            primary: ["'ubuntu'", 'system-ui', '-apple-system', 'sans-serif'],
-            secondary: ["'ubuntu'", 'system-ui', '-apple-system', 'sans-serif'],
+            tenorite: ['Tenorite', 'system-ui', '-apple-system', 'sans-serif'],
+            sans: ['Opens Sans', 'system-ui', '-apple-system', 'sans-serif'],
         },
         fontSize: {
             body: ['1rem', '1.1rem'],
@@ -68,7 +71,7 @@ module.exports = {
             icon: ['2rem', '1rem'],
             'icon-lg': ['3rem', '1.5rem'],
             indicator: '0.75rem',
-            logo: '1.75rem',
+            logo: '2rem',
             small: ['0.75rem', '0.75rem'],
             sm: '0.75rem',
             md: '1rem',
