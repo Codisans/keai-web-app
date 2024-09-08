@@ -27,7 +27,7 @@ const FavouritesLayout = ({ children }) => {
                     <span>{}</span>
                 </div>
             </section>
-            <h1 className="p-gutter text-h1">Favoritos</h1>
+            <h1 className="p-gutter text-h1">Eventos guardados</h1>
             <section className="w-full p-gutter bg-white z-10 border-b border-grey-2 sticky top-14">
                 <ul className="w-full grid grid-cols-2 gap-gutter pt-gutter">
                     <li className="col-span-1">

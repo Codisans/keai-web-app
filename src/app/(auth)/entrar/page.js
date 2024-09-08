@@ -9,9 +9,11 @@ import { useRouter } from 'next/navigation'
 import AuthSessionStatus from '@/app/(auth)/AuthSessionStatus'
 import { Button } from '@/components/atoms/Button'
 import { TextLink } from '@/components/atoms/TextLink'
+import DataUsageIcon from '@mui/icons-material/DataUsage'
 
 const Login = () => {
     const router = useRouter()
+    const [isLoading, setIsLoading] = useState(false)
 
     const { login } = useAuth({
         middleware: 'guest',
@@ -34,6 +36,7 @@ const Login = () => {
 
     const submitForm = async event => {
         event.preventDefault()
+        setIsLoading(true)
 
         login({
             email,
@@ -41,7 +44,7 @@ const Login = () => {
             remember: shouldRemember,
             setErrors,
             setStatus,
-        })
+        }).then(() => setIsLoading(false))
     }
 
     return (
@@ -49,14 +52,14 @@ const Login = () => {
             <AuthSessionStatus className="mb-4" status={status} />
             <form onSubmit={submitForm}>
                 {/* Email Address */}
-                <div>
+                <div className={errors.email ? 'error' : ''}>
                     <Label htmlFor="email">Correo</Label>
 
                     <Input
                         id="email"
                         type="email"
                         value={email}
-                        className="block mt-1 w-full"
+                        className="block mt-1 w-full error:border-error"
                         onChange={event => setEmail(event.target.value)}
                         required
                         autoFocus
@@ -66,14 +69,14 @@ const Login = () => {
                 </div>
 
                 {/* Password */}
-                <div className="mt-4">
+                <div className={errors.password ? 'error' : ''}>
                     <Label htmlFor="password">Clave</Label>
 
                     <Input
                         id="password"
                         type="password"
                         value={password}
-                        className="block mt-1 w-full"
+                        className="block mt-1 w-full error:border-error"
                         onChange={event => setPassword(event.target.value)}
                         required
                         autoComplete="current-password"
@@ -104,7 +107,15 @@ const Login = () => {
                 </div>
 
                 <div className="flex flex-col items-center gap-4 mt-4">
-                    <Button type="submit">Entrar</Button>
+                    <Button
+                        className="w-20 flex justify-center items-center"
+                        type="submit">
+                        {isLoading ? (
+                            <DataUsageIcon className="h-[1em] w-[1em] animate-spin text-grey-3" />
+                        ) : (
+                            <span>Entrar</span>
+                        )}
+                    </Button>
                     <TextLink href="/recuperar-clave">Recuperar clave</TextLink>
                     <Button href="/crear-cuenta">Crear cuenta</Button>
                 </div>
