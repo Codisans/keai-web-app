@@ -9,7 +9,6 @@ import { usePathname } from 'next/navigation'
 
 const FavouritesLayout = ({ children }) => {
     const { user } = useAuth()
-    const path = usePathname()
 
     if (!user) {
         return <Loading />
