@@ -1,6 +1,4 @@
-import Link from 'next/link'
 import AuthCard from '@/app/(auth)/AuthCard'
-import { Logo } from '@/components/atoms/Logo'
 
 const Layout = ({ children }) => {
     return (
