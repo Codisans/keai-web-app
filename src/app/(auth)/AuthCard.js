@@ -1,10 +1,9 @@
-const AuthCard = ({ logo, children }) => (
-    <div className="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100">
-        <div>{logo}</div>
+import { Logo } from '@/components/atoms/Logo'
 
-        <div className="w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
-            {children}
-        </div>
+const AuthCard = ({ children }) => (
+    <div className="py-header px-gutter flex flex-col items-center rounded-ui gap-y-6">
+        <Logo className="[font-size:3rem]" type="app" />
+        <div className="w-full p-gutter">{children}</div>
     </div>
 )
 

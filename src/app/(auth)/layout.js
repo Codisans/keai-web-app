@@ -6,14 +6,7 @@ const Layout = ({ children }) => {
     return (
         <div>
             <div className="text-gray-900 antialiased">
-                <AuthCard
-                    logo={
-                        <Link href="/">
-                            <Logo />
-                        </Link>
-                    }>
-                    {children}
-                </AuthCard>
+                <AuthCard>{children}</AuthCard>
             </div>
         </div>
     )
