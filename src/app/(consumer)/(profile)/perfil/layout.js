@@ -5,7 +5,6 @@ import { Button } from '@/components/atoms/Button'
 import HistoryIcon from '@mui/icons-material/History'
 import EventIcon from '@mui/icons-material/Event'
 import { Loading } from '@/app/Loading'
-import { usePathname } from 'next/navigation'
 
 const FavouritesLayout = ({ children }) => {
     const { user } = useAuth()
