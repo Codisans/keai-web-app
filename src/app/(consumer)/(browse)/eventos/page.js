@@ -11,7 +11,7 @@ const Events = async () => {
 
     return (
         <>
-            <div className="w-full py-4 flex flex-col">
+            <div className="w-full py-8 flex flex-col gap-y-gutter">
                 {/* <TagSearch /> */}
                 <EventCarousel heading="Para ti" events={events.data} />
                 <EventCarousel heading="Hoy" events={events.data} />

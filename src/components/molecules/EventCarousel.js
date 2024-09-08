@@ -9,8 +9,8 @@ export const EventCarousel = ({ heading, events, className = '' }) => {
     if (items == null) return
 
     return (
-        <div className={`${className} py-4 flex flex-col gap-y-gg`}>
-            {heading && <h2 className="px-gg text-h1">{heading}</h2>}
+        <div className={`${className} flex flex-col gap-y-gg`}>
+            {heading && <h2 className="px-gutter typo-pre">{heading}</h2>}
 
             <Swiper slidesPerView="auto" className="w-full px-gutter">
                 {items?.map((event, i) => (

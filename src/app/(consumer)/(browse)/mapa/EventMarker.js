@@ -10,8 +10,8 @@ export const EventMarker = ({ event }) => {
     if (event.coordinates == null) return
 
     const position = {
-        lat: event.coordinates[0].latitude,
-        lng: event.coordinates[1].longitude,
+        lat: event.coordinates[0]?.latitude,
+        lng: event.coordinates[1]?.longitude,
     }
 
     return (

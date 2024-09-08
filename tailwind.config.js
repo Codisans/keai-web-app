@@ -73,7 +73,7 @@ module.exports = {
             'icon-lg': ['3rem', '1.5rem'],
             indicator: '0.75rem',
             logo: '2rem',
-            small: ['0.75rem', '0.75rem'],
+            small: ['0.7rem', '0.7rem'],
             sm: '0.75rem',
             md: '1rem',
             lg: '1.25rem',

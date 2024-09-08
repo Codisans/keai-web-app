@@ -19,9 +19,9 @@ export const CategoryCard = ({ category }) => {
 
     return (
         <div
-            className={`${selectedCategory == category?.id ? 'active' : ''} active:text-black text-black/60 active:after:block flex flex-col gap-1 items-center relative w-full after:black after:absolute after:bg-black after:bottom-0 after:h-[0.35rem] after:w-6 after:left-1/2 after:-translate-x-1/2 rounded-card after:hidden pt-2 pb-4`}>
+            className={`${selectedCategory == category?.id ? 'active' : ''} active:text-black text-black/60 active:after:block flex flex-col gap-1 items-center relative w-full after:black after:absolute after:bg-black after:bottom-0 after:h-[0.35rem] after:w-6 after:left-1/2 after:-translate-x-1/2 rounded-card after:hidden pb-3`}>
             <CategoryIcon category={category?.id || null} />
-            <h2 className="text-small text-black text-wrap text-center max-h-[1em] overflow-hidden">
+            <h2 className="text-small font-tenorite text-black text-wrap text-center h-[2em] uppercase">
                 {category?.name || 'Todos'}
             </h2>
             <Link

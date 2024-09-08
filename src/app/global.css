@@ -37,5 +37,5 @@ html {
 }
 
 .typo-pre {
-    @apply text-pre uppercase;
+    @apply text-pre uppercase font-tenorite;
 }
