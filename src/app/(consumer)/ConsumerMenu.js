@@ -8,18 +8,22 @@ import { CategoryLink } from '@/components/atoms/CategoryLink'
 
 export const ConsumerMenu = ({ categories }) => {
     return (
-        <div className="w-full h-full overflow-y-auto flex flex-col px-gg pr-12">
-            <div className="pt-8 pb-4 mb-4 sticky top-0 bg-white">
+        <div className="w-full h-full overflow-y-auto flex flex-col px-gutter">
+            <div className="py-8 sticky top-0 bg-white border-b border-grey-3">
                 <Link className="block w-max" href="/eventos">
                     <Logo />
                 </Link>
             </div>
-            <nav className="border-t border-grey-3">
-                <h2 className="uppercase text-caps py-gg">Categorias</h2>
-                <ul className="flex flex-col gap-gg pb-gg pl-8">
+            <nav className="">
+                <h2 className="uppercase text-caps pt-gutter pb-gg">
+                    Categorias
+                </h2>
+                <ul className="flex flex-col gap-gg pb-gutter pl-gutter">
                     {categories?.map((c, i) => (
                         <li key={i}>
-                            <CategoryLink className="underline" category={c}>
+                            <CategoryLink
+                                className="underline active:font-bold"
+                                category={c}>
                                 {c.name}
                             </CategoryLink>
                         </li>

@@ -27,6 +27,12 @@ export const ConsumerContextProvider = ({ children, categories, tags }) => {
         setFilterIsOpen(false)
     }, [path])
 
+    useEffect(() => {
+        if (!path.includes('/eventos/') && !path.includes('/mapa/')) return
+
+        setSelectedCategory(path.split('/').pop() || null)
+    }, [])
+
     return (
         <ConsumerContext.Provider
             value={{
