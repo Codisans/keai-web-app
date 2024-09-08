@@ -3,11 +3,11 @@ import { AppContextProvider } from './AppContext'
 
 const RootLayout = ({ children }) => {
     return (
-        <html lang="es">
+        <htm className="overscroll-none" lang="es">
             <body className="w-full h-screen overflow-y-auto font-sans">
                 <AppContextProvider>{children}</AppContextProvider>
             </body>
-        </html>
+        </htm>
     )
 }
 
