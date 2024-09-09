@@ -11,15 +11,10 @@ const CategoryPage = async ({ params }) => {
 
     return (
         <>
-            <div className="w-full py-4 flex flex-col">
+            <div className="w-full py-8 flex flex-col gap-y-gutter">
                 <EventCarousel heading="Para ti" events={events.data} />
                 <EventCarousel heading="Hoy" events={events.data} />
-                {/* <Tags data={tags} /> */}
-                {/* <EventCarousel heading="Este fin de semana" events={events} /> */}
-                {/* <EventCarousel heading="Fiesta" events={events} /> */}
-                {/* <EventCarousel heading="Deportivo" events={events} /> */}
-                {/* <EventCarousel heading="Comida" events={events} /> */}
-                {/* <EventCarousel heading="Talleres" events={events} /> */}
+                <EventCarousel heading="Ferias" events={events.data} />
             </div>
         </>
     )

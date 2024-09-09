@@ -1,5 +1,5 @@
 import { getCategories } from '@/api/getCategories'
-import { CategoryNav } from '@/components/molecules/CategoryNav'
+import { CategoryNav } from './CategoryNav'
 
 export const Header = async () => {
     const categories = await getCategories()

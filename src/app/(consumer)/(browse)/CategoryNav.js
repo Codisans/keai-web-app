@@ -2,7 +2,7 @@
 
 import { FreeMode } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import { CategoryCard } from '../atoms/CategoryCard'
+import { CategoryCard } from './CategoryCard'
 
 export const CategoryNav = ({ categories }) => {
     return (
