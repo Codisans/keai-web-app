@@ -1,27 +1,30 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+// import { useState, useEffect } from 'react'
 import { useAuth } from '@/hooks/auth'
 import { Button } from '@/components/atoms/Button'
 import HistoryIcon from '@mui/icons-material/History'
 import EventIcon from '@mui/icons-material/Event'
+import { Loading } from '@/app/Loading'
 
 const FavouritesLayout = ({ children }) => {
-    const { user, getFavoriteEvents } = useAuth()
-    const [favoriteEvents, setFavoriteEvents] = useState([])
+    const { user } = useAuth()
+    // const [favoriteEvents, setFavoriteEvents] = useState([])
 
-    useEffect(() => {
-        const fetchFavoriteEvents = async () => {
-            try {
-                const events = await getFavoriteEvents()
-                setFavoriteEvents(events)
-            } catch (error) {
-                console.error('Error fetching favorite events:', error)
-            }
-        }
+    // useEffect(() => {
+    //     const fetchFavoriteEvents = async () => {
+    //         try {
+    //             const events = await getFavoriteEvents()
+    //             setFavoriteEvents(events)
+    //         } catch (error) {
+    //             console.error('Error fetching favorite events:', error)
+    //         }
+    //     }
 
-        fetchFavoriteEvents()
-    }, [])
+    //     fetchFavoriteEvents()
+    // }, [])
+
+    if (!user) return <Loading />
 
     return (
         <>
@@ -37,9 +40,11 @@ const FavouritesLayout = ({ children }) => {
                     <span>{}</span>
                 </div>
             </section>
-            <h1 className="p-gg text-h1">
+            {/*
+             <h1 className="p-gg text-h1">
                 Eventos guardados ({favoriteEvents.length})
-            </h1>
+            </h1> */}
+            <h1 className="p-gg text-h1">Eventos guardados</h1>
             <section className="sticky z-10 w-full bg-white border-b p-gg border-grey-2 top-14">
                 <ul className="grid w-full grid-cols-2 gap-gg pt-gg">
                     <li className="col-span-1">
