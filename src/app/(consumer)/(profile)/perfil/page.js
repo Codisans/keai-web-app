@@ -1,4 +1,4 @@
-import { getEvents } from '@/api/getEvents'
+import { api } from '@/lib/api'
 import { SavedEvents } from './SavedEvents'
 
 export const metadata = {
@@ -6,7 +6,7 @@ export const metadata = {
 }
 
 const Profile = async () => {
-    const events = await getEvents()
+    const events = await api.getEvents()
 
     return (
         <>

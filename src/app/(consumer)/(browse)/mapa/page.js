@@ -1,13 +1,13 @@
 import { Loading } from '@/app/Loading'
 import { EventMarker } from './EventMarker'
-import { getEvents } from '@/api/getEvents'
+import { api } from '@/lib/api'
 
 export const metadata = {
     title: 'KEAI | Mapa',
 }
 
 const MapPage = async () => {
-    const events = await getEvents()
+    const events = await api.getEvents()
 
     if (!events)
         return (

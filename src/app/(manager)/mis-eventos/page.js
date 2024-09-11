@@ -1,4 +1,4 @@
-import { getEvents } from '@/api/getEvents'
+import { api } from '@/lib/api'
 import { Price } from '@/components/atoms/Price'
 import { DateTime } from '@/components/atoms/DateTime'
 import DeleteIcon from '@mui/icons-material/Delete'
@@ -12,7 +12,7 @@ export const metadata = {
 }
 
 const MisEventos = async () => {
-    const events = await getEvents()
+    const events = await api.getEvents()
 
     return (
         <>

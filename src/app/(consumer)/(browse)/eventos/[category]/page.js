@@ -1,5 +1,5 @@
 import { EventCarousel } from '@/components/molecules/EventCarousel'
-import { getEvents } from '@/api/getEvents'
+import { api } from '@/lib/api'
 // import { TagSearch } from '@/components/molecules/TagSearch'
 
 export const metadata = {
@@ -7,7 +7,7 @@ export const metadata = {
 }
 
 const CategoryPage = async ({ params }) => {
-    const events = await getEvents(params.category)
+    const events = await api.getEvents(params.category)
 
     return (
         <>

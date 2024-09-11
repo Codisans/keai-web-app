@@ -1,4 +1,4 @@
-import { getEvents } from '@/api/getEvents'
+import { api } from '@/lib/api'
 import { EventListing } from './EventListing'
 import { Loading } from '@/app/Loading'
 
@@ -7,7 +7,7 @@ export const metadata = {
 }
 
 const AdminEvents = async () => {
-    const events = await getEvents()
+    const events = await api.getEvents()
 
     if (!events) return <Loading />
 
