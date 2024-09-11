@@ -21,7 +21,6 @@
 }
 
 html {
-    height: calc(100vh + 1px);
     font-family:
         'ubuntu',
         system-ui,
