@@ -9,7 +9,7 @@ const HistoricFavourites = async () => {
     const events = await getEvents()
     return (
         <section className="flex flex-col p-gg grow overflow-y-auto">
-            <EventList events={events.data?.slice(5, 20)} />
+            <EventList events={events.data} />
         </section>
     )
 }
