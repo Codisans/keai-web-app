@@ -5,7 +5,7 @@ import { Loading } from '@/app/Loading'
 
 export const EventListing = ({ events }) => {
     // useEffect(() => {
-    //     console.log(events[0])
+    //     console.log(events)
     // }, [events])
 
     return (
