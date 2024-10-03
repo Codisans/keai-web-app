@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { Price } from '@/components/atoms/Price'
 import { DateTime } from '@/components/atoms/DateTime'
 import DeleteIcon from '@mui/icons-material/Delete'
+import ShareIcon from '@mui/icons-material/Share'
 import { Button } from '@/components/atoms/Button'
 
 export const SavedEvents = ({ events }) => {
@@ -16,20 +17,21 @@ export const SavedEvents = ({ events }) => {
                                 src={event.cover}
                             />
                         </div>
-                        <div className="col-start-4 col-end-13 flex flex-row">
-                            <div className="grow flex flex-col justify-between">
+                        <div className="col-start-4 col-end-13 flex flex-col">
+                            <div className="grow flex flex-col">
                                 <h3 className="text-h3 pb-2">{event.name}</h3>
                                 <span className="pb-2 text-grey-4 uppercase text-caps tracking-wide">
                                     {event.province}
                                 </span>
                                 <DateTime date={event.start_date} />
                                 <DateTime date={event.start_date} type="time" />
-                            </div>
-                            <div className="flex flex-col items-end gap-gg justify-between">
                                 <Price
                                     className="font-small text-grey-4"
                                     value={event.price}
                                 />
+                            </div>
+                            <div className="flex items-end gap-gg justify-end">
+                                <Button icon={<ShareIcon />} />
                                 <Button icon={<DeleteIcon />} />
                             </div>
                         </div>

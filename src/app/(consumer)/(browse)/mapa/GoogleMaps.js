@@ -3,6 +3,7 @@
 import { APIProvider, Map, useMap } from '@vis.gl/react-google-maps'
 import AddIcon from '@mui/icons-material/Add'
 import RemoveIcon from '@mui/icons-material/Remove'
+import { useEffect } from 'react'
 
 export const GoogleMaps = ({ apiKey, position, children }) => {
     return (
@@ -12,6 +13,7 @@ export const GoogleMaps = ({ apiKey, position, children }) => {
                 defaultCenter={position}
                 defaultZoom={12}
                 disableDefaultUI={true}
+                on
                 minZoom={10}
                 maxZoom={20}
                 mapId="d34b4647d4fcb0c">
@@ -24,6 +26,24 @@ export const GoogleMaps = ({ apiKey, position, children }) => {
 
 export const MapControls = () => {
     const map = useMap('map')
+
+    useEffect(() => {
+        if (!map) return
+
+        if ('geolocation' in navigator) {
+            console.log('location available')
+            navigator.geolocation.getCurrentPosition(position => {
+                console.log(map)
+                map?.setCenter({
+                    lat: position.coords.latitude,
+                    lng: position.coords.longitude,
+                })
+            })
+            /* geolocation is available */
+        } else {
+            /* geolocation IS NOT available */
+        }
+    }, [map])
 
     return (
         <div className="absolute z-10 top-gg right-gg flex flex-col gap-gg text-icon">
