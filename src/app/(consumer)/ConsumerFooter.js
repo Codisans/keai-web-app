@@ -3,7 +3,7 @@ import { useContext } from 'react'
 import { Button } from '@/components/atoms/Button'
 import { ConsumerContext } from '@/app/(consumer)/ConsumerContext'
 import MapIcon from '@mui/icons-material/Map'
-import GridViewIcon from '@mui/icons-material/GridView'
+import HomeIcon from '@mui/icons-material/Home'
 import PersonIcon from '@mui/icons-material/Person'
 import { usePathname } from 'next/navigation'
 
@@ -23,7 +23,7 @@ export const ConsumerFooter = () => {
                                     ? `/eventos/${selectedCategory}`
                                     : '/eventos'
                             }
-                            icon={<GridViewIcon />}
+                            icon={<HomeIcon />}
                         />
                     </li>
                     <li className={`col-span-1 flex justify-cenetr`}>

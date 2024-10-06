@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 @import 'swiper/css';
-
+@import 'leaflet';
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 
 @font-face {
@@ -78,4 +78,26 @@ html {
     background-repeat: no-repeat;
     clip-path: url(#logotype-clip-path);
     animation: walk 20s linear infinite;
+}
+
+a[href="https://www.maptiler.com"]
+{
+    display: none !important;
+}
+
+.leaflet-control-attribution {
+    display: none !important;
+}
+
+.leaflet-pane {
+    z-index: 1;
+}
+
+.leaflet-tile-pane {
+    z-index: 1;
+}
+
+.leaflet-top,
+.leaflet-bottom {
+    z-index: 5;
 }

@@ -4,8 +4,8 @@ import { ConsumerContext } from '@/app/(consumer)/ConsumerContext'
 import EventIcon from '@mui/icons-material/Event'
 import { usePathname } from 'next/navigation'
 import { useRouter } from 'next/navigation'
-import HomeIcon from '@mui/icons-material/Home'
 import Link from 'next/link'
+import { Symbol } from '@/components/atoms/Symbol'
 
 export const CategoryCard = ({ category }) => {
     const path = usePathname()
@@ -42,7 +42,7 @@ export const CategoryCard = ({ category }) => {
 export const CategoryIcon = ({ category }) => {
     switch (category) {
         case null:
-            return <HomeIcon fontSize="large" />
+            return <Symbol className="w-8 h-8" name="logotype" />
         default:
             return <EventIcon fontSize="large" />
     }

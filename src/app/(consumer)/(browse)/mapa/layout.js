@@ -1,16 +1,15 @@
-import { GoogleMaps } from './GoogleMaps'
+import { CategoryBar } from './CategoryBar'
+import { LeafletMap } from './LeafletMap'
+import { MapHeader } from './MapHeader'
 
 const MapLayout = ({ children }) => {
     return (
         <>
-            <div className="w-full h-auto">
-                <GoogleMaps
-                    // events={events.data}
-                    apiKey={process.env.GOOGLE_CLOUD_API_KEY}
-                    position={{ lat: -33.4489, lng: -70.6693 }}>
-                    {children}
-                </GoogleMaps>
-            </div>
+            <MapHeader />
+            <main className="w-full grow relative flex">
+                <CategoryBar />
+                <LeafletMap>{children}</LeafletMap>
+            </main>
         </>
     )
 }

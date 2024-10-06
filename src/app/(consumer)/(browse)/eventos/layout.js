@@ -1,5 +1,12 @@
+import { EventsHeader } from './EventsHeader'
+
 const EventsLayout = ({ children }) => {
-    return <>{children}</>
+    return (
+        <>
+            <EventsHeader />
+            {children}
+        </>
+    )
 }
 
 export default EventsLayout
