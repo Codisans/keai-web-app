@@ -13,7 +13,7 @@ export const FilterModal = ({ children }) => {
 
     return (
         <div
-            className={`sticky pt-40 pb-16 flex bg-white inset-0 h-full overflow-hidden z-filter invisible open:visible ${filterIsOpen ? 'open' : ''}`}>
+            className={`absolute pt-40 pb-16 flex bg-white inset-0 h-full overflow-hidden z-filter invisible open:visible ${filterIsOpen ? 'open' : ''}`}>
             {children}
         </div>
     )
