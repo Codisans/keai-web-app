@@ -1,8 +1,16 @@
 'use client'
-import { createContext } from 'react'
+import { createContext, useEffect, useState } from 'react'
 
-export const AppContext = createContext({})
+export const AppContext = createContext({ isClient: false })
 
 export const AppContextProvider = ({ children }) => {
-    return <AppContext.Provider value={{}}>{children}</AppContext.Provider>
+    const [isClient, setIsClient] = useState(false)
+
+    useEffect(() => typeof window !== 'undefined' && setIsClient(true), [])
+
+    return (
+        <AppContext.Provider value={{ isClient }}>
+            {children}
+        </AppContext.Provider>
+    )
 }

@@ -1,57 +1,57 @@
 'use client'
-import { createContext, useEffect, useRef, useState } from 'react'
-import Leaflet from 'leaflet'
-import { MaptilerLayer } from '@maptiler/leaflet-maptilersdk'
-import * as maptilersdk from '@maptiler/sdk'
-import '@maptiler/leaflet-maptilersdk'
 
-export const MapContext = createContext({
-    map: null,
-})
+import { useEffect, useState } from 'react'
+import { deviceLocationMarker } from '@/lib/leaflet'
+import { Marker } from 'react-leaflet/Marker'
+import { MapContainer, TileLayer } from 'react-leaflet'
+import { useMap } from 'react-leaflet/hooks'
 
-export const LeafletMap = ({ children }) => {
-    const mapContainer = useRef(null)
-    const map = useRef(null)
-    const [zoom] = useState(13)
-    const [center, setCenter] = useState([-33.4489, -70.6693])
+export default function LeafletMap({ children }) {
+    return (
+        <MapContainer
+            className="map w-full h-full relative"
+            zoom={13}
+            zoomControl={false}
+            controls={false}
+            center={[-33.4489, -70.6693]}>
+            <TileLayer
+                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Tiles courtesy of <a href="https://www.openstreetmap.cat" target="_blank">Breton OpenStreetMap Team</a>'
+                url="https://tile.openstreetmap.bzh/ca/{z}/{x}/{y}.png"
+            />
+            <MapController>{children}</MapController>
+        </MapContainer>
+    )
+}
+
+export const MapController = ({ children }) => {
+    const [deviceLocation, setDeviceLocation] = useState(null)
+    const map = useMap()
 
     useEffect(() => {
+        if (!map) return
+
         if ('geolocation' in navigator) {
-            console.log('location available')
             navigator.geolocation.getCurrentPosition(position => {
-                setCenter([position.coords.latitude, position.coords.longitude])
-                console.log(position, map.current)
+                setDeviceLocation([
+                    position.coords.latitude,
+                    position.coords.longitude,
+                ])
+                map.setView(
+                    [position.coords.latitude, position.coords.longitude],
+                    15,
+                )
             })
-            map.current?.setView(Leaflet.latLng(center), zoom)
         } else {
-            console.log('no geolocation available')
+            console.warn('Unable to use geolocation services.')
         }
     }, [])
 
-    useEffect(() => {
-        if (map.current) return
-
-        map.current = new Leaflet.Map(mapContainer.current, {
-            center: Leaflet.latLng(center),
-            zoomControl: false,
-            zoom: zoom,
-        })
-
-        const mtLayer = new MaptilerLayer({
-            apiKey: 'h0z4g95nQhvDSCSKb00w',
-            style: maptilersdk.MapStyle.OUTDOOR,
-        }).addTo(map.current)
-
-        return () => {
-            mtLayer.remove()
-        }
-    }, [center.lng, center.lat])
-
     return (
-        <MapContext.Provider value={{ map: map?.current }}>
-            <div ref={mapContainer} className="map w-full h-full relative">
-                {children}
-            </div>
-        </MapContext.Provider>
+        <>
+            {deviceLocation && (
+                <Marker position={deviceLocation} icon={deviceLocationMarker} />
+            )}
+            {children}
+        </>
     )
 }

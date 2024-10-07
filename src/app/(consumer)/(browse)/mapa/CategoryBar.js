@@ -54,7 +54,7 @@ export const CategoryCard = ({ category }) => {
                     setSelectedCategory(categoryId)
                     router?.push(url)
                 }}
-                className="bg-white active:bg-black active:text-white rounded-button px-1.5 py-0.5 flex flex-nowrap items-center gap-1 active:pointer-events-none">
+                className="bg-white active:bg-black active:text-white shadow rounded-button px-2 py-1 flex flex-nowrap items-center gap-1 active:pointer-events-none">
                 <span className="text-nowrap uppercase">
                     {category?.name || 'Todos'}
                 </span>

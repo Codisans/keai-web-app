@@ -1,6 +1,6 @@
 import { Loading } from '@/app/Loading'
-import { EventMarker } from './EventMarker'
 import { getEvents } from '@/api/getEvents'
+import { EventMarker } from './EventMarker'
 
 export const metadata = {
     title: 'KEAI | Mapa',
