@@ -4,6 +4,8 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import Link from 'next/link'
 
 export const EventCarousel = ({ heading, events, className = '' }) => {
+    if (!events) return
+
     const items = Array.isArray(events) ? events : [events]
 
     if (items == null) return

@@ -9,6 +9,8 @@ export const metadata = {
 const CategoryPage = async ({ params }) => {
     const events = await getEvents(params.category)
 
+    if (!events?.data) return
+
     return (
         <>
             <div className="w-full py-8 flex flex-col gap-y-gutter">

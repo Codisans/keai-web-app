@@ -8,6 +8,8 @@ export const metadata = {
 const Events = async () => {
     const events = await getEvents()
 
+    if (!events?.data) return
+
     return (
         <>
             <div className="w-full py-8 flex flex-col gap-y-gutter">

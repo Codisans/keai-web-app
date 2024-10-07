@@ -10,14 +10,14 @@ const MapCategory = async ({ params }) => {
 
     const events = await getEvents(params.category)
 
-    if (!events) return
+    if (!events?.data) return
 
-    const items = Array.isArray(events) ? events : [events]
+    const items = Array.isArray(events.data) ? events.data : [events.data]
 
     return (
         <>
             {items.map((event, i) => (
-                <EventMarker key={i} event={event.data} />
+                <EventMarker key={i} event={event} />
             ))}
         </>
     )
