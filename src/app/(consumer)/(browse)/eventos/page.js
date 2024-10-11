@@ -1,12 +1,12 @@
 import { EventCarousel } from '@/components/molecules/EventCarousel'
-import { getEvents } from '@/api/getEvents'
+import api from '@/lib/api'
 
 export const metadata = {
     title: 'KEAI | Eventos',
 }
 
 const Events = async () => {
-    const events = await getEvents()
+    const events = await api.getEvents()
 
     if (!events?.data) return
 

@@ -1,4 +1,4 @@
-import { getEvents } from '@/api/getEvents'
+import api from '@/lib/api'
 import { EventMarker } from '../EventMarker'
 
 export const metadata = {
@@ -6,17 +6,13 @@ export const metadata = {
 }
 
 const MapCategory = async ({ params }) => {
-    if (params.category == null) return
+    const category = await api.getEvents(params.category)
 
-    const events = await getEvents(params.category)
-
-    if (!events?.data) return
-
-    const items = Array.isArray(events.data) ? events.data : [events.data]
+    if (!category) return
 
     return (
         <>
-            {items.map((event, i) => (
+            {category.events.map((event, i) => (
                 <EventMarker key={i} event={event} />
             ))}
         </>

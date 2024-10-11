@@ -8,7 +8,7 @@ export const EventCarousel = ({ heading, events, className = '' }) => {
 
     const items = Array.isArray(events) ? events : [events]
 
-    if (items == null) return
+    if (items?.length == 0) return
 
     return (
         <div className={`${className} flex flex-col gap-y-gg`}>
