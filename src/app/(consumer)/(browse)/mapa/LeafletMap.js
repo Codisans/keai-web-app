@@ -44,6 +44,10 @@ export const MapController = ({ children }) => {
         } else {
             console.warn('Unable to use geolocation services.')
         }
+
+        return () => {
+            setDeviceLocation(null)
+        }
     }, [])
 
     return (
