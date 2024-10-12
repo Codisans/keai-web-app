@@ -8,7 +8,7 @@ import L from 'leaflet'
 export const EventMarker = ({ event }) => {
     const { mapRef } = useContext(MapContext)
     const markerRef = useRef(null)
-    const categorySlug = event.categories?.pop()?.slug || null
+    const categorySlug = event.categories[0]?.slug || null
 
     useEffect(() => {
         if (
@@ -17,8 +17,6 @@ export const EventMarker = ({ event }) => {
             !mapRef.current
         )
             return
-
-        console.log(event)
 
         markerRef.current = L.marker(
             [event.coordinates?.latitude, event.coordinates?.longitude],
