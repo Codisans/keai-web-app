@@ -1,9 +1,8 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
-import { deviceLocationMarker } from '@/lib/leaflet'
+import { useEffect, useRef, useState, createContext } from 'react'
 import L from 'leaflet'
-import { createContext } from 'react'
+import { deviceLocationMarker } from '@/lib/leaflet'
 
 export const MapContext = createContext({ mapRef: null })
 
@@ -33,18 +32,25 @@ export default function LeafletMap({ children }) {
                     },
                 ).addTo(mapRef.current)
 
-                // mapRef.current?.setView(
-                //     [position.coords.latitude, position.coords.longitude],
-                //     15,
-                // )
+                mapRef.current?.setView(
+                    [position.coords.latitude, position.coords.longitude],
+                    15,
+                )
             })
         } else {
             console.warn('Unable to use geolocation services.')
         }
 
         return () => {
-            mapRef.current?.remove() && (mapRef.current = null)
-            deviceRef.current?.remove() && (deviceRef.current = null)
+            if (mapRef.current) {
+                mapRef.current.remove()
+                mapRef.current = null
+            }
+
+            if (deviceRef.current) {
+                deviceRef.current.remove()
+                deviceRef.current = null
+            }
         }
     }, [])
 

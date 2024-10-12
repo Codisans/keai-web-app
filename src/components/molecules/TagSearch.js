@@ -1,10 +1,8 @@
-import { getTags } from '@/api/getTags'
 import SearchInput from '../atoms/SearchInput'
+import api from '@/lib/api'
 
 export const TagSearch = async () => {
-    const tags = await getTags()
-        .then(res => res)
-        .catch(err => console.log(err))
+    const tags = await api.getTags()
 
     return (
         <section className="py-4 px-gg">

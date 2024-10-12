@@ -1,4 +1,3 @@
-import { getEvents } from '@/api/getEvents'
 import { Price } from '@/components/atoms/Price'
 import { DateTime } from '@/components/atoms/DateTime'
 import DeleteIcon from '@mui/icons-material/Delete'
@@ -6,13 +5,14 @@ import EditIcon from '@mui/icons-material/Edit'
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff'
 import VisibilityIcon from '@mui/icons-material/Visibility'
 import { Button } from '@/components/atoms/Button'
+import api from '@/lib/api'
 
 export const metadata = {
     title: 'KEAI | Mis Eventos',
 }
 
 const MisEventos = async () => {
-    const events = await getEvents()
+    const events = await api.getEvents()
 
     return (
         <>

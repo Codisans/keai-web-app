@@ -1,7 +1,7 @@
 'use client'
 import { CategoryBar } from './CategoryBar'
 import { MapHeader } from './MapHeader'
-import LeafletMap from './LeafletMap'
+import { Map } from './Map'
 
 const MapLayout = ({ children }) => {
     return (
@@ -9,7 +9,7 @@ const MapLayout = ({ children }) => {
             <MapHeader />
             <main className="w-full grow relative flex">
                 <CategoryBar />
-                <LeafletMap>{children}</LeafletMap>
+                <Map>{children}</Map>
             </main>
         </>
     )

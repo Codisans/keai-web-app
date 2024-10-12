@@ -47,6 +47,16 @@ class Api {
             console.error(error)
         }
     }
+
+    async getTags() {
+        const res = await this.axios.get('/tags')
+
+        try {
+            return res.data
+        } catch (error) {
+            console.error(error)
+        }
+    }
 }
 
 const api = new Api()

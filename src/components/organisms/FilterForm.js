@@ -2,7 +2,7 @@
 
 import { useContext } from 'react'
 import { ConsumerContext } from '@/app/(consumer)/ConsumerContext'
-import { Button } from '../atoms/Button'
+import { Button } from '@/components/atoms/Button'
 
 export const FilterForm = () => {
     const { setFilterIsOpen } = useContext(ConsumerContext)
@@ -12,8 +12,6 @@ export const FilterForm = () => {
     // const [price, setPrice] = useState(null)
     // const [dates, setDates] = useState(null)
     // const [tags, setTags] = useState([])
-
-    // const tags = await getTags()
 
     // const handleSubmit = () => {
     //     console.log('submit filter form')
@@ -340,7 +338,6 @@ export const FilterForm = () => {
 // import { useContext, useEffect, useState, useRef } from 'react'
 // import { ConsumerContext } from '@/app/(consumer)/ConsumerContext'
 // import { RadioButton } from '../atoms/RadioButton'
-// import { getTags } from '@/api/getTags'
 // import { Button } from '../atoms/Button'
 // import { TagSearch } from '../molecules/TagSearch'
 

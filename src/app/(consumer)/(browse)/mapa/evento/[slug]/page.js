@@ -1,16 +1,7 @@
-async function getEvent() {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/events`)
-
-    if (!res.ok) {
-        // This will activate the closest `error.js` Error Boundary
-        throw new Error('Failed to fetch data')
-    }
-
-    return res.json()
-}
+import api from '@/lib/api'
 
 const Event = async ({ params }) => {
-    const data = await getEvent(params.slug)
+    const data = await api.getEvent(params.slug)
 
     return (
         <>

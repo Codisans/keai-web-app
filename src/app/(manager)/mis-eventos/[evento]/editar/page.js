@@ -1,4 +1,4 @@
-import { getEvent } from '@/api/getEvent'
+import api from '@/lib/api'
 import { EventDetail } from './EventDetail'
 
 export const metadata = {
@@ -6,7 +6,7 @@ export const metadata = {
 }
 
 const EditarEvento = async ({ params }) => {
-    const { data } = await getEvent(params.evento)
+    const event = await api.getEvent(params.evento)
 
     return (
         <>
@@ -14,7 +14,7 @@ const EditarEvento = async ({ params }) => {
                 <section className="py-12">
                     <h1 className="text-h1">Editar Evento</h1>
                 </section>
-                <EventDetail event={data} />
+                <EventDetail event={event} />
             </main>
         </>
     )

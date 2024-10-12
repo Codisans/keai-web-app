@@ -1,13 +1,13 @@
-import { getEvents } from '@/api/getEvents'
 import { Loading } from '@/app/Loading'
 import { UserRow } from './UserRow'
+import api from '@/lib/api'
 
 export const metadata = {
     title: 'KEAI Admin | Events',
 }
 
 const AdminUsers = async () => {
-    const { events } = await getEvents()
+    const { events } = await api.getEvents()
 
     if (!events) return <Loading />
 

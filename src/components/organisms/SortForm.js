@@ -2,11 +2,8 @@
 
 // import { useContext, useEffect } from 'react'
 // import { RadioButton } from '../atoms/RadioButton'
-// import { getTags } from '@/api/getTags'
 
 export const SortForm = () => {
-    // const tags = getTags()
-
     // const handleSubmit = () => {
     //     console.log('submit filter form')
     // }

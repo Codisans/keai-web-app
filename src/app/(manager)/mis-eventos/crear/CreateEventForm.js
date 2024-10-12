@@ -6,11 +6,10 @@ import Input from '@/components/atoms/Input'
 import InputError from '@/components/atoms/InputError'
 import Label from '@/components/atoms/Label'
 import { Button } from '@/components/atoms/Button'
-import { getCategories } from '@/api/getCategories'
-import { getTags } from '@/api/getTags'
 import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker'
 import { LocalizationProvider } from '@mui/x-date-pickers'
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
+import api from '@/lib/api'
 
 export const CreateEventForm = () => {
     const router = useRouter()
@@ -39,8 +38,8 @@ export const CreateEventForm = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const tagsData = await getTags()
-                const categoriesData = await getCategories()
+                const tagsData = await api.getTags()
+                const categoriesData = await api.getCategories()
                 setAvailableTags(tagsData)
                 setAvailableCategories(categoriesData)
             } catch (error) {

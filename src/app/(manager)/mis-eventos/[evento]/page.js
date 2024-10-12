@@ -1,4 +1,4 @@
-import { getEvent } from '@/api/getEvent'
+import api from '@/lib/api'
 import { EventDetail } from './EventDetail'
 
 export const metadata = {
@@ -6,12 +6,12 @@ export const metadata = {
 }
 
 const MisEventos = async ({ params }) => {
-    const { data } = await getEvent(params.evento)
+    const event = await api.getEvent(params.evento)
 
     return (
         <>
             <main className="w-full grow relative flex flex-col">
-                <EventDetail event={data} />
+                <EventDetail event={event} />
             </main>
         </>
     )

@@ -1,13 +1,13 @@
-import { getEvents } from '@/api/getEvents'
 import { EventListing } from './EventListing'
 import { Loading } from '@/app/Loading'
+import api from '@/lib/api'
 
 export const metadata = {
     title: 'KEAI Admin | Events',
 }
 
 const AdminEvents = async () => {
-    const events = await getEvents()
+    const events = await api.getEvents()
 
     if (!events) return <Loading />
 
