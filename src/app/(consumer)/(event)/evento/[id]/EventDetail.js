@@ -43,13 +43,13 @@ export const EventDetail = ({ event }) => {
                     </h3>
 
                     <p className="flex flex-col">
-                        {event.full_address.split(',').map((line, i) => (
+                        {/* {event.full_address.split(',').map((line, i) => (
                             <span
                                 key={i}
                                 className="after:content-[','] last:after:hidden">
                                 {line}
                             </span>
-                        ))}
+                        ))} */}
                     </p>
                 </div>
             </div>
