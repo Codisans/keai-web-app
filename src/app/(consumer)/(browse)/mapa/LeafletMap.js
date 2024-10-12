@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { deviceLocationMarker } from '@/lib/leaflet'
 import L from 'leaflet'
 import { createContext } from 'react'
@@ -10,6 +10,7 @@ export const MapContext = createContext({ mapRef: null })
 export default function LeafletMap({ children }) {
     const mapRef = useRef(null)
     const deviceRef = useRef(null)
+    const [isReady, setIsReady] = useState(false)
 
     useEffect(() => {
         mapRef.current = L.map('map', {
@@ -21,7 +22,7 @@ export default function LeafletMap({ children }) {
                     'https://tile.openstreetmap.bzh/ca/{z}/{x}/{y}.png',
                 ),
             ],
-        })
+        }).whenReady(() => setIsReady(true))
 
         if ('geolocation' in navigator) {
             navigator.geolocation.getCurrentPosition(position => {
@@ -42,18 +43,16 @@ export default function LeafletMap({ children }) {
         }
 
         return () => {
-            deviceRef.current?.remove()
-            mapRef.current?.remove()
-
-            mapRef.current && (mapRef.current = null)
-            deviceRef.current && (deviceRef.current = null)
+            mapRef.current?.remove() && (mapRef.current = null)
+            deviceRef.current?.remove() && (deviceRef.current = null)
         }
     }, [])
 
     return (
         <MapContext.Provider value={{ mapRef: mapRef }}>
-            <div id="map" className="w-full h-full relative"></div>
-            {children}
+            <div id="map" className="w-full h-full relative">
+                {isReady && children}
+            </div>
         </MapContext.Provider>
     )
 }
