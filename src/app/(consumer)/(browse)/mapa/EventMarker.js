@@ -1,7 +1,6 @@
 'use client'
 
-import { categories } from '@/constants/categories'
-import { keaiMarker } from '@/lib/leaflet'
+import { markerIcons } from '@/lib/leaflet'
 import { useContext, useEffect, useRef } from 'react'
 import { MapContext } from './LeafletMap'
 import L from 'leaflet'
@@ -24,7 +23,7 @@ export const EventMarker = ({ event }) => {
         markerRef.current = L.marker(
             [event.coordinates?.latitude, event.coordinates?.longitude],
             {
-                icon: categories[categorySlug]?.marker || keaiMarker,
+                icon: markerIcons[categorySlug] || markerIcons.keai,
             },
         )
 

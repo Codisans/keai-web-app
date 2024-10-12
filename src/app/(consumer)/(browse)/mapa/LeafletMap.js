@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState, createContext } from 'react'
 import L from 'leaflet'
-import { deviceLocationMarker } from '@/lib/leaflet'
+import { markerIcons } from '@/lib/leaflet'
 
 export const MapContext = createContext({ mapRef: null })
 
@@ -28,7 +28,7 @@ export default function LeafletMap({ children }) {
                 deviceRef.current = L.marker(
                     [position.coords.latitude, position.coords.longitude],
                     {
-                        icon: deviceLocationMarker,
+                        icon: markerIcons.deviceLocation,
                     },
                 ).addTo(mapRef.current)
 
@@ -42,15 +42,8 @@ export default function LeafletMap({ children }) {
         }
 
         return () => {
-            if (mapRef.current) {
-                mapRef.current.remove()
-                mapRef.current = null
-            }
-
-            if (deviceRef.current) {
-                deviceRef.current.remove()
-                deviceRef.current = null
-            }
+            mapRef.current = null
+            deviceRef.current = null
         }
     }, [])
 

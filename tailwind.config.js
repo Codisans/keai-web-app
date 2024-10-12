@@ -1,3 +1,9 @@
+import { categories } from './src/constants/categories'
+const categoryColors = Object.values(categories).reduce((acc, category) => {
+    acc[category] = category.color
+    return acc
+}, {})
+
 module.exports = {
     content: ['./src/**/*.{js,jsx,ts,tsx}'],
     plugins: [
@@ -20,8 +26,10 @@ module.exports = {
             addVariant('page-scrolled', ['.page-scrolled &', '&.page-scrolled'])
         }),
     ],
+    safeList: ['bg-deporte'],
     theme: {
         colors: {
+            ...categoryColors,
             theme: {
                 DEFAULT: '#faac4a',
                 accent: '#fff',

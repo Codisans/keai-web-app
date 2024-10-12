@@ -1,53 +1,50 @@
-import {
-    bienestarMarker,
-    culturaMarker,
-    educacionMarker,
-    entretencionMarker,
-    deporteMarker,
-    familiarMarker,
-    gastronomiaMarker,
-    negociosMarker,
-} from '@/lib/leaflet'
-
 export const categories = {
     bienestar: {
         name: 'Bienestar',
         slug: 'bienestar',
-        marker: bienestarMarker,
+        markerUrl: '/bienestar-marker.svg',
+        color: '#faac4a',
     },
     cultura: {
         name: 'Cultura',
         slug: 'cultura',
-        marker: culturaMarker,
+        markerUrl: '/cultura-marker.svg',
+        color: '#faac4a',
     },
     educacion: {
         name: 'Educación',
         slug: 'educacion',
-        marker: educacionMarker,
+        markerUrl: '/educacion-marker.svg',
+        color: '#faac4a',
     },
     entretencion: {
         name: 'Entretenciono',
         slug: 'entretencion',
-        marker: entretencionMarker,
+        markerUrl: '/entretencion-marker.svg',
+        color: '#faac4a',
     },
     deporte: {
         name: 'Deporte',
         slug: 'deporte',
-        marker: deporteMarker,
+        markerUrl: '/deporte-marker.svg',
+        color: '#faac4a',
     },
     familiar: {
         name: 'Familiar',
         slug: 'familiar',
-        marker: familiarMarker,
+        markerUrl: '/familiar-marker.svg',
+        color: '#faac4a',
     },
     gastronomia: {
         name: 'Gastronomía',
         slug: 'gastronomia',
-        marker: gastronomiaMarker,
+        markerUrl: '/gastronomia-marker.svg',
+        color: '#faac4a',
     },
     negocios: {
         name: 'Negocios',
         slug: 'negocios',
-        marker: negociosMarker,
+        markerUrl: '/negocios-marker.svg',
+        color: '#faac4a',
     },
 }
