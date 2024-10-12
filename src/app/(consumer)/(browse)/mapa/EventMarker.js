@@ -4,15 +4,18 @@ import { categories } from '@/constants/categories'
 import { keaiMarker } from '@/lib/leaflet'
 import { Marker } from 'react-leaflet'
 
-export const EventMarker = ({ event }) => {
-    if (!event.coordinates) return
+export const EventMarker = ({ key, event }) => {
+    if (!event.coordinates?.latitude || !event.coordinates?.longitude) return
+
+    const categorySlug = event.categories?.pop()?.slug || null
 
     return (
         <Marker
-            icon={categories[event.category]?.marker || keaiMarker}
+            key={key}
+            icon={categories[categorySlug]?.marker || keaiMarker}
             position={[
-                event.coordinates[0]?.latitude,
-                event.coordinates[1]?.longitude,
+                event.coordinates?.latitude,
+                event.coordinates?.longitude,
             ]}
         />
     )
