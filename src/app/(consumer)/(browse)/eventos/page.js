@@ -8,14 +8,14 @@ export const metadata = {
 const Events = async () => {
     const events = await api.getEvents()
 
-    if (!events?.data) return
+    if (!events) return
 
     return (
         <>
             <div className="w-full py-8 flex flex-col gap-y-gutter">
-                <EventCarousel heading="Para ti" events={events.data} />
-                <EventCarousel heading="Hoy" events={events.data} />
-                <EventCarousel heading="Techno" events={events.data} />
+                <EventCarousel heading="Para ti" events={events} />
+                <EventCarousel heading="Hoy" events={events} />
+                <EventCarousel heading="Techno" events={events} />
             </div>
         </>
     )

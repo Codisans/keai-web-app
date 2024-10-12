@@ -12,7 +12,7 @@ const MapCategory = async ({ params }) => {
 
     return (
         <>
-            {category.events.map((event, i) => (
+            {category?.events?.map((event, i) => (
                 <EventMarker key={i} event={event} />
             ))}
         </>

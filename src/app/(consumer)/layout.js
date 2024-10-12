@@ -1,15 +1,13 @@
 import { ConsumerContextProvider } from './ConsumerContext'
-import { getCategories } from '@/api/getCategories'
 import { PulloutMenu } from '@/components/molecules/PulloutMenu'
 import { ConsumerMenu } from './ConsumerMenu'
-import { getTags } from '@/api/getTags'
+import api from '@/lib/api'
 
 const ConsumerLayout = async ({ children }) => {
-    const categories = await getCategories()
-    const tags = await getTags()
+    const categories = await api.getCategories()
 
     return (
-        <ConsumerContextProvider categories={categories} tags={tags}>
+        <ConsumerContextProvider categories={categories} tags={[]}>
             <PulloutMenu>
                 <ConsumerMenu categories={categories} />
             </PulloutMenu>

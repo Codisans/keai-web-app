@@ -8,7 +8,7 @@ export const metadata = {
 const CategoryPage = async ({ params }) => {
     const category = await api.getEvents(params.category)
 
-    if (!category.events) return
+    if (!category) return
 
     return (
         <>

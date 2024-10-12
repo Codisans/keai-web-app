@@ -5,6 +5,8 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import { CategoryCard } from './CategoryCard'
 
 export const CategoryNav = ({ categories }) => {
+    if (!categories) return
+
     return (
         <nav className="pt-gg">
             <Swiper

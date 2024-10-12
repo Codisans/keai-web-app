@@ -1,9 +1,9 @@
-import { getCategories } from '@/api/getCategories'
 import { CategoryNav } from './CategoryNav'
 import { SearchBar } from '../SearchBar'
+import api from '@/lib/api'
 
 export const EventsHeader = async () => {
-    const categories = await getCategories()
+    const categories = await api.getCategories()
 
     return (
         <div className="sticky top-0 inset-x-0 shadow z-header bg-white shrink">

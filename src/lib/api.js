@@ -10,15 +10,29 @@ class Api {
             withCredentials: true,
             withXSRFToken: true,
         })
+        this.categories = null
     }
 
-    async getEvents(category) {
+    async getCategories() {
+        if (this.categories) return this.categories
+
+        const res = await this.axios.get('/categories')
+
+        try {
+            this.categories = res.data.data
+            return res.data.data
+        } catch (error) {
+            console.error(error)
+        }
+    }
+
+    async getEvents(categoryId) {
         const res = await this.axios.get(
-            category ? `/categories/${category}` : '/events',
+            categoryId ? `/categories/${categoryId}` : '/events',
         )
 
         try {
-            return res.data
+            return res.data.data
         } catch (error) {
             console.error(error)
         }
