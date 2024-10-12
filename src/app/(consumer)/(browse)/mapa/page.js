@@ -18,8 +18,8 @@ const MapPage = async () => {
 
     return (
         <>
-            {events?.map((event, i) => (
-                <EventMarker key={i} event={event} />
+            {events?.map(event => (
+                <EventMarker key={event.id} event={event} />
             ))}
         </>
     )
