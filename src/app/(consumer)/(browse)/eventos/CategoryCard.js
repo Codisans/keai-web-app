@@ -1,7 +1,6 @@
 'use client'
 import { useContext } from 'react'
 import { ConsumerContext } from '@/app/(consumer)/ConsumerContext'
-import EventIcon from '@mui/icons-material/Event'
 import { usePathname } from 'next/navigation'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
