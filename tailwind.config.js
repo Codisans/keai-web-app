@@ -1,8 +1,9 @@
-import { categories } from './src/constants/categories'
-const categoryColors = Object.values(categories).reduce((acc, category) => {
-    acc[category] = category.color
-    return acc
-}, {})
+// import { CATEGORIES } from './src/constants/categories'
+
+// const categoryColors = Object.values(CATEGORIES).reduce((acc, category) => {
+//     acc[category] = category.color
+//     return acc
+// }, {})
 
 module.exports = {
     content: ['./src/**/*.{js,jsx,ts,tsx}'],
@@ -29,11 +30,12 @@ module.exports = {
     safeList: ['bg-deporte'],
     theme: {
         colors: {
-            ...categoryColors,
+            // ...categoryColors,
             theme: {
                 DEFAULT: '#faac4a',
                 accent: '#fff',
             },
+            category: 'var(--category-color,#faac4a)',
             primary: '#faac4a',
             secondary: '#f8ac4c',
             canvas: '#fff',

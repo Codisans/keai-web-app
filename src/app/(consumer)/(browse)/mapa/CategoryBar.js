@@ -8,6 +8,8 @@ import { usePathname } from 'next/navigation'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { Symbol } from '@/components/atoms/Symbol'
+import { _categories } from '@/constants/categories'
+// import Image from 'next/image'
 
 export const CategoryBar = () => {
     const { categories } = useContext(ConsumerContext)
@@ -47,28 +49,28 @@ export const CategoryCard = ({ category }) => {
 
     return (
         <div
-            className={`w-max ${categoryId == (category?.id || null) ? 'active' : ''}`}>
+            className={`w-max flex-nowrap flex gap-1 items-center text-white active:text-category rounded border-2 border-category bg-category p-1 active:bg-white ${categoryId == (category?.id || null) ? 'active' : ''}`}
+            style={{ '--category-color': _categories[category?.slug]?.color }}>
+            <span>{category?.name || 'Todos'}</span>
+            <Symbol className="flex-none block w-4 h-4" name={category?.slug} />
             <Link
                 href={url}
                 onClick={() => {
                     setSelectedCategory(categoryId)
                     router?.push(url)
                 }}
-                className="bg-white active:bg-black active:text-white shadow rounded-button px-2 py-1 flex flex-nowrap items-center gap-1 active:pointer-events-none">
-                <span className="text-nowrap uppercase">
-                    {category?.name || 'Todos'}
-                </span>
-                <CategoryIcon category={category?.id || null} />
+                className="absolute inset-0">
+                <span className="sr-only">{category?.name}</span>
             </Link>
         </div>
     )
 }
 
-export const CategoryIcon = ({ category }) => {
-    switch (category) {
-        default:
-            return (
-                <Symbol className="flex-none block w-3 h-3" name="logotype" />
-            )
-    }
-}
+// export const CategoryIcon = ({ category }) => {
+//     switch (category) {
+//         default:
+//             return (
+//                 <Symbol className="flex-none block w-3 h-3" name="logotype" />
+//             )
+//     }
+// }

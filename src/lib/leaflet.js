@@ -1,5 +1,5 @@
 import { Icon } from 'leaflet'
-import { categories } from '@/constants/categories'
+import { _categories } from '@/constants/categories'
 
 export const markerIcons = {
     keai: new Icon({
@@ -14,49 +14,49 @@ export const markerIcons = {
         iconAnchor: [16, 16],
     }),
     bienestar: new Icon({
-        iconUrl: categories.bienestar.markerUrl,
+        iconUrl: _categories.bienestar.markerUrl,
         iconSize: [36, 36],
         iconAnchor: [16, 36],
         popupAnchor: [0, -12],
     }),
     cultura: new Icon({
-        iconUrl: categories.cultura.markerUrl,
+        iconUrl: _categories.cultura.markerUrl,
         iconSize: [36, 36],
         iconAnchor: [16, 36],
         popupAnchor: [0, -12],
     }),
     deporte: new Icon({
-        iconUrl: categories.deporte.markerUrl,
+        iconUrl: _categories.deporte.markerUrl,
         iconSize: [36, 36],
         iconAnchor: [16, 36],
         popupAnchor: [0, -12],
     }),
     educacion: new Icon({
-        iconUrl: categories.educacion.markerUrl,
+        iconUrl: _categories.educacion.markerUrl,
         iconSize: [36, 36],
         iconAnchor: [16, 36],
         popupAnchor: [0, -12],
     }),
     entretencion: new Icon({
-        iconUrl: categories.entretencion.markerUrl,
+        iconUrl: _categories.entretencion.markerUrl,
         iconSize: [36, 36],
         iconAnchor: [16, 36],
         popupAnchor: [0, -12],
     }),
     familiar: new Icon({
-        iconUrl: categories.familiar.markerUrl,
+        iconUrl: _categories.familiar.markerUrl,
         iconSize: [36, 36],
         iconAnchor: [16, 36],
         popupAnchor: [0, -12],
     }),
     gastronomia: new Icon({
-        iconUrl: categories.gastronomia.markerUrl,
+        iconUrl: _categories.gastronomia.markerUrl,
         iconSize: [36, 36],
         iconAnchor: [16, 36],
         popupAnchor: [0, -12],
     }),
     negocios: new Icon({
-        iconUrl: categories.negocios.markerUrl,
+        iconUrl: _categories.negocios.markerUrl,
         iconSize: [36, 36],
         iconAnchor: [16, 36],
         popupAnchor: [0, -12],
