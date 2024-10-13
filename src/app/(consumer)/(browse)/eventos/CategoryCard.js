@@ -6,6 +6,7 @@ import { usePathname } from 'next/navigation'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { Symbol } from '@/components/atoms/Symbol'
+import { _categories } from '@/constants/categories'
 
 export const CategoryCard = ({ category }) => {
     const path = usePathname()
@@ -21,9 +22,10 @@ export const CategoryCard = ({ category }) => {
 
     return (
         <div
-            className={`${categoryId == (category?.id || null) ? 'active' : ''} active:text-black text-black/60 active:after:block flex flex-col gap-1 items-center relative w-full after:black after:absolute after:bg-black after:bottom-0 after:h-[0.35rem] after:w-6 after:left-1/2 after:-translate-x-1/2 rounded-card after:hidden pb-3`}>
-            <CategoryIcon category={category?.id || null} />
-            <h2 className="text-small font-tenorite text-black text-wrap text-center h-[2em] uppercase">
+            className={`${categoryId == (category?.id || null) ? 'active' : ''} p-2 flex flex-col gap-1 items-center relative w-full bg-white text-category active:text-white active:bg-category rounded-card`}
+            style={{ '--category-color': _categories[category?.slug]?.color }}>
+            <Symbol className="w-8 h-8" name={category?.slug} />
+            <h2 className="text-small font-tenorite text-black active:text-white text-wrap text-center uppercase">
                 {category?.name || 'Todos'}
             </h2>
             <Link
@@ -37,13 +39,4 @@ export const CategoryCard = ({ category }) => {
             </Link>
         </div>
     )
-}
-
-export const CategoryIcon = ({ category }) => {
-    switch (category) {
-        case null:
-            return <Symbol className="w-8 h-8" name="logotype" />
-        default:
-            return <EventIcon fontSize="large" />
-    }
 }
