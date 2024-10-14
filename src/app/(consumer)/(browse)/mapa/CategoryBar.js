@@ -49,7 +49,7 @@ export const CategoryCard = ({ category }) => {
 
     return (
         <div
-            className={`w-max flex-nowrap flex gap-1 items-center text-white active:text-category rounded border-2 border-category bg-category p-1 active:bg-white ${categoryId == (category?.id || null) ? 'active' : ''}`}
+            className={`w-max flex-nowrap flex gap-1 items-center text-white rounded bg-category p-1 border-category border-2 active:border-black ${categoryId == (category?.id || null) ? 'active' : ''}`}
             style={{ '--category-color': _categories[category?.slug]?.color }}>
             <span>{category?.name || 'Todos'}</span>
             <Symbol className="flex-none block w-4 h-4" name={category?.slug} />
