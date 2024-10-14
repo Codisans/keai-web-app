@@ -13,13 +13,13 @@ export const CategoryNav = ({ categories }) => {
                 freeMode={true}
                 slidesPerView="auto"
                 modules={[FreeMode]}
-                spaceBetween={12}
-                className="w-full px-gg">
-                <SwiperSlide style={{ width: '5rem' }}>
+                spaceBetween={0}
+                className="w-full px-gg items-end">
+                <SwiperSlide style={{ width: 'max-content' }}>
                     <CategoryCard />
                 </SwiperSlide>
                 {categories?.map((category, i) => (
-                    <SwiperSlide key={i} style={{ width: '5rem' }}>
+                    <SwiperSlide key={i} style={{ width: 'max-content' }}>
                         <CategoryCard category={category} />
                     </SwiperSlide>
                 ))}

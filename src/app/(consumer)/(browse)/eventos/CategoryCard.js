@@ -21,7 +21,7 @@ export const CategoryCard = ({ category }) => {
 
     return (
         <div
-            className={`${categoryId == (category?.id || null) ? 'active' : ''} p-2 flex flex-col gap-1 items-center relative w-full bg-white text-category active:text-white active:bg-category rounded-card`}
+            className={`${categoryId == (category?.id || null) ? 'active' : ''}  w-max p-2 flex flex-col gap-1 items-center relative bg-white text-category active:text-white active:bg-category rounded-card`}
             style={{ '--category-color': _categories[category?.slug]?.color }}>
             <Symbol className="w-8 h-8" name={category?.slug} />
             <h2 className="text-small font-tenorite text-black active:text-white text-wrap text-center uppercase">

@@ -65,12 +65,3 @@ export const CategoryCard = ({ category }) => {
         </div>
     )
 }
-
-// export const CategoryIcon = ({ category }) => {
-//     switch (category) {
-//         default:
-//             return (
-//                 <Symbol className="flex-none block w-3 h-3" name="logotype" />
-//             )
-//     }
-// }
