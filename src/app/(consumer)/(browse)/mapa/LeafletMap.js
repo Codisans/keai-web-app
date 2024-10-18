@@ -18,7 +18,7 @@ export default function LeafletMap({ children }) {
             zoomControl: false,
             layers: [
                 L.tileLayer(
-                    'https://tile.openstreetmap.bzh/ca/{z}/{x}/{y}.png',
+                    'https://tile.jawg.io/jawg-sunny/{z}/{x}/{y}{r}.png?access-token=aLubrUOI0qXUjCvyXl3vQ1LuXliuWTFUesHv3khs8Itsxx4KicQleQFUarz6QpKe',
                 ),
             ],
         }).whenReady(() => setIsReady(true))
