@@ -1,5 +1,6 @@
 export const _categories = {
     bienestar: {
+        order: 6,
         name: 'Bienestar',
         slug: 'bienestar',
         markerUrl: '/bienestar-marker.svg',
@@ -7,6 +8,7 @@ export const _categories = {
         color: '#00C7BE',
     },
     cultura: {
+        order: 2,
         name: 'Cultura',
         slug: 'cultura',
         markerUrl: '/cultura-marker.svg',
@@ -14,6 +16,7 @@ export const _categories = {
         color: '#5856D6',
     },
     educacion: {
+        order: 7,
         name: 'Educación',
         slug: 'educacion',
         markerUrl: '/educacion-marker.svg',
@@ -21,13 +24,15 @@ export const _categories = {
         color: '#8E4B21',
     },
     entretencion: {
-        name: 'Entretenciono',
+        order: 1,
+        name: 'Entretencion',
         slug: 'entretencion',
         markerUrl: '/entretencion-marker.svg',
         iconUrl: '/entretencion-icon.svg',
         color: '#FF2D55',
     },
     deporte: {
+        order: 5,
         name: 'Deporte',
         slug: 'deporte',
         markerUrl: '/deporte-marker.svg',
@@ -35,6 +40,7 @@ export const _categories = {
         color: '#FF3B30',
     },
     familiar: {
+        order: 4,
         name: 'Familiar',
         slug: 'familiar',
         markerUrl: '/familiar-marker.svg',
@@ -42,6 +48,7 @@ export const _categories = {
         color: '#32ADE6',
     },
     gastronomia: {
+        order: 3,
         name: 'Gastronomía',
         slug: 'gastronomia',
         markerUrl: '/gastronomia-marker.svg',
@@ -49,6 +56,7 @@ export const _categories = {
         color: '#34C759',
     },
     negocios: {
+        order: 8,
         name: 'Negocios',
         slug: 'negocios',
         markerUrl: '/negocios-marker.svg',

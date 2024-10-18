@@ -3,9 +3,14 @@
 import { FreeMode } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { CategoryCard } from './CategoryCard'
+import { _categories } from '@/constants/categories'
 
 export const CategoryNav = ({ categories }) => {
     if (!categories) return
+
+    const cateogryList = categories
+        .filter(c => Object.keys(_categories).includes(c.slug))
+        ?.sort((a, b) => _categories[a.slug].order - _categories[b.slug].order)
 
     return (
         <nav className="pt-gg">
@@ -18,7 +23,7 @@ export const CategoryNav = ({ categories }) => {
                 <SwiperSlide style={{ width: 'max-content' }}>
                     <CategoryCard />
                 </SwiperSlide>
-                {categories?.map((category, i) => (
+                {cateogryList?.map((category, i) => (
                     <SwiperSlide key={i} style={{ width: 'max-content' }}>
                         <CategoryCard category={category} />
                     </SwiperSlide>

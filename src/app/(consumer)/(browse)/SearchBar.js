@@ -2,8 +2,8 @@ import { FilterToggle } from '@/components/atoms/FilterToggle'
 
 export const SearchBar = () => {
     return (
-        <section className="w-full">
-            <div className="flex py-3 gap-x-1.5 px-gutter">
+        <section className="w-full border-b border-grey-3">
+            <div className="flex gap-x-1 p-gg pb-1">
                 <input
                     className="px-3 h-10 align-middle rounded-button border-grey-3 grow"
                     placeholder="Keai?"

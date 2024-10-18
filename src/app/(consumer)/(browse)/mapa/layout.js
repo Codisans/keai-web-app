@@ -1,7 +1,8 @@
-'use client'
 import { CategoryBar } from './CategoryBar'
 import { MapHeader } from './MapHeader'
 import { Map } from './Map'
+import { MapFilterModal } from './MapFilterModal'
+import { MapFilterForm } from './MapFilterForm'
 
 const MapLayout = ({ children }) => {
     return (
@@ -11,6 +12,9 @@ const MapLayout = ({ children }) => {
                 <CategoryBar />
                 <Map>{children}</Map>
             </main>
+            <MapFilterModal>
+                <MapFilterForm />
+            </MapFilterModal>
         </>
     )
 }

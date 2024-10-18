@@ -1,6 +1,6 @@
 import { getCategories } from '@/api/getCategories'
 import { CategoryNav } from './CategoryNav'
-import { FilterToggle } from '@/components/atoms/FilterToggle'
+import { SearchBar } from './SearchBar'
 
 export const Header = async () => {
     const categories = await getCategories()
@@ -10,18 +10,7 @@ export const Header = async () => {
             <header className="w-full">
                 <CategoryNav categories={categories} />
             </header>
-            <section className="w-full">
-                <div className="flex pt-4 pb-2 gap-x-gutter px-gutter">
-                    <input
-                        className="px-3 h-10 align-middle rounded-button border-grey-3 grow"
-                        placeholder="Keai?"
-                        type="text"
-                    />
-                    <div className="w-min">
-                        <FilterToggle />
-                    </div>
-                </div>
-            </section>
+            <SearchBar />
         </div>
     )
 }

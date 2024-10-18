@@ -14,6 +14,10 @@ import { _categories } from '@/constants/categories'
 export const CategoryBar = () => {
     const { categories } = useContext(ConsumerContext)
 
+    const cateogryList = categories
+        .filter(c => Object.keys(_categories).includes(c.slug))
+        ?.sort((a, b) => _categories[a.slug].order - _categories[b.slug].order)
+
     return (
         <nav className="absolute top-1 inset-x-0 pt-gg z-header">
             <Swiper
@@ -25,7 +29,7 @@ export const CategoryBar = () => {
                 <SwiperSlide style={{ width: 'max-content' }}>
                     <CategoryCard />
                 </SwiperSlide>
-                {categories?.map((category, i) => (
+                {cateogryList?.map((category, i) => (
                     <SwiperSlide key={i} style={{ width: 'max-content' }}>
                         <CategoryCard category={category} />
                     </SwiperSlide>
