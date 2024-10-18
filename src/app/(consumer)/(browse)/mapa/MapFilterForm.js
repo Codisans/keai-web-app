@@ -1,6 +1,6 @@
 'use client'
 
-import { useContext, useRef } from 'react'
+import { useContext, useRef, useState } from 'react'
 import { ConsumerContext } from '@/app/(consumer)/ConsumerContext'
 import { Button } from '@/components/atoms/Button'
 
@@ -69,13 +69,13 @@ export const MapFilterForm = () => {
     const minDate = new Date().toISOString().split('T')[0]
     const formRef = useRef(null)
 
-    // const [price, setPrice] = useState([null, null])
-    // const [dates, setDates] = useState([null, null])
+    const [price, setPrice] = useState([null, null])
+    const [dates, setDates] = useState([null, null])
     // const [tags, setTags] = useState([])
 
     const handleSubmit = e => {
         e.preventDefault()
-        console.log('submit filter form')
+        console.log('submit filter form', price, dates)
     }
 
     const handleChange = e => {
