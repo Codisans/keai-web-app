@@ -1,4 +1,4 @@
-import { EventCarousel } from '@/components/molecules/EventCarousel'
+import { EventCarousel } from './EventCarousel'
 import api from '@/lib/api'
 
 export const metadata = {
