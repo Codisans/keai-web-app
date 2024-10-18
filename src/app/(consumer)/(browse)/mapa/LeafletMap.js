@@ -3,13 +3,21 @@
 import { useEffect, useRef, useState, createContext } from 'react'
 import L from 'leaflet'
 import { markerIcons } from '@/lib/leaflet'
+import { EventSummary } from './EventSummary'
 
-export const MapContext = createContext({ mapRef: null })
+export const MapContext = createContext({
+    mapRef: null,
+    activeEvent: null,
+    setActiveEvent: () => {},
+    activeMarkerRef: null,
+})
 
 export default function LeafletMap({ children }) {
     const mapRef = useRef(null)
     const deviceRef = useRef(null)
     const [isReady, setIsReady] = useState(false)
+    const [activeEvent, setActiveEvent] = useState(null)
+    const activeMarkerRef = useRef(null)
 
     useEffect(() => {
         mapRef.current = L.map('map', {
@@ -34,7 +42,7 @@ export default function LeafletMap({ children }) {
 
                 mapRef.current?.setView(
                     [position.coords.latitude, position.coords.longitude],
-                    15,
+                    14,
                 )
             })
         } else {
@@ -48,10 +56,17 @@ export default function LeafletMap({ children }) {
     }, [])
 
     return (
-        <MapContext.Provider value={{ mapRef: mapRef }}>
+        <MapContext.Provider
+            value={{
+                mapRef: mapRef,
+                activeEvent: activeEvent,
+                setActiveEvent: setActiveEvent,
+                activeMarkerRef: activeMarkerRef,
+            }}>
             <div id="map" className="w-full h-full relative">
                 {isReady && children}
             </div>
+            <EventSummary event={activeEvent} />
         </MapContext.Provider>
     )
 }

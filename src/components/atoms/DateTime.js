@@ -19,6 +19,8 @@ export const DateTime = ({ value, type = 'date' }) => {
                 <time className="tracking-wider">
                     {d.toLocaleTimeString('es-CL', {
                         hour12: false,
+                        hour: '2-digit',
+                        minute: '2-digit',
                     })}
                 </time>
             )
