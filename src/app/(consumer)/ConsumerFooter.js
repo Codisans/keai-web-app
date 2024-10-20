@@ -26,7 +26,7 @@ export const ConsumerFooter = () => {
                             icon={<HomeIcon />}
                         />
                     </li>
-                    <li className={`col-span-1 flex justify-cenetr`}>
+                    <li className={`col-span-1`}>
                         <Button
                             className="w-full"
                             href={

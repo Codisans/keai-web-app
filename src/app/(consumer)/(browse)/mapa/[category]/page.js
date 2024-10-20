@@ -6,13 +6,13 @@ export const metadata = {
 }
 
 const MapCategory = async ({ params }) => {
-    const category = await api.getEvents(params.category)
+    const events = await api.getEvents({ categories: [params.category] })
 
-    if (!category) return
+    if (!events) return
 
     return (
         <>
-            {category?.events?.map(event => (
+            {events.map(event => (
                 <EventMarker key={event.id} event={event} />
             ))}
         </>

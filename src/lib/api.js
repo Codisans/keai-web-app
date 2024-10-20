@@ -1,5 +1,25 @@
 import Axios from 'axios'
 
+export const defaultEventsParams = {
+    categories: null,
+    tags: null,
+    min_price: 0,
+    max_price: null,
+    start_date: new Date('1950-01-01').toISOString(),
+    end_date: null,
+}
+
+export const getQueryString = (params, encode = true) => {
+    let queryString = ''
+    Object.entries(params).forEach(([key, value]) => {
+        if (value !== null) {
+            queryString += `${key}${Array.isArray(value) ? '[]' : ''}=${Array.isArray(value) ? value.map(v => v).join('+') : value}&`
+        }
+    })
+    console.log(queryString)
+    return encode ? encodeURI(queryString) : queryString
+}
+
 class Api {
     constructor() {
         this.axios = Axios.create({
@@ -13,22 +33,9 @@ class Api {
         this.categories = null
     }
 
-    async getCategories() {
-        if (this.categories) return this.categories
-
-        const res = await this.axios.get('/categories')
-
-        try {
-            this.categories = res.data.data
-            return res.data.data
-        } catch (error) {
-            console.error(error)
-        }
-    }
-
-    async getEvents(categoryId) {
+    async getEvents(params = defaultEventsParams) {
         const res = await this.axios.get(
-            categoryId ? `/categories/${categoryId}` : '/events',
+            `/events/filter?${getQueryString({ ...defaultEventsParams, ...params })}`,
         )
 
         try {
@@ -43,6 +50,19 @@ class Api {
 
         try {
             return res.data
+        } catch (error) {
+            console.error(error)
+        }
+    }
+
+    async getCategories() {
+        if (this.categories) return this.categories
+
+        const res = await this.axios.get('/categories')
+
+        try {
+            this.categories = res.data.data
+            return res.data.data
         } catch (error) {
             console.error(error)
         }

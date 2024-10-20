@@ -16,13 +16,15 @@ export const Button = ({
     const path = usePathname()
     const styles = (function (s) {
         switch (s) {
+            case 'none':
+                return ''
             case 'icon':
-                return 'inline-flex justify-center items-center text-icon px-3 h-10 rounded-button bg-white border border-grey-3 text-black active:bg-black/10'
+                return 'inline-flex justify-center items-center text-icon px-3 py-1.5 h-10 rounded-button bg-white text-black active:bg-grey'
             case 'big':
-                return 'w-full flex items-center justify-center h-28 text-big-button rounded-button bg-white border border-grey-3 text-black active:bg-black/10'
+                return 'w-full flex items-center justify-center h-28 text-big-button rounded-button bg-white border border-grey-3 text-black active:bg-grey'
             case 'regular':
             default:
-                return 'inline-flex justify-center items-center text-button px-3 h-10 rounded-button bg-white border border-grey-3 text-black active:bg-black/10'
+                return 'inline-flex justify-center items-center text-button px-3 h-10 rounded-button bg-white border border-grey-3 text-black active:bg-grey'
         }
     })(style)
 
@@ -39,7 +41,7 @@ export const Button = ({
 
     return (
         <button
-            className={`${className} ${styles} ${active ? 'active' : ''} ${disabled ? 'disabled' : ''} disabled:text-black/10 disabled:-pointer-events-none ring-black/80 active:ring-2`}
+            className={`${className} ${styles} ${active ? 'active' : ''} ${disabled ? 'disabled' : ''} disabled:text-grey-dark disabled:-pointer-events-none`}
             type={type}
             disabled={disabled}
             {...props}>

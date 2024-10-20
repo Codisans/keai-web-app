@@ -59,7 +59,9 @@ module.exports = {
                 3: '#115748',
             },
             grey: {
-                DEFAULT: '#ebebeb',
+                light: '#ebebeb',
+                DEFAULT: '#DDDDDD',
+                dark: '#797979',
                 1: '#F5F5F5',
                 2: '#ebebeb',
                 3: '#DDDDDD',

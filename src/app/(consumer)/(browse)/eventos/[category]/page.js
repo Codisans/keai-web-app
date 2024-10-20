@@ -6,16 +6,16 @@ export const metadata = {
 }
 
 const CategoryPage = async ({ params }) => {
-    const category = await api.getEvents(params.category)
+    const events = await api.getEvents({ categories: [params.category] })
 
-    if (!category) return
+    if (!events) return
 
     return (
         <>
             <div className="w-full py-8 flex flex-col gap-y-gutter">
-                <EventCarousel heading="Para ti" events={category.events} />
-                <EventCarousel heading="Hoy" events={category.events} />
-                <EventCarousel heading="Ferias" events={category.events} />
+                <EventCarousel heading="Para ti" events={events} />
+                <EventCarousel heading="Hoy" events={events} />
+                <EventCarousel heading="Ferias" events={events} />
             </div>
         </>
     )
