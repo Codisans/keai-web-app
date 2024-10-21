@@ -3,7 +3,7 @@ import React, { createContext, useState, useContext } from 'react'
 
 const MapContext = createContext({
     params: {},
-    updateParam: () => {},
+    updateParams: () => {},
     resetParams: () => {},
     clearParams: () => {},
 })
@@ -19,16 +19,21 @@ export const MapProvider = ({ children }) => {
         setParams(defaultEventsParams)
     }
 
-    const updateParam = (key, value) => {
+    const updateParams = params => {
         setParams(prevParams => ({
             ...prevParams,
-            [key]: value,
+            ...params,
         }))
     }
 
     return (
         <MapContext.Provider
-            value={{ params, updateParam, clearParams, resetParams }}>
+            value={{
+                params,
+                updateParams,
+                clearParams,
+                resetParams,
+            }}>
             {children}
         </MapContext.Provider>
     )

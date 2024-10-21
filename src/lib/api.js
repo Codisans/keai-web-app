@@ -9,7 +9,7 @@ export const defaultEventsParams = {
     end_date: null,
 }
 
-export const getQueryString = (params, encode = true) => {
+export const createQueryString = (params, encode = true) => {
     let queryString = ''
     Object.entries(params).forEach(([key, value]) => {
         if (value !== null) {
@@ -18,6 +18,23 @@ export const getQueryString = (params, encode = true) => {
     })
     console.log(queryString)
     return encode ? encodeURI(queryString) : queryString
+}
+
+export const getUrlQueryParams = (queryString, encoded = true) => {
+    let params = {}
+
+    const decodedQueryString = encoded ? decodeURI(queryString) : queryString
+    decodedQueryString.split('&').forEach(param => {
+        const [key, value] = param.split('=')
+
+        if (key.contains('[]')) {
+            params[key.split('[]')[0]] = value.split('+')
+        } else {
+            params[key] = value
+        }
+    })
+
+    return params
 }
 
 class Api {
@@ -35,7 +52,7 @@ class Api {
 
     async getEvents(params = defaultEventsParams) {
         const res = await this.axios.get(
-            `/events/filter?${getQueryString({ ...defaultEventsParams, ...params })}`,
+            `/events/filter?${createQueryString({ ...defaultEventsParams, ...params })}`,
         )
 
         try {
