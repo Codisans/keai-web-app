@@ -13,7 +13,7 @@ export const MapFilterModal = ({ children }) => {
 
     return (
         <div
-            className={`fixed top-32 border border-grey-3 bottom-16 inset-x-gg rounded-ui bg-white overflow-hidden z-filter invisible open:visible ${filterIsOpen ? 'open' : ''}`}>
+            className={`fixed top-28 border border-grey-3 h-[calc(100svh-10.42rem)] right-2 w-[calc(100%-1rem)] max-w-xl rounded-ui overflow-hidden z-filter invisible open:visible ${filterIsOpen ? 'open' : ''}`}>
             {children}
         </div>
     )

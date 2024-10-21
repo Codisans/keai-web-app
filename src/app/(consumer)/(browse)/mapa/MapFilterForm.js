@@ -71,29 +71,29 @@ export const getDateParams = (value, otherValues) => {
 export const getPriceParams = values => {
     return {
         min_price: values[0],
-        max_price: values[1] === 100 ? null : values[1],
+        max_price: values[1] === 105 ? null : values[1],
     }
 }
 
 const getMinPriceLabel = value => {
-    if (value[0] === 0 && value[1] === 100) return 'Todos'
+    if (value[0] === 0 && value[1] === 105) return 'Todos'
 
     if (value[0] === 0) return ''
 
-    if (value[0] === 100) return '$100k+'
+    if (value[0] === 105) return '$100k+'
 
-    if (value[1] === 100) return `$${value[0]}k+`
+    if (value[1] === 105) return `$${value[0]}k+`
 
     return `$${value[0]}k`
 }
 
 const getMaxPriceLabel = value => {
-    if (value[0] === 0 && value[1] === 100) return ''
-    if (value[0] !== 0 && value[1] === 100) return ''
+    if (value[0] === 0 && value[1] === 105) return ''
+    if (value[0] !== 0 && value[1] === 105) return ''
 
     if (value[1] === 0) return 'Gratis'
 
-    if (value[0] === 100) return ''
+    if (value[0] === 105) return ''
 
     if (value[0] === 0) return `< $${value[1]}k`
 
@@ -116,7 +116,7 @@ export const MapFilterForm = () => {
     const [date, setDate] = useState('today')
     const [startDate, setStartDate] = useState(today)
     const [endDate, setEndDate] = useState('')
-    const [priceValue, setPriceValue] = useState([0, 100])
+    const [priceValue, setPriceValue] = useState([0, 105])
 
     //     useEffect(() => {
     // handleChange()
@@ -144,8 +144,8 @@ export const MapFilterForm = () => {
     return (
         <form
             onSubmit={handleSubmit}
-            className="relative h-full overflow-y-auto select-none">
-            <div className="flex justify-between sticky top-0 w-full p-gg bg-white shadow">
+            className="relative h-full overflow-y-auto w-full p-1 select-none bg-white">
+            <div className="flex justify-between sticky top-0 w-full p-gg">
                 <p className="text-h2">Filtros:</p>
                 <div className="flex gap-gg">
                     <Button type="button" onClick={handleClear}>
@@ -157,9 +157,9 @@ export const MapFilterForm = () => {
                 </div>
             </div>
             {/* <TagSearch options={tags} /> */}
-            <div className="w-full flex flex-col gap-6 p-gg">
-                <fieldset className="flex flex-col">
-                    <div className="flex gap-3 items-end pb-3">
+            <div className="w-full flex flex-col gap-gg p-1">
+                <fieldset className="flex flex-col bg-grey-1 p-gg rounded-ui">
+                    <div className="flex gap-3 items-end pb-3 h-8">
                         <legend className="text-caps text-black/80 uppercase">
                             Fechas:
                         </legend>
@@ -185,7 +185,7 @@ export const MapFilterForm = () => {
                                 }}
                             />
                             <label
-                                className="block peer-checked:bg-black peer-checked:text-white border border-grey-3 py-2 px-3 rounded-button"
+                                className="block peer-checked:bg-black peer-checked:text-white bg-white py-2 px-3 rounded-button"
                                 htmlFor="date-all">
                                 Todas
                             </label>
@@ -205,7 +205,7 @@ export const MapFilterForm = () => {
                                 }}
                             />
                             <label
-                                className="block peer-checked:bg-black peer-checked:text-white border border-grey-3 py-2 px-3 rounded-button"
+                                className="block peer-checked:bg-black peer-checked:text-white bg-white py-2 px-3 rounded-button"
                                 htmlFor="date-today">
                                 Hoy
                             </label>
@@ -221,7 +221,7 @@ export const MapFilterForm = () => {
                                 type="radio"
                             />
                             <label
-                                className="block peer-checked:bg-black peer-checked:text-white border border-grey-3 py-2 px-3 rounded-button"
+                                className="block peer-checked:bg-black peer-checked:text-white bg-white py-2 px-3 rounded-button"
                                 htmlFor="date-this-weekend">
                                 Este fds
                             </label>
@@ -237,7 +237,7 @@ export const MapFilterForm = () => {
                                 type="radio"
                             />
                             <label
-                                className="block peer-checked:bg-black peer-checked:text-white border border-grey-3 py-2 px-3 rounded-button"
+                                className="block peer-checked:bg-black peer-checked:text-white bg-white py-2 px-3 rounded-button"
                                 htmlFor="date-this-week">
                                 Esta semana
                             </label>
@@ -252,7 +252,7 @@ export const MapFilterForm = () => {
                             type="radio"
                         />
                         <label
-                            className="block peer-checked:bg-black peer-checked:text-white border border-grey-3 py-2 px-3 rounded-button"
+                            className="block peer-checked:bg-black peer-checked:text-white bg-white py-2 px-3 rounded-button"
                             htmlFor="date-otro">
                             Otro
                         </label>
@@ -288,17 +288,17 @@ export const MapFilterForm = () => {
                         </div>
                     </div>
                 </fieldset>
-                <fieldset className="flex flex-col">
-                    <div className="flex gap-3 items-end pb-3">
+                <fieldset className="flex flex-col items-start bg-grey-1 rounded-ui p-gg">
+                    <div className="flex gap-3 items-end py-1 bg-white rounded-button px-3">
                         <legend className="text-caps text-black/80 uppercase">
                             Precio:
                         </legend>
-                        <span className="text-body uppercase font-bold text-black">
+                        <span className="text-h3 uppercase font-bold text-black">
                             {getMinPriceLabel(priceValue)}
                             {getMaxPriceLabel(priceValue)}
                         </span>
                     </div>
-                    <div className="flex flex-wrap gap-x-3 gap-y-2 px-10">
+                    <div className="flex flex-wrap gap-x-3 gap-y-2 w-full px-12 pt-10">
                         <input
                             id="precio-other"
                             name="price"
@@ -306,12 +306,13 @@ export const MapFilterForm = () => {
                             value="other"
                             type="radio"
                         />
-                        <div className="w-80 pt-10">
+                        <div className="w-full">
                             <Box sx={{ width: '100%' }}>
                                 <Slider
                                     getAriaLabel={() => 'Rango de precios'}
                                     aria-label="Always visible"
                                     valueLabelDisplay="on"
+                                    step={5}
                                     valueLabelFormat={value => {
                                         if (
                                             priceValue[0] === 0 &&
@@ -319,19 +320,19 @@ export const MapFilterForm = () => {
                                         )
                                             return 'Gratis'
                                         if (
-                                            priceValue[0] === 100 &&
-                                            priceValue[1] === 100
+                                            priceValue[0] === 105 &&
+                                            priceValue[1] === 105
                                         )
                                             return '$100k+'
 
                                         if (value === 0) return 'Gratis'
-                                        if (value === 100) return 'Sin limite'
+                                        if (value === 105) return 'Sin limite'
 
                                         return `$${value}k`
                                     }}
                                     value={priceValue}
                                     min={0}
-                                    max={100}
+                                    max={105}
                                     onChange={e => {
                                         setPriceValue(e.target.value)
                                     }}
@@ -342,8 +343,8 @@ export const MapFilterForm = () => {
                                         )
                                             return 'Gratis'
                                         if (
-                                            priceValue[0] === 100 &&
-                                            priceValue[1] === 100
+                                            priceValue[0] === 105 &&
+                                            priceValue[1] === 105
                                         )
                                             return '$100k+'
 
@@ -352,7 +353,7 @@ export const MapFilterForm = () => {
                                                 ? 'Gratis'
                                                 : `$${priceValue[0]}k`
                                         const max =
-                                            priceValue[1] === 100
+                                            priceValue[1] === 105
                                                 ? '+'
                                                 : ` - $${priceValue[1]}k`
                                         return `${min}${max}`

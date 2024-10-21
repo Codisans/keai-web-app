@@ -71,6 +71,7 @@ module.exports = {
             pink: {
                 DEFUALT: '#F2ABAB',
             },
+            transparent: 'transparent',
         },
         fontFamily: {
             tenorite: ['Tenorite', 'system-ui', '-apple-system', 'sans-serif'],
