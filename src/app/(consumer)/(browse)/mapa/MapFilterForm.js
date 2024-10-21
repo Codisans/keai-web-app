@@ -1,7 +1,7 @@
 'use client'
 
-import { useContext, useState } from 'react'
-import { ConsumerContext } from '@/app/(consumer)/ConsumerContext'
+import { useState } from 'react'
+// import { ConsumerContext } from '@/app/(consumer)/ConsumerContext'
 import { Button } from '@/components/atoms/Button'
 import { Box, Slider } from '@mui/material'
 import { useMapContext } from './MapContext'
@@ -110,7 +110,7 @@ const getMaxPriceLabel = value => {
 
 export const MapFilterForm = () => {
     const today = new Date().toISOString()
-    const { setFilterIsOpen } = useContext(ConsumerContext)
+    // const { setFilterIsOpen } = useContext(ConsumerContext)
     const { params, updateParams, clearParams } = useMapContext()
     const minDate = new Date().setHours(0, 0, 0, 0)
     const [date, setDate] = useState('today')
@@ -367,32 +367,32 @@ export const MapFilterForm = () => {
     )
 }
 
-export const FilterFieldset = ({ legend, name, options }) => {
-    ;<fieldset className="flex flex-col">
-        <legend className="text-caps text-black/80 uppercase pb-gg">
-            Precio
-        </legend>
-        <div className="flex flex-wrap gap-x-3 gap-y-2">
-            <div>
-                <input
-                    id="price-free"
-                    name="price"
-                    className="peer hidden"
-                    type="radio"
-                />
-                <label
-                    className="block peer-checked:bg-black peer-checked:text-white border border-grey-3 py-2 px-3 rounded-button"
-                    htmlFor="price-free">
-                    Gratis
-                </label>
-            </div>
-            <input
-                id="precio-other"
-                name="price"
-                className="peer hidden"
-                value="other"
-                type="radio"
-            />
-        </div>
-    </fieldset>
-}
+// export const FilterFieldset = ({ legend, name, options }) => {
+//     ;<fieldset className="flex flex-col">
+//         <legend className="text-caps text-black/80 uppercase pb-gg">
+//             Precio
+//         </legend>
+//         <div className="flex flex-wrap gap-x-3 gap-y-2">
+//             <div>
+//                 <input
+//                     id="price-free"
+//                     name="price"
+//                     className="peer hidden"
+//                     type="radio"
+//                 />
+//                 <label
+//                     className="block peer-checked:bg-black peer-checked:text-white border border-grey-3 py-2 px-3 rounded-button"
+//                     htmlFor="price-free">
+//                     Gratis
+//                 </label>
+//             </div>
+//             <input
+//                 id="precio-other"
+//                 name="price"
+//                 className="peer hidden"
+//                 value="other"
+//                 type="radio"
+//             />
+//         </div>
+//     </fieldset>
+// }
