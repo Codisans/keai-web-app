@@ -45,13 +45,32 @@ export const EventHeader = () => {
                 <ul className="grid w-full grid-cols-5 gap-gg">
                     <li className="col-span-1">
                         <Button
+                            className="w-full dark"
+                            onClick={() => router.back()}
+                            icon={
+                                <svg
+                                    className="w-8 h-8 -m-1"
+                                    aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24">
+                                    <path
+                                        stroke="currentColor"
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        strokeWidth="2"
+                                        d="M5 12h14M5 12l4-4m-4 4 4 4"
+                                    />
+                                </svg>
+                            }
+                        />
+                    </li>
+                    <li className="col-span-1">
+                        <Button
                             className="w-full"
                             href="/eventos"
                             icon={<HomeIcon />}
                         />
-                    </li>
-                    <li className="col-span-2">
-                        <Button onClick={() => router.back()}>Go back</Button>
                     </li>
                     <li className="col-start-5 col-end-6">
                         <Button

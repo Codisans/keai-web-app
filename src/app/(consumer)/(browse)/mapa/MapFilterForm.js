@@ -144,8 +144,8 @@ export const MapFilterForm = () => {
     return (
         <form
             onSubmit={handleSubmit}
-            className="relative h-full overflow-y-auto w-full p-1 select-none bg-white">
-            <div className="flex justify-between sticky top-0 w-full p-gg">
+            className="relative h-full overflow-y-auto w-full select-none bg-white">
+            <div className="flex justify-between sticky top-0 p-1 w-full bg-white">
                 <p className="text-h2">Filtros:</p>
                 <div className="flex gap-gg">
                     <Button type="button" onClick={handleClear}>
@@ -157,106 +157,53 @@ export const MapFilterForm = () => {
                 </div>
             </div>
             {/* <TagSearch options={tags} /> */}
-            <div className="w-full flex flex-col gap-gg p-1">
-                <fieldset className="flex flex-col bg-grey-1 p-gg rounded-ui">
-                    <div className="flex gap-3 items-end pb-3 h-8">
-                        <legend className="text-caps text-black/80 uppercase">
-                            Fechas:
-                        </legend>
-                        <span className="text-body uppercase font-bold text-black">
-                            {startDate && moment(startDate).format('ddd D MMM')}
-                            {endDate &&
-                                ` - ${moment(endDate).format('ddd D MMM')}`}
-                        </span>
-                    </div>
-                    <div className="flex flex-wrap gap-x-3 gap-y-2">
-                        <div>
-                            <input
-                                id="date-all"
-                                name="date"
-                                value="all"
-                                className="peer hidden"
-                                checked={date === 'all'}
-                                type="radio"
-                                onChange={e => {
-                                    setDate(e.target.value)
-                                    setStartDate('')
-                                    setEndDate('')
-                                }}
-                            />
-                            <label
-                                className="block peer-checked:bg-black peer-checked:text-white bg-white py-2 px-3 rounded-button"
-                                htmlFor="date-all">
-                                Todas
-                            </label>
-                        </div>
-                        <div>
-                            <input
-                                id="date-today"
-                                name="date"
-                                value="today"
-                                className="peer hidden"
-                                checked={date === 'today'}
-                                type="radio"
-                                onChange={e => {
-                                    setDate(e.target.value)
-                                    setStartDate(today)
-                                    setEndDate(today)
-                                }}
-                            />
-                            <label
-                                className="block peer-checked:bg-black peer-checked:text-white bg-white py-2 px-3 rounded-button"
-                                htmlFor="date-today">
-                                Hoy
-                            </label>
-                        </div>
-                        <div>
-                            <input
-                                id="date-this-weekend"
-                                name="date"
-                                value="this-weekend"
-                                className="peer hidden"
-                                checked={date === 'this-weekend'}
-                                onChange={e => setDate(e.target.value)}
-                                type="radio"
-                            />
-                            <label
-                                className="block peer-checked:bg-black peer-checked:text-white bg-white py-2 px-3 rounded-button"
-                                htmlFor="date-this-weekend">
-                                Este fds
-                            </label>
-                        </div>
-                        <div>
-                            <input
-                                id="date-this-week"
-                                name="date"
-                                className="peer hidden"
-                                value="this-week"
-                                checked={date === 'this-week'}
-                                onChange={e => setDate(e.target.value)}
-                                type="radio"
-                            />
-                            <label
-                                className="block peer-checked:bg-black peer-checked:text-white bg-white py-2 px-3 rounded-button"
-                                htmlFor="date-this-week">
-                                Esta semana
-                            </label>
-                        </div>
-                        <input
-                            id="date-otro"
+            <div className="w-full flex flex-col">
+                <FilterSection
+                    legend={`${moment(startDate)?.format('ddd D MMM') || null} ${moment(endDate)?.format('ddd D MMM') || null}`}>
+                    <div className="flex flex-wrap gap-x-1 gap-y-1">
+                        <DateRadio
+                            id="date-today"
+                            name="date"
+                            value="today"
+                            label="Hoy"
+                            checked={date === 'today'}
+                            onChange={e => {
+                                setDate(e.target.value)
+                                setStartDate(today)
+                                setEndDate(today)
+                            }}
+                        />
+                        <DateRadio
+                            id="date-tomorrow"
+                            name="date"
+                            value="tomorrow"
+                            checked={date === 'tomorrow'}
+                            onChange={e => {
+                                setDate(e.target.value)
+                                setStartDate(today)
+                                setEndDate(today)
+                            }}
+                            label="Mañana"
+                        />
+                        <DateRadio
+                            id="date-this-weekend"
+                            name="date"
+                            value="this-weekend"
+                            className="peer hidden"
+                            checked={date === 'this-weekend'}
+                            onChange={e => setDate(e.target.value)}
+                            label="Este FDS"
+                        />
+                        <DateRadio
+                            id="date-this-week"
                             name="date"
                             className="peer hidden"
-                            value="other"
-                            checked={date === 'other'}
+                            value="this-week"
+                            checked={date === 'this-week'}
                             onChange={e => setDate(e.target.value)}
-                            type="radio"
+                            label="Esta Semana"
                         />
-                        <label
-                            className="block peer-checked:bg-black peer-checked:text-white bg-white py-2 px-3 rounded-button"
-                            htmlFor="date-otro">
-                            Otro
-                        </label>
-                        <div className="hidden peer-checked:grid w-full grid-cols-2 gap-gg">
+                        <div className="grid w-full grid-cols-2 gap-gg">
                             <div className="col-span-1">
                                 <input
                                     className="w-full border-grey-3 rounded-button block"
@@ -287,17 +234,11 @@ export const MapFilterForm = () => {
                             </div>
                         </div>
                     </div>
-                </fieldset>
-                <fieldset className="flex flex-col items-start bg-grey-1 rounded-ui p-gg">
-                    <div className="flex gap-3 items-end py-1 bg-white rounded-button px-3">
-                        <legend className="text-caps text-black/80 uppercase">
-                            Precio:
-                        </legend>
-                        <span className="text-h3 uppercase font-bold text-black">
-                            {getMinPriceLabel(priceValue)}
-                            {getMaxPriceLabel(priceValue)}
-                        </span>
-                    </div>
+                </FilterSection>
+
+                <FilterSection
+                    legend="Precio:"
+                    indicator={`${getMinPriceLabel(priceValue)}${getMaxPriceLabel(priceValue)}`}>
                     <div className="flex flex-wrap gap-x-3 gap-y-2 w-full px-12 pt-10">
                         <input
                             id="precio-other"
@@ -362,9 +303,46 @@ export const MapFilterForm = () => {
                             </Box>
                         </div>
                     </div>
-                </fieldset>
+                </FilterSection>
             </div>
         </form>
+    )
+}
+
+export const DateRadio = ({ id, name, value, checked, onChange, label }) => {
+    return (
+        <div>
+            <input
+                id={id}
+                name={name}
+                value={value}
+                className="peer hidden"
+                checked={checked}
+                type="radio"
+                onChange={onChange}
+            />
+            <label
+                className="block text-caps peer-checked:bg-black border-grey border peer-checked:text-white bg-white py-2 px-3 rounded-button"
+                htmlFor={id}>
+                {label}
+            </label>
+        </div>
+    )
+}
+
+export const FilterSection = ({ children, legend, indicator }) => {
+    return (
+        <fieldset className="block border-t border-black/20 py-4 mx-4 first:mt-4">
+            <div className="flex items-end w-full gap-2 pb-4">
+                {legend && (
+                    <legend className="text-black/80 text-caps uppercase">
+                        {legend}
+                    </legend>
+                )}
+                {indicator && <span className="text-h3">{indicator}</span>}
+            </div>
+            {children}
+        </fieldset>
     )
 }
 

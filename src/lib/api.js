@@ -52,7 +52,7 @@ class Api {
 
     async getEvents(params = defaultEventsParams) {
         const res = await this.axios.get(
-            `/events/filter?${createQueryString({ ...defaultEventsParams, ...params })}`,
+            `/events?${createQueryString({ ...defaultEventsParams, ...params })}`,
         )
 
         try {
