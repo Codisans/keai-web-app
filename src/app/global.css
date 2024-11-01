@@ -38,10 +38,6 @@ html {
     position: relative;
 }
 
-.typo-pre {
-    @apply text-pre uppercase font-tenorite;
-}
-
 @keyframes walk {
     0% {
         background-position: 5% 5%;

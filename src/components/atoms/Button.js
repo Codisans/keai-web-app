@@ -32,7 +32,7 @@ export const Button = ({
         return (
             <Link
                 href={href}
-                className={`${className} ${styles} ${active != null ? (active ? 'active' : '') : path == href ? 'active' : ''} select-none active:bg-black/10 active:pointer-events-none`}
+                className={`${className} ${styles} ${active != null ? (active ? 'active' : '') : path == href ? 'active' : ''} dark:bg-black dark:text-white select-none active:bg-black/10 active:pointer-events-none`}
                 {...props}>
                 {icon || children}
             </Link>
@@ -41,7 +41,7 @@ export const Button = ({
 
     return (
         <button
-            className={`${className} ${styles} ${active ? 'active' : ''} ${disabled ? 'disabled' : ''} disabled:text-grey-dark disabled:-pointer-events-none`}
+            className={`${className} ${styles} ${active ? 'active' : ''} ${disabled ? 'disabled' : ''} dark:bg-black dark:text-white disabled:text-grey-dark disabled:-pointer-events-none`}
             type={type}
             disabled={disabled}
             {...props}>

@@ -12,7 +12,7 @@ export const EventCarousel = ({ heading, events, className = '' }) => {
 
     return (
         <div className={`${className} flex flex-col gap-y-gg`}>
-            {heading && <h2 className="px-gutter typo-pre">{heading}</h2>}
+            {heading && <h2 className="px-gutter text-caps">{heading}</h2>}
 
             <Swiper slidesPerView="auto" className="w-full px-6">
                 {items?.map((event, i) => (

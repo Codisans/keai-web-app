@@ -5,9 +5,12 @@
 //     return acc
 // }, {})
 
+const { FontSizes, font, rem } = require('./src/tailwind/font.plugin.mjs')
+
 module.exports = {
     content: ['./src/**/*.{js,jsx,ts,tsx}'],
     plugins: [
+        FontSizes,
         require('@tailwindcss/forms'),
         require('tailwindcss/plugin')(function ({ addVariant }) {
             addVariant('active', ['.active &', '&.active'])
@@ -27,6 +30,11 @@ module.exports = {
             addVariant('page-scrolled', ['.page-scrolled &', '&.page-scrolled'])
         }),
     ],
+    corePlugins: {
+        fontSize: false,
+        container: false,
+    },
+    darkMode: 'selector',
     safeList: ['bg-deporte'],
     theme: {
         colors: {
@@ -78,24 +86,79 @@ module.exports = {
             sans: ['Opens Sans', 'system-ui', '-apple-system', 'sans-serif'],
         },
         fontSize: {
-            body: ['1rem', '1.1rem'],
-            button: ['1rem', '1rem'],
-            'big-button': ['2rem', '2rem'],
-            caps: ['0.75rem', '1rem'],
-            h1: ['2rem', '2.25rem'],
-            h2: ['1.5rem', '1.7rem'],
-            h3: ['1.25rem', '1.4rem'],
-            icon: ['2rem', '1rem'],
-            pre: ['1rem', '1rem'],
-            'icon-lg': ['3rem', '1.5rem'],
-            indicator: '0.75rem',
-            logo: '2rem',
-            small: ['0.7rem', '0.7rem'],
-            sm: '0.75rem',
-            md: '1rem',
-            lg: '1.25rem',
-            xl: '1.5rem',
-            '2xl': '2rem',
+            body: {
+                base: font(16, {
+                    lineHeight: 18,
+                    letterSpacing: 0,
+                }),
+            },
+            button: {
+                base: font(14, {
+                    lineHeight: 14,
+                    letterSpacing: 0,
+                    textTransform: 'uppercase',
+                }),
+            },
+            'big-button': {
+                base: font(32, {
+                    lineHeight: 32,
+                    letterSpacing: 0,
+                    textTransform: 'uppercase',
+                }),
+            },
+            caps: {
+                base: font(14, {
+                    lineHeight: 14,
+                    letterSpacing: 0,
+                    textTransform: 'uppercase',
+                }),
+            },
+            h1: {
+                base: font(32, {
+                    lineHeight: 32,
+                    letterSpacing: 0,
+                }),
+            },
+            h2: {
+                base: font(24, {
+                    lineHeight: 16,
+                    letterSpacing: 0,
+                }),
+            },
+            h3: {
+                base: font(20, {
+                    lineHeight: 21,
+                    letterSpacing: 0,
+                }),
+            },
+            icon: {
+                base: font(32, {
+                    lineHeight: 16,
+                    letterSpacing: 0,
+                }),
+            },
+            'icon-lg': {
+                base: font(48, {
+                    lineHeight: 24,
+                    letterSpacing: 0,
+                }),
+            },
+            indicator: {
+                base: font(12, {
+                    lineHeight: 12,
+                    letterSpacing: 0,
+                    textTransform: 'uppercase',
+                }),
+            },
+            logo: {
+                base: font(32),
+            },
+            small: {
+                base: font(12, {
+                    lineHeight: 12,
+                    letterSpacing: 0,
+                }),
+            },
         },
         extend: {
             aspectRatio: {
