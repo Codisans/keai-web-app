@@ -2,6 +2,7 @@
 
 import { Swiper, SwiperSlide } from 'swiper/react'
 import Link from 'next/link'
+import { FreeMode } from 'swiper/modules'
 
 export const EventCarousel = ({ heading, events, className = '' }) => {
     if (!events) return
@@ -14,7 +15,13 @@ export const EventCarousel = ({ heading, events, className = '' }) => {
         <div className={`${className} flex flex-col gap-y-gg`}>
             {heading && <h2 className="px-gutter text-caps">{heading}</h2>}
 
-            <Swiper slidesPerView="auto" className="w-full px-6">
+            <Swiper
+                modules={[FreeMode]}
+                freeMode={{
+                    sticky: true,
+                }}
+                slidesPerView="auto"
+                className="w-full px-6">
                 {items?.map((event, i) => (
                     <SwiperSlide
                         key={i}
@@ -35,7 +42,7 @@ export const EventCard = props => {
         <div className="flex flex-col gap-y-3 relative w-full">
             <div className="w-full aspect-[16/9] relative rounded-card overflow-hidden">
                 <img
-                    className="absolute inset-0 w-full h-full object-cover scale-110 active-slide:scale-100 transition-transform ease-in-out duration-500"
+                    className="absolute inset-0 w-full h-full object-cover"
                     src={event.cover || '/placeholder.jpg'}
                 />
             </div>
