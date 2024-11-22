@@ -99,6 +99,14 @@ module.exports = {
                     textTransform: 'uppercase',
                 }),
             },
+            radio: {
+                base: font(12, {
+                    lineHeight: 12,
+                    letterSpacing: 0,
+                    fontWeight: 600,
+                    textTransform: 'uppercase',
+                }),
+            },
             'big-button': {
                 base: font(32, {
                     lineHeight: 32,
@@ -107,9 +115,26 @@ module.exports = {
                 }),
             },
             caps: {
-                base: font(14, {
-                    lineHeight: 14,
+                base: font(16, {
+                    lineHeight: 16,
                     letterSpacing: 0,
+                    fontWeight: 600,
+                    textTransform: 'uppercase',
+                }),
+            },
+            'caps-sm': {
+                base: font(12, {
+                    lineHeight: 12,
+                    letterSpacing: 0,
+                    fontWeight: 600,
+                    textTransform: 'uppercase',
+                }),
+            },
+            'caps-lg': {
+                base: font(20, {
+                    lineHeight: 20,
+                    letterSpacing: 0,
+                    fontWeight: 600,
                     textTransform: 'uppercase',
                 }),
             },

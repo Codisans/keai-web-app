@@ -1,28 +1,23 @@
 'use client'
-export const DateTime = ({ value, type = 'date' }) => {
-    const d = value instanceof Date ? value : new Date(value || null)
+import moment from 'moment'
 
-    switch (type) {
-        case 'date':
-            return (
-                <time className="capitalize tracking-wide">
-                    {d.toLocaleDateString('es-CL', {
-                        weekday: 'short',
-                        day: 'numeric',
-                        month: 'short',
-                        year: '2-digit',
-                    })}
-                </time>
-            )
-        case 'time':
-            return (
-                <time className="tracking-wider">
-                    {d.toLocaleTimeString('es-CL', {
-                        hour12: false,
-                        hour: '2-digit',
-                        minute: '2-digit',
-                    })}
-                </time>
-            )
+export const DateTime = ({
+    value,
+    format = 'date',
+    className = 'capitalize tracking-wide',
+}) => {
+    const getFormat = () => {
+        switch (format) {
+            case 'date':
+                return 'ddd D MMM YYYY'
+            case 'time':
+                return 'HH:mm'
+            default:
+                return format
+        }
     }
+
+    return (
+        <time className={className}>{moment(value).format(getFormat())}</time>
+    )
 }

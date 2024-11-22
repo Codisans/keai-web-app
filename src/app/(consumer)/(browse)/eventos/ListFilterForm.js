@@ -1,25 +1,16 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-// import { ConsumerContext } from '@/app/(consumer)/ConsumerContext'
 import { Button } from '@/components/atoms/Button'
 import moment from 'moment'
 import { getPriceIndicatorText } from '../FilterContext'
 import { PriceSlider } from '../PriceSlider'
 import { FilterSection } from '../FilterSection'
 import { DateRadio } from '../DateRadio'
-import { useRouter } from 'next/navigation'
-// import AutoComplete from '@/components/atoms/AutoComplete'
-import { TestBlock } from '@/components/atoms/TestBlock'
 import { useConsumerContext } from '../../ConsumerContext'
-import { EventURLSearchParams } from '@/utils/EventURLSearchParams'
 
-export const MapFilterForm = () => {
-    // const { setFilterIsOpen } = useContext(ConsumerContext)
-    const { tags } = useConsumerContext()
-    const router = useRouter()
-    // const { params, updateParams, clearParams, getSearchParams } =
-    //     useFilterContext()
+export const ListFilterForm = () => {
+    const { setFilterIsOpen } = useConsumerContext()
     const [date, setDate] = useState('today')
     const [minDateInput, setMinDateInput] = useState('')
     const [maxDateInput, setMaxDateInput] = useState('')
@@ -33,53 +24,51 @@ export const MapFilterForm = () => {
         setMaxDate(today)
     }, [])
 
-    const handleSubmit = e => {
-        e?.preventDefault()
-        const params = {
-            min_date: moment(minDate).format('YYYY-MM-DD'),
-            max_date: moment(maxDate).format('YYYY-MM-DD'),
-            min_price: (() => {
-                switch (priceValue[0]) {
-                    case 105:
-                        return 100000
-                    case 0:
-                        return null
-                    default:
-                        return priceValue[0] * 1000
-                }
-            })(),
-            max_price: priceValue[1] === 105 ? null : priceValue[1] * 1000,
-        }
-        const eventSearchParams = new EventURLSearchParams(params)
-        router.push(`?${eventSearchParams.toClientMapString()}`)
-    }
+    // useEffect(() => {
+    //     const newParams = {
+    //         min_date: minDate,
+    //         max_date: maxDate,
+    //         min_price: priceValue[0] === 105 ? 100 : priceValue[0],
+    //         max_price: priceValue[1] === 105 ? null : priceValue[1],
+    //     }
+    //     // updateParams(newParams)
+    // }, [minDate, maxDate, priceValue])
 
-    const handleClear = () => {
-        const today = moment().format('YYYY-MM-DD')
-        setMinDate(today)
-        setMaxDate(today)
-        setMinDateInput('')
-        setMaxDateInput('')
-        setPriceValue([0, 105])
-    }
+    // const handleSubmit = e => {
+    //     e?.preventDefault()
+    //     console.log(params)
+    // }
+
+    // const handleClear = () => {
+    //     const today = moment().format('YYYY-MM-DD')
+    //     setMinDate(today)
+    //     setMaxDate(today)
+    //     setMinDateInput('')
+    //     setMaxDateInput('')
+    //     setPriceValue([0, 105])
+    //     clearParams()
+    // }
 
     return (
-        <form
-            onSubmit={handleSubmit}
-            className="relative h-full overflow-y-auto w-full select-none bg-white">
-            <div className="flex justify-between sticky top-0 p-4 w-full bg-white">
+        <form className="relative h-full overflow-y-auto select-none">
+            <div className="flex justify-between sticky top-0 w-full p-gg bg-white shadow">
                 <p className="text-h2">Filtros:</p>
                 <div className="flex gap-gg">
-                    <Button type="button" onClick={handleClear}>
+                    <Button
+                        type="button"
+                        onClick={() => console.log('clear filter')}>
                         Restablecer
                     </Button>
-                    <Button type="button" onClick={handleSubmit}>
+                    <Button
+                        className="!bg-black text-white"
+                        type="button"
+                        onClick={() => setFilterIsOpen(s => !s)}>
                         Aplicar
                     </Button>
                 </div>
             </div>
             {/* <TagSearch options={tags} /> */}
-            <div className="w-full flex flex-col">
+            <div className="w-full flex flex-col gap-6 p-gg">
                 <FilterSection
                     indicator={
                         <legend className="w-full flex justify-between items-center gap-1 text-caps py-2">
@@ -122,7 +111,7 @@ export const MapFilterForm = () => {
                             onChange={e => {
                                 setDate(e.target.value)
                                 setMinDate(moment().format('YYYY-MM-DD'))
-                                setMaxDate(moment().format('YYYY-MM-DD'))
+                                setMaxDate('')
                                 setMinDateInput('')
                                 setMaxDateInput('')
                             }}
@@ -234,7 +223,6 @@ export const MapFilterForm = () => {
                         </div>
                     </div>
                 </FilterSection>
-
                 <FilterSection
                     legend="Precio:"
                     indicator={
@@ -248,11 +236,6 @@ export const MapFilterForm = () => {
                             setPriceValue={setPriceValue}
                         />
                     </div>
-                </FilterSection>
-
-                <FilterSection legend="Tags">
-                    <TestBlock data={tags} />
-                    {/* <AutoComplete options={tags} /> */}
                 </FilterSection>
             </div>
         </form>

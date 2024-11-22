@@ -3,7 +3,7 @@
 import { useContext, useEffect } from 'react'
 import { ConsumerContext } from '@/app/(consumer)/ConsumerContext'
 
-export const FilterModal = ({ children }) => {
+export const ListFilterModal = ({ children }) => {
     const { filterIsOpen, setFilterIsOpen } = useContext(ConsumerContext)
 
     useEffect(() => {

@@ -22,7 +22,7 @@ export default function LeafletMap({ children }) {
     useEffect(() => {
         mapRef.current = L.map('map', {
             center: [-33.4489, -70.6693],
-            zoom: 13,
+            zoom: 10,
             zoomControl: false,
             layers: [
                 L.tileLayer(
@@ -42,7 +42,7 @@ export default function LeafletMap({ children }) {
 
                 mapRef.current?.setView(
                     [position.coords.latitude, position.coords.longitude],
-                    14,
+                    12,
                 )
             })
         } else {

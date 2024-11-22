@@ -1,4 +1,4 @@
-import SearchInput from '../atoms/SearchInput'
+import AutoComplete from '../atoms/AutoComplete'
 import api from '@/lib/api'
 
 export const TagSearch = async () => {
@@ -6,7 +6,7 @@ export const TagSearch = async () => {
 
     return (
         <section className="py-4 px-gg">
-            <SearchInput
+            <AutoComplete
                 options={tags?.map(
                     tag => new Object({ id: tag.id, label: tag.name }),
                 )}

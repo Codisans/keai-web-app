@@ -1,15 +1,16 @@
 import { EventsHeader } from './EventsHeader'
-import { FilterModal } from './FilterModal'
-import { FilterForm } from './FilterForm'
+import { ListFilterForm } from './ListFilterForm'
+import { ListFilterModal } from './ListFilterModal'
 
 const EventsLayout = ({ children }) => {
     return (
         <>
             <EventsHeader />
             {children}
-            <FilterModal>
-                <FilterForm />
-            </FilterModal>
+
+            <ListFilterModal>
+                <ListFilterForm />
+            </ListFilterModal>
         </>
     )
 }

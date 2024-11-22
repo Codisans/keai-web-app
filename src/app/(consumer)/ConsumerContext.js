@@ -1,6 +1,6 @@
 'use client'
 import { usePathname } from 'next/navigation'
-import { createContext, useState, useEffect } from 'react'
+import { createContext, useState, useEffect, useContext } from 'react'
 
 export const ConsumerContext = createContext({
     categories: [],
@@ -50,3 +50,5 @@ export const ConsumerContextProvider = ({ children, categories, tags }) => {
         </ConsumerContext.Provider>
     )
 }
+
+export const useConsumerContext = () => useContext(ConsumerContext)

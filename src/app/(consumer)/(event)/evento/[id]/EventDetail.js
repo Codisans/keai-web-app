@@ -1,11 +1,13 @@
 'use client'
 import { ConsumerContext } from '@/app/(consumer)/ConsumerContext'
+import { ClipboardCopy } from '@/components/atoms/ClipboardCopy'
 import { useContext, useEffect } from 'react'
 
 export const EventDetail = ({ event }) => {
     const { setSelectedEvent } = useContext(ConsumerContext)
 
     useEffect(() => {
+        console.log(event)
         setSelectedEvent(event)
         return () => setSelectedEvent(null)
     }, [])
@@ -38,18 +40,19 @@ export const EventDetail = ({ event }) => {
                     <p>{event.description}</p>
                 </div>
                 <div className="flex flex-col col-span-12">
-                    <h3 className="pb-2 uppercase text-caps text-grey-4">
-                        Direccion
-                    </h3>
+                    <div className="flex gap-2">
+                        <h3 className="pb-2 uppercase text-caps text-grey-4">
+                            Direccion
+                        </h3>
+                        <ClipboardCopy text={event.formatted_address} />
+                    </div>
 
                     <p className="flex flex-col">
-                        {/* {event.full_address.split(',').map((line, i) => (
-                            <span
-                                key={i}
-                                className="after:content-[','] last:after:hidden">
-                                {line}
-                            </span>
-                        ))} */}
+                        <span>
+                            {event.street_number} {event.street},
+                        </span>
+                        <span>{event.province},</span>
+                        <span>{event.city}</span>
                     </p>
                 </div>
             </div>

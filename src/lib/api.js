@@ -1,42 +1,5 @@
 import Axios from 'axios'
 
-export const defaultEventsParams = {
-    categories: null,
-    tags: null,
-    min_price: 0,
-    max_price: null,
-    start_date: new Date('1950-01-01').toISOString(),
-    end_date: null,
-}
-
-export const createQueryString = (params, encode = true) => {
-    let queryString = ''
-    Object.entries(params).forEach(([key, value]) => {
-        if (value !== null) {
-            queryString += `${key}${Array.isArray(value) ? '[]' : ''}=${Array.isArray(value) ? value.map(v => v).join('+') : value}&`
-        }
-    })
-    console.log(queryString)
-    return encode ? encodeURI(queryString) : queryString
-}
-
-export const getUrlQueryParams = (queryString, encoded = true) => {
-    let params = {}
-
-    const decodedQueryString = encoded ? decodeURI(queryString) : queryString
-    decodedQueryString.split('&').forEach(param => {
-        const [key, value] = param.split('=')
-
-        if (key.contains('[]')) {
-            params[key.split('[]')[0]] = value.split('+')
-        } else {
-            params[key] = value
-        }
-    })
-
-    return params
-}
-
 class Api {
     constructor() {
         this.axios = Axios.create({
@@ -50,15 +13,16 @@ class Api {
         this.categories = null
     }
 
-    async getEvents(params = defaultEventsParams) {
+    async getEvents(queryString) {
         const res = await this.axios.get(
-            `/events?${createQueryString({ ...defaultEventsParams, ...params })}`,
+            queryString ? `/events?${queryString}` : '/events',
         )
 
         try {
-            return res.data.data
+            return res.data?.data || []
         } catch (error) {
             console.error(error)
+            return []
         }
     }
 
@@ -66,9 +30,10 @@ class Api {
         const res = await this.axios.get(`/events/${id}`)
 
         try {
-            return res.data
+            return res.data?.data || null
         } catch (error) {
             console.error(error)
+            return null
         }
     }
 

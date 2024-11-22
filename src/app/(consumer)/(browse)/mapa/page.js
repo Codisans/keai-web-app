@@ -1,13 +1,16 @@
 import { Loading } from '@/app/Loading'
 import { EventMarker } from './EventMarker'
 import api from '@/lib/api'
+// import { TestBlock } from '@/components/atoms/TestBlock'
+import { EventURLSearchParams } from '@/utils/EventURLSearchParams'
 
 export const metadata = {
     title: 'KEAI | Mapa',
 }
 
-const MapPage = async () => {
-    const events = await api.getEvents()
+const MapPage = async ({ searchParams }) => {
+    const urlSearchParams = new EventURLSearchParams(searchParams)
+    const events = await api.getEvents(urlSearchParams.toMapString())
 
     if (!events)
         return (

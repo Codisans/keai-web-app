@@ -16,3 +16,15 @@ export const SearchBar = () => {
         </section>
     )
 }
+
+export const SearchInput = () => {
+    return (
+        <div>
+            <input
+                className="px-3 h-10 align-middle rounded-button border-grey-3 grow"
+                placeholder="Keai?"
+                type="text"
+            />
+        </div>
+    )
+}
