@@ -1,23 +1,24 @@
 'use client'
 
-import { useEffect, useState } from 'react'
-// import { ConsumerContext } from '@/app/(consumer)/ConsumerContext'
+import { useContext, useEffect, useState } from 'react'
+import { ConsumerContext } from '@/app/(consumer)/ConsumerContext'
 import { Button } from '@/components/atoms/Button'
 import moment from 'moment'
 import { getPriceIndicatorText } from '../FilterContext'
 import { PriceSlider } from '../PriceSlider'
 import { FilterSection } from '../FilterSection'
 import { DateRadio } from '../DateRadio'
-import { useRouter } from 'next/navigation'
-// import AutoComplete from '@/components/atoms/AutoComplete'
+import { usePathname, useRouter } from 'next/navigation'
 import { TestBlock } from '@/components/atoms/TestBlock'
 import { useConsumerContext } from '../../ConsumerContext'
 import { EventURLSearchParams } from '@/utils/EventURLSearchParams'
+import TagsAutocomplete from '@/components/atoms/TagsAutocomplete'
 
 export const MapFilterForm = () => {
-    // const { setFilterIsOpen } = useContext(ConsumerContext)
+    const { setFilterIsOpen } = useContext(ConsumerContext)
     const { tags } = useConsumerContext()
     const router = useRouter()
+    const pathname = usePathname()
     // const { params, updateParams, clearParams, getSearchParams } =
     //     useFilterContext()
     const [date, setDate] = useState('today')
@@ -26,6 +27,7 @@ export const MapFilterForm = () => {
     const [minDate, setMinDate] = useState('')
     const [maxDate, setMaxDate] = useState('')
     const [priceValue, setPriceValue] = useState([0, 105])
+    const [selectedTags, setSelectedTags] = useState([])
 
     useEffect(() => {
         const today = moment().format('YYYY-MM-DD')
@@ -35,6 +37,7 @@ export const MapFilterForm = () => {
 
     const handleSubmit = e => {
         e?.preventDefault()
+        setFilterIsOpen(s => !s)
         const params = {
             min_date: moment(minDate).format('YYYY-MM-DD'),
             max_date: moment(maxDate).format('YYYY-MM-DD'),
@@ -49,6 +52,7 @@ export const MapFilterForm = () => {
                 }
             })(),
             max_price: priceValue[1] === 105 ? null : priceValue[1] * 1000,
+            tags: selectedTags.map(tag => tag.id),
         }
         const eventSearchParams = new EventURLSearchParams(params)
         router.push(`?${eventSearchParams.toClientMapString()}`)
@@ -61,6 +65,9 @@ export const MapFilterForm = () => {
         setMinDateInput('')
         setMaxDateInput('')
         setPriceValue([0, 105])
+        setDate('today')
+        setSelectedTags([])
+        router.push(pathname)
     }
 
     return (
@@ -78,7 +85,6 @@ export const MapFilterForm = () => {
                     </Button>
                 </div>
             </div>
-            {/* <TagSearch options={tags} /> */}
             <div className="w-full flex flex-col">
                 <FilterSection
                     indicator={
@@ -252,7 +258,11 @@ export const MapFilterForm = () => {
 
                 <FilterSection legend="Tags">
                     <TestBlock data={tags} />
-                    {/* <AutoComplete options={tags} /> */}
+                    <TagsAutocomplete
+                        selectedTags={selectedTags}
+                        setSelectedTags={setSelectedTags}
+                        tags={tags}
+                    />
                 </FilterSection>
             </div>
         </form>

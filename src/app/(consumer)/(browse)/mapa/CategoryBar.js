@@ -4,7 +4,7 @@ import { FreeMode } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { useContext } from 'react'
 import { ConsumerContext } from '@/app/(consumer)/ConsumerContext'
-import { usePathname } from 'next/navigation'
+import { usePathname, useSearchParams } from 'next/navigation'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { Symbol } from '@/components/atoms/Symbol'
@@ -40,12 +40,15 @@ export const CategoryBar = () => {
 }
 
 export const CategoryCard = ({ category }) => {
+    const searchParams = useSearchParams()
     const path = usePathname()
     const router = useRouter()
     const { setSelectedCategory } = useContext(ConsumerContext)
 
     const parentPath = path.includes('/mapa') ? '/mapa' : '/eventos'
-    const url = category ? `${parentPath}/${category?.id}` : `${parentPath}`
+    const url = category
+        ? `${parentPath}/${category?.id}${searchParams.size > 0 ? `?${searchParams.toString()}` : ''}`
+        : `${parentPath}${searchParams.size > 0 ? `?${searchParams.toString()}` : ''}`
     const categoryId =
         path.includes('/mapa/') || path.includes('/eventos/')
             ? path.split('/').pop()

@@ -6,7 +6,7 @@ import Link from 'next/link'
 import { useContext, useRef } from 'react'
 import { MapContext } from './LeafletMap'
 import Image from 'next/image'
-import { usePathname, useRouter } from 'next/navigation'
+import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { Price } from '@/components/atoms/Price'
 
 export const EventSummary = ({ event }) => {
@@ -15,6 +15,7 @@ export const EventSummary = ({ event }) => {
         useContext(MapContext)
     const router = useRouter()
     const pathname = usePathname()
+    const searchParams = useSearchParams()
 
     useClickOutside(eventSummaryRef, e => {
         if (e.target.classList.contains('leaflet-marker-icon')) return
@@ -26,7 +27,9 @@ export const EventSummary = ({ event }) => {
         }
 
         if (e.target.tagName === 'A') return
-        router?.push(pathname)
+        router?.push(
+            `${pathname}${searchParams.size > 0 ? `?${searchParams.toString()}` : ''}`,
+        )
     })
 
     return (
