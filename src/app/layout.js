@@ -1,11 +1,14 @@
 import '@/app/global.css'
 import { AppContextProvider } from './AppContext'
+import { Suspense } from 'react'
 
 const RootLayout = ({ children }) => {
     return (
-        <html className="overscroll-none select-none h-screen-small" lang="es">
-            <body className="overscroll-none w-full h-screen-small overflow-y-auto font-sans flex flex-col">
-                <AppContextProvider>{children}</AppContextProvider>
+        <html className="select-none overscroll-none h-screen-small" lang="es">
+            <body className="flex flex-col w-full overflow-y-auto font-sans overscroll-none h-screen-small">
+                <AppContextProvider>
+                    <Suspense>{children}</Suspense>
+                </AppContextProvider>
             </body>
         </html>
     )
