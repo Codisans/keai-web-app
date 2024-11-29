@@ -2,7 +2,7 @@
 
 import { FreeMode } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import { useContext } from 'react'
+import { Suspense, useContext } from 'react'
 import { ConsumerContext } from '@/app/(consumer)/ConsumerContext'
 import { usePathname, useSearchParams } from 'next/navigation'
 import Link from 'next/link'
@@ -26,11 +26,15 @@ export const CategoryBar = () => {
                 spaceBetween={12}
                 className="w-full px-gg">
                 <SwiperSlide style={{ width: 'max-content' }}>
-                    <CategoryCard />
+                    <Suspense fallback={<CategoryCardFallback />}>
+                        <CategoryCard />
+                    </Suspense>
                 </SwiperSlide>
                 {cateogryList?.map((category, i) => (
                     <SwiperSlide key={i} style={{ width: 'max-content' }}>
-                        <CategoryCard category={category} />
+                        <Suspense fallback={<CategoryCardFallback />}>
+                            <CategoryCard category={category} />
+                        </Suspense>
                     </SwiperSlide>
                 ))}
             </Swiper>
@@ -62,6 +66,15 @@ export const CategoryCard = ({ category }) => {
             <Link href={url} className="absolute inset-0">
                 <span className="sr-only">{category?.name}</span>
             </Link>
+        </div>
+    )
+}
+
+export const CategoryCardFallback = () => {
+    return (
+        <div className="relative w-max flex-nowrap flex gap-1 items-center text-white rounded bg-primary px-1.5 py-1 border-2 border-primary">
+            <span>Keai</span>
+            <Symbol className="flex-none block w-4 h-4" name="logotype" />
         </div>
     )
 }

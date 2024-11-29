@@ -2,8 +2,9 @@
 
 import { FreeMode } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import { CategoryCard } from './CategoryCard'
+import { CategoryCard, CategoryCardFallback } from './CategoryCard'
 import { _categories } from '@/constants/categories'
+import { Suspense } from 'react'
 
 export const CategoryNav = ({ categories }) => {
     if (!categories) return
@@ -21,11 +22,15 @@ export const CategoryNav = ({ categories }) => {
                 spaceBetween={0}
                 className="w-full px-gg items-end">
                 <SwiperSlide style={{ width: 'max-content' }}>
-                    <CategoryCard />
+                    <Suspense fallback={<CategoryCardFallback />}>
+                        <CategoryCard />
+                    </Suspense>
                 </SwiperSlide>
                 {cateogryList?.map((category, i) => (
                     <SwiperSlide key={i} style={{ width: 'max-content' }}>
-                        <CategoryCard category={category} />
+                        <Suspense fallback={<CategoryCardFallback />}>
+                            <CategoryCard category={category} />
+                        </Suspense>
                     </SwiperSlide>
                 ))}
             </Swiper>
