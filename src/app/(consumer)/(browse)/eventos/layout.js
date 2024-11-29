@@ -6,8 +6,7 @@ const EventsLayout = ({ children }) => {
     return (
         <>
             <EventsHeader />
-            {children}
-
+            <div className="grow">{children}</div>
             <ListFilterModal>
                 <ListFilterForm />
             </ListFilterModal>

@@ -1,24 +1,5 @@
 import moment from 'moment'
-
-const cleanParams = params => {
-    if (typeof params === 'string' || params === 'array') return params
-    let result = []
-    Object.entries(params).forEach(([key, value]) => {
-        if (!value) return
-
-        if (Array.isArray(value)) {
-            if (value.length === 0) return
-            value.forEach(v => {
-                if (!v) return
-                result.push([`${key}[]`, v.toString()])
-            })
-            return
-        }
-
-        result.push([key, value.toString()])
-    })
-    return result
-}
+import { cleanParams } from './filterUtils'
 
 export class EventURLSearchParams extends URLSearchParams {
     mapURLSearchParams
@@ -62,11 +43,30 @@ export class EventURLSearchParams extends URLSearchParams {
         return params.toString()
     }
 
+    generateListURLSearchParams = () => {
+        this.listURLSearchParams = new URLSearchParams(this.toString())
+        Object.entries(this.defaultListParams).forEach(([key, value]) => {
+            if (this.listURLSearchParams.has(key)) return
+            this.listURLSearchParams.set(key, value)
+        })
+    }
+
     toListString = () => {
+        if (!this.listURLSearchParams) {
+            this.generateListURLSearchParams()
+        }
         return this.listURLSearchParams.toString()
     }
 
     toClientListString = () => {
-        return this.listURLSearchParams.toString()
+        if (!this.listURLSearchParams) {
+            this.generateListURLSearchParams()
+        }
+        const params = new URLSearchParams(this.toString())
+        Object.entries(this.defaultListParams).forEach(([key, value]) => {
+            if (this.listURLSearchParams.get(key) !== value) return
+            params.delete(key)
+        })
+        return params.toString()
     }
 }

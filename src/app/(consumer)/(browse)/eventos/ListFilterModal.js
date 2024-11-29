@@ -8,12 +8,19 @@ export const ListFilterModal = ({ children }) => {
 
     useEffect(() => {
         setFilterIsOpen(false)
-        return () => setFilterIsOpen(false)
+        return () => {
+            setFilterIsOpen(false)
+            document.documentElement.classList.remove('filter-open')
+        }
     }, [])
+
+    useEffect(() => {
+        document.documentElement.classList.toggle('filter-open', filterIsOpen)
+    }, [filterIsOpen])
 
     return (
         <div
-            className={`fixed top-0 pt-40 pb-16 flex bg-white left-0 w-full h-full overflow-hidden z-filter invisible open:visible ${filterIsOpen ? 'open' : ''}`}>
+            className={`fixed top-0 pt-32 pb-12 bg-white left-0 w-full h-full overflow-hidden z-filter hidden open:block ${filterIsOpen ? 'open' : ''}`}>
             {children}
         </div>
     )

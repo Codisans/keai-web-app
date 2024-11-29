@@ -22,6 +22,7 @@ module.exports = {
             addVariant('error', ['.error &', '&.error'])
             addVariant('loading', ['.loading &', '&.loading'])
             addVariant('open', ['.open &', '&.open'])
+            addVariant('filter-open', ['.filter-open &', '&.filter-open'])
             addVariant('header-open', ['.header-open &', '&.header-open'])
             addVariant('header-visible', [
                 '.header-visible &',

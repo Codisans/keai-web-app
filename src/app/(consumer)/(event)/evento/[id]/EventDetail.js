@@ -1,6 +1,7 @@
 'use client'
 import { ConsumerContext } from '@/app/(consumer)/ConsumerContext'
 import { ClipboardCopy } from '@/components/atoms/ClipboardCopy'
+import Link from 'next/link'
 import { useContext, useEffect } from 'react'
 
 export const EventDetail = ({ event }) => {
@@ -16,8 +17,10 @@ export const EventDetail = ({ event }) => {
         <div className="flex flex-col pb-12 px-gg pt-gg">
             <div className="flex flex-col-reverse">
                 <h1 className="text-h1">{event.name}</h1>
-                <span className="pb-1 uppercase text-body text-grey-4">
-                    {event.province}
+                <span className="pb-1 uppercase text-body text-grey-4 flex gap-x-2">
+                    {event.categories.map((c, i) => (
+                        <span key={i}>{c.name}</span>
+                    ))}
                 </span>
                 <div className="relative w-full mb-4 overflow-hidden aspect-video rounded-card">
                     <img
@@ -54,6 +57,9 @@ export const EventDetail = ({ event }) => {
                         <span>{event.province},</span>
                         <span>{event.city}</span>
                     </p>
+                </div>
+                <div className="col-span-12">
+                    <Link href={`/mapa#${event.id}`}>Ver en mapa</Link>
                 </div>
             </div>
         </div>

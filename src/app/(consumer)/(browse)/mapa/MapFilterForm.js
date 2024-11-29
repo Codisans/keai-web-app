@@ -4,7 +4,6 @@ import { useContext, useEffect, useState } from 'react'
 import { ConsumerContext } from '@/app/(consumer)/ConsumerContext'
 import { Button } from '@/components/atoms/Button'
 import moment from 'moment'
-import { getPriceIndicatorText } from '../FilterContext'
 import { PriceSlider } from '../PriceSlider'
 import { FilterSection } from '../FilterSection'
 import { DateRadio } from '../DateRadio'
@@ -13,14 +12,13 @@ import { TestBlock } from '@/components/atoms/TestBlock'
 import { useConsumerContext } from '../../ConsumerContext'
 import { EventURLSearchParams } from '@/utils/EventURLSearchParams'
 import TagsAutocomplete from '@/components/atoms/TagsAutocomplete'
+import { getPriceIndicatorText } from '@/utils/filterUtils'
 
 export const MapFilterForm = () => {
     const { setFilterIsOpen } = useContext(ConsumerContext)
     const { tags } = useConsumerContext()
     const router = useRouter()
     const pathname = usePathname()
-    // const { params, updateParams, clearParams, getSearchParams } =
-    //     useFilterContext()
     const [date, setDate] = useState('today')
     const [minDateInput, setMinDateInput] = useState('')
     const [maxDateInput, setMaxDateInput] = useState('')
@@ -163,7 +161,7 @@ export const MapFilterForm = () => {
                             checked={date === 'this-weekend'}
                             onChange={e => {
                                 setDate(e.target.value)
-                                setMinDate(moment().day(6).format('YYYY-MM-DD'))
+                                setMinDate(moment().day(5).format('YYYY-MM-DD'))
                                 setMaxDate(moment().day(7).format('YYYY-MM-DD'))
                                 setMinDateInput('')
                                 setMaxDateInput('')

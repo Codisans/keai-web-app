@@ -4,6 +4,7 @@ import { useEffect, useRef, useState, createContext } from 'react'
 import L from 'leaflet'
 import { markerIcons } from '@/lib/leaflet'
 import { EventSummary } from './EventSummary'
+// import { usePathname } from 'next/navigation'
 
 export const MapContext = createContext({
     mapRef: null,
@@ -18,8 +19,10 @@ export default function LeafletMap({ children }) {
     const [isReady, setIsReady] = useState(false)
     const [activeEvent, setActiveEvent] = useState(null)
     const activeMarkerRef = useRef(null)
+    // const pathname = usePathname()
 
     useEffect(() => {
+        // console.log(pathname)
         mapRef.current = L.map('map', {
             center: [-33.4489, -70.6693],
             zoom: 10,

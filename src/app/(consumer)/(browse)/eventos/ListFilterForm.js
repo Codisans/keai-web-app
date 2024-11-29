@@ -1,74 +1,93 @@
 'use client'
 
-import { useEffect, useState } from 'react'
-import { Button } from '@/components/atoms/Button'
 import moment from 'moment'
-import { getPriceIndicatorText } from '../FilterContext'
+import { useContext, useEffect, useState } from 'react'
+import { ConsumerContext } from '@/app/(consumer)/ConsumerContext'
+import { Button } from '@/components/atoms/Button'
 import { PriceSlider } from '../PriceSlider'
 import { FilterSection } from '../FilterSection'
 import { DateRadio } from '../DateRadio'
+import { usePathname, useRouter } from 'next/navigation'
+import { TestBlock } from '@/components/atoms/TestBlock'
 import { useConsumerContext } from '../../ConsumerContext'
+import { EventURLSearchParams } from '@/utils/EventURLSearchParams'
+import TagsAutocomplete from '@/components/atoms/TagsAutocomplete'
+import { getPriceIndicatorText } from '@/utils/filterUtils'
 
 export const ListFilterForm = () => {
-    const { setFilterIsOpen } = useConsumerContext()
-    const [date, setDate] = useState('today')
+    const { setFilterIsOpen } = useContext(ConsumerContext)
+    const { tags } = useConsumerContext()
+    const router = useRouter()
+    const pathname = usePathname()
+    const [date, setDate] = useState('other')
     const [minDateInput, setMinDateInput] = useState('')
     const [maxDateInput, setMaxDateInput] = useState('')
     const [minDate, setMinDate] = useState('')
     const [maxDate, setMaxDate] = useState('')
     const [priceValue, setPriceValue] = useState([0, 105])
+    const [selectedTags, setSelectedTags] = useState([])
 
     useEffect(() => {
         const today = moment().format('YYYY-MM-DD')
         setMinDate(today)
-        setMaxDate(today)
+        setMinDateInput(today)
+        setMaxDate('')
     }, [])
 
-    // useEffect(() => {
-    //     const newParams = {
-    //         min_date: minDate,
-    //         max_date: maxDate,
-    //         min_price: priceValue[0] === 105 ? 100 : priceValue[0],
-    //         max_price: priceValue[1] === 105 ? null : priceValue[1],
-    //     }
-    //     // updateParams(newParams)
-    // }, [minDate, maxDate, priceValue])
+    const handleSubmit = e => {
+        e?.preventDefault()
+        setFilterIsOpen(s => !s)
+        const params = {
+            min_date: moment(minDate).format('YYYY-MM-DD'),
+            max_date: maxDate ? moment(maxDate).format('YYYY-MM-DD') : null,
+            min_price: (() => {
+                switch (priceValue[0]) {
+                    case 105:
+                        return 100000
+                    case 0:
+                        return null
+                    default:
+                        return priceValue[0] * 1000
+                }
+            })(),
+            max_price: priceValue[1] === 105 ? null : priceValue[1] * 1000,
+            tags: selectedTags.map(tag => tag.id),
+        }
+        const eventSearchParams = new EventURLSearchParams(params)
+        router.push(`?${eventSearchParams.toClientListString()}`)
+    }
 
-    // const handleSubmit = e => {
-    //     e?.preventDefault()
-    //     console.log(params)
-    // }
-
-    // const handleClear = () => {
-    //     const today = moment().format('YYYY-MM-DD')
-    //     setMinDate(today)
-    //     setMaxDate(today)
-    //     setMinDateInput('')
-    //     setMaxDateInput('')
-    //     setPriceValue([0, 105])
-    //     clearParams()
-    // }
+    const handleClear = () => {
+        const today = moment().format('YYYY-MM-DD')
+        setMinDate(today)
+        setMaxDate('')
+        setMinDateInput(today)
+        setMaxDateInput('')
+        setPriceValue([0, 105])
+        setDate('other')
+        setSelectedTags([])
+        router.push(pathname)
+    }
 
     return (
-        <form className="relative h-full overflow-y-auto select-none">
-            <div className="flex justify-between sticky top-0 w-full p-gg bg-white shadow">
+        <form
+            onSubmit={handleSubmit}
+            className="relative h-full overflow-y-auto w-full select-none bg-white">
+            <div className="flex justify-between sticky top-0 p-4 w-full bg-white">
                 <p className="text-h2">Filtros:</p>
                 <div className="flex gap-gg">
-                    <Button
-                        type="button"
-                        onClick={() => console.log('clear filter')}>
+                    <Button type="button" onClick={handleClear}>
                         Restablecer
                     </Button>
                     <Button
-                        className="!bg-black text-white"
+                        className="dark"
                         type="button"
-                        onClick={() => setFilterIsOpen(s => !s)}>
+                        onClick={handleSubmit}>
                         Aplicar
                     </Button>
                 </div>
             </div>
-            {/* <TagSearch options={tags} /> */}
-            <div className="w-full flex flex-col gap-6 p-gg">
+            <div className="w-full flex flex-col">
                 <FilterSection
                     indicator={
                         <legend className="w-full flex justify-between items-center gap-1 text-caps py-2">
@@ -111,7 +130,7 @@ export const ListFilterForm = () => {
                             onChange={e => {
                                 setDate(e.target.value)
                                 setMinDate(moment().format('YYYY-MM-DD'))
-                                setMaxDate('')
+                                setMaxDate(moment().format('YYYY-MM-DD'))
                                 setMinDateInput('')
                                 setMaxDateInput('')
                             }}
@@ -146,7 +165,7 @@ export const ListFilterForm = () => {
                             checked={date === 'this-weekend'}
                             onChange={e => {
                                 setDate(e.target.value)
-                                setMinDate(moment().day(6).format('YYYY-MM-DD'))
+                                setMinDate(moment().day(5).format('YYYY-MM-DD'))
                                 setMaxDate(moment().day(7).format('YYYY-MM-DD'))
                                 setMinDateInput('')
                                 setMaxDateInput('')
@@ -223,6 +242,7 @@ export const ListFilterForm = () => {
                         </div>
                     </div>
                 </FilterSection>
+
                 <FilterSection
                     legend="Precio:"
                     indicator={
@@ -236,6 +256,15 @@ export const ListFilterForm = () => {
                             setPriceValue={setPriceValue}
                         />
                     </div>
+                </FilterSection>
+
+                <FilterSection legend="Tags">
+                    <TestBlock data={tags} />
+                    <TagsAutocomplete
+                        selectedTags={selectedTags}
+                        setSelectedTags={setSelectedTags}
+                        tags={tags}
+                    />
                 </FilterSection>
             </div>
         </form>

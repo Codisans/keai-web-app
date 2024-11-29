@@ -15,7 +15,7 @@ export default function TagsAutocomplete({
             filterSelectedOptions
             value={selectedTags}
             onChange={(event, newValue) => {
-                event
+                console.log(event)
                 setSelectedTags(newValue)
             }}
             renderInput={params => (
