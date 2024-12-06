@@ -1,6 +1,4 @@
 import { ConsumerContextProvider } from './ConsumerContext'
-import { PulloutMenu } from '@/components/molecules/PulloutMenu'
-import { ConsumerMenu } from './ConsumerMenu'
 import api from '@/lib/api'
 
 const ConsumerLayout = async ({ children }) => {
@@ -9,9 +7,6 @@ const ConsumerLayout = async ({ children }) => {
 
     return (
         <ConsumerContextProvider categories={categories} tags={tags}>
-            <PulloutMenu>
-                <ConsumerMenu categories={categories} />
-            </PulloutMenu>
             {children}
         </ConsumerContextProvider>
     )
