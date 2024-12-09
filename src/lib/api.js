@@ -50,6 +50,18 @@ class Api {
         }
     }
 
+    async saveEvent(id) {
+        if (!id) return
+
+        const res = await this.axios.post(`/events/${id}/favourite`)
+
+        try {
+            console.log(res)
+        } catch (error) {
+            console.error(error)
+        }
+    }
+
     async getTags() {
         const res = await this.axios.get('/tags')
 
