@@ -1,6 +1,5 @@
 import { Logo } from '@/components/atoms/Logo'
-import 'swiper/css'
-// import { RootMenu } from './RootMenu'
+import { RootMenu } from './RootMenu'
 import { InstallPrompt, PushNotificationManager } from './PWA'
 
 export const metadata = {
@@ -15,6 +14,7 @@ const Home = () => {
                 <Logo className="text-[3rem]" type="app" />
             </section>
             <section className="w-full mx-auto px-gg pb-20 flex grow max-w-lg flex-col gap-10">
+                <RootMenu />
                 <PushNotificationManager />
                 <InstallPrompt />
             </section>

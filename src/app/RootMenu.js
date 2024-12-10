@@ -15,25 +15,17 @@ export const RootMenu = () => {
                 <>
                     <li className="col-span-1">
                         <Button style="big" href="/perfil">
-                            Consumer
+                            Perfil
                         </Button>
                     </li>
                     <li className="col-span-1">
-                        <Button style="big" href="/dashboard">
-                            Manager
+                        <Button style="big" href="/eventos">
+                            Eventos
                         </Button>
                     </li>
                     <li className="col-span-1">
-                        <Button style="big" href="/admin">
-                            Admin (FE)
-                        </Button>
-                    </li>
-                    <li className="col-span-1">
-                        <Button
-                            style="big"
-                            href="https://api.swiddashboard.info/admin"
-                            taget="_blank">
-                            Admin (BE)
+                        <Button style="big" href="/mapa">
+                            Mapa
                         </Button>
                     </li>
                 </>
