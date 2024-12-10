@@ -1,4 +1,3 @@
-/*global windowMSStream */
 'use client'
 import { useState, useEffect } from 'react'
 import { subscribeUser, unsubscribeUser, sendNotification } from './actions'
@@ -24,23 +23,26 @@ export function PushNotificationManager() {
     const [message, setMessage] = useState('')
 
     useEffect(() => {
-        if ('serviceWorker' in navigator && 'PushManager' in window) {
+        if ('serviceWorker' in window.navigator && 'PushManager' in window) {
             setIsSupported(true)
             registerServiceWorker()
         }
     }, [])
 
     async function registerServiceWorker() {
-        const registration = await navigator.serviceWorker.register('/sw.js', {
-            scope: '/',
-            updateViaCache: 'none',
-        })
+        const registration = await window.navigator.serviceWorker.register(
+            '/sw.js',
+            {
+                scope: '/',
+                updateViaCache: 'none',
+            },
+        )
         const sub = await registration.pushManager.getSubscription()
         setSubscription(sub)
     }
 
     async function subscribeToPush() {
-        const registration = await navigator.serviceWorker.ready
+        const registration = await window.navigator.serviceWorker.ready
         const sub = await registration.pushManager.subscribe({
             userVisibleOnly: true,
             applicationServerKey: urlBase64ToUint8Array(
@@ -111,7 +113,8 @@ export function InstallPrompt() {
 
     useEffect(() => {
         setIsIOS(
-            /iPad|iPhone|iPod/.test(navigator.userAgent) && !windowMSStream,
+            /iPad|iPhone|iPod/.test(window.navigator.userAgent) &&
+                !window.windowMSStream,
         )
 
         setIsStandalone(window.matchMedia('(display-mode: standalone)').matches)
