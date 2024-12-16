@@ -2,44 +2,31 @@
 
 import { useAuth } from '@/hooks/auth'
 import { Button } from '@/components/atoms/Button'
-import { Loading } from './Loading'
 
 export const RootMenu = () => {
     const { user } = useAuth({ middleware: 'guest' })
 
-    if (!user) return <Loading />
-
     return (
-        <ul className="w-full h-max grid grid-cols-2 gap-gg my-auto">
+        <ul className="w-full flex flex-col items-center gap-gg my-auto">
             {user ? (
                 <>
-                    <li className="col-span-1">
-                        <Button style="big" href="/perfil">
-                            Perfil
-                        </Button>
+                    <li>
+                        <Button href="/perfil">Perfil</Button>
                     </li>
-                    <li className="col-span-1">
-                        <Button style="big" href="/eventos">
-                            Eventos
-                        </Button>
+                    <li>
+                        <Button href="/eventos">Eventos</Button>
                     </li>
-                    <li className="col-span-1">
-                        <Button style="big" href="/mapa">
-                            Mapa
-                        </Button>
+                    <li>
+                        <Button href="/mapa">Mapa</Button>
                     </li>
                 </>
             ) : (
                 <>
-                    <li className="col-span-1">
-                        <Button style="big" href="/crear-cuenta">
-                            Registrar
-                        </Button>
+                    <li>
+                        <Button href="/crear-cuenta">Registrar</Button>
                     </li>
-                    <li className="col-span-1">
-                        <Button style="big" href="/entrar">
-                            Ingresar
-                        </Button>
+                    <li>
+                        <Button href="/entrar">Ingresar</Button>
                     </li>
                 </>
             )}

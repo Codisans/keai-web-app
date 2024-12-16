@@ -71,8 +71,8 @@ export function PushNotificationManager() {
     }
 
     return (
-        <div>
-            <h3>Push Notifications</h3>
+        <div className="flex flex-col items-center gap-4">
+            <h3 className="text-h2 pb-4">Push Notifications</h3>
             {subscription ? (
                 <>
                     <p>You are subscribed to push notifications.</p>
@@ -125,8 +125,8 @@ export function InstallPrompt() {
     }
 
     return (
-        <div>
-            <h3>Install App</h3>
+        <div className="flex flex-col items-center gap-4">
+            <h3 className="text-h2 pb-4">Install App</h3>
             <button className="p-1 bg-black text-white rounded-button">
                 Add to Home Screen
             </button>
