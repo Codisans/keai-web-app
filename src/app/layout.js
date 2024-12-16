@@ -5,7 +5,7 @@ import Head from 'next/head'
 
 const RootLayout = ({ children }) => {
     return (
-        <html className="select-none overscroll-none h-screen-small" lang="es">
+        <html className="select-none overscroll-none h-svh" lang="es">
             <Head>
                 <link
                     rel="icon"

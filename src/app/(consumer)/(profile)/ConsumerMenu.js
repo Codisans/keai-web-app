@@ -12,7 +12,7 @@ export const ConsumerMenu = () => {
     const { categories } = useConsumerContext()
 
     return (
-        <div className="w-full h-full overflow-y-auto flex flex-col px-gutter">
+        <div className="w-full h-full overflow-y-auto flex flex-col px-gutter pb-4">
             <div className="py-8 sticky top-0 bg-white border-b border-grey-3">
                 <Link className="block w-max" href="/eventos">
                     <Logo />
@@ -35,9 +35,6 @@ export const ConsumerMenu = () => {
                 </ul>
             </nav>
             <ul className="flex flex-col items-end gap-gg py-gg border-t border-grey-3 mt-auto">
-                <li>
-                    <Button href="/mis-eventos">Mis eventos</Button>
-                </li>
                 <li>
                     <Button className="gap-2" href="/cuenta">
                         <SettingsIcon />
