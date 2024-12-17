@@ -237,6 +237,12 @@ module.exports = {
             transitionProperty: {
                 maxHeight: 'max-height',
             },
+            screens: {
+                ios: { raw: '@supports (-webkit-touch-callout: none)' },
+                'not-ios': {
+                    raw: '@supports not (-webkit-touch-callout: none)',
+                },
+            },
         },
     },
 }

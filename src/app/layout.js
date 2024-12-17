@@ -1,12 +1,11 @@
 import '@/app/global.css'
 import { AppContextProvider } from './AppContext'
 import { Suspense } from 'react'
-import Head from 'next/head'
 
 const RootLayout = ({ children }) => {
     return (
         <html className="select-none overscroll-none h-svh" lang="es">
-            <Head>
+            <head>
                 <link
                     rel="icon"
                     type="image/png"
@@ -22,7 +21,7 @@ const RootLayout = ({ children }) => {
                 />
                 <meta name="apple-mobile-web-app-title" content="KEAI" />
                 <link rel="manifest" href="/site.webmanifest" />
-            </Head>
+            </head>
             <body className="flex flex-col w-full overflow-y-auto font-sans overscroll-none h-screen-small">
                 <AppContextProvider>
                     <Suspense>{children}</Suspense>

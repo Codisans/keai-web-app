@@ -5,15 +5,18 @@ import moment from 'moment'
 
 export const DateIndicator = () => {
     const searchParams = useSearchParams()
-
-    const minDate =
-        searchParams.get('min_date') || moment().format('YYYY-MM-DD')
-    const maxDate =
-        searchParams.get('max_date') || moment().format('YYYY-MM-DD')
+    const today = moment().format('YYYY-MM-DD')
+    const minDate = searchParams.get('min_date') || today
+    const maxDate = searchParams.get('max_date') || today
 
     return (
-        <div className="absolute bottom-gutter right-gutter z-20 flex gap-x-1 pointer-events-none">
-            {minDate !== maxDate && <DateCard date={minDate} />}
+        <div className="absolute bottom-gutter right-gutter z-20 flex gap-x-1 pointer-events-none bg-white rounded-ui p-1 flex items-center border border-grey-3 gap-1">
+            {minDate !== maxDate && (
+                <>
+                    <DateCard date={minDate} />
+                    <span className="w-1.5 h-[2px] block bg-black"></span>
+                </>
+            )}
             <DateCard date={maxDate} />
         </div>
     )
@@ -22,7 +25,7 @@ export const DateIndicator = () => {
 export const DateCard = ({ date, className = '' }) => {
     return (
         <div
-            className={`flex flex-col items-center uppercase font-bold bg-white border border-grey-3 rounded-ui p-1 leading-none ${className}`}>
+            className={`flex flex-col items-center uppercase font-bold leading-none ${className}`}>
             <span className="tracking-widest">{moment(date).format('DD')}</span>
             <span>{moment(date).format('MMM')}</span>
         </div>

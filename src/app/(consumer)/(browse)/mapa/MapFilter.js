@@ -15,12 +15,12 @@ import { getPriceIndicatorText } from '@/utils/filterUtils'
 import { FilterToggle } from '@/components/atoms/FilterToggle'
 import { useSearchParams } from 'next/navigation'
 
-export const MapFilterForm = () => {
-    const [filterIsOpen, setFilterIsOpen] = useState(false)
-    const searchParams = useSearchParams()
-    const { tags } = useConsumerContext()
+export const MapFilter = () => {
     const router = useRouter()
     const pathname = usePathname()
+    const searchParams = useSearchParams()
+    const { tags } = useConsumerContext()
+    const [filterIsOpen, setFilterIsOpen] = useState(false)
     const [date, setDate] = useState('today')
     const [minDateInput, setMinDateInput] = useState('')
     const [maxDateInput, setMaxDateInput] = useState('')
@@ -31,9 +31,16 @@ export const MapFilterForm = () => {
     const [keywordsValue, setKeywordsValue] = useState('')
 
     useEffect(() => {
+        const urlSearchParams = new URLSearchParams(searchParams)
         const today = moment().format('YYYY-MM-DD')
-        setMinDate(today)
-        setMaxDate(today)
+        setMinDate(urlSearchParams.get('min_date') || today)
+        setMaxDate(urlSearchParams.get('max_date') || today)
+        setPriceValue([
+            urlSearchParams.get('min_price') || 0,
+            urlSearchParams.get('max_price') || 105,
+        ])
+        setSelectedTags(urlSearchParams.get('tags') || [])
+        setKeywordsValue(urlSearchParams.get('keywords') || '')
     }, [])
 
     const handleSubmit = e => {
@@ -88,9 +95,9 @@ export const MapFilterForm = () => {
     return (
         <form onSubmit={handleSubmit} className="pointer-events-auto">
             <div className="absolute top-[3.7rem] inset-x-gg flex gap-gg">
-                <div className="relative bg-white grow rounded-ui">
+                <div className="relative bg-white grow rounded-ui group">
                     <input
-                        className="px-3 h-10 w-full rounded-ui border border-grey-3"
+                        className="pl-10 pr-3 h-10 w-full rounded-ui border border-grey-3 peer"
                         placeholder="Keai?"
                         value={keywordsValue}
                         onChange={e => {
@@ -98,43 +105,59 @@ export const MapFilterForm = () => {
                         }}
                         type="text"
                     />
+                    <svg
+                        className={`absolute left-2 top-2 w-6 h-6 pointer-events-none ${keywordsValue !== '' ? 'group-focus-within:hidden' : ''}`}
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24">
+                        <path
+                            stroke="currentColor"
+                            strokeLinecap="round"
+                            strokeWidth="2"
+                            d="m21 21-3.5-3.5M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z"
+                        />
+                    </svg>
                     {keywordsValue !== '' && (
-                        <button
-                            type="button"
-                            className="absolute right-8 p-2"
-                            onClick={handleClearSearch}>
-                            <span className="sr-only">Clear</span>
-                            <svg
-                                className="w-6 h-6"
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
-                                viewBox="0 0 24 24">
-                                <path
-                                    stroke="currentColor"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth="2"
-                                    d="M6 18 17.94 6M18 18 6.06 6"
-                                />
-                            </svg>
-                        </button>
+                        <>
+                            <button
+                                type="button"
+                                className="absolute left-0 top-0 p-2 group-focus-within:block hidden"
+                                onClick={handleClearSearch}>
+                                <span className="sr-only">Clear</span>
+                                <svg
+                                    className="w-6 h-6"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24">
+                                    <path
+                                        stroke="currentColor"
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        strokeWidth="2"
+                                        d="M6 18 17.94 6M18 18 6.06 6"
+                                    />
+                                </svg>
+                            </button>
+                            <button
+                                type="submit"
+                                className="absolute right-0 p-2">
+                                <span className="sr-only">Search</span>
+                                <svg
+                                    className="w-6 h-6"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24">
+                                    <path
+                                        stroke="currentColor"
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        strokeWidth="2"
+                                        d="M19 12H5m14 0-4 4m4-4-4-4"
+                                    />
+                                </svg>
+                            </button>
+                        </>
                     )}
-
-                    <button type="submit" className="absolute right-0 p-2">
-                        <span className="sr-only">Search</span>
-                        <svg
-                            className="w-6 h-6"
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24">
-                            <path
-                                stroke="currentColor"
-                                strokeLinecap="round"
-                                strokeWidth="2"
-                                d="m21 21-3.5-3.5M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z"
-                            />
-                        </svg>
-                    </button>
                 </div>
                 <FilterToggle
                     setIsOpen={setFilterIsOpen}
