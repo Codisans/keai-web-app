@@ -1,23 +1,20 @@
 'use client'
-import { useContext } from 'react'
 import { Button } from '@/components/atoms/Button'
-import { ConsumerContext } from '@/app/(consumer)/ConsumerContext'
 import { usePathname, useSearchParams } from 'next/navigation'
 
-export const FilterToggle = () => {
-    const { setFilterIsOpen, filterIsOpen } = useContext(ConsumerContext)
+export const FilterToggle = ({ setIsOpen, isOpen }) => {
     const path = usePathname()
     const searchParams = useSearchParams()
 
     return (
         <Button
-            onClick={() => setFilterIsOpen(s => !s)}
-            className="w-full relative"
+            onClick={() => setIsOpen(s => !s)}
+            className="w-min relative border-grey-3 border rounded-ui"
             style="icon"
             disabled={path
                 .split('/')
                 ?.some(x => ['favoritos', 'perfil', 'cuenta'].includes(x))}
-            active={filterIsOpen}>
+            active={isOpen}>
             <span className="text-indicator absolute top-0 right-0 bg-black text-white rounded-full h-4 w-4 flex items-center justify-center">
                 {searchParams.size}
             </span>

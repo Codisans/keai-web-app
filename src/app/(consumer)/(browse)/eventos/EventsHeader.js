@@ -1,5 +1,5 @@
 import { CategoryNav } from './CategoryNav'
-import { SearchBar } from '../SearchBar'
+import { SearchBar } from './SearchBar'
 import api from '@/lib/api'
 
 export const EventsHeader = async () => {

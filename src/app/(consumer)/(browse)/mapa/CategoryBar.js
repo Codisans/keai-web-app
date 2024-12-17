@@ -18,7 +18,7 @@ export const CategoryBar = () => {
         ?.sort((a, b) => _categories[a.slug].order - _categories[b.slug].order)
 
     return (
-        <nav className="absolute top-1 inset-x-0 pt-gg z-header">
+        <nav className="w-full py-3 pointer-events-auto">
             <Swiper
                 freeMode={true}
                 slidesPerView="auto"

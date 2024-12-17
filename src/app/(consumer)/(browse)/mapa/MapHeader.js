@@ -1,9 +1,13 @@
-import { SearchBar } from '../SearchBar'
+import { CategoryBar } from './CategoryBar'
+import { MapFilterForm } from './MapFilterForm'
 
 export const MapHeader = () => {
     return (
-        <header className="sticky z-header top-0 inset-x-0 shadow">
-            <SearchBar />
-        </header>
+        <>
+            <header className="fixed z-header inset-0 pointer-events-none">
+                <CategoryBar />
+                <MapFilterForm />
+            </header>
+        </>
     )
 }

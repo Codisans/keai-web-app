@@ -14,6 +14,7 @@ module.exports = {
         require('@tailwindcss/forms'),
         require('tailwindcss/plugin')(function ({ addVariant }) {
             addVariant('active', ['.active &', '&.active'])
+            addVariant('primary', ['.primary &', '&.primary'])
             addVariant('active-slide', [
                 '.swiper-slide-active &',
                 '&.swiper-slide-active',

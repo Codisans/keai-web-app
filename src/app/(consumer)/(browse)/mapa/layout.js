@@ -1,8 +1,5 @@
-import { CategoryBar } from './CategoryBar'
 import { MapHeader } from './MapHeader'
 import { Map } from './Map'
-import { MapFilterModal } from './MapFilterModal'
-import { MapFilterForm } from './MapFilterForm'
 import { DateIndicator } from './DateIndicator'
 
 const MapLayout = ({ children }) => {
@@ -10,13 +7,9 @@ const MapLayout = ({ children }) => {
         <>
             <MapHeader />
             <main className="w-full grow relative flex">
-                <CategoryBar />
                 <Map>{children}</Map>
                 <DateIndicator />
             </main>
-            <MapFilterModal>
-                <MapFilterForm />
-            </MapFilterModal>
         </>
     )
 }

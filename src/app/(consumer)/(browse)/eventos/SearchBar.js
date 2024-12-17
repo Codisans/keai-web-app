@@ -2,15 +2,20 @@
 
 import { FilterToggle } from '@/components/atoms/FilterToggle'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
+import { ConsumerContext } from '../../ConsumerContext'
 
 export const SearchBar = () => {
+    const { filterIsOpen, setFilterIsOpen } = useContext(ConsumerContext)
     return (
         <section className="w-full border-b border-grey-3">
             <div className="flex gap-x-1 p-gg pb-1">
                 <SearchInput />
                 <div className="w-min">
-                    <FilterToggle />
+                    <FilterToggle
+                        isOpen={filterIsOpen}
+                        setIsOpen={setFilterIsOpen}
+                    />
                 </div>
             </div>
         </section>
