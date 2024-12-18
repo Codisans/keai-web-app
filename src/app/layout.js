@@ -1,6 +1,7 @@
 import '@/app/global.css'
 import { AppContextProvider } from './AppContext'
 import { Suspense } from 'react'
+import { GoogleAnalytics } from '@next/third-parties/google'
 
 const RootLayout = ({ children }) => {
     return (
@@ -26,6 +27,7 @@ const RootLayout = ({ children }) => {
                 <AppContextProvider>
                     <Suspense>{children}</Suspense>
                 </AppContextProvider>
+                <GoogleAnalytics gaId="G-YKTP4XWEGV" />
             </body>
         </html>
     )
