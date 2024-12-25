@@ -14,6 +14,10 @@ class Api {
     }
 
     async getEvents(queryString) {
+        console.log(
+            queryString,
+            '_______________________querystring_______________',
+        )
         const res = await this.axios.get(
             queryString ? `/events?${queryString}` : '/events',
         )
@@ -21,7 +25,6 @@ class Api {
         try {
             return res.data?.data || []
         } catch (error) {
-            console.error(error)
             return []
         }
     }

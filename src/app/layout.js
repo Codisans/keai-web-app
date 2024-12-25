@@ -1,4 +1,4 @@
-import '@/app/global.css'
+import '@/styles/main.scss'
 import { AppContextProvider } from './AppContext'
 import { Suspense } from 'react'
 import { GoogleAnalytics } from '@next/third-parties/google'
@@ -25,7 +25,9 @@ const RootLayout = ({ children }) => {
             </head>
             <body className="flex flex-col w-full overflow-y-auto font-sans overscroll-none h-screen-small">
                 <AppContextProvider>
-                    <Suspense>{children}</Suspense>
+                    <Suspense fallback={<div>Loading...</div>}>
+                        {children}
+                    </Suspense>
                 </AppContextProvider>
                 <GoogleAnalytics gaId="G-YKTP4XWEGV" />
             </body>

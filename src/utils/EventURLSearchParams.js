@@ -40,6 +40,8 @@ export class EventURLSearchParams extends URLSearchParams {
             if (this.mapURLSearchParams.get(key) !== value) return
             params.delete(key)
         })
+
+        console.log('__________________________', params.toString())
         return params.toString()
     }
 

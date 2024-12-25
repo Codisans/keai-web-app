@@ -7,21 +7,29 @@ export const metadata = {
 }
 
 const MapCategory = async ({ params, searchParams }) => {
+    const filterParams = await searchParams
+    const categoryParams = await params
+
     const urlSearchParams = new EventURLSearchParams(
-        searchParams
+        filterParams
             ? {
-                  categories: [params.category],
-                  ...searchParams,
+                  categories: [categoryParams.category],
+                  ...filterParams,
               }
-            : { categories: [params.category] },
+            : { categories: [categoryParams.category] },
     )
     const events = await api.getEvents(urlSearchParams.toMapString())
 
-    if (!events) return
+    if (!events)
+        return (
+            <div className="absolute translate-x-0 bottom-gg right-gg w-16 h-16 z-10 pointer-events-none">
+                <Loading />
+            </div>
+        )
 
     return (
         <>
-            {events.map(event => (
+            {events?.map(event => (
                 <EventMarker key={event.id} event={event} />
             ))}
         </>

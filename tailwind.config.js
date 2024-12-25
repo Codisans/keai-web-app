@@ -13,6 +13,9 @@ module.exports = {
         FontSizes,
         require('@tailwindcss/forms'),
         require('tailwindcss/plugin')(function ({ addVariant }) {
+            addVariant('v1', ['.v1 &', '&.v1'])
+            addVariant('v2', ['.v2 &', '&.v2'])
+            addVariant('v3', ['.v3 &', '&.v3'])
             addVariant('active', ['.active &', '&.active'])
             addVariant('primary', ['.primary &', '&.primary'])
             addVariant('active-slide', [

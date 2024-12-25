@@ -1,3 +1,4 @@
+import { TestBlock } from '@/components/atoms/TestBlock'
 import { SavedEvents } from './SavedEvents'
 import api from '@/lib/api'
 
@@ -11,6 +12,7 @@ const Profile = async () => {
     return (
         <>
             <section className="flex flex-col p-gg grow overflow-y-auto">
+                <TestBlock data={events} />
                 <SavedEvents events={events} />
             </section>
         </>

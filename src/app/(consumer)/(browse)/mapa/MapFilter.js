@@ -14,6 +14,7 @@ import TagsAutocomplete from '@/components/atoms/TagsAutocomplete'
 import { getPriceIndicatorText } from '@/utils/filterUtils'
 import { FilterToggle } from '@/components/atoms/FilterToggle'
 import { useSearchParams } from 'next/navigation'
+import { DatePicker } from '@/components/atoms/DatePicker'
 
 export const MapFilter = () => {
     const router = useRouter()
@@ -29,6 +30,8 @@ export const MapFilter = () => {
     const [priceValue, setPriceValue] = useState([0, 105])
     const [selectedTags, setSelectedTags] = useState([])
     const [keywordsValue, setKeywordsValue] = useState('')
+
+    const [startDate, setStartDate] = useState('')
 
     useEffect(() => {
         const urlSearchParams = new URLSearchParams(searchParams)
@@ -94,7 +97,7 @@ export const MapFilter = () => {
 
     return (
         <form onSubmit={handleSubmit} className="pointer-events-auto">
-            <div className="absolute top-[3.7rem] inset-x-gg flex gap-gg">
+            <div className="absolute top-[3.7rem] inset-x-gg flex gap-gg sm:left-auto sm:w-[420px]">
                 <div className="relative bg-white grow rounded-ui group">
                     <input
                         className="pl-10 pr-3 h-10 w-full rounded-ui border border-grey-3 peer"
@@ -106,7 +109,7 @@ export const MapFilter = () => {
                         type="text"
                     />
                     <svg
-                        className={`absolute left-2 top-2 w-6 h-6 pointer-events-none ${keywordsValue !== '' ? 'group-focus-within:hidden' : ''}`}
+                        className={`absolute left-2 top-2 w-6 h-6 pointer-events-none ${keywordsValue === searchParams.get('keywords') ? '' : 'opacity-60'} ${keywordsValue !== '' ? 'group-focus-within:hidden' : ''}`}
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
                         viewBox="0 0 24 24">
@@ -140,7 +143,7 @@ export const MapFilter = () => {
                             </button>
                             <button
                                 type="submit"
-                                className="absolute right-0 p-2">
+                                className="absolute right-0 top-0 py-2 px-3 bg-primary rounded-ui">
                                 <span className="sr-only">Search</span>
                                 <svg
                                     className="w-6 h-6"
@@ -165,7 +168,7 @@ export const MapFilter = () => {
                 />
             </div>
             {filterIsOpen && (
-                <div className="absolute top-[6.8rem] border border-grey-3 bottom-[4.6rem] rounded-ui overflow-hidden inset-x-gg select-none bg-white">
+                <div className="absolute top-[6.8rem] border border-grey-3 bottom-[4.6rem] rounded-ui overflow-hidden inset-x-gg sm:left-auto sm:w-[420px] select-none bg-white">
                     <div className="h-full overflow-y-auto">
                         <div className="flex justify-between sticky top-0 p-4 w-full bg-white shadow">
                             <p className="text-h2">Filtros:</p>
@@ -173,7 +176,10 @@ export const MapFilter = () => {
                                 <Button type="button" onClick={handleClear}>
                                     Restablecer
                                 </Button>
-                                <Button type="button" onClick={handleSubmit}>
+                                <Button
+                                    type="button"
+                                    style="primary"
+                                    onClick={handleSubmit}>
                                     Buscar
                                 </Button>
                             </div>
@@ -217,6 +223,7 @@ export const MapFilter = () => {
                                     </legend>
                                 }>
                                 <div className="flex flex-wrap gap-1">
+                                    <button></button>
                                     <DateRadio
                                         id="date-today"
                                         name="date"
@@ -301,10 +308,15 @@ export const MapFilter = () => {
                                         }}
                                         label="Esta Semana"
                                     />
+                                    {/* <DatePicker
+                                        onChange={e => {
+                                            console.log(e)
+                                        }}
+                                    /> */}
                                     <div className="grid w-full grid-cols-2 gap-1">
                                         <div className="col-span-1">
                                             <input
-                                                className="w-full border-grey rounded-button block text-radio [&[value='']]:bg-white bg-primary"
+                                                className={`w-full border-grey rounded-button block text-radio [&[value='']]:bg-white bg-primary ${minDateInput === '' ? 'bg-primary' : ''}`}
                                                 min={moment().format(
                                                     'YYYY-MM-DD',
                                                 )}
@@ -363,6 +375,15 @@ export const MapFilter = () => {
                                 </div>
                             </FilterSection>
 
+                            <FilterSection legend="Tags">
+                                <TestBlock data={tags} />
+                                <TagsAutocomplete
+                                    selectedTags={selectedTags}
+                                    setSelectedTags={setSelectedTags}
+                                    tags={tags}
+                                />
+                            </FilterSection>
+
                             <FilterSection
                                 legend="Precio:"
                                 indicator={
@@ -376,15 +397,6 @@ export const MapFilter = () => {
                                         setPriceValue={setPriceValue}
                                     />
                                 </div>
-                            </FilterSection>
-
-                            <FilterSection legend="Tags">
-                                <TestBlock data={tags} />
-                                <TagsAutocomplete
-                                    selectedTags={selectedTags}
-                                    setSelectedTags={setSelectedTags}
-                                    tags={tags}
-                                />
                             </FilterSection>
                         </div>
                     </div>

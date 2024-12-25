@@ -10,7 +10,11 @@ export const AppContextProvider = ({ children }) => {
     // const { user } = useAuth()
     // const router = useRouter()
 
-    useEffect(() => typeof window !== 'undefined' && setIsClient(true), [])
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
+            setIsClient(true)
+        }
+    }, [])
 
     // useEffect(() => {
     //     console.log(user)

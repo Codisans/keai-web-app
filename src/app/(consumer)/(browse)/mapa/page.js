@@ -9,8 +9,11 @@ export const metadata = {
 }
 
 const MapPage = async ({ searchParams }) => {
-    const urlSearchParams = new EventURLSearchParams(searchParams)
+    const filterParams = await searchParams
+    const urlSearchParams = new EventURLSearchParams(filterParams)
     const events = await api.getEvents(urlSearchParams.toMapString())
+
+    console.error(events, '_____----____')
 
     if (!events)
         return (
@@ -21,7 +24,7 @@ const MapPage = async ({ searchParams }) => {
 
     return (
         <>
-            {events?.map(event => (
+            {events.map(event => (
                 <EventMarker key={event.id} event={event} />
             ))}
         </>

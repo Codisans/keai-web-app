@@ -6,6 +6,7 @@ import { Button } from '@/components/atoms/Button'
 import HistoryIcon from '@mui/icons-material/History'
 import EventIcon from '@mui/icons-material/Event'
 import { Loading } from '@/app/Loading'
+import { TestBlock } from '@/components/atoms/TestBlock'
 
 const FavouritesLayout = ({ children }) => {
     const { user } = useAuth()
@@ -28,6 +29,7 @@ const FavouritesLayout = ({ children }) => {
 
     return (
         <>
+            <TestBlock data={user} />
             <h1 className="sr-only">Perfil</h1>
             <section className="grid grid-cols-12 p-gg gap-gg">
                 <div className="col-span-4">

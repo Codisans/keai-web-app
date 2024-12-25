@@ -15,7 +15,7 @@ export const ConsumerFooter = () => {
         <footer className="sticky bottom-0 inset-x-0 z-footer pb-4 border-t border-grey-3 bg-white shrink">
             <nav>
                 <ul className="grid grid-cols-3 w-full items-center p-1 gap-x-1">
-                    <li className={`col-span-1`}>
+                    {/* <li className={`col-span-1`}>
                         <Button
                             className="w-full"
                             href={
@@ -44,7 +44,7 @@ export const ConsumerFooter = () => {
                             active={path.includes('/perfil')}
                             icon={<PersonIcon />}
                         />
-                    </li>
+                    </li> */}
                 </ul>
             </nav>
         </footer>

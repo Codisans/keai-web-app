@@ -1,11 +1,15 @@
+'use client'
+
 import Link from 'next/link'
 import { Price } from '@/components/atoms/Price'
 import { DateTime } from '@/components/atoms/DateTime'
 import DeleteIcon from '@mui/icons-material/Delete'
 import ShareIcon from '@mui/icons-material/Share'
 import { Button } from '@/components/atoms/Button'
+import { useAuth } from '@/hooks/auth'
 
 export const SavedEvents = ({ events }) => {
+    const { user } = useAuth()
     return (
         <ul className="w-full flex flex-col">
             {events.map((event, i) => (
