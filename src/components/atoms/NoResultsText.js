@@ -1,7 +1,12 @@
+import { Symbol } from './Symbol'
+
 export const NoResultsText = () => {
     return (
-        <p className="p-4 px-12 rounded bg-orange m-grid-gap text-center typo-small">
-            No se encuentran eventos segun tu busqueda en este momento.
-        </p>
+        <div className="flex flex-col gap-4 items-center p-4 py-8">
+            <Symbol className="size-24 animate-pulse text-orange" name="logo" />
+            <p className="p-4 px-8 text-center typo-small text-black/80">
+                No se encuentran eventos segun tu busqueda en este momento.
+            </p>
+        </div>
     )
 }
