@@ -36,7 +36,7 @@ export const EventSummary = ({ event }) => {
         event && (
             <div
                 ref={eventSummaryRef}
-                className="fixed bottom-14 inset-x-2 rounded-ui bg-white p-1 z-50 flex gap-3 border border-grey-3">
+                className="fixed bottom-14 inset-x-2 rounded-ui bg-white p-1 z-50 flex gap-3 border border-grey">
                 <Image
                     className="w-24 h-24 object-cover rounded-card"
                     src={event.cover || '/placeholder.jpg'}

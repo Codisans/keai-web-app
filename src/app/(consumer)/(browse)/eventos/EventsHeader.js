@@ -1,5 +1,5 @@
 import { CategoryNav } from './CategoryNav'
-import { SearchBar } from './SearchBar'
+import { ListFilter } from './ListFilter'
 import api from '@/lib/api'
 
 export const EventsHeader = async () => {
@@ -10,7 +10,7 @@ export const EventsHeader = async () => {
             <header className="w-full">
                 <CategoryNav categories={categories} />
             </header>
-            <SearchBar />
+            <ListFilter />
         </div>
     )
 }

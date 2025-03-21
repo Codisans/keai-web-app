@@ -110,7 +110,7 @@ const Login = () => {
                     className="w-20 flex justify-center items-center"
                     type="submit">
                     {isLoading ? (
-                        <DataUsageIcon className="h-[1em] w-[1em] animate-spin text-grey-3" />
+                        <DataUsageIcon className="h-[1em] w-[1em] animate-spin text-grey" />
                     ) : (
                         <span>Entrar</span>
                     )}

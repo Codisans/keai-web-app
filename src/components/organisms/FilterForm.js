@@ -57,7 +57,7 @@ export const FilterForm = () => {
                                 type="radio"
                             />
                             <label
-                                className="block peer-checked:bg-black peer-checked:text-white border border-grey-3 py-2 px-3 rounded-button"
+                                className="block peer-checked:bg-black peer-checked:text-white border border-grey py-2 px-3 rounded-button"
                                 htmlFor="date-hoy">
                                 Hoy
                             </label>
@@ -70,7 +70,7 @@ export const FilterForm = () => {
                                 type="radio"
                             />
                             <label
-                                className="block peer-checked:bg-black peer-checked:text-white border border-grey-3 py-2 px-3 rounded-button"
+                                className="block peer-checked:bg-black peer-checked:text-white border border-grey py-2 px-3 rounded-button"
                                 htmlFor="date-fds">
                                 Este fds
                             </label>
@@ -83,7 +83,7 @@ export const FilterForm = () => {
                                 type="radio"
                             />
                             <label
-                                className="block peer-checked:bg-black peer-checked:text-white border border-grey-3 py-2 px-3 rounded-button"
+                                className="block peer-checked:bg-black peer-checked:text-white border border-grey py-2 px-3 rounded-button"
                                 htmlFor="date-semana">
                                 Esta semana
                             </label>
@@ -95,14 +95,14 @@ export const FilterForm = () => {
                             type="radio"
                         />
                         <label
-                            className="block peer-checked:bg-black peer-checked:text-white border border-grey-3 py-2 px-3 rounded-button"
+                            className="block peer-checked:bg-black peer-checked:text-white border border-grey py-2 px-3 rounded-button"
                             htmlFor="date-otro">
                             Otro
                         </label>
                         <div className="hidden peer-checked:grid w-full grid-cols-2 gap-grid">
                             <div className="col-span-1">
                                 <input
-                                    className="w-full border-grey-3 rounded-button block"
+                                    className="w-full border-grey rounded-button block"
                                     min={minDate}
                                     id="min-date"
                                     name="min-date"
@@ -111,7 +111,7 @@ export const FilterForm = () => {
                             </div>
                             <div className="col-span-1">
                                 <input
-                                    className="w-full border-grey-3 rounded-button block"
+                                    className="w-full border-grey rounded-button block"
                                     min={minDate}
                                     id="max-date"
                                     name="max-date"
@@ -134,7 +134,7 @@ export const FilterForm = () => {
                                 type="radio"
                             />
                             <label
-                                className="block peer-checked:bg-black peer-checked:text-white border border-grey-3 py-2 px-3 rounded-button"
+                                className="block peer-checked:bg-black peer-checked:text-white border border-grey py-2 px-3 rounded-button"
                                 htmlFor="precio-0">
                                 Gratis
                             </label>
@@ -147,7 +147,7 @@ export const FilterForm = () => {
                                 type="radio"
                             />
                             <label
-                                className="block peer-checked:bg-black peer-checked:text-white border border-grey-3 py-2 px-3 rounded-button"
+                                className="block peer-checked:bg-black peer-checked:text-white border border-grey py-2 px-3 rounded-button"
                                 htmlFor="precio-1">
                                 Hasta 10k
                             </label>
@@ -160,7 +160,7 @@ export const FilterForm = () => {
                                 type="radio"
                             />
                             <label
-                                className="block peer-checked:bg-black peer-checked:text-white border border-grey-3 py-2 px-3 rounded-button"
+                                className="block peer-checked:bg-black peer-checked:text-white border border-grey py-2 px-3 rounded-button"
                                 htmlFor="precio-2">
                                 $10k - $25k
                             </label>
@@ -173,7 +173,7 @@ export const FilterForm = () => {
                                 type="radio"
                             />
                             <label
-                                className="block peer-checked:bg-black peer-checked:text-white border border-grey-3 py-2 px-3 rounded-button"
+                                className="block peer-checked:bg-black peer-checked:text-white border border-grey py-2 px-3 rounded-button"
                                 htmlFor="precio-3">
                                 $25k - $60k
                             </label>
@@ -186,7 +186,7 @@ export const FilterForm = () => {
                                 type="radio"
                             />
                             <label
-                                className="block peer-checked:bg-black peer-checked:text-white border border-grey-3 py-2 px-3 rounded-button"
+                                className="block peer-checked:bg-black peer-checked:text-white border border-grey py-2 px-3 rounded-button"
                                 htmlFor="precio-4">
                                 $60k+
                             </label>
@@ -206,7 +206,7 @@ export const FilterForm = () => {
                                 type="checkbox"
                             />
                             <label
-                                className="block peer-checked:bg-black peer-checked:text-white border border-grey-3 py-2 px-3 rounded-button"
+                                className="block peer-checked:bg-black peer-checked:text-white border border-grey py-2 px-3 rounded-button"
                                 htmlFor="comuna-0">
                                 Centro
                             </label>
@@ -219,7 +219,7 @@ export const FilterForm = () => {
                                 type="checkbox"
                             />
                             <label
-                                className="block peer-checked:bg-black peer-checked:text-white border border-grey-3 py-2 px-3 rounded-button"
+                                className="block peer-checked:bg-black peer-checked:text-white border border-grey py-2 px-3 rounded-button"
                                 htmlFor="comuna-1">
                                 Providencia
                             </label>
@@ -232,7 +232,7 @@ export const FilterForm = () => {
                                 type="checkbox"
                             />
                             <label
-                                className="block peer-checked:bg-black peer-checked:text-white border border-grey-3 py-2 px-3 rounded-button"
+                                className="block peer-checked:bg-black peer-checked:text-white border border-grey py-2 px-3 rounded-button"
                                 htmlFor="comuna-2">
                                 Las condes
                             </label>
@@ -245,7 +245,7 @@ export const FilterForm = () => {
                                 type="checkbox"
                             />
                             <label
-                                className="block peer-checked:bg-black peer-checked:text-white border border-grey-3 py-2 px-3 rounded-button"
+                                className="block peer-checked:bg-black peer-checked:text-white border border-grey py-2 px-3 rounded-button"
                                 htmlFor="comuna-3">
                                 Nunoa
                             </label>
@@ -258,7 +258,7 @@ export const FilterForm = () => {
                                 type="checkbox"
                             />
                             <label
-                                className="block peer-checked:bg-black peer-checked:text-white border border-grey-3 py-2 px-3 rounded-button"
+                                className="block peer-checked:bg-black peer-checked:text-white border border-grey py-2 px-3 rounded-button"
                                 htmlFor="comuna-4">
                                 Vitacura
                             </label>
@@ -271,7 +271,7 @@ export const FilterForm = () => {
                                 type="checkbox"
                             />
                             <label
-                                className="block peer-checked:bg-black peer-checked:text-white border border-grey-3 py-2 px-3 rounded-button"
+                                className="block peer-checked:bg-black peer-checked:text-white border border-grey py-2 px-3 rounded-button"
                                 htmlFor="comuna-5">
                                 La reina
                             </label>
@@ -284,7 +284,7 @@ export const FilterForm = () => {
                                 type="checkbox"
                             />
                             <label
-                                className="block peer-checked:bg-black peer-checked:text-white border border-grey-3 py-2 px-3 rounded-button"
+                                className="block peer-checked:bg-black peer-checked:text-white border border-grey py-2 px-3 rounded-button"
                                 htmlFor="comuna-6">
                                 Lo barnechea
                             </label>
@@ -297,7 +297,7 @@ export const FilterForm = () => {
                                 type="checkbox"
                             />
                             <label
-                                className="block peer-checked:bg-black peer-checked:text-white border border-grey-3 py-2 px-3 rounded-button"
+                                className="block peer-checked:bg-black peer-checked:text-white border border-grey py-2 px-3 rounded-button"
                                 htmlFor="comuna-7">
                                 Huechuraba
                             </label>
@@ -310,7 +310,7 @@ export const FilterForm = () => {
                                 type="checkbox"
                             />
                             <label
-                                className="block peer-checked:bg-black peer-checked:text-white border border-grey-3 py-2 px-3 rounded-button"
+                                className="block peer-checked:bg-black peer-checked:text-white border border-grey py-2 px-3 rounded-button"
                                 htmlFor="comuna-8">
                                 Puente Alto
                             </label>
@@ -323,7 +323,7 @@ export const FilterForm = () => {
                                 type="checkbox"
                             />
                             <label
-                                className="block peer-checked:bg-black peer-checked:text-white border border-grey-3 py-2 px-3 rounded-button"
+                                className="block peer-checked:bg-black peer-checked:text-white border border-grey py-2 px-3 rounded-button"
                                 htmlFor="comuna-9">
                                 La florida
                             </label>

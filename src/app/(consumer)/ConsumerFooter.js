@@ -6,9 +6,9 @@ import { NavLink } from '@/components/atoms/NavLink'
 
 export const ConsumerFooter = () => {
     return (
-        <footer className="sticky bottom-0 inset-x-0 z-40 pb-4 border-t border-grey-3 bg-white shrink">
+        <footer className="sticky bottom-0 inset-x-0 z-40 pb-6 pt-1 border-t border-grey bg-white shrink">
             <nav>
-                <ul className="grid grid-cols-3 w-full items-center px-gutter py-1 gap-x-1">
+                <ul className="grid grid-cols-3 w-full items-center px-gutter gap-x-grid-gap">
                     <li className="col-span-1">
                         <NavLink
                             className="button-icon w-full"

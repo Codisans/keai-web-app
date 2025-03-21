@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 
 export const PriceSlider = ({ priceValue, setPriceValue }) => {
     return (
-        <div className="w-full text-caps-sm">
+        <div className="w-full typo-caps">
             <Box sx={{ width: '100%' }}>
                 <CustomSlider
                     slots={{ thumb: SliderThumb }}

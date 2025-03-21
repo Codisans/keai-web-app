@@ -119,7 +119,7 @@ const Page = () => {
                         checked={accountType == 'consumer'}
                     />
                     <Label
-                        className="inline-flex justify-center items-center text-button px-3 h-10 rounded-button bg-white border border-grey-3 text-black peer-checked:bg-black/10"
+                        className="inline-flex justify-center items-center text-button px-3 h-10 rounded-button bg-white border border-grey text-black peer-checked:bg-black/10"
                         htmlFor="consumer">
                         Consumidor
                     </Label>
@@ -135,7 +135,7 @@ const Page = () => {
                         checked={accountType == 'manager'}
                     />
                     <Label
-                        className="inline-flex justify-center items-center text-button px-3 h-10 rounded-button bg-white border border-grey-3 text-black peer-checked:bg-black/10"
+                        className="inline-flex justify-center items-center text-button px-3 h-10 rounded-button bg-white border border-grey text-black peer-checked:bg-black/10"
                         htmlFor="manager">
                         Administrador
                     </Label>

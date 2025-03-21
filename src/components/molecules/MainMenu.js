@@ -14,7 +14,7 @@ export const MainMenu = ({ categories }) => {
                     <Logo />
                 </Link>
             </div>
-            <nav className="border-t border-grey-3">
+            <nav className="border-t border-grey">
                 <h2 className="uppercase text-caps py-grid-gap">Categorias</h2>
                 <ul className="flex flex-col gap-grid pb-grid-gap pl-8">
                     {categories?.map((c, i) => (
@@ -26,7 +26,7 @@ export const MainMenu = ({ categories }) => {
                     ))}
                 </ul>
             </nav>
-            <ul className="flex flex-col items-end gap-grid py-grid-gap border-t border-grey-3 mt-auto">
+            <ul className="flex flex-col items-end gap-grid py-grid-gap border-t border-grey mt-auto">
                 <li>
                     <Button href="/dashboard">Dashboard</Button>
                 </li>

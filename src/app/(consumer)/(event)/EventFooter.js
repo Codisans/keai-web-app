@@ -5,7 +5,7 @@ export const EventFooter = ({ event }) => {
     if (!event) return
 
     return (
-        <footer className="sticky bottom-0 inset-x-0 z-footer border-t border-grey-3 bg-white shrink">
+        <footer className="sticky bottom-0 inset-x-0 z-footer border-t border-grey bg-white shrink">
             <div className="flex items-center justify-between p-grid-gap pb-6">
                 <div className="flex flex-col typo-body font-bold">
                     <DateTime value={event.start_date} />

@@ -21,10 +21,10 @@ export const Button = ({
             case 'icon':
                 return 'inline-flex justify-center items-center text-icon px-3 py-1.5 h-10 rounded-button bg-white text-black active:bg-grey'
             case 'big':
-                return 'w-full flex items-center justify-center h-28 text-big-button rounded-button bg-white border border-grey-3 text-black active:bg-grey'
+                return 'w-full flex items-center justify-center h-28 text-big-button rounded-button bg-white border border-grey text-black active:bg-grey'
             case 'regular':
             default:
-                return 'inline-flex justify-center items-center text-button px-3 h-10 rounded-button bg-white border border-grey-3 text-black active:bg-grey'
+                return 'inline-flex justify-center items-center text-button px-3 h-10 rounded-button bg-white border border-grey text-black active:bg-grey'
         }
     })(style)
 

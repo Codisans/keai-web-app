@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useContext } from 'react'
 import moment from 'moment'
 import { PriceSlider } from '../PriceSlider'
 import { FilterSection } from '../FilterSection'
@@ -13,13 +13,14 @@ import TagsAutocomplete from '@/components/atoms/TagsAutocomplete'
 import { getPriceIndicatorText } from '@/utils/filterUtils'
 import { FilterToggle } from '@/components/atoms/FilterToggle'
 import { useSearchParams } from 'next/navigation'
+import { ConsumerContext } from '@/app/(consumer)/ConsumerContext'
 
-export const MapFilter = () => {
+export const ListFilter = () => {
+    const { filterIsOpen, setFilterIsOpen } = useContext(ConsumerContext)
     const router = useRouter()
     const pathname = usePathname()
     const searchParams = useSearchParams()
     const { tags } = useConsumerContext()
-    const [filterIsOpen, setFilterIsOpen] = useState(false)
     const [date, setDate] = useState('today')
     const [minDate, setMinDate] = useState('')
     const [maxDate, setMaxDate] = useState('')
@@ -88,8 +89,8 @@ export const MapFilter = () => {
     }
 
     return (
-        <form onSubmit={handleSubmit} className="pointer-events-auto">
-            <div className="absolute top-[3.7rem] inset-x-grid-gap flex gap-grid">
+        <form onSubmit={handleSubmit} className="w-full py-grid-gap">
+            <div className="flex gap-grid px-grid-gap">
                 <div className="relative bg-white grow rounded group">
                     <input
                         className="pl-10 pr-3 h-10 w-full rounded border border-grey peer"
@@ -162,7 +163,7 @@ export const MapFilter = () => {
                 />
             </div>
             {filterIsOpen && (
-                <div className="absolute top-[6.8rem] border border-grey bottom-[4.6rem] rounded-ui overflow-hidden inset-x-grid-gap select-none bg-white">
+                <div className="absolute top-full mt-grid-gap border border-grey h-[calc(100svh-13.6rem)] rounded-ui overflow-hidden inset-x-grid-gap select-none bg-white z-20">
                     <div className="h-full overflow-y-auto">
                         <div className="flex justify-end z-40 sticky top-0 p-4 w-full bg-white shadow">
                             <h2 className="sr-only">Filtros:</h2>
