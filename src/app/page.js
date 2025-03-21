@@ -1,6 +1,5 @@
 import { Logo } from '@/components/atoms/Logo'
 import { RootMenu } from './RootMenu'
-import { InstallPrompt, PushNotificationManager } from './PWA'
 
 export const metadata = {
     title: 'KEAI',
