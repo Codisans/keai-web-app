@@ -1,7 +1,7 @@
 'use client'
 
 import { useAuth } from '@/hooks/auth'
-import { Button } from '@/components/atoms/Button'
+import Link from 'next/link'
 
 export const RootMenu = () => {
     const { user } = useAuth({ middleware: 'guest' })
@@ -11,22 +11,22 @@ export const RootMenu = () => {
             {user ? (
                 <>
                     <li>
-                        <Button href="/perfil">Perfil</Button>
+                        <Link href="/perfil">Perfil</Link>
                     </li>
                     <li>
-                        <Button href="/eventos">Eventos</Button>
+                        <Link href="/eventos">Eventos</Link>
                     </li>
                     <li>
-                        <Button href="/mapa">Mapa</Button>
+                        <Link href="/mapa">Mapa</Link>
                     </li>
                 </>
             ) : (
                 <>
                     <li>
-                        <Button href="/crear-cuenta">Registrar</Button>
+                        <Link href="/crear-cuenta">Registrar</Link>
                     </li>
                     <li>
-                        <Button href="/entrar">Ingresar</Button>
+                        <Link href="/entrar">Ingresar</Link>
                     </li>
                 </>
             )}

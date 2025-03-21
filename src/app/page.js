@@ -15,8 +15,6 @@ const Home = () => {
             </section>
             <section className="w-full mx-auto px-grid-gap pb-20 flex grow max-w-lg flex-col gap-10">
                 <RootMenu />
-                <PushNotificationManager />
-                <InstallPrompt />
             </section>
         </div>
     )
