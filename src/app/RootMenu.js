@@ -11,22 +11,32 @@ export const RootMenu = () => {
             {user ? (
                 <>
                     <li>
-                        <Link href="/perfil">Perfil</Link>
+                        <Link className="button" href="/perfil">
+                            Perfil
+                        </Link>
                     </li>
                     <li>
-                        <Link href="/eventos">Eventos</Link>
+                        <Link className="button" href="/eventos">
+                            Eventos
+                        </Link>
                     </li>
                     <li>
-                        <Link href="/mapa">Mapa</Link>
+                        <Link className="button" href="/mapa">
+                            Mapa
+                        </Link>
                     </li>
                 </>
             ) : (
                 <>
                     <li>
-                        <Link href="/crear-cuenta">Registrar</Link>
+                        <Link className="button" href="/crear-cuenta">
+                            Registrar
+                        </Link>
                     </li>
                     <li>
-                        <Link href="/entrar">Ingresar</Link>
+                        <Link className="button" href="/entrar">
+                            Ingresar
+                        </Link>
                     </li>
                 </>
             )}
