@@ -1,4 +1,4 @@
 @utility card-category {
-    @apply w-max p-2 flex flex-col gap-1 items-center relative bg-white text-theme rounded;
+    @apply w-max p-2 pb-1 flex flex-col gap-1 items-center relative bg-white text-theme rounded;
     @apply current:bg-theme current:text-theme-contrast current:pointer-events-none;
 }

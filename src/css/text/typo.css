@@ -33,3 +33,7 @@
 @utility typo-h5 {
     @apply text-h5 font-sans;
 }
+
+@utility typo-logo {
+    @apply text-logo font-tenorite leading-none;
+}

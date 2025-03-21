@@ -10,7 +10,7 @@ export const DateIndicator = () => {
     const maxDate = searchParams.get('max_date') || today
 
     return (
-        <div className="absolute bottom-gutter right-gutter z-20 flex gap-x-1 pointer-events-none bg-white rounded-ui p-1 flex items-center border border-grey-3 gap-1">
+        <div className="absolute bottom-gutter right-gutter z-20 flex gap-x-1 pointer-events-none bg-white rounded-ui p-1 flex items-center border border-grey gap-1">
             {minDate !== maxDate && (
                 <>
                     <DateCard date={minDate} />
@@ -25,7 +25,7 @@ export const DateIndicator = () => {
 export const DateCard = ({ date, className = '' }) => {
     return (
         <div
-            className={`flex flex-col items-center uppercase font-bold leading-none ${className}`}>
+            className={`flex flex-col items-center typo-small font-bold uppercase px-1 ${className}`}>
             <span className="tracking-widest">{moment(date).format('DD')}</span>
             <span>{moment(date).format('MMM')}</span>
         </div>

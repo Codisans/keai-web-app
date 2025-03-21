@@ -64,6 +64,7 @@
     --text-small: 0.875rem;
     --text-caps: 0.875rem;
     --text-button: 1rem;
+    --text-logo: 2rem;
 
     /* Spacing */
     --spacing-header: 4rem;
@@ -81,6 +82,7 @@
     --radius-button: 0.25rem;
     --radius-card: 0.25rem;
     --radius-ui: 0.25rem;
+    --radius: 0.4rem;
 
     /* Interactivity */
     --transition-clip-path: clip-path;

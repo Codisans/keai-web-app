@@ -4,21 +4,14 @@ import { Symbol } from '@/components/atoms/Symbol'
 import { useEffect, useRef } from 'react'
 
 export const Logo = ({ className = 'text-logo', type = 'horizontal' }) => {
-    if (type == 'logotype') {
-        return (
-            <Symbol
-                className={`${className} w-[1em] h-[1em] visible block`}
-                name="logotype"
-            />
-        )
-    }
-
     return (
         <span
-            className={`${className} flex flex-none flex-nowrap justify-center items-center select-none ${type == 'horizontal' ? '' : 'flex-col-reverse'} ${type == 'app' ? 'bg-black w-[2.5em] h-[2.5em] pt-[0.25em] rounded-[0.25em] text-white' : 'w-max h-max'}`}>
-            <span className="block leading-none">keai</span>
+            className={`${className} flex flex-none flex-nowrap justify-center items-center select-none ${type == 'horizontal' ? '' : 'flex-col-reverse'} ${type == 'app' ? 'bg-black w-[2em] h-[2em] pt-[0.15em] rounded-[0.25em] text-white' : 'w-max h-max'}`}>
+            <span className={type == 'logotype' ? 'sr-only' : 'typo-logo'}>
+                keai
+            </span>
             <Symbol
-                className={`visible block text-primary ${type == 'horizontal' ? 'w-[1em] h-[1em]' : 'w-[0.8em] h-[0.8em] mb-[-0.12em]'}`}
+                className={`visible block text-primary ${type == 'horizontal' ? 'w-[1em] h-[1em]' : 'w-[0.8em] h-[0.8em]'}`}
                 name="logotype"
             />
         </span>

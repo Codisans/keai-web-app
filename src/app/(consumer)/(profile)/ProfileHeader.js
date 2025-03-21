@@ -15,7 +15,7 @@ export const ProfileHeader = () => {
     }, [])
 
     return (
-        <header className="fixed top-0 left-0 right-0 shadow z-40 bg-white shrink">
+        <header className="fixed top-0 left-0 right-0 shadow z-header bg-white shrink">
             <nav className="w-full p-grid-gap">
                 <ul className="w-full grid grid-cols-5 gap-grid">
                     <li className="col-span-3 flex items-center">
