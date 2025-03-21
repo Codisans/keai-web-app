@@ -16,7 +16,7 @@ export const EventDetail = ({ event }) => {
         <div className="flex flex-col pb-12 px-grid-gap pt-grid-gap">
             <div className="flex flex-col-reverse">
                 <h1 className="typo-h3">{event.name}</h1>
-                <span className="pb-1 uppercase text-body text-grey-4 flex gap-x-2">
+                <span className="pb-1 uppercase text-body text-grey flex gap-x-2">
                     {event.categories.map((c, i) => (
                         <span key={i}>{c.name}</span>
                     ))}
@@ -29,7 +29,7 @@ export const EventDetail = ({ event }) => {
                 </div>
             </div>
             <div className="grid grid-cols-12 pt-4 gap-grid">
-                <ul className="col-span-12 flex gap-1.5 text-caps uppercase">
+                <ul className="col-span-12 flex gap-1.5 text-caps uppercase flex-wrap">
                     {event.tags?.map((tag, i) => (
                         <li key={i} className="tag">
                             {tag.name}
