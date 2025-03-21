@@ -14,20 +14,14 @@ import TagsAutocomplete from '@/components/atoms/TagsAutocomplete'
 import { getPriceIndicatorText } from '@/utils/filterUtils'
 import { FilterToggle } from '@/components/atoms/FilterToggle'
 import { useSearchParams } from 'next/navigation'
-import DatePicker, { registerLocale, setDefaultLocale } from 'react-datepicker'
-import { es } from 'date-fns/locale/es'
 
 export const MapFilter = () => {
-    registerLocale('es', es)
-    setDefaultLocale('es')
     const router = useRouter()
     const pathname = usePathname()
     const searchParams = useSearchParams()
     const { tags } = useConsumerContext()
     const [filterIsOpen, setFilterIsOpen] = useState(false)
     const [date, setDate] = useState('today')
-    const [minDateInput, setMinDateInput] = useState('')
-    const [maxDateInput, setMaxDateInput] = useState('')
     const [minDate, setMinDate] = useState('')
     const [maxDate, setMaxDate] = useState('')
     const [priceValue, setPriceValue] = useState([0, 105])
@@ -81,8 +75,6 @@ export const MapFilter = () => {
         const today = moment().format('YYYY-MM-DD')
         setMinDate(today)
         setMaxDate(today)
-        setMinDateInput('')
-        setMaxDateInput('')
         setPriceValue([0, 105])
         setDate('today')
         setSelectedTags([])
@@ -172,7 +164,7 @@ export const MapFilter = () => {
                 <div className="absolute top-[6.8rem] border border-grey-3 bottom-[4.6rem] rounded-ui overflow-hidden inset-x-grid-gap select-none bg-white">
                     <div className="h-full overflow-y-auto">
                         <div className="flex justify-between z-40 sticky top-0 p-4 w-full bg-white shadow">
-                            <p className="text-h3">Filtros:</p>
+                            <p className="typo-h2">Filtros:</p>
                             <div className="flex gap-grid">
                                 <Button type="button" onClick={handleClear}>
                                     Restablecer
@@ -185,7 +177,7 @@ export const MapFilter = () => {
                         <div className="w-full flex flex-col">
                             <FilterSection
                                 indicator={
-                                    <legend className="w-full flex justify-between items-center gap-1 text-caps py-2">
+                                    <legend className="w-full flex justify-between items-center gap-1 text-caps">
                                         {minDate != '' && (
                                             <span>
                                                 {moment(minDate)?.format(
@@ -235,8 +227,6 @@ export const MapFilter = () => {
                                             setMaxDate(
                                                 moment().format('YYYY-MM-DD'),
                                             )
-                                            setMinDateInput('')
-                                            setMaxDateInput('')
                                         }}
                                     />
                                     <DateRadio
@@ -256,8 +246,6 @@ export const MapFilter = () => {
                                                     .add(1, 'days')
                                                     .format('YYYY-MM-DD'),
                                             )
-                                            setMinDateInput('')
-                                            setMaxDateInput('')
                                         }}
                                         label="Mañana"
                                     />
@@ -279,8 +267,6 @@ export const MapFilter = () => {
                                                     .day(7)
                                                     .format('YYYY-MM-DD'),
                                             )
-                                            setMinDateInput('')
-                                            setMaxDateInput('')
                                         }}
                                         label="Este FDS"
                                     />
@@ -300,28 +286,9 @@ export const MapFilter = () => {
                                                     .day(7)
                                                     .format('YYYY-MM-DD'),
                                             )
-                                            setMinDateInput('')
-                                            setMaxDateInput('')
                                         }}
                                         label="Esta Semana"
                                     />
-                                    <div className="grid w-full grid-cols-2 gap-1">
-                                        <div className="col-span-2">
-                                            <DatePicker
-                                                selected={minDateInput}
-                                                onChange={dates => {
-                                                    const [start, end] = dates
-                                                    setMinDateInput(start)
-                                                    setMaxDateInput(end)
-                                                }}
-                                                startDate={minDateInput}
-                                                endDate={maxDateInput}
-                                                selectsRange
-                                                locale="es"
-                                                inline
-                                            />
-                                        </div>
-                                    </div>
                                 </div>
                             </FilterSection>
 

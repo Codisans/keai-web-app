@@ -19,9 +19,17 @@
 }
 
 @utility typo-h2 {
-    @apply text-h2 font-tenorite;
+    @apply text-h2 font-sans;
 }
 
 @utility typo-h3 {
-    @apply text-h3 font-tenorite;
+    @apply text-h3 font-sans;
+}
+
+@utility typo-h4 {
+    @apply text-h4 font-sans;
+}
+
+@utility typo-h5 {
+    @apply text-h5 font-sans;
 }

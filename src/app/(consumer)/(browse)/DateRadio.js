@@ -11,7 +11,7 @@ export const DateRadio = ({ id, name, value, checked, onChange, label }) => {
                 onChange={onChange}
             />
             <label
-                className="block w-full text-center text-radio peer-checked:bg-primary peer-checked:border-primary border-grey border bg-white py-2.5 px-2 rounded-button"
+                className="block w-full text-center typo-caps peer-checked:bg-primary peer-checked:border-primary border-grey border bg-white py-2.5 px-1 rounded"
                 htmlFor={id}>
                 {label}
             </label>
