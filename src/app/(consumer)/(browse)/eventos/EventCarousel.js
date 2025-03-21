@@ -1,8 +1,8 @@
 'use client'
 
 import { Swiper, SwiperSlide } from 'swiper/react'
-import Link from 'next/link'
 import { FreeMode } from 'swiper/modules'
+import { EventCard } from '@/components/molecules/EventCard'
 
 export const EventCarousel = ({ heading, events, className = '' }) => {
     if (!events) return
@@ -27,33 +27,10 @@ export const EventCarousel = ({ heading, events, className = '' }) => {
                         key={i}
                         className="pr-3 last:pr-0"
                         style={{ width: '16rem' }}>
-                        <EventCard event={event} />
+                        <EventCard event={event} type="carousel" />
                     </SwiperSlide>
                 ))}
             </Swiper>
-        </div>
-    )
-}
-
-export const EventCard = props => {
-    const { event } = props
-
-    return (
-        <div className="flex flex-col gap-y-3 relative w-full">
-            <div className="w-full aspect-[16/9] relative rounded-card overflow-hidden">
-                <img
-                    className="absolute inset-0 w-full h-full object-cover"
-                    src={event.cover || '/placeholder.jpg'}
-                />
-            </div>
-            <div className="">
-                <h3>{event.name}</h3>
-                <p>{event.date}</p>
-                <p>Desde: $ {event.price}</p>
-            </div>
-            <Link
-                href={`/evento/${event.id}`}
-                className="absolute inset-0"></Link>
         </div>
     )
 }

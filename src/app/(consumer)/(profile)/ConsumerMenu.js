@@ -5,6 +5,9 @@ import { LogoutButton } from '@/components/atoms/LogoutButton'
 import { Pullout } from '@/components/templates/Pullout'
 import { useConsumerContext } from '../ConsumerContext'
 import { NavLink } from '@/components/atoms/NavLink'
+import HomeIcon from '@mui/icons-material/Home'
+import MapIcon from '@mui/icons-material/Map'
+
 export const ConsumerMenu = () => {
     const { menuIsOpen, setMenuIsOpen } = useConsumerContext()
 
@@ -14,18 +17,25 @@ export const ConsumerMenu = () => {
                 <nav className="my-auto">
                     <ul className="flex flex-col items-end gap-grid p-gutter">
                         <li>
-                            <NavLink className="button" href="/">
+                            <NavLink className="button" pathname="/eventos">
+                                <HomeIcon />
                                 <span>Inicio</span>
                             </NavLink>
                         </li>
                         <li>
-                            <NavLink className="button" href="/cuenta">
+                            <NavLink className="button" pathname="/mapa">
+                                <MapIcon />
+                                <span>Mapa</span>
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink className="button" pathname="/cuenta">
                                 <SettingsIcon />
                                 <span>Cuenta</span>
                             </NavLink>
                         </li>
                         <li>
-                            <NavLink className="button" href="/perfil">
+                            <NavLink className="button" pathname="/perfil">
                                 <PersonIcon />
                                 <span>Perfil</span>
                             </NavLink>

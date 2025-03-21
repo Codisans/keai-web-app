@@ -1,7 +1,6 @@
 'use client'
 import { ConsumerContext } from '@/app/(consumer)/ConsumerContext'
 import { ClipboardCopy } from '@/components/atoms/ClipboardCopy'
-import Link from 'next/link'
 import { useContext, useEffect } from 'react'
 
 export const EventDetail = ({ event }) => {
@@ -16,7 +15,7 @@ export const EventDetail = ({ event }) => {
     return (
         <div className="flex flex-col pb-12 px-grid-gap pt-grid-gap">
             <div className="flex flex-col-reverse">
-                <h1 className="text-h2">{event.name}</h1>
+                <h1 className="typo-h3">{event.name}</h1>
                 <span className="pb-1 uppercase text-body text-grey-4 flex gap-x-2">
                     {event.categories.map((c, i) => (
                         <span key={i}>{c.name}</span>
@@ -32,9 +31,7 @@ export const EventDetail = ({ event }) => {
             <div className="grid grid-cols-12 pt-4 gap-grid">
                 <ul className="col-span-12 flex gap-1.5 text-caps uppercase">
                     {event.tags?.map((tag, i) => (
-                        <li
-                            key={i}
-                            className="py-0.5 px-1.5 bg-orange text-black rounded">
+                        <li key={i} className="tag">
                             {tag.name}
                         </li>
                     ))}
@@ -58,9 +55,9 @@ export const EventDetail = ({ event }) => {
                         <span>{event.city}</span>
                     </p>
                 </div>
-                <div className="col-span-12">
+                {/* <div className="col-span-12">
                     <Link href={`/mapa#${event.id}`}>Ver en mapa</Link>
-                </div>
+                </div> */}
             </div>
         </div>
     )

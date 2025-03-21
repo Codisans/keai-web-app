@@ -1,0 +1,3 @@
+@utility tag {
+    @apply inline-block bg-orange text-black pb-0.5 pt-1 px-1.5 rounded typo-caps;
+}

@@ -2,6 +2,7 @@ import { EventURLSearchParams } from '@/utils/EventURLSearchParams'
 import { EventCarousel } from '../EventCarousel'
 import api from '@/lib/api'
 import { EventResults } from '../EventResults'
+import { NoResultsText } from '@/components/atoms/NoResultsText'
 
 export const metadata = {
     title: 'KEAI | Eventos',
@@ -18,19 +19,11 @@ const CategoryPage = async ({ params, searchParams }) => {
     )
     const events = await api.getEvents(urlSearchParams.toListString())
 
-    if (!events || events?.length === 0)
-        return (
-            <div className="w-full py-8 flex flex-col gap-y-gutter px-gutter">
-                <p>Lo lamentamos!</p>
-                <p>
-                    No se encuentran eventos segun su busqueda en este momento.
-                </p>
-            </div>
-        )
+    if (!events || events?.length === 0) return <NoResultsText />
 
     if (Object.keys(searchParams).length !== 0)
         return (
-            <div className="w-full py-8 flex flex-col gap-y-gutter filter-open:hidden">
+            <div className="w-full py-8 flex flex-col gap-y-gutter">
                 <EventResults events={events} />
             </div>
         )

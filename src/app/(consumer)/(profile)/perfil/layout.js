@@ -2,10 +2,10 @@
 
 // import { useState, useEffect } from 'react'
 import { useAuth } from '@/hooks/auth'
-import { Button } from '@/components/atoms/Button'
 import HistoryIcon from '@mui/icons-material/History'
 import EventIcon from '@mui/icons-material/Event'
 import { Loading } from '@/app/Loading'
+import { NavLink } from '@/components/atoms/NavLink'
 
 const FavouritesLayout = ({ children }) => {
     const { user } = useAuth()
@@ -37,31 +37,37 @@ const FavouritesLayout = ({ children }) => {
                 </div>
                 <div className="flex flex-col justify-center col-span-8">
                     <h2 className="text-h2 font-tenerite">{user?.name}</h2>
-                    <span>{}</span>
                 </div>
             </section>
-            {/*
-             <h1 className="p-grid-gap text-h1">
-                Eventos guardados ({favoriteEvents.length})
-            </h1> */}
-            <h1 className="p-grid-gap text-h1">Eventos guardados</h1>
+            <section className="grid grid-cols-12 p-grid-gap gap-grid">
+                <h2 className="col-span-12 typo-h4">Mis tags</h2>
+                <div className="col-span-12">
+                    <ul className="flex flex-wrap gap-2">
+                        <li className="tag">tag1</li>
+                        <li className="tag">tag2</li>
+                    </ul>
+                </div>
+            </section>
+            <h2 className="pt-8 px-grid-gap typo-h3">Eventos guardados</h2>
             <section className="sticky z-10 w-full bg-white border-b p-grid-gap border-grey-2 top-14">
-                <ul className="grid w-full grid-cols-2 gap-grid pt-grid-gap">
+                <ul className="grid w-full grid-cols-2 gap-grid">
                     <li className="col-span-1">
-                        <Button
-                            className="flex w-full gap-2 active:bg-grey-3 active:text-black"
-                            href="/perfil/historicos">
+                        <NavLink
+                            className="button w-full"
+                            pathname="/perfil/historicos"
+                            exactPath={true}>
                             <HistoryIcon />
                             <span>Historicos</span>
-                        </Button>
+                        </NavLink>
                     </li>
                     <li className="col-span-1">
-                        <Button
-                            className="flex w-full gap-2 active:bg-grey-3 active:text-black"
-                            href="/perfil">
+                        <NavLink
+                            className="button w-full"
+                            pathname="/perfil"
+                            exactPath={true}>
                             <EventIcon />
                             <span>Siguentes</span>
-                        </Button>
+                        </NavLink>
                     </li>
                 </ul>
             </section>
