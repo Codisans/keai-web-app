@@ -1,0 +1,23 @@
+@import 'leaflet/dist/leaflet.css';
+
+a[href="https://www.maptiler.com"]
+{
+    display: none !important;
+}
+
+.leaflet-control-attribution {
+    display: none !important;
+}
+
+.leaflet-pane {
+    z-index: 1;
+}
+
+.leaflet-tile-pane {
+    z-index: 1;
+}
+
+.leaflet-top,
+.leaflet-bottom {
+    z-index: 5;
+}

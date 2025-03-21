@@ -1,0 +1,14 @@
+@utility button {
+    @apply bg-black text-white inline-flex justify-center gap-2 items-center py-2 px-3 rounded;
+    @apply current:text-orange current:pointer-events-none;
+}
+
+@utility button-icon {
+    @apply bg-black text-white inline-flex justify-center items-center py-2 px-3 rounded;
+    @apply current:text-orange current:pointer-events-none;
+}
+
+@utility button-category {
+    @apply relative w-max flex-nowrap flex gap-1 items-center text-white rounded bg-theme px-1.5 py-1 border-2 border-theme;
+    @apply before:absolute before:inset-0 before:rounded-[0.45rem] before:hidden before:border-2 before:border-white current:before:block;
+}

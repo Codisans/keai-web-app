@@ -1,3 +1,4 @@
+import { Suspense } from 'react'
 import { ConsumerContextProvider } from './ConsumerContext'
 import api from '@/lib/api'
 
@@ -7,7 +8,7 @@ const ConsumerLayout = async ({ children }) => {
 
     return (
         <ConsumerContextProvider categories={categories} tags={tags}>
-            {children}
+            <Suspense fallback={<div>Loading...</div>}>{children}</Suspense>
         </ConsumerContextProvider>
     )
 }

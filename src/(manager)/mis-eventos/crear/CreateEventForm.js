@@ -103,7 +103,7 @@ export const CreateEventForm = () => {
     return (
         <LocalizationProvider dateAdapter={AdapterDayjs}>
             <form onSubmit={submitForm} className="flex flex-col">
-                <div className="flex flex-nowrap items-center gap-gg">
+                <div className="flex flex-nowrap items-center gap-grid">
                     <DateTimePicker className="grow" label="Inicio" />
                     <DateTimePicker className="grow" label="Termino" />
                 </div>

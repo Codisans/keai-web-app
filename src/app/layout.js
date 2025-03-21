@@ -1,6 +1,5 @@
-import '@/app/global.css'
+import '@/css/main.css'
 import { AppContextProvider } from './AppContext'
-import { Suspense } from 'react'
 import { GoogleAnalytics } from '@next/third-parties/google'
 
 const RootLayout = ({ children }) => {
@@ -23,10 +22,8 @@ const RootLayout = ({ children }) => {
                 <meta name="apple-mobile-web-app-title" content="KEAI" />
                 <link rel="manifest" href="/site.webmanifest" />
             </head>
-            <body className="flex flex-col w-full overflow-y-auto font-sans overscroll-none h-screen-small">
-                <AppContextProvider>
-                    <Suspense>{children}</Suspense>
-                </AppContextProvider>
+            <body className="flex flex-col w-full overflow-y-auto font-sans overscroll-none h-svh">
+                <AppContextProvider>{children}</AppContextProvider>
                 <GoogleAnalytics gaId="G-YKTP4XWEGV" />
             </body>
         </html>

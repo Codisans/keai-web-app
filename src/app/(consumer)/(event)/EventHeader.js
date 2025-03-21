@@ -7,6 +7,7 @@ import { useState, useContext, useEffect } from 'react'
 import HomeIcon from '@mui/icons-material/Home'
 import { ConsumerContext } from '@/app/(consumer)/ConsumerContext'
 import { useAuth } from '@/hooks/auth'
+import Link from 'next/link'
 
 export const EventHeader = () => {
     const [isFavorite, setIsFavorite] = useState(false)
@@ -41,8 +42,8 @@ export const EventHeader = () => {
 
     return (
         <header className="sticky inset-x-0 top-0 bg-white shadow z-header shrink">
-            <nav className="w-full p-gg">
-                <ul className="grid w-full grid-cols-5 gap-gg">
+            <nav className="w-full p-grid-gap">
+                <ul className="grid w-full grid-cols-5 gap-grid">
                     <li className="col-span-1">
                         <Button
                             className="w-full dark"
@@ -66,26 +67,22 @@ export const EventHeader = () => {
                         />
                     </li>
                     <li className="col-span-1">
-                        <Button
-                            className="w-full"
-                            href="/eventos"
-                            icon={<HomeIcon />}
-                        />
+                        <Link className="button-icon w-full" href="/eventos">
+                            <HomeIcon />
+                        </Link>
                     </li>
                     <li className="col-start-5 col-end-6">
-                        <Button
+                        <button
                             onClick={handleFavorite}
-                            active={isFavorite}
-                            className="w-full"
-                            icon={
-                                isFavorite ? (
-                                    <FavoriteIcon />
-                                ) : (
-                                    <FavoriteBorderIcon />
-                                )
-                            }
+                            className={`button w-full ${isFavorite ? 'current' : ''}`}
                             disabled={!selectedEvent || !user}
-                        />
+                            type="button">
+                            {isFavorite ? (
+                                <FavoriteIcon />
+                            ) : (
+                                <FavoriteBorderIcon />
+                            )}
+                        </button>
                     </li>
                 </ul>
             </nav>

@@ -10,7 +10,7 @@ export const EventListing = ({ events }) => {
 
     return (
         <div className="w-full grow relative">
-            <ul className="sticky top-0 grid grid-cols-8 bg-white py-1.5 px-gg border-b border-grey font-bold">
+            <ul className="sticky top-0 grid grid-cols-8 bg-white py-1.5 px-grid-gap border-b border-grey font-bold">
                 <li className="col-span-1">id</li>
                 <li className="col-span-2">Categories</li>
                 <li className="col-span-3">Name</li>
@@ -31,7 +31,7 @@ export const EventListing = ({ events }) => {
 
 export const EventRow = ({ event }) => {
     return (
-        <li className="grid grid-cols-8 px-gg py-1.5 border-b border-grey">
+        <li className="grid grid-cols-8 px-grid-gap py-1.5 border-b border-grey">
             <span className="col-span-1">{event.id}</span>
             <span className="col-span-2">
                 {event.categories.map(c => c.name).join(', ')}

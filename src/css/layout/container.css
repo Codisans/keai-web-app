@@ -1,0 +1,3 @@
+@utility container {
+    @apply w-full max-w-max-content mx-auto px-gutter;
+}

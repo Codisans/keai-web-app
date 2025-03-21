@@ -14,9 +14,9 @@ export const EventDetail = ({ event }) => {
     }, [])
 
     return (
-        <div className="flex flex-col pb-12 px-gg pt-gg">
+        <div className="flex flex-col pb-12 px-grid-gap pt-grid-gap">
             <div className="flex flex-col-reverse">
-                <h1 className="text-h1">{event.name}</h1>
+                <h1 className="text-h2">{event.name}</h1>
                 <span className="pb-1 uppercase text-body text-grey-4 flex gap-x-2">
                     {event.categories.map((c, i) => (
                         <span key={i}>{c.name}</span>
@@ -29,12 +29,12 @@ export const EventDetail = ({ event }) => {
                     />
                 </div>
             </div>
-            <div className="grid grid-cols-12 pt-4 gap-gg">
+            <div className="grid grid-cols-12 pt-4 gap-grid">
                 <ul className="col-span-12 flex gap-1.5 text-caps uppercase">
                     {event.tags?.map((tag, i) => (
                         <li
                             key={i}
-                            className="py-0.5 px-1.5 bg-grey-4 text-white rounded">
+                            className="py-0.5 px-1.5 bg-orange text-black rounded">
                             {tag.name}
                         </li>
                     ))}

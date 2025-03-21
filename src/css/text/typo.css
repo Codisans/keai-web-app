@@ -1,0 +1,27 @@
+@utility typo-button {
+    @apply text-button font-tenorite;
+}
+
+@utility typo-caps {
+    @apply text-caps font-tenorite uppercase;
+}
+
+@utility typo-body {
+    @apply text-body font-sans;
+}
+
+@utility typo-small {
+    @apply text-small font-sans;
+}
+
+@utility typo-h1 {
+    @apply text-h1 font-tenorite;
+}
+
+@utility typo-h2 {
+    @apply text-h2 font-tenorite;
+}
+
+@utility typo-h3 {
+    @apply text-h3 font-tenorite;
+}

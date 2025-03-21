@@ -10,7 +10,7 @@ const AdminTagListing = async () => {
 
     return (
         <div className="w-full h-full">
-            <section className="py-3 w-full px-gg h-max">
+            <section className="py-3 w-full px-grid-gap h-max">
                 <h1>Tags</h1>
             </section>
             {/* <TagListing tags={tags} /> */}

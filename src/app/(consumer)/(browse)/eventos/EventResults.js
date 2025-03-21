@@ -12,8 +12,10 @@ export const EventResults = ({ events }) => {
             </div>
             <ul className="w-full flex flex-col pt-4">
                 {events.map((event, i) => (
-                    <li className="w-full border-t border-grey-2 py-gg" key={i}>
-                        <div className="grid grid-cols-12 gap-gg relative group/card w-full">
+                    <li
+                        className="w-full border-t border-grey-2 py-grid-gap"
+                        key={i}>
+                        <div className="grid grid-cols-12 gap-grid relative group/card w-full">
                             <div className="col-start-1 col-end-4 aspect-square relative rounded-card overflow-hidden">
                                 <img
                                     className="absolute inset-0 w-full h-full object-cover group-hover/card:scale-105 transition-transform ease-in-out duration-500"

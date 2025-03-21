@@ -1,0 +1,34 @@
+:root {
+    --min-rem: 12;
+    --max-rem: 16;
+    --min-screen: 1024;
+    --max-screen: 1920;
+    --rem-delta: calc(var(--max-rem) - var(--min-rem));
+    --screen-delta: calc(var(--max-screen) - var(--min-screen));
+    --scaling-font-const: 16px;
+    --scaling-font-coef: 0;
+}
+
+@media (min-width: 1024px) {
+    :root {
+        --scaling-font-const: calc(
+            var(--min-rem) * 1px -
+                (var(--min-screen) * var(--rem-delta) / var(--screen-delta)) *
+                1px
+        );
+        --scaling-font-coef: calc(var(--rem-delta) / var(--screen-delta));
+    }
+}
+
+@media (min-width: 1920px) {
+    :root {
+        --scaling-font-const: calc(var(--max-rem) * 1px);
+        --scaling-font-coef: 0;
+    }
+}
+
+@utility scaling-font-size {
+    font-size: calc(
+        var(--scaling-font-const) + var(--scaling-font-coef) * 100vw
+    );
+}

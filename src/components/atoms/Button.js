@@ -41,7 +41,7 @@ export const Button = ({
 
     return (
         <button
-            className={`${className} ${styles} ${active ? 'active' : ''} ${disabled ? 'disabled' : ''} dark:bg-black dark:text-white disabled:text-grey-dark disabled:-pointer-events-none`}
+            className={`${className} ${styles} ${active ? 'active' : ''} ${disabled ? 'disabled' : ''} dark:bg-black dark:text-white disabled:text-grey-dark disabled:pointer-events-none`}
             type={type}
             disabled={disabled}
             {...props}>

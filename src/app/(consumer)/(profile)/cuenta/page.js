@@ -9,7 +9,7 @@ const Cuenta = () => {
     return (
         <>
             <div className="py-12 flex flex-col gap-8 max-w-7xl mx-auto">
-                <ul className="flex flex-col px-gg gap-gg">
+                <ul className="flex flex-col px-grid-gap gap-grid">
                     <li>Configuration de cuenta</li>
                     <li>
                         <UserDetail />

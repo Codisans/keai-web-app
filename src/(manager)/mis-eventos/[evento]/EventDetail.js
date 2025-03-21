@@ -12,7 +12,7 @@ export const EventDetail = ({ event }) => {
     }, [])
 
     return (
-        <div className="flex flex-col px-gg pt-gg pb-12">
+        <div className="flex flex-col px-grid-gap pt-grid-gap pb-12">
             <div className="flex flex-col-reverse">
                 <h1 className="text-h1">Evento: {event.name}</h1>
                 <span className="uppercase text-body text-grey-4 pb-1">
@@ -25,7 +25,7 @@ export const EventDetail = ({ event }) => {
                     />
                 </div>
             </div>
-            <div className="grid grid-cols-12 gap-gg pt-4">
+            <div className="grid grid-cols-12 gap-grid pt-4">
                 <ul className="col-span-12 flex gap-1.5 text-caps uppercase">
                     {event.tags?.map((tag, i) => (
                         <li

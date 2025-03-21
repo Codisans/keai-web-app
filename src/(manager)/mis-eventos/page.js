@@ -16,16 +16,16 @@ const MisEventos = async () => {
 
     return (
         <>
-            <section className="py-12 px-gg">
+            <section className="py-12 px-grid-gap">
                 <h1 className="text-h1">Mis Eventos</h1>
             </section>
-            <section className="flex flex-col overflow-y-auto p-gg grow">
+            <section className="flex flex-col overflow-y-auto p-grid-gap grow">
                 <ul className="flex flex-col w-full">
                     {events.data?.map((event, i) => (
                         <li
-                            className="w-full border-t border-grey-2 py-gg"
+                            className="w-full border-t border-grey-2 py-grid-gap"
                             key={i}>
-                            <div className="relative grid w-full grid-cols-12 gap-gg group/card">
+                            <div className="relative grid w-full grid-cols-12 gap-grid group/card">
                                 <div className="relative col-start-1 col-end-4 overflow-hidden aspect-square rounded-card">
                                     <img
                                         className="absolute inset-0 object-cover w-full h-full transition-transform duration-500 ease-in-out group-hover/card:scale-105"
@@ -46,12 +46,12 @@ const MisEventos = async () => {
                                             type="time"
                                         />
                                     </div>
-                                    <div className="flex flex-col items-end justify-between gap-gg">
+                                    <div className="flex flex-col items-end justify-between gap-grid">
                                         <Price
                                             className="font-small text-grey-4"
                                             value={event.price}
                                         />
-                                        <div className="flex flex-nowrap gap-gg">
+                                        <div className="flex flex-nowrap gap-grid">
                                             <Button icon={<VisibilityIcon />} />
                                             <Button
                                                 icon={<VisibilityOffIcon />}

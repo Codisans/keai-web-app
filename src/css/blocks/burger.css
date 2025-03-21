@@ -1,0 +1,33 @@
+@layer components {
+    .burger {
+        @apply relative z-40 block w-6 h-6 touch-manipulation lg:hidden;
+
+        &::before,
+        &::after {
+            @apply absolute content-[''] left-1/2 top-1/2 -translate-x-1/2 block w-6 h-0.5 bg-current transition-transform duration-300 ease-in-out;
+        }
+
+        &::before {
+            @apply -translate-y-1;
+        }
+
+        &::after {
+            @apply translate-y-1;
+        }
+    }
+
+    .burger.open {
+        &::before,
+        &::after {
+            @apply translate-y-0;
+        }
+
+        &::before {
+            @apply rotate-45;
+        }
+
+        &::after {
+            @apply -rotate-45;
+        }
+    }
+}

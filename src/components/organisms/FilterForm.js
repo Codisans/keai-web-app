@@ -26,9 +26,9 @@ export const FilterForm = () => {
 
     return (
         <form className="relative h-full overflow-y-auto select-none">
-            <div className="flex justify-between sticky top-0 w-full p-gg bg-white shadow">
+            <div className="flex justify-between sticky top-0 w-full p-grid-gap bg-white shadow">
                 <p className="text-h2">Filtros:</p>
-                <div className="flex gap-gg">
+                <div className="flex gap-grid">
                     <Button
                         type="button"
                         onClick={() => console.log('clear filter')}>
@@ -43,9 +43,9 @@ export const FilterForm = () => {
                 </div>
             </div>
             {/* <TagSearch options={tags} /> */}
-            <div className="w-full flex flex-col gap-6 p-gg">
+            <div className="w-full flex flex-col gap-6 p-grid-gap">
                 <fieldset className="flex flex-col">
-                    <legend className="text-caps text-black/80 uppercase pb-gg">
+                    <legend className="text-caps text-black/80 uppercase pb-grid-gap">
                         Fechas
                     </legend>
                     <div className="flex flex-wrap gap-x-3 gap-y-2">
@@ -99,7 +99,7 @@ export const FilterForm = () => {
                             htmlFor="date-otro">
                             Otro
                         </label>
-                        <div className="hidden peer-checked:grid w-full grid-cols-2 gap-gg">
+                        <div className="hidden peer-checked:grid w-full grid-cols-2 gap-grid">
                             <div className="col-span-1">
                                 <input
                                     className="w-full border-grey-3 rounded-button block"
@@ -122,7 +122,7 @@ export const FilterForm = () => {
                     </div>
                 </fieldset>
                 <fieldset className="flex flex-col">
-                    <legend className="text-caps text-black/80 uppercase pb-gg">
+                    <legend className="text-caps text-black/80 uppercase pb-grid-gap">
                         Precio
                     </legend>
                     <div className="flex flex-wrap gap-x-3 gap-y-2">
@@ -194,7 +194,7 @@ export const FilterForm = () => {
                     </div>
                 </fieldset>
                 <fieldset className="flex flex-col">
-                    <legend className="text-caps text-black/80 uppercase pb-gg">
+                    <legend className="text-caps text-black/80 uppercase pb-grid-gap">
                         Comuna
                     </legend>
                     <div className="flex flex-wrap gap-x-3 gap-y-2">
@@ -362,9 +362,9 @@ export const FilterForm = () => {
 
 //     return (
 //         <form ref={formRef} className="relative h-full overflow-y-auto">
-//             <div className="flex justify-between sticky top-0 w-full p-gg bg-white shadow">
+//             <div className="flex justify-between sticky top-0 w-full p-grid-gap bg-white shadow">
 //                 <p className="text-h2">Filtros:</p>
-//                 <div className="flex gap-gg">
+//                 <div className="flex gap-grid">
 //                     <Button
 //                         type="button"
 //                         onClick={() => console.log('clear filter')}>
@@ -379,7 +379,7 @@ export const FilterForm = () => {
 //                 </div>
 //             </div>
 //             <TagSearch options={tagOptions} />
-//             <div className="w-full flex flex-col gap-gg p-gg">
+//             <div className="w-full flex flex-col gap-grid p-grid-gap">
 //                 <fieldset className="flex flex-col shrink">
 //                     <legend>Fechas</legend>
 //                     <div className="flex flex-wrap gap-x-3 gap-y-1.5">

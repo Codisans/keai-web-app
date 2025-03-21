@@ -14,8 +14,12 @@ import TagsAutocomplete from '@/components/atoms/TagsAutocomplete'
 import { getPriceIndicatorText } from '@/utils/filterUtils'
 import { FilterToggle } from '@/components/atoms/FilterToggle'
 import { useSearchParams } from 'next/navigation'
+import DatePicker, { registerLocale, setDefaultLocale } from 'react-datepicker'
+import { es } from 'date-fns/locale/es'
 
 export const MapFilter = () => {
+    registerLocale('es', es)
+    setDefaultLocale('es')
     const router = useRouter()
     const pathname = usePathname()
     const searchParams = useSearchParams()
@@ -94,7 +98,7 @@ export const MapFilter = () => {
 
     return (
         <form onSubmit={handleSubmit} className="pointer-events-auto">
-            <div className="absolute top-[3.7rem] inset-x-gg flex gap-gg">
+            <div className="absolute top-[3.7rem] inset-x-grid-gap flex gap-grid">
                 <div className="relative bg-white grow rounded-ui group">
                     <input
                         className="pl-10 pr-3 h-10 w-full rounded-ui border border-grey-3 peer"
@@ -165,11 +169,11 @@ export const MapFilter = () => {
                 />
             </div>
             {filterIsOpen && (
-                <div className="absolute top-[6.8rem] border border-grey-3 bottom-[4.6rem] rounded-ui overflow-hidden inset-x-gg select-none bg-white">
+                <div className="absolute top-[6.8rem] border border-grey-3 bottom-[4.6rem] rounded-ui overflow-hidden inset-x-grid-gap select-none bg-white">
                     <div className="h-full overflow-y-auto">
-                        <div className="flex justify-between sticky top-0 p-4 w-full bg-white shadow">
-                            <p className="text-h2">Filtros:</p>
-                            <div className="flex gap-gg">
+                        <div className="flex justify-between z-40 sticky top-0 p-4 w-full bg-white shadow">
+                            <p className="text-h3">Filtros:</p>
+                            <div className="flex gap-grid">
                                 <Button type="button" onClick={handleClear}>
                                     Restablecer
                                 </Button>
@@ -302,61 +306,19 @@ export const MapFilter = () => {
                                         label="Esta Semana"
                                     />
                                     <div className="grid w-full grid-cols-2 gap-1">
-                                        <div className="col-span-1">
-                                            <input
-                                                className="w-full border-grey rounded-button block text-radio [&[value='']]:bg-white bg-primary"
-                                                min={moment().format(
-                                                    'YYYY-MM-DD',
-                                                )}
-                                                value={minDateInput || ''}
-                                                onChange={e => {
-                                                    const date = moment(
-                                                        e.target.value,
-                                                    ).format('YYYY-MM-DD')
-                                                    setDate('other')
-                                                    setMinDate(date)
-                                                    setMinDateInput(date)
-
-                                                    if (
-                                                        moment(date).isAfter(
-                                                            maxDateInput,
-                                                        )
-                                                    ) {
-                                                        setMaxDate(date)
-                                                        setMaxDateInput('')
-                                                    }
+                                        <div className="col-span-2">
+                                            <DatePicker
+                                                selected={minDateInput}
+                                                onChange={dates => {
+                                                    const [start, end] = dates
+                                                    setMinDateInput(start)
+                                                    setMaxDateInput(end)
                                                 }}
-                                                placeholder="Desde"
-                                                id="min-date"
-                                                name="min-date"
-                                                type="date"
-                                            />
-                                        </div>
-                                        <div className="col-span-1">
-                                            <input
-                                                className="w-full border-primary bg-primary rounded-button block text-radio [&[value='']]:border-grey [&[value='']]:bg-white"
-                                                min={
-                                                    minDateInput === ''
-                                                        ? moment().format(
-                                                              'YYYY-MM-DD',
-                                                          )
-                                                        : moment(
-                                                              minDateInput,
-                                                          ).format('YYYY-MM-DD')
-                                                }
-                                                value={maxDateInput || ''}
-                                                onChange={e => {
-                                                    const date = moment(
-                                                        e.target.value,
-                                                    ).format('YYYY-MM-DD')
-                                                    setDate('other')
-                                                    setMaxDate(date)
-                                                    setMaxDateInput(date)
-                                                }}
-                                                placeholder="Hasta"
-                                                id="max-date"
-                                                name="max-date"
-                                                type="date"
+                                                startDate={minDateInput}
+                                                endDate={maxDateInput}
+                                                selectsRange
+                                                locale="es"
+                                                inline
                                             />
                                         </div>
                                     </div>

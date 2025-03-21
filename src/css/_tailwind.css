@@ -1,0 +1,95 @@
+@import 'tailwindcss';
+
+@custom-variant mouse {
+    @media ((hover: hover) and (pointer: fine)) {
+        @slot;
+    }
+}
+
+@custom-variant touch {
+    @media ((hover: none) and (pointer: coarse)) {
+        @slot;
+    }
+}
+
+@custom-variant current {
+    .current &,
+    &.current {
+        @slot;
+    }
+}
+
+@theme {
+    /* Colors */
+    --color-black: #2b2b2b;
+    --color-black-true: #000;
+    --color-white: #fff;
+    --color-white-alt: #ededed;
+    --color-grey-light: #ebebeb;
+    --color-grey: #dddddd;
+    --color-grey-dark: #797979;
+
+    --color-red: #ff4a5c;
+    --color-blue: #31285b;
+    --color-green: #115748;
+    --color-orange: #faac4a;
+    --color-pink: #f2abab;
+
+    --color-error: #e34a4a;
+
+    --color-theme: var(--color-orange);
+    --color-theme-contrast: var(--color-white);
+    --color-theme-accent: var(--color-black);
+
+    --color-primary: #faac4a;
+    --color-secondary: #f8ac4c;
+    --color-canvas: #fff;
+    --color-canvas-alt: #e4e4e4;
+
+    /* --color-green-1: #24B595;
+    --color-green-2: #24B595;
+    --color-green-3: #115748; */
+
+    /* Typography */
+    --font-primary: 'Tenorite', sans-serif;
+    --font-tenorite: 'Tenorite', sans-serif;
+    --font-sans: 'Open Sans', sans-serif;
+
+    --text-h1: 3rem;
+    --text-h2: 2.5rem;
+    --text-h3: 2rem;
+    --text-h4: 1.5rem;
+    --text-h5: 1.25rem;
+    --text-body: 1rem;
+    --text-small: 0.875rem;
+    --text-caps: 0.875rem;
+    --text-button: 1rem;
+
+    /* Spacing */
+    --spacing-header: 4rem;
+    --spacing-gutter: 0.5rem;
+    --spacing-grid-gap: 0.5rem;
+    --spacing-max-content: 1920px;
+    --spacing-scrollbar: 15px;
+
+    --gap-grid: var(--spacing-grid-gap);
+
+    /* Sizing */
+    --width-viewport: calc(100vw - var(--spacing-scrollbar));
+
+    /* Borders */
+    --radius-button: 0.25rem;
+    --radius-card: 0.25rem;
+    --radius-ui: 0.25rem;
+
+    /* Interactivity */
+    --transition-clip-path: clip-path;
+    --transition-opacity-visibility: opacity, visibility;
+    --transition-height: height, max-height;
+
+    --ease-default: cubic-bezier(0.25, 0.1, 0.25, 1);
+    --ease-slide: cubic-bezier(0.95, 0.2, 0.25, 1);
+    --ease-shift: cubic-bezier(0.22, 1, 0.36, 1);
+    --ease-fade: cubic-bezier(0.645, 0.045, 0.355, 1);
+    --ease-rollover: cubic-bezier(0.16, 0.16, 0.2, 0.9);
+}

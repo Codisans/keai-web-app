@@ -20,7 +20,7 @@ export const ListFilterModal = ({ children }) => {
 
     return (
         <div
-            className={`fixed top-0 pt-32 pb-12 bg-white left-0 w-full h-full overflow-hidden z-filter hidden open:block ${filterIsOpen ? 'open' : ''}`}>
+            className={`fixed top-0 pt-32 pb-12 bg-white left-0 w-full h-full overflow-hidden z-20 ${filterIsOpen ? 'block' : 'hidden'}`}>
             {children}
         </div>
     )

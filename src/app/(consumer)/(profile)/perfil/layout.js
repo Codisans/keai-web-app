@@ -29,7 +29,7 @@ const FavouritesLayout = ({ children }) => {
     return (
         <>
             <h1 className="sr-only">Perfil</h1>
-            <section className="grid grid-cols-12 p-gg gap-gg">
+            <section className="grid grid-cols-12 p-grid-gap gap-grid">
                 <div className="col-span-4">
                     <div className="w-full pt-[100%] relative rounded-full overflow-hidden">
                         <div className="absolute inset-0 w-full h-full bg-grey"></div>
@@ -41,12 +41,12 @@ const FavouritesLayout = ({ children }) => {
                 </div>
             </section>
             {/*
-             <h1 className="p-gg text-h1">
+             <h1 className="p-grid-gap text-h1">
                 Eventos guardados ({favoriteEvents.length})
             </h1> */}
-            <h1 className="p-gg text-h1">Eventos guardados</h1>
-            <section className="sticky z-10 w-full bg-white border-b p-gg border-grey-2 top-14">
-                <ul className="grid w-full grid-cols-2 gap-gg pt-gg">
+            <h1 className="p-grid-gap text-h1">Eventos guardados</h1>
+            <section className="sticky z-10 w-full bg-white border-b p-grid-gap border-grey-2 top-14">
+                <ul className="grid w-full grid-cols-2 gap-grid pt-grid-gap">
                     <li className="col-span-1">
                         <Button
                             className="flex w-full gap-2 active:bg-grey-3 active:text-black"

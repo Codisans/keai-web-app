@@ -1,0 +1,66 @@
+@utility underline-base {
+    --underline-offset: 0em;
+    --underline-height: max(0.05em, 1px);
+
+    background-position-y: calc(100% - var(--underline-offset, 0em));
+    background-repeat: no-repeat;
+}
+
+@utility underline-in-base {
+    background-position-x: 0%;
+    background-image: linear-gradient(
+        var(--underline-color, currentColor),
+        var(--underline-color, currentColor)
+    );
+    transition-property: background-size;
+    transition-duration: 400ms;
+}
+
+@utility underline-in {
+    @apply underline-base underline-in-base;
+
+    background-size: 0% var(--underline-height, 1px);
+
+    @media ((hover: hover) and (pointer: fine)) {
+        &:hover,
+        a:hover &,
+        button:hover & {
+            background-size: 100% var(--underline-height, 1px);
+        }
+    }
+}
+
+@utility underline-on {
+    @apply underline-base underline-in-base;
+    background-size: 100% var(--underline-height, 1px);
+}
+
+@utility underline-out {
+    @apply underline-base;
+
+    background-image: linear-gradient(
+        to right,
+        var(--underline-color, currentColor) 0%,
+        var(--underline-color, currentColor) 33.333%,
+        transparent 33.333%,
+        transparent 66.666%,
+        var(--underline-color, currentColor) 66.666%,
+        var(--underline-color, currentColor) 100%
+    );
+    background-size: 300% var(--underline-height, 1px);
+    background-position-x: 100%;
+    transition-property: background-position-x;
+    transition-duration: 1200ms;
+
+    @media ((hover: hover) and (pointer: fine)) {
+        &:hover,
+        a:hover &,
+        button:hover & {
+            background-position-x: 0%;
+        }
+    }
+}
+
+@utility underline-off {
+    background-image: none;
+}

@@ -7,7 +7,7 @@ export const RootMenu = () => {
     const { user } = useAuth({ middleware: 'guest' })
 
     return (
-        <ul className="w-full flex flex-col items-center gap-gg my-auto">
+        <ul className="w-full flex flex-col items-center gap-grid my-auto">
             {user ? (
                 <>
                     <li>

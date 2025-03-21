@@ -13,7 +13,7 @@ const AdminEvents = async () => {
 
     return (
         <div className="w-full h-full">
-            <section className="py-3 w-full px-gg h-max">
+            <section className="py-3 w-full px-grid-gap h-max">
                 <h1>Events</h1>
             </section>
             <EventListing events={events.data} />

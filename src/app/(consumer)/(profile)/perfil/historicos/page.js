@@ -8,7 +8,7 @@ export const metadata = {
 const HistoricFavourites = async () => {
     const events = await api.getEvents()
     return (
-        <section className="flex flex-col p-gg grow overflow-y-auto">
+        <section className="flex flex-col p-grid-gap grow overflow-y-auto">
             <EventList events={events} />
         </section>
     )

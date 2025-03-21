@@ -9,7 +9,7 @@ export const SearchBar = () => {
     const { filterIsOpen, setFilterIsOpen } = useContext(ConsumerContext)
     return (
         <section className="w-full border-b border-grey-3">
-            <div className="flex gap-x-1 p-gg pb-1">
+            <div className="flex gap-x-1 p-grid-gap pb-1">
                 <SearchInput />
                 <div className="w-min">
                     <FilterToggle

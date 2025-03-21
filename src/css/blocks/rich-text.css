@@ -1,0 +1,61 @@
+@layer components {
+    .rich-text {
+        @apply flex flex-col gap-y-6 break-words;
+
+        &--text-center {
+            h1,
+            h2,
+            h3,
+            h4,
+            p {
+                @apply text-center;
+            }
+
+            ol,
+            ul {
+                @apply self-center pr-[1.5em];
+            }
+        }
+
+        h1 {
+            @apply text-h1;
+        }
+
+        h2 {
+            @apply text-h2;
+        }
+
+        h3 {
+            @apply text-h3;
+        }
+
+        h4 {
+            @apply text-h4;
+        }
+
+        h5 {
+            @apply text-h5;
+        }
+
+        ul,
+        ol {
+            @apply pl-[2.5em] list-outside;
+
+            > li {
+                @apply mt-[0.5em];
+            }
+        }
+
+        ul {
+            @apply list-disc;
+        }
+
+        ol {
+            @apply list-decimal;
+        }
+
+        /* a {
+        @apply underline-out;
+    } */
+    }
+}

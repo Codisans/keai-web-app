@@ -2,7 +2,7 @@
 
 import { FreeMode } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import { CategoryCard, CategoryCardFallback } from './CategoryCard'
+import { CategoryCard } from './CategoryCard'
 import { _categories } from '@/constants/categories'
 import { Suspense } from 'react'
 
@@ -14,21 +14,21 @@ export const CategoryNav = ({ categories }) => {
         ?.sort((a, b) => _categories[a.slug].order - _categories[b.slug].order)
 
     return (
-        <nav className="pt-gg">
+        <nav className="pt-grid-gap">
             <Swiper
                 freeMode={true}
                 slidesPerView="auto"
                 modules={[FreeMode]}
                 spaceBetween={0}
-                className="w-full px-gg items-end">
+                className="w-full !px-grid-gap items-end">
                 <SwiperSlide style={{ width: 'max-content' }}>
-                    <Suspense fallback={<CategoryCardFallback />}>
+                    <Suspense>
                         <CategoryCard />
                     </Suspense>
                 </SwiperSlide>
                 {cateogryList?.map((category, i) => (
                     <SwiperSlide key={i} style={{ width: 'max-content' }}>
-                        <Suspense fallback={<CategoryCardFallback />}>
+                        <Suspense>
                             <CategoryCard category={category} />
                         </Suspense>
                     </SwiperSlide>

@@ -8,15 +8,15 @@ import { CategoryLink } from '@/components/atoms/CategoryLink'
 
 export const MainMenu = ({ categories }) => {
     return (
-        <div className="w-full h-full overflow-y-auto flex flex-col px-gg pr-12">
+        <div className="w-full h-full overflow-y-auto flex flex-col px-grid-gap pr-12">
             <div className="pt-8 pb-4 mb-4 sticky top-0 bg-white">
                 <Link className="block" href="/eventos">
                     <Logo />
                 </Link>
             </div>
             <nav className="border-t border-grey-3">
-                <h2 className="uppercase text-caps py-gg">Categorias</h2>
-                <ul className="flex flex-col gap-gg pb-gg pl-8">
+                <h2 className="uppercase text-caps py-grid-gap">Categorias</h2>
+                <ul className="flex flex-col gap-grid pb-grid-gap pl-8">
                     {categories?.map((c, i) => (
                         <li key={i}>
                             <CategoryLink className="underline" category={c}>
@@ -26,7 +26,7 @@ export const MainMenu = ({ categories }) => {
                     ))}
                 </ul>
             </nav>
-            <ul className="flex flex-col items-end gap-gg py-gg border-t border-grey-3 mt-auto">
+            <ul className="flex flex-col items-end gap-grid py-grid-gap border-t border-grey-3 mt-auto">
                 <li>
                     <Button href="/dashboard">Dashboard</Button>
                 </li>

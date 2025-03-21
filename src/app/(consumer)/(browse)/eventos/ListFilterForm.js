@@ -72,10 +72,10 @@ export const ListFilterForm = () => {
     return (
         <form
             onSubmit={handleSubmit}
-            className="relative h-full overflow-y-auto w-full select-none bg-white">
+            className="relative h-full overflow-y-auto w-full select-none bg-white pb-12">
             <div className="flex justify-between sticky top-0 p-4 w-full bg-white">
                 <p className="text-h2">Filtros:</p>
-                <div className="flex gap-gg">
+                <div className="flex gap-grid">
                     <Button type="button" onClick={handleClear}>
                         Restablecer
                     </Button>
