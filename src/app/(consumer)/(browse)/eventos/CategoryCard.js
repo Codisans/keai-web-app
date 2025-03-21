@@ -7,7 +7,6 @@ export const CategoryCard = ({ category }) => {
     return (
         <NavLink
             pathname={url}
-            preserveParams={true}
             exactPath={true}
             className={`card-category theme--${category?.slug || 'default'}`}>
             <Symbol
