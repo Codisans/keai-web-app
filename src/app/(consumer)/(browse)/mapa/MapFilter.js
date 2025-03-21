@@ -1,7 +1,6 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { Button } from '@/components/atoms/Button'
 import moment from 'moment'
 import { PriceSlider } from '../PriceSlider'
 import { FilterSection } from '../FilterSection'
@@ -163,15 +162,21 @@ export const MapFilter = () => {
             {filterIsOpen && (
                 <div className="absolute top-[6.8rem] border border-grey-3 bottom-[4.6rem] rounded-ui overflow-hidden inset-x-grid-gap select-none bg-white">
                     <div className="h-full overflow-y-auto">
-                        <div className="flex justify-between z-40 sticky top-0 p-4 w-full bg-white shadow">
-                            <p className="typo-h2">Filtros:</p>
+                        <div className="flex justify-end z-40 sticky top-0 p-4 w-full bg-white shadow">
+                            <h2 className="sr-only">Filtros:</h2>
                             <div className="flex gap-grid">
-                                <Button type="button" onClick={handleClear}>
+                                <button
+                                    className="button bg-white underline text-black"
+                                    type="button"
+                                    onClick={handleClear}>
                                     Restablecer
-                                </Button>
-                                <Button type="button" onClick={handleSubmit}>
+                                </button>
+                                <button
+                                    className="button"
+                                    type="button"
+                                    onClick={handleSubmit}>
                                     Buscar
-                                </Button>
+                                </button>
                             </div>
                         </div>
                         <div className="w-full flex flex-col">
