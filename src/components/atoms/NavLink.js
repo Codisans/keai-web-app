@@ -13,7 +13,9 @@ export const NavLink = ({
 }) => {
     const path = usePathname()
     const searchParams = useSearchParams()
-    const isCurrent = exactPath ? path === pathname : path.includes(pathname)
+    const isCurrent = exactPath
+        ? path === (pathname || href)
+        : path.includes(pathname || href)
 
     return (
         <Link

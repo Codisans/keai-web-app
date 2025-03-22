@@ -19,6 +19,13 @@
     }
 }
 
+@custom-variant open {
+    .open &,
+    &.open {
+        @slot;
+    }
+}
+
 @theme {
     /* Colors */
     --color-black: #2b2b2b;

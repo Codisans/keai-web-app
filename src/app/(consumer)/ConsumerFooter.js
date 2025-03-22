@@ -10,23 +10,17 @@ export const ConsumerFooter = () => {
             <nav>
                 <ul className="grid grid-cols-3 w-full items-center px-gutter gap-x-grid-gap">
                     <li className="col-span-1">
-                        <NavLink
-                            className="button-icon w-full"
-                            pathname="/eventos">
+                        <NavLink className="button-icon w-full" href="/eventos">
                             <HomeIcon />
                         </NavLink>
                     </li>
                     <li className="col-span-1">
-                        <NavLink
-                            className="button-icon w-full"
-                            pathname="/mapa">
+                        <NavLink className="button-icon w-full" href="/mapa">
                             <MapIcon />
                         </NavLink>
                     </li>
                     <li className="col-span-1">
-                        <NavLink
-                            className="button-icon w-full"
-                            pathname="/perfil">
+                        <NavLink className="button-icon w-full" href="/perfil">
                             <PersonIcon />
                         </NavLink>
                     </li>

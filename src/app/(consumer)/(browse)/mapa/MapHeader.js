@@ -1,12 +1,16 @@
+import { FilterToggle } from '../FilterToggle'
+import { SearchInput } from '../SearchInput'
 import { CategoryBar } from './CategoryBar'
-import { MapFilter } from './MapFilter'
 
 export const MapHeader = () => {
     return (
         <>
-            <header className="fixed z-header inset-0 pointer-events-none">
+            <header className="fixed z-header inset-x-0 top-0 pointer-events-none">
                 <CategoryBar />
-                <MapFilter />
+                <div className="absolute top-[3.7rem] inset-x-grid-gap flex gap-grid">
+                    <SearchInput />
+                    <FilterToggle />
+                </div>
             </header>
         </>
     )
