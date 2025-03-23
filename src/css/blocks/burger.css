@@ -1,6 +1,6 @@
 @layer components {
     .burger {
-        @apply relative z-40 block w-6 h-6 touch-manipulation lg:hidden;
+        @apply relative z-40 block w-6 h-6 touch-manipulation;
 
         &::before,
         &::after {
