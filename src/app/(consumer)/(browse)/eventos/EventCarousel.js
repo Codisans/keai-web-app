@@ -13,7 +13,11 @@ export const EventCarousel = ({ heading, events, className = '' }) => {
 
     return (
         <div className={`${className} flex flex-col gap-y-gg`}>
-            {heading && <h2 className="px-gutter text-caps">{heading}</h2>}
+            {heading && (
+                <h2 className="px-gutter typo-h5 font-medium uppercase">
+                    {heading}
+                </h2>
+            )}
 
             <Swiper
                 modules={[FreeMode]}
@@ -21,7 +25,7 @@ export const EventCarousel = ({ heading, events, className = '' }) => {
                     sticky: true,
                 }}
                 slidesPerView="auto"
-                className="w-full px-6">
+                className="w-full !px-6">
                 {items?.map((event, i) => (
                     <SwiperSlide
                         key={i}
