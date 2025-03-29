@@ -7,50 +7,90 @@ import { FilterSection } from './FilterSection'
 import { DateRadio } from './DateRadio'
 import { usePathname, useRouter } from 'next/navigation'
 import { TestBlock } from '@/components/atoms/TestBlock'
-import { EventURLSearchParams } from '@/utils/EventURLSearchParams'
 import TagsAutocomplete from '@/components/atoms/TagsAutocomplete'
 import { getPriceIndicatorText } from '@/utils/filterUtils'
 import { useSearchParams } from 'next/navigation'
 import { useConsumerContext } from '@/app/(consumer)/ConsumerContext'
+import { CustomDatePicker } from './CustomDatePicker'
 
-export const FilterForm = ({ className = '' }) => {
+export const FilterForm = ({ className = '', datepicker = false }) => {
+    const { filterIsOpen, setFilterIsOpen } = useConsumerContext()
+    const { tags } = useConsumerContext()
     const router = useRouter()
     const pathname = usePathname()
     const searchParams = useSearchParams()
-    const { tags } = useConsumerContext()
-    const [date, setDate] = useState('today')
-    const [minDate, setMinDate] = useState('')
-    const [maxDate, setMaxDate] = useState('')
+
+    const today = moment().format('YYYY-MM-DD')
+    const defaultDate = [today, datepicker ? null : today]
+    const [date, setDate] = useState(defaultDate)
+    const [startDate, setStartDate] = useState(
+        date[0] ? new Date(date[0]) : null,
+    )
+    const [endDate, setEndDate] = useState(date[1] ? new Date(date[1]) : null)
+
     const [priceValue, setPriceValue] = useState([0, 105])
     const [selectedTags, setSelectedTags] = useState([])
-    const { filterIsOpen, setFilterIsOpen } = useConsumerContext()
 
     useEffect(() => {
         const urlSearchParams = new URLSearchParams(searchParams)
-        const today = moment().format('YYYY-MM-DD')
-        setMinDate(urlSearchParams.get('min_date') || today)
-        setMaxDate(urlSearchParams.get('max_date') || today)
+        const paramsMinDate = urlSearchParams.get('min_date')
+        const paramsMaxDate = urlSearchParams.get('max_date')
         setPriceValue([
             urlSearchParams.get('min_price') || 0,
             urlSearchParams.get('max_price') || 105,
         ])
         setSelectedTags(urlSearchParams.get('tags') || [])
+
+        setDate([
+            paramsMinDate || defaultDate[0],
+            paramsMaxDate || defaultDate[1],
+        ])
     }, [])
 
     const handleSubmit = e => {
         const urlSearchParams = new URLSearchParams(searchParams)
         e?.preventDefault()
         setFilterIsOpen(false)
-        const params = {
-            min_date: moment(minDate).format('YYYY-MM-DD'),
-            max_date: moment(maxDate).format('YYYY-MM-DD'),
-            min_price: getMinPriceParam(priceValue),
-            max_price: getMaxPriceParam(priceValue),
-            tags: selectedTags.map(tag => tag.id),
-            keywords: urlSearchParams.get('keywords'),
+        console.log(date)
+
+        if (date[0]) {
+            urlSearchParams.set('min_date', date[0])
+        } else {
+            urlSearchParams.delete('min_date')
         }
-        const eventSearchParams = new EventURLSearchParams(params)
-        router.push(`${pathname}?${eventSearchParams.toClientMapString()}`)
+
+        if (date[1]) {
+            urlSearchParams.set('max_date', date[1])
+        } else {
+            urlSearchParams.delete('max_date')
+        }
+
+        const minPrice = getMinPriceParam(priceValue)
+        const maxPrice = getMaxPriceParam(priceValue)
+
+        if (minPrice) {
+            urlSearchParams.set('min_price', minPrice)
+        } else {
+            urlSearchParams.delete('min_price')
+        }
+
+        if (maxPrice) {
+            urlSearchParams.set('max_price', maxPrice)
+        } else {
+            urlSearchParams.delete('max_price')
+        }
+
+        urlSearchParams.delete('tags')
+
+        if (selectedTags.length > 0) {
+            selectedTags.forEach(tag => {
+                urlSearchParams.append('tags', tag.id)
+            })
+        }
+
+        console.log(urlSearchParams, urlSearchParams.get('min_date'))
+
+        // router.push(`${pathname}?${urlSearchParams.toString()}`)
     }
 
     const getMinPriceParam = value => {
@@ -69,14 +109,18 @@ export const FilterForm = ({ className = '' }) => {
     }
 
     const handleClear = () => {
-        const today = moment().format('YYYY-MM-DD')
-        setMinDate(today)
-        setMaxDate(today)
+        setDate(defaultDate)
         setPriceValue([0, 105])
-        setDate('today')
+        setStartDate(null)
+        setEndDate(null)
         setSelectedTags([])
-        const eventSearchParams = new EventURLSearchParams(searchParams)
-        router.push(`${pathname}?${eventSearchParams.toClientMapString()}`)
+        const urlSearchParams = new URLSearchParams(searchParams)
+        urlSearchParams.delete('min_date')
+        urlSearchParams.delete('max_date')
+        urlSearchParams.delete('min_price')
+        urlSearchParams.delete('max_price')
+        urlSearchParams.delete('tags')
+        router.push(`${pathname}?${urlSearchParams.toString()}`)
     }
 
     return (
@@ -102,110 +146,19 @@ export const FilterForm = ({ className = '' }) => {
                     </div>
                 </div>
                 <div className="w-full flex flex-col relative z-40">
-                    <FilterSection
-                        indicator={
-                            <legend className="w-full flex justify-between items-center gap-1 text-caps">
-                                {minDate != '' && (
-                                    <span>
-                                        {moment(minDate)?.format('ddd D MMM')}
-                                    </span>
-                                )}
-                                {maxDate != '' && minDate != maxDate && (
-                                    <>
-                                        <svg
-                                            className="w-6 h-6 rotate-45 -m-2"
-                                            aria-hidden="true"
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            fill="none"
-                                            viewBox="0 0 24 24">
-                                            <path
-                                                stroke="currentColor"
-                                                strokeLinecap="round"
-                                                strokeLinejoin="round"
-                                                strokeWidth="2"
-                                                d="M16 4h4m0 0v4m0-4-5 5M8 20H4m0 0v-4m0 4 5-5"
-                                            />
-                                        </svg>
-
-                                        <span>
-                                            {moment(maxDate).format(
-                                                'ddd D MMM',
-                                            )}
-                                        </span>
-                                    </>
-                                )}
-                            </legend>
-                        }>
-                        <div className="flex flex-wrap gap-1">
-                            <DateRadio
-                                id="date-today"
-                                name="date"
-                                value="today"
-                                label="Hoy"
-                                checked={date === 'today'}
-                                onChange={e => {
-                                    setDate(e.target.value)
-                                    setMinDate(moment().format('YYYY-MM-DD'))
-                                    setMaxDate(moment().format('YYYY-MM-DD'))
-                                }}
+                    <FilterSection>
+                        {datepicker ? (
+                            <CustomDatePicker
+                                date={date}
+                                setDate={setDate}
+                                startDate={startDate}
+                                endDate={endDate}
+                                setStartDate={setStartDate}
+                                setEndDate={setEndDate}
                             />
-                            <DateRadio
-                                id="date-tomorrow"
-                                name="date"
-                                value="tomorrow"
-                                checked={date === 'tomorrow'}
-                                onChange={e => {
-                                    setDate(e.target.value)
-                                    setMinDate(
-                                        moment()
-                                            .add(1, 'days')
-                                            .format('YYYY-MM-DD'),
-                                    )
-                                    setMaxDate(
-                                        moment()
-                                            .add(1, 'days')
-                                            .format('YYYY-MM-DD'),
-                                    )
-                                }}
-                                label="Mañana"
-                            />
-                            <DateRadio
-                                id="date-this-weekend"
-                                name="date"
-                                value="this-weekend"
-                                className="peer hidden"
-                                checked={date === 'this-weekend'}
-                                onChange={e => {
-                                    setDate(e.target.value)
-                                    setMinDate(
-                                        moment().isAfter(moment().day(5))
-                                            ? moment().format('YYYY-MM-DD')
-                                            : moment()
-                                                  .day(5)
-                                                  .format('YYYY-MM-DD'),
-                                    )
-                                    setMaxDate(
-                                        moment().day(7).format('YYYY-MM-DD'),
-                                    )
-                                }}
-                                label="Este FDS"
-                            />
-                            <DateRadio
-                                id="date-this-week"
-                                name="date"
-                                className="peer hidden"
-                                value="this-week"
-                                checked={date === 'this-week'}
-                                onChange={e => {
-                                    setDate(e.target.value)
-                                    setMinDate(moment().format('YYYY-MM-DD'))
-                                    setMaxDate(
-                                        moment().day(7).format('YYYY-MM-DD'),
-                                    )
-                                }}
-                                label="Esta Semana"
-                            />
-                        </div>
+                        ) : (
+                            <DateRadio date={date} setDate={setDate} />
+                        )}
                     </FilterSection>
 
                     <FilterSection
