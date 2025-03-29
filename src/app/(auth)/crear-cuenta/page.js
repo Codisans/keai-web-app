@@ -1,6 +1,5 @@
 'use client'
 
-import { Button } from '@/components/atoms/Button'
 import Input from '@/components/atoms/Input'
 import InputError from '@/components/atoms/InputError'
 import Label from '@/components/atoms/Label'
@@ -144,7 +143,9 @@ const Page = () => {
 
             <div className="flex items-center justify-end mt-4 gap-4">
                 <TextLink href="/entrar">Ya tienes una cuenta?</TextLink>
-                <Button type="submit">Crear</Button>
+                <button className="button" type="submit">
+                    Crear
+                </button>
             </div>
         </form>
     )

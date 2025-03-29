@@ -33,10 +33,7 @@ const Page = () => {
                     Resend Verification Email
                 </Button>
 
-                <button
-                    type="button"
-                    className="underline text-sm text-gray-600 hover:text-gray-900"
-                    onClick={logout}>
+                <button type="button" className="button" onClick={logout}>
                     Logout
                 </button>
             </div>

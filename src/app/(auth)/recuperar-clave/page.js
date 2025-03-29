@@ -1,6 +1,5 @@
 'use client'
 
-import { Button } from '@/components/atoms/Button'
 import { TextLink } from '@/components/atoms/TextLink'
 import Input from '@/components/atoms/Input'
 import InputError from '@/components/atoms/InputError'
@@ -56,7 +55,9 @@ const Page = () => {
 
                 <div className="flex flex-xol gap-4 mt-4">
                     <TextLink href="/crear-cuenta">Crear cuenta</TextLink>
-                    <Button type="submit">Recuperar</Button>
+                    <button className="button" type="submit">
+                        Recuperar
+                    </button>
                 </div>
             </form>
         </>

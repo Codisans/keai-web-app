@@ -2,11 +2,7 @@ import useSWR from 'swr'
 import axios from '@/lib/axios'
 
 export const useUser = () => {
-    const {
-        data: details,
-        error,
-        mutate,
-    } = useSWR('/api/user/details', () =>
+    const { data: details, mutate } = useSWR('/api/user/details', () =>
         axios
             .get('/api/user/details')
             .then(res => res.data)

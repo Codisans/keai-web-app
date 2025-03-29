@@ -7,9 +7,9 @@ import { useAuth } from '@/hooks/auth'
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import AuthSessionStatus from '@/app/(auth)/AuthSessionStatus'
-import { Button } from '@/components/atoms/Button'
 import { TextLink } from '@/components/atoms/TextLink'
 import DataUsageIcon from '@mui/icons-material/DataUsage'
+import Link from 'next/link'
 
 const Login = () => {
     const router = useRouter()
@@ -106,17 +106,19 @@ const Login = () => {
             </div>
 
             <div className="flex flex-col items-center gap-4">
-                <Button
-                    className="w-20 flex justify-center items-center"
+                <button
+                    className="w-18 flex justify-center items-center button"
                     type="submit">
                     {isLoading ? (
                         <DataUsageIcon className="h-[1em] w-[1em] animate-spin text-grey" />
                     ) : (
                         <span>Entrar</span>
                     )}
-                </Button>
+                </button>
                 <TextLink href="/recuperar-clave">Recuperar clave</TextLink>
-                <Button href="/crear-cuenta">Crear cuenta</Button>
+                <Link className="button" href="/crear-cuenta">
+                    Crear cuenta
+                </Link>
             </div>
         </form>
     )
