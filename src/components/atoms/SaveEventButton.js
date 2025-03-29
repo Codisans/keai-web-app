@@ -2,13 +2,14 @@
 
 import { useUser } from '@/hooks/user'
 import { Symbol } from './Symbol'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
 export const SaveEventButton = ({ eventId, className = '' }) => {
     const { details, saveEvent } = useUser()
+    const [isSaved, setIsSaved] = useState(false)
 
     useEffect(() => {
-        console.log(details)
+        setIsSaved(details?.favorite_events?.map(e => e.id).includes(eventId))
     }, [details])
 
     return (
@@ -18,7 +19,7 @@ export const SaveEventButton = ({ eventId, className = '' }) => {
                 saveEvent(eventId)
             }}
             type="button">
-            {details?.saved_events?.includes(eventId) ? (
+            {isSaved ? (
                 <Symbol className="w-6 h-6" name="heart-solid" />
             ) : (
                 <Symbol className="w-6 h-6" name="heart-outline" />

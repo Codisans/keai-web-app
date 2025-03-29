@@ -4,15 +4,24 @@ import { EventCard } from '@/components/molecules/EventCard'
 import { useUser } from '@/hooks/user'
 import DeleteIcon from '@mui/icons-material/Delete'
 import ShareIcon from '@mui/icons-material/Share'
+import moment from 'moment'
 import { useEffect, useState } from 'react'
 
 export const UpcomingEvents = () => {
-    const { details } = useUser()
+    const { details, saveEvent } = useUser()
     const [events, setEvents] = useState([])
 
     useEffect(() => {
-        setEvents(details?.saved_events)
+        const filteredEvents = details?.favorite_events?.filter(e =>
+            moment(e.end_date).isAfter(moment()),
+        )
+        setEvents(filteredEvents)
     }, [details])
+
+    const handleDelete = async eventId => {
+        await saveEvent(eventId)
+        setEvents(details?.favorite_events.filter(e => e.id !== eventId))
+    }
 
     return (
         <ul className="w-full flex flex-col">
@@ -25,7 +34,9 @@ export const UpcomingEvents = () => {
                         <button className="p-1">
                             <ShareIcon />
                         </button>
-                        <button className="p-1">
+                        <button
+                            onClick={() => handleDelete(event.id)}
+                            className="p-1">
                             <DeleteIcon />
                         </button>
                     </div>

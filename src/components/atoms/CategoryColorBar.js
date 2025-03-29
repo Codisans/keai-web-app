@@ -1,6 +1,5 @@
 export const CategoryColorBar = ({ categories }) => {
     if (!categories || categories.length === 0) return null
-    console.log(categories)
     return (
         <div className="w-full h-1 flex flex-row flex-nowrap">
             {categories.map((category, i) => {
