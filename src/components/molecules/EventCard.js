@@ -1,7 +1,7 @@
 import { DateTime } from '../atoms/DateTime'
 import Link from 'next/link'
 import { SaveEventButton } from '../atoms/SaveEventButton'
-import { CategoryColorBar } from '../atoms/categoryColorBar'
+import { CategoryColorBar } from '../atoms/CategoryColorBar'
 
 export const EventCard = ({ event, type = 'carousel' }) => {
     if (type === 'carousel')
