@@ -4,7 +4,12 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import { FreeMode } from 'swiper/modules'
 import { EventCard } from '@/components/molecules/EventCard'
 
-export const EventCarousel = ({ heading, events, className = '' }) => {
+export const EventCarousel = ({
+    heading,
+    events,
+    className = '',
+    link = null,
+}) => {
     if (!events) return
 
     const items = Array.isArray(events) ? events : [events]
@@ -13,11 +18,10 @@ export const EventCarousel = ({ heading, events, className = '' }) => {
 
     return (
         <div className={`${className} flex flex-col gap-y-gg`}>
-            {heading && (
-                <h2 className="px-gutter typo-h5 font-medium uppercase">
-                    {heading}
-                </h2>
-            )}
+            <div className="flex items-center justify-between px-gutter">
+                {heading && <h2 className="typo-h5 uppercase">{heading}</h2>}
+                {link && link}
+            </div>
 
             <Swiper
                 modules={[FreeMode]}

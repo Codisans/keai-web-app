@@ -88,9 +88,7 @@ export const FilterForm = ({ className = '', datepicker = false }) => {
             })
         }
 
-        console.log(urlSearchParams, urlSearchParams.get('min_date'))
-
-        // router.push(`${pathname}?${urlSearchParams.toString()}`)
+        router.push(`${pathname}?${urlSearchParams.toString()}`)
     }
 
     const getMinPriceParam = value => {
