@@ -12,8 +12,7 @@ const Event = async ({ params }) => {
 
     return (
         <>
-            <EventHeader />
-            {/* <MainMenu /> */}
+            <EventHeader eventId={params.id} />
             <main className="w-full grow relative flex flex-col">
                 <EventDetail event={event} />
             </main>
