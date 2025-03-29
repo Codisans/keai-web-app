@@ -1,18 +1,20 @@
 import { DateTime } from '../atoms/DateTime'
 import Link from 'next/link'
 import { SaveEventButton } from '../atoms/SaveEventButton'
+import { CategoryColorBar } from '../atoms/categoryColorBar'
 
 export const EventCard = ({ event, type = 'carousel' }) => {
     if (type === 'carousel')
         return (
-            <div className="flex flex-col gap-y-1 relative w-full">
+            <div className="flex flex-col relative w-full">
                 <div className="w-full aspect-[16/9] relative rounded-card overflow-hidden">
                     <img
                         className="absolute inset-0 w-full h-full object-cover"
                         src={event.cover_url || '/placeholder.jpg'}
                     />
                 </div>
-                <div className="flex flex-col">
+                <CategoryColorBar categories={event.categories} />
+                <div className="flex flex-col pt-1">
                     <h3 className="typo-h5">{event.name}</h3>
                     <ul className="flex flex-wrap gap-x-2">
                         {/* {event.tags.map(tag => (
@@ -38,11 +40,14 @@ export const EventCard = ({ event, type = 'carousel' }) => {
     if (type === 'list')
         return (
             <div className="grid grid-cols-12 gap-grid relative group/card w-full">
-                <div className="col-span-4 aspect-[16/9] relative rounded-card overflow-hidden">
-                    <img
-                        className="absolute inset-0 w-full h-full object-cover group-hover/card:scale-105 transition-transform ease-in-out duration-500"
-                        src={event.cover_url || '/placeholder.jpg'}
-                    />
+                <div className="col-span-4 relative">
+                    <div className="relative rounded-card overflow-hidden aspect-[16/9] w-full">
+                        <img
+                            className="absolute inset-0 w-full h-full object-cover group-hover/card:scale-105 transition-transform ease-in-out duration-500"
+                            src={event.cover_url || '/placeholder.jpg'}
+                        />
+                    </div>
+                    <CategoryColorBar categories={event.categories} />
                 </div>
                 <div className="col-span-8 flex flex-col">
                     <h3 className="typo-h4">{event.name}</h3>

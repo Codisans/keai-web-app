@@ -24,21 +24,6 @@ export const useAuth = ({ middleware, redirectIfAuthenticated } = {}) => {
 
     const csrf = () => axios.get('/sanctum/csrf-cookie')
 
-    const createEvent = async ({ setErrors, formData }) => {
-        await csrf()
-
-        setErrors([])
-
-        axios
-            .post('/api/events', formData)
-            .then(() => mutate())
-            .catch(error => {
-                if (error.response.status !== 422) throw error
-
-                setErrors(error.response.data.errors)
-            })
-    }
-
     const register = async ({ setErrors, ...props }) => {
         await csrf()
 
@@ -118,38 +103,6 @@ export const useAuth = ({ middleware, redirectIfAuthenticated } = {}) => {
         window.location.pathname = '/entrar'
     }
 
-    const sendFriendRequest = async targetUserId => {
-        //post account id and target account id
-        if (!error) {
-            await axios
-                .post(
-                    `/friend-request?user=${user.userId}&target=${targetUserId}`,
-                )
-                .then(() => mutate())
-        }
-    }
-
-    const favoriteEvent = async eventId => {
-        if (!error) {
-            await axios
-                .post(`/api/events/${eventId}/favorite`)
-                .then(() => mutate())
-        }
-    }
-
-    const getFavoriteEvents = async () => {
-        if (!error) {
-            return await axios
-                .get('/api/favorites')
-                .then(res => res.data.data)
-                .catch(error => {
-                    if (error.response.status !== 409) throw error
-
-                    router.push('/entrar')
-                })
-        }
-    }
-
     useEffect(() => {
         if (middleware === 'guest' && redirectIfAuthenticated && user)
             router.push(redirectIfAuthenticated)
@@ -163,15 +116,11 @@ export const useAuth = ({ middleware, redirectIfAuthenticated } = {}) => {
 
     return {
         user,
-        createEvent,
         register,
         login,
         forgotPassword,
         resetPassword,
         resendEmailVerification,
         logout,
-        sendFriendRequest,
-        favoriteEvent,
-        getFavoriteEvents,
     }
 }

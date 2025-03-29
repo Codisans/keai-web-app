@@ -1,17 +1,14 @@
-import { SavedEvents } from './SavedEvents'
-import api from '@/lib/api'
+import { UpcomingEvents } from './UpcomingEvents'
 
 export const metadata = {
     title: 'KEAI | Perfil',
 }
 
-const Profile = async () => {
-    const events = await api.getEvents()
-
+const Profile = () => {
     return (
         <>
             <section className="flex flex-col p-grid-gap grow overflow-y-auto">
-                <SavedEvents events={events} />
+                <UpcomingEvents />
             </section>
         </>
     )

@@ -1,31 +1,8 @@
-'use client'
-
-// import { useState, useEffect } from 'react'
-import { useAuth } from '@/hooks/auth'
 import HistoryIcon from '@mui/icons-material/History'
 import EventIcon from '@mui/icons-material/Event'
-import { Loading } from '@/app/Loading'
 import { NavLink } from '@/components/atoms/NavLink'
 
 const FavouritesLayout = ({ children }) => {
-    const { user } = useAuth()
-    // const [favoriteEvents, setFavoriteEvents] = useState([])
-
-    // useEffect(() => {
-    //     const fetchFavoriteEvents = async () => {
-    //         try {
-    //             const events = await getFavoriteEvents()
-    //             setFavoriteEvents(events)
-    //         } catch (error) {
-    //             console.error('Error fetching favorite events:', error)
-    //         }
-    //     }
-
-    //     fetchFavoriteEvents()
-    // }, [])
-
-    if (!user) return <Loading />
-
     return (
         <>
             <h1 className="sr-only">Perfil</h1>
@@ -36,7 +13,7 @@ const FavouritesLayout = ({ children }) => {
                     </div>
                 </div>
                 <div className="flex flex-col justify-center col-span-8">
-                    <h2 className="text-h2 font-tenerite">{user?.name}</h2>
+                    <h2 className="text-h2 font-tenerite">User</h2>
                 </div>
             </section>
             <section className="grid grid-cols-12 p-grid-gap gap-grid">
