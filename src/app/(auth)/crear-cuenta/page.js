@@ -17,7 +17,7 @@ const Page = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [passwordConfirmation, setPasswordConfirmation] = useState('')
-    const [accountType, setAccountType] = useState('consumer')
+    const [accountType, setAccountType] = useState('app_user')
     const [errors, setErrors] = useState([])
 
     const submitForm = event => {
@@ -111,11 +111,11 @@ const Page = () => {
                     <Input
                         className="hidden peer"
                         id="consumer"
-                        value="consumer"
+                        value="app_user"
                         name="account-type"
                         onChange={event => setAccountType(event.target.value)}
                         type="radio"
-                        checked={accountType == 'consumer'}
+                        checked={accountType == 'app_user'}
                     />
                     <Label
                         className="inline-flex justify-center items-center text-button px-3 h-10 rounded-button bg-white border border-grey text-black peer-checked:bg-black/10"
@@ -126,16 +126,16 @@ const Page = () => {
                 <div>
                     <Input
                         className="hidden peer"
-                        id="manager"
-                        value="manager"
+                        id="event_admin"
+                        value="event_admin"
                         name="account-type"
                         onChange={event => setAccountType(event.target.value)}
                         type="radio"
-                        checked={accountType == 'manager'}
+                        checked={accountType == 'event_admin'}
                     />
                     <Label
                         className="inline-flex justify-center items-center text-button px-3 h-10 rounded-button bg-white border border-grey text-black peer-checked:bg-black/10"
-                        htmlFor="manager">
+                        htmlFor="event_admin">
                         Administrador
                     </Label>
                 </div>
