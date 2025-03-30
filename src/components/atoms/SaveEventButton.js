@@ -9,7 +9,12 @@ export const SaveEventButton = ({ eventId, className = '' }) => {
     const [isSaved, setIsSaved] = useState(false)
 
     useEffect(() => {
-        setIsSaved(details?.favorite_events?.map(e => e.id).includes(eventId))
+        if (!details) return
+        setIsSaved(
+            details?.favorite_events
+                ?.map(e => String(e.id))
+                .includes(String(eventId)),
+        )
     }, [details])
 
     return (
