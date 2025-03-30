@@ -7,13 +7,15 @@ export const EventCard = ({ event, type = 'carousel' }) => {
     if (type === 'carousel')
         return (
             <div className="flex flex-col relative w-full">
-                <div className="w-full aspect-[16/9] relative rounded-card overflow-hidden">
-                    <img
-                        className="absolute inset-0 w-full h-full object-cover"
-                        src={event.cover_url || '/placeholder.jpg'}
-                    />
+                <div className="w-full overflow-hidden rounded">
+                    <div className="w-full aspect-[16/9] relative overflow-hidden">
+                        <img
+                            className="absolute inset-0 w-full h-full object-cover"
+                            src={event.cover_url || '/placeholder.jpg'}
+                        />
+                    </div>
+                    <CategoryColorBar categories={event.categories} />
                 </div>
-                <CategoryColorBar categories={event.categories} />
                 <div className="flex flex-col pt-1">
                     <h3 className="typo-h5">{event.name}</h3>
                     <ul className="flex flex-wrap gap-x-2">

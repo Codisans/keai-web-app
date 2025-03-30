@@ -47,8 +47,8 @@ export const EventSummary = ({ event }) => {
                 <div className="flex flex-col gap-1 grow p-1">
                     <h3 className="text-h3">{event.name}</h3>
                     <dl className="text-sm text-gray-500 flex gap-1">
-                        <DateTime value={event.start_date} />
-                        <DateTime value={event.start_date} format="time" />
+                        <DateTime date={event.start_date} />
+                        <DateTime date={event.start_date} format="time" />
                     </dl>
                     <div className="mt-auto flex justify-end items-end">
                         <Price

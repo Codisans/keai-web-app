@@ -8,8 +8,8 @@ export const EventFooter = ({ event }) => {
         <footer className="sticky bottom-0 inset-x-0 z-footer border-t border-grey bg-white shrink">
             <div className="flex items-center justify-between p-grid-gap pb-6">
                 <div className="flex flex-col typo-body font-bold">
-                    <DateTime value={event.start_date} />
-                    <DateTime value={event.start_date} format="time" />
+                    <DateTime date={event.start_date} />
+                    <DateTime date={event.start_date} format="time" />
                 </div>
                 <div className="flex items-center gap-3">
                     <Price value={event.price} />

@@ -3,15 +3,18 @@ import { EventCarousel } from './EventCarousel'
 import api from '@/lib/api'
 import { EventResults } from './EventResults'
 import { NoResultsText } from '@/components/atoms/NoResultsText'
-import { CategoryEventCarousel } from './CategoryEventCarousel'
-
+import Link from 'next/link'
+import { UpcomingEvents } from './UpcomingEvents'
+import { TodayEvents } from './TodayEvents'
+import { ThisWeekendEvents } from './ThisWeekendEvents'
+import { ThisWeekEvents } from './ThisWeekEvents'
+import { ReccomendedEvents } from './ReccomendedEvents'
 export const metadata = {
     title: 'KEAI | Eventos',
 }
 
 const Events = async ({ searchParams }) => {
     const categories = await api.getCategories()
-    console.log(categories)
 
     const urlSearchParams = new EventURLSearchParams(searchParams)
     const events = await api.getEvents(urlSearchParams.toListString())
@@ -28,14 +31,24 @@ const Events = async ({ searchParams }) => {
     return (
         <>
             <div className="w-full py-8 flex flex-col gap-y-gutter filter-open:hidden">
-                <EventCarousel heading="Para ti" events={events} />
-                <EventCarousel heading="Hoy" events={events} />
+                <ReccomendedEvents />
+                <UpcomingEvents />
+                <TodayEvents />
+                <ThisWeekendEvents />
+                <ThisWeekEvents />
 
                 {categories?.map((category, i) => (
-                    <CategoryEventCarousel
+                    <EventCarousel
                         key={i}
-                        categoryId={category.id}
                         heading={category.name}
+                        link={
+                            <Link
+                                className="typo-caps underline"
+                                href={`/eventos/${category.id}`}>
+                                Ver mas
+                            </Link>
+                        }
+                        events={events}
                     />
                 ))}
             </div>

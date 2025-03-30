@@ -2,7 +2,7 @@
 import moment from 'moment'
 
 export const DateTime = ({
-    value,
+    date,
     format = 'date',
     className = 'capitalize tracking-wide',
 }) => {
@@ -17,7 +17,5 @@ export const DateTime = ({
         }
     }
 
-    return (
-        <time className={className}>{moment(value).format(getFormat())}</time>
-    )
+    return <time className={className}>{moment(date).format(getFormat())}</time>
 }

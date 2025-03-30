@@ -26,7 +26,7 @@ export const EventCarousel = ({
             <Swiper
                 modules={[FreeMode]}
                 freeMode={{
-                    sticky: true,
+                    sticky: false,
                 }}
                 slidesPerView="auto"
                 className="w-full !px-6">
