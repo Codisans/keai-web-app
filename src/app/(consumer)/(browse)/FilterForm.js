@@ -6,7 +6,6 @@ import { PriceSlider } from './PriceSlider'
 import { FilterSection } from './FilterSection'
 import { DateRadio } from './DateRadio'
 import { usePathname, useRouter } from 'next/navigation'
-import { TestBlock } from '@/components/atoms/TestBlock'
 import TagsAutocomplete from '@/components/atoms/TagsAutocomplete'
 import { getPriceIndicatorText } from '@/utils/filterUtils'
 import { useSearchParams } from 'next/navigation'
@@ -175,7 +174,6 @@ export const FilterForm = ({ className = '', datepicker = false }) => {
                     </FilterSection>
 
                     <FilterSection legend="Tags">
-                        <TestBlock data={tags} />
                         <TagsAutocomplete
                             selectedTags={selectedTags}
                             setSelectedTags={setSelectedTags}

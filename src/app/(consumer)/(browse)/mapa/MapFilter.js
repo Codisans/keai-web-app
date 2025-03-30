@@ -315,7 +315,6 @@ export const MapFilter = () => {
                             </FilterSection>
 
                             <FilterSection legend="Tags">
-                                <TestBlock data={tags} />
                                 <TagsAutocomplete
                                     selectedTags={selectedTags}
                                     setSelectedTags={setSelectedTags}

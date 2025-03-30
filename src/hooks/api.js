@@ -8,7 +8,7 @@ export const useApi = () => {
     const { data: events } = useSWR(`/api/events?min_date=${today}`, () =>
         axios
             .get(`/api/events?min_date=${today}`)
-            .then(res => res.data)
+            .then(res => res.data?.data ?? [])
             .catch(error => {
                 throw new Error('Error getting events', error)
             }),
@@ -17,7 +17,7 @@ export const useApi = () => {
     const { data: categories } = useSWR('/api/categories', () =>
         axios
             .get('/api/categories')
-            .then(res => res.data)
+            .then(res => res.data.data ?? [])
             .catch(error => {
                 throw new Error('Error getting categories', error)
             }),
@@ -26,7 +26,7 @@ export const useApi = () => {
     const { data: tags } = useSWR('/api/tags', () =>
         axios
             .get('/api/tags')
-            .then(res => res.data)
+            .then(res => res.data.data ?? [])
             .catch(error => {
                 throw new Error('Error getting tags', error)
             }),
@@ -36,7 +36,7 @@ export const useApi = () => {
         useSWR(`/api/events/${eventId}`, () =>
             axios
                 .get(`/api/events/${eventId}`)
-                .then(res => res.data)
+                .then(res => res.data.data ?? [])
                 .catch(error => {
                     throw new Error('Error getting event', error)
                 }),
@@ -49,24 +49,24 @@ export const useApi = () => {
                 : (searchParams?.toString() ?? null)
         return axios
             .get(`/api/events?${searchParamsString}`)
-            .then(res => res.data)
+            .then(res => res.data.data ?? [])
             .catch(error => {
                 throw new Error('Error getting events', error)
             })
     }
 
-    const getCategoryEvents = categoryId => {
-        return events.filter(event => event.category_id === categoryId)
+    const getCategoryEvents = async categoryId => {
+        return await events?.filter(event => event.category_id === categoryId)
     }
 
-    const getTagEvents = tagIds => {
+    const getTagEvents = async tagIds => {
         if (Array.isArray(tagIds) && tagIds.length > 0) {
-            return events.filter(event =>
+            return await events?.filter(event =>
                 tagIds.some(tagId => event.tags.includes(tagId)),
             )
         }
 
-        return events.filter(event => event.tags.includes(tagIds))
+        return await events?.filter(event => event.tags.includes(tagIds))
     }
 
     return {
