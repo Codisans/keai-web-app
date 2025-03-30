@@ -2,18 +2,15 @@
 
 import { FreeMode } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import { Suspense, useContext } from 'react'
-import { ConsumerContext } from '@/app/(consumer)/ConsumerContext'
+import { Suspense } from 'react'
 import { Symbol } from '@/components/atoms/Symbol'
 import { _categories } from '@/constants/categories'
 import { NavLink } from '@/components/atoms/NavLink'
-// import Image from 'next/image'
 
-export const CategoryBar = () => {
-    const { categories } = useContext(ConsumerContext)
-
+export const CategoryBar = ({ categories }) => {
+    if (!categories) return null
     const cateogryList = categories
-        .filter(c => Object.keys(_categories).includes(c.slug))
+        ?.filter(c => Object.keys(_categories).includes(c.slug))
         ?.sort((a, b) => _categories[a.slug].order - _categories[b.slug].order)
 
     return (
