@@ -1,14 +1,14 @@
 import { EventURLSearchParams } from '@/utils/EventURLSearchParams'
-import { EventCarousel } from './EventCarousel'
 import api from '@/lib/api'
 import { EventResults } from './EventResults'
 import { NoResultsText } from '@/components/atoms/NoResultsText'
-import Link from 'next/link'
 import { UpcomingEvents } from './UpcomingEvents'
 import { TodayEvents } from './TodayEvents'
 import { ThisWeekendEvents } from './ThisWeekendEvents'
 import { ThisWeekEvents } from './ThisWeekEvents'
 import { ReccomendedEvents } from './ReccomendedEvents'
+import { CategoryEvents } from './CategoryEvents'
+
 export const metadata = {
     title: 'KEAI | Eventos',
 }
@@ -38,18 +38,7 @@ const Events = async ({ searchParams }) => {
                 <ThisWeekEvents />
 
                 {categories?.map((category, i) => (
-                    <EventCarousel
-                        key={i}
-                        heading={category.name}
-                        link={
-                            <Link
-                                className="typo-caps underline"
-                                href={`/eventos/${category.id}`}>
-                                Ver mas
-                            </Link>
-                        }
-                        events={events}
-                    />
+                    <CategoryEvents key={i} category={category} />
                 ))}
             </div>
         </>

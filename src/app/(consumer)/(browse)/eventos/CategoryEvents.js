@@ -5,36 +5,36 @@ import { EventCarousel } from './EventCarousel'
 import { useApi } from '@/hooks/api'
 import { useEffect, useState } from 'react'
 
-export const CategoryEventCarousel = ({
-    heading,
-    categoryId,
-    className = '',
-}) => {
+export const CategoryEvents = ({ category, className = '' }) => {
     const { events } = useApi()
 
     const [categoryEvents, setCategoryEvents] = useState([])
 
     useEffect(() => {
-        if (!events || events?.length == 0) return
+        console.log(category, events)
+        if (!events || events?.length == 0 || !category) return
 
         const filteredEvents = events.filter(event =>
-            event.categories?.map(category => category.id).includes(categoryId),
+            event.categories?.map(c => c.id).includes(category.id),
         )
 
         setCategoryEvents(filteredEvents)
     }, [events])
 
-    if (!categoryEvents || categoryEvents?.length == 0) return
-
     return (
         <EventCarousel
             className={className}
-            key={categoryId}
-            heading={heading}
+            key={category.id}
+            heading={
+                <span
+                    className={`theme--${category.slug} bg-theme text-white px-1 rounded-button`}>
+                    {category.name}
+                </span>
+            }
             link={
                 <Link
                     className="typo-caps underline"
-                    href={`/eventos/${categoryId}`}>
+                    href={`/eventos/${category.id}`}>
                     Ver mas
                 </Link>
             }
