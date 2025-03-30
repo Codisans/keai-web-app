@@ -3,7 +3,6 @@ import { EventCarousel } from './EventCarousel'
 import api from '@/lib/api'
 import { EventResults } from './EventResults'
 import { NoResultsText } from '@/components/atoms/NoResultsText'
-import Link from 'next/link'
 import { CategoryEventCarousel } from './CategoryEventCarousel'
 
 export const metadata = {
