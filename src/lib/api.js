@@ -19,7 +19,7 @@ class Api {
         )
 
         try {
-            return res.data?.data || []
+            return res.data.data ?? []
         } catch (error) {
             console.error(error)
             return []
@@ -30,7 +30,7 @@ class Api {
         const res = await this.axios.get(`/events/${id}`)
 
         try {
-            return res.data?.data || null
+            return res.data.data ?? []
         } catch (error) {
             console.error(error)
             return null
@@ -38,27 +38,13 @@ class Api {
     }
 
     async getCategories() {
-        if (this.categories) return this.categories
-
         const res = await this.axios.get('/categories')
 
         try {
-            this.categories = res.data.data
-            return res.data.data
+            return res.data.data ?? []
         } catch (error) {
             console.error(error)
-        }
-    }
-
-    async saveEvent(id) {
-        if (!id) return
-
-        const res = await this.axios.post(`/events/${id}/favourite`)
-
-        try {
-            console.log(res)
-        } catch (error) {
-            console.error(error)
+            return []
         }
     }
 
@@ -69,6 +55,7 @@ class Api {
             return res.data
         } catch (error) {
             console.error(error)
+            return []
         }
     }
 }
