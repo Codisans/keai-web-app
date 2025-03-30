@@ -12,3 +12,8 @@
     @apply relative w-max flex-nowrap flex gap-1 items-center text-white rounded bg-theme px-1.5 py-1 border-2 border-theme;
     @apply before:absolute before:inset-0 before:rounded-[0.45rem] before:hidden before:border-2 before:border-white current:before:block;
 }
+
+@utility button-edit {
+    @apply bg-black text-white inline-flex justify-center gap-2 items-center py-0.5 px-1.5 text-small rounded;
+    @apply current:text-orange;
+}

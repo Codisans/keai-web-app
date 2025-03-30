@@ -35,9 +35,23 @@ export const useUser = () => {
             })
     }
 
+    const saveTags = async tagIds => {
+        await csrf()
+
+        tagIds.forEach(tagId => {
+            axios
+                .post(`/api/tags/${tagId}/favorite`)
+                .then(() => mutate())
+                .catch(error => {
+                    throw new Error('Error saving tag', error)
+                })
+        })
+    }
+
     return {
         details,
         saveEvent,
         saveTag,
+        saveTags,
     }
 }
