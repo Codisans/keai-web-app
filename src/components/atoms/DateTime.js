@@ -1,11 +1,7 @@
 'use client'
 import moment from 'moment'
 
-export const DateTime = ({
-    date,
-    format = 'date',
-    className = 'capitalize tracking-wide',
-}) => {
+export const DateTime = ({ date, format = 'date', className = '' }) => {
     const getFormat = () => {
         switch (format) {
             case 'date':

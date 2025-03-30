@@ -48,19 +48,23 @@ export const EventSummary = ({ event }) => {
                     />
                     <CategoryColorBar categories={event.categories} />
                 </div>
-                <div className="flex flex-col gap-1 grow p-1">
+                <div className="flex flex-col grow p-1">
                     <h3 className="text-h3">{event.name}</h3>
-                    <dl className="text-sm text-gray-500 flex gap-1">
-                        <DateTime date={event.start_date} />
-                        <DateTime date={event.start_date} format="time" />
+                    <dl className="typo-obdy uppercase font-medium leading-[1] tracking-[0.4px] text-gray-500 flex gap-1 justify-between">
+                        <dd>
+                            <DateTime date={event.start_date} format="time" />
+                        </dd>
+                        <dd>
+                            <DateTime date={event.start_date} />
+                        </dd>
                     </dl>
-                    <div className="mt-auto flex justify-end items-end">
-                        <Price
-                            className="font-bold"
-                            value={event.price}
-                            preprend="Desde: "
-                        />
-                    </div>
+                    <ul className="flex flex-wrap gap-x-2 gap-y- pt-2">
+                        {event.tags?.map(tag => (
+                            <li className="tag" key={tag.id}>
+                                {tag.name}
+                            </li>
+                        ))}
+                    </ul>
                 </div>
                 <Link href={`/evento/${event.id}`} className="absolute inset-0">
                     <span className="sr-only">{event.name}</span>

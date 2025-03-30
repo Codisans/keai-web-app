@@ -12,9 +12,9 @@ export const UpcomingEvents = () => {
     const [events, setEvents] = useState([])
 
     useEffect(() => {
-        const filteredEvents = details?.favorite_events?.filter(e =>
-            moment(e.end_date).isAfter(moment()),
-        )
+        const filteredEvents = details?.favorite_events
+            ?.filter(e => moment(e.end_date).isAfter(moment()))
+            .sort((a, b) => moment(a.start_date).diff(moment(b.start_date)))
         setEvents(filteredEvents)
     }, [details])
 
