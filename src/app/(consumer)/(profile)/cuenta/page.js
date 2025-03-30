@@ -1,4 +1,4 @@
-import { UserDetail } from './UserDetail'
+import { AccountDetail } from './AccountDetail'
 import { Button } from '@/components/atoms/Button'
 
 export const metadata = {
@@ -8,12 +8,10 @@ export const metadata = {
 const Cuenta = () => {
     return (
         <>
-            <div className="py-12 flex flex-col gap-8 max-w-7xl mx-auto">
+            <div className="py-12 w-full px-gutter flex flex-col gap-8 max-w-7xl mx-auto">
+                <h1 className="typo-h1">Cuenta</h1>
+                <AccountDetail />
                 <ul className="flex flex-col px-grid-gap gap-grid">
-                    <li>Configuration de cuenta</li>
-                    <li>
-                        <UserDetail />
-                    </li>
                     <li>
                         <Button>Privacidad</Button>
                     </li>
