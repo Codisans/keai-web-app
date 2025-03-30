@@ -8,6 +8,7 @@ import { MapContext } from './LeafletMap'
 import Image from 'next/image'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { Price } from '@/components/atoms/Price'
+import { CategoryColorBar } from '@/components/atoms/CategoryColorBar'
 
 export const EventSummary = ({ event }) => {
     const eventSummaryRef = useRef(null)
@@ -37,13 +38,16 @@ export const EventSummary = ({ event }) => {
             <div
                 ref={eventSummaryRef}
                 className="fixed bottom-[4.8rem] inset-x-2 rounded-ui bg-white p-1 z-50 flex gap-3 border border-grey">
-                <Image
-                    className="w-24 h-24 object-cover rounded-card"
-                    src={event.cover || '/placeholder.jpg'}
-                    width={96}
-                    height={96}
-                    alt={event.name}
-                />
+                <div className="w-24 rounded overflow-hidden">
+                    <Image
+                        className="w-full h-24 object-cover"
+                        src={event.cover || '/placeholder.jpg'}
+                        width={96}
+                        height={96}
+                        alt={event.name}
+                    />
+                    <CategoryColorBar categories={event.categories} />
+                </div>
                 <div className="flex flex-col gap-1 grow p-1">
                     <h3 className="text-h3">{event.name}</h3>
                     <dl className="text-sm text-gray-500 flex gap-1">
