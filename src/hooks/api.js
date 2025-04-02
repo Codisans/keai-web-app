@@ -26,7 +26,7 @@ export const useApi = () => {
     const { data: tags } = useSWR('/api/tags', () =>
         axios
             .get('/api/tags')
-            .then(res => res.data.data ?? [])
+            .then(res => res.data ?? [])
             .catch(error => {
                 throw new Error('Error getting tags', error)
             }),
