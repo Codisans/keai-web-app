@@ -1,21 +1,17 @@
 'use client'
 
-import { useUser } from '@/hooks/user'
+import { useUserEvents } from '@/hooks/userEvents'
 import { Symbol } from './Symbol'
 import { useEffect, useState } from 'react'
 
 export const SaveEventButton = ({ eventId, className = '' }) => {
-    const { details, saveEvent } = useUser()
+    const { userEvents, saveEvent } = useUserEvents()
     const [isSaved, setIsSaved] = useState(false)
 
     useEffect(() => {
-        if (!details) return
-        setIsSaved(
-            details?.favorite_events
-                ?.map(e => String(e.id))
-                .includes(String(eventId)),
-        )
-    }, [details])
+        if (!userEvents) return
+        setIsSaved(userEvents?.map(e => String(e.id)).includes(String(eventId)))
+    }, [userEvents])
 
     return (
         <button

@@ -12,13 +12,6 @@ export const AppContextProvider = ({ children }) => {
 
     useEffect(() => typeof window !== 'undefined' && setIsClient(true), [])
 
-    // useEffect(() => {
-    //     console.log(user)
-    //     if (user) return
-
-    //     router.push('/entrar')
-    // }, [user])
-
     return (
         <AppContext.Provider value={{ isClient }}>
             {children}

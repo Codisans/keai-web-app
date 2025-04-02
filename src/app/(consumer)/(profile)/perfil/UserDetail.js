@@ -14,8 +14,8 @@ export const UserDetail = () => {
             </div>
             <div className="flex flex-col justify-center col-span-8">
                 <div>
-                    Welcome back <span className="font-bold">{user?.name}</span>
-                    !
+                    Welcome back{' '}
+                    <span className="font-bold">{user?.name}!</span>
                 </div>
             </div>
         </section>

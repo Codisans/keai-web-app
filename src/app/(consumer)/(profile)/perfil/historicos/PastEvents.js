@@ -1,26 +1,26 @@
 'use client'
 
 import { EventCard } from '@/components/molecules/EventCard'
-import { useUser } from '@/hooks/user'
+import { useUserEvents } from '@/hooks/userEvents'
 import DeleteIcon from '@mui/icons-material/Delete'
 import ShareIcon from '@mui/icons-material/Share'
 import moment from 'moment'
 import { useEffect, useState } from 'react'
 
 export const PastEvents = () => {
-    const { details, saveEvent } = useUser()
+    const { userEvents, saveEvent } = useUserEvents()
     const [events, setEvents] = useState([])
 
     useEffect(() => {
-        const filteredEvents = details?.favorite_events?.filter(e =>
+        const filteredEvents = userEvents?.filter(e =>
             moment(e.end_date).isBefore(moment()),
         )
         setEvents(filteredEvents)
-    }, [details])
+    }, [userEvents])
 
     const handleDelete = async eventId => {
         await saveEvent(eventId)
-        setEvents(details?.favorite_events.filter(e => e.id !== eventId))
+        setEvents(userEvents?.filter(e => e.id !== eventId))
     }
 
     return (

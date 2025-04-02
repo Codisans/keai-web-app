@@ -1,13 +1,8 @@
 'use client'
 
 import { Loading } from '@/app/Loading'
-// import { useEffect } from 'react'
 
 export const EventListing = ({ events }) => {
-    // useEffect(() => {
-    //     console.log(events)
-    // }, [events])
-
     return (
         <div className="w-full grow relative">
             <ul className="sticky top-0 grid grid-cols-8 bg-white py-1.5 px-grid-gap border-b border-grey font-bold">

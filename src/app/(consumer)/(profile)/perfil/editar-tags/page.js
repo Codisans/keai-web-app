@@ -1,34 +1,29 @@
 'use client'
 
 import { useApi } from '@/hooks/api'
-import { useUser } from '@/hooks/user'
+import { useUserTags } from '@/hooks/userTags'
 import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
 
 export default function EditarTags() {
     const { tags } = useApi()
-    const { details, saveTags } = useUser()
+    const { userTags, saveTags, saveTag } = useUserTags()
     const router = useRouter()
 
     const [allTags, setAllTags] = useState([])
     const [selectedTags, setSelectedTags] = useState([])
 
-    const fakeTags = [
-        { id: 1, name: 'Tag 1' },
-        { id: 2, name: 'Tag 2' },
-        { id: 3, name: 'Tag 3' },
-        { id: 4, name: 'Tag 4' },
-    ]
+    useEffect(() => {
+        if (!tags) return
+
+        setAllTags(tags)
+    }, [tags])
 
     useEffect(() => {
-        if (tags) {
-            // setAllTags(tags)
-            setAllTags(fakeTags)
-        }
-        if (details?.tags) {
-            setSelectedTags(details.tags)
-        }
-    }, [tags, details])
+        if (!userTags) return
+        setSelectedTags(userTags)
+        console.log(selectedTags)
+    }, [userTags])
 
     const handleSubmit = async e => {
         e.preventDefault()
@@ -46,6 +41,17 @@ export default function EditarTags() {
                     </button>
                 </div>
                 <div className="flex flex-wrap gap-x-2 gap-y-1 py-8">
+                    {allTags.map(tag => (
+                        <button
+                            className="tag button"
+                            key={tag.id}
+                            onClick={() => saveTag(tag.id)}
+                            type="button">
+                            {tag.name}
+                        </button>
+                    ))}
+                </div>
+                {/* <div className="flex flex-wrap gap-x-2 gap-y-1 py-8">
                     {allTags.map(tag => (
                         <span key={tag.id}>
                             <input
@@ -66,7 +72,7 @@ export default function EditarTags() {
                             </label>
                         </span>
                     ))}
-                </div>
+                </div> */}
             </form>
         </div>
     )

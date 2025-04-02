@@ -17,7 +17,20 @@ export const useUser = () => {
         await csrf()
 
         axios
-            .post(`/api/events/${eventId}/favorite`)
+            .post(`/api/favorites/events?ids[]=${eventId}`)
+            .then(() => mutate())
+            .catch(error => {
+                throw new Error('Error saving event', error)
+            })
+    }
+
+    const saveEvents = async eventIds => {
+        await csrf()
+
+        axios
+            .post(
+                `/api/favorites/events?${eventIds.map(e => `ids[]=${e.id}`).join('&')}`,
+            )
             .then(() => mutate())
             .catch(error => {
                 throw new Error('Error saving event', error)
@@ -28,7 +41,7 @@ export const useUser = () => {
         await csrf()
 
         axios
-            .post(`/api/tags/${tagId}/favorite`)
+            .post(`/api/favorites/tags?ids[]=${tagId}`)
             .then(() => mutate())
             .catch(error => {
                 throw new Error('Error saving tag', error)
@@ -38,19 +51,20 @@ export const useUser = () => {
     const saveTags = async tagIds => {
         await csrf()
 
-        tagIds.forEach(tagId => {
-            axios
-                .post(`/api/tags/${tagId}/favorite`)
-                .then(() => mutate())
-                .catch(error => {
-                    throw new Error('Error saving tag', error)
-                })
-        })
+        axios
+            .post(
+                `/api/favorites/tags?${tagIds.map(t => `ids[]=${t}`).join('&')}`,
+            )
+            .then(() => mutate())
+            .catch(error => {
+                throw new Error('Error saving tag', error)
+            })
     }
 
     return {
         details,
         saveEvent,
+        saveEvents,
         saveTag,
         saveTags,
     }
