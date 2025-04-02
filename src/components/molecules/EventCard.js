@@ -2,17 +2,30 @@ import { DateTime } from '../atoms/DateTime'
 import Link from 'next/link'
 import { SaveEventButton } from '../atoms/SaveEventButton'
 import { CategoryColorBar } from '../atoms/CategoryColorBar'
+import Image from 'next/image'
 
 export const EventCard = ({ event, type = 'carousel' }) => {
+    console.log(event)
     if (type === 'carousel')
         return (
             <div className="flex flex-col relative w-full">
                 <div className="w-full overflow-hidden rounded">
                     <div className="w-full aspect-[16/9] relative overflow-hidden">
-                        <img
-                            className="absolute inset-0 w-full h-full object-cover"
-                            src={event.cover_url || '/placeholder.jpg'}
-                        />
+                        {event.cover ? (
+                            <Image
+                                src={event.cover}
+                                alt={event.name}
+                                fill
+                                className="absolute inset-0 w-full h-full object-cover"
+                            />
+                        ) : (
+                            <img
+                                className="absolute inset-0 w-full h-full object-cover"
+                                src={
+                                    event.cover_url || '/images/placeholder.jpg'
+                                }
+                            />
+                        )}
                     </div>
                     <CategoryColorBar categories={event.categories} />
                 </div>
