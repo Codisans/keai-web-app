@@ -23,13 +23,13 @@ export default function EditarTags() {
             <div className="flex justify-between items-end">
                 <h2 className="typo-caps">Seleccionar Tags</h2>
                 <NavLink className="button" href="/perfil">
-                    <Symbol name="arrow-left" />
                     Listo
                 </NavLink>
             </div>
             <div className="flex flex-wrap gap-x-2 gap-y-1 py-4">
                 {allTags.map(tag => (
                     <ToggleTagButton
+                        key={tag.id}
                         className="toggle-tag"
                         tagId={tag.id}
                         onClick={() => saveTag(tag.id)}>
