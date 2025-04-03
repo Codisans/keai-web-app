@@ -48,11 +48,11 @@ export const EventDetail = ({ event }) => {
                     </div>
 
                     <p className="flex flex-col">
-                        <span>
-                            {event.street_number} {event.street},
-                        </span>
-                        <span>{event.province},</span>
-                        <span>{event.city}</span>
+                        <div
+                            dangerouslySetInnerHTML={{
+                                __html: event.formatted_address,
+                            }}
+                        />
                     </p>
                 </div>
                 {/* <div className="col-span-12">
