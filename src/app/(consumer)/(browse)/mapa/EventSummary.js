@@ -52,10 +52,10 @@ export const EventSummary = ({ event }) => {
                     <h3 className="text-h3">{event.name}</h3>
                     <dl className="typo-obdy uppercase font-medium leading-[1] tracking-[0.4px] text-gray-500 flex gap-1 justify-between">
                         <dd>
-                            <DateTime date={event.start_date} format="time" />
+                            <DateTime date={event.start_date} />
                         </dd>
                         <dd>
-                            <DateTime date={event.start_date} />
+                            <DateTime date={event.start_date} format="time" />
                         </dd>
                     </dl>
                     <ul className="flex flex-wrap gap-x-2 gap-y- pt-2">
