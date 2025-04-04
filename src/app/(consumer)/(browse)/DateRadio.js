@@ -7,18 +7,21 @@ export const DateRadio = ({ date, setDate }) => {
 
     const options = [
         {
-            label: 'Today',
+            id: 'today',
+            label: 'Hoy',
             value: [today, today],
         },
         {
-            label: 'Tomorrow',
+            id: 'tomorrow',
+            label: 'Mañana',
             value: [
                 moment().add(1, 'days').format('YYYY-MM-DD'),
                 moment().add(1, 'days').format('YYYY-MM-DD'),
             ],
         },
         {
-            label: 'This weekend',
+            id: 'this-weekend',
+            label: 'Este FDS',
             value: [
                 moment().isAfter(moment().day(5))
                     ? moment().format('YYYY-MM-DD')
@@ -26,14 +29,26 @@ export const DateRadio = ({ date, setDate }) => {
                 moment().day(7).format('YYYY-MM-DD'),
             ],
         },
-        {
-            label: 'This week',
-            value: [
-                moment().format('YYYY-MM-DD'),
-                moment().day(7).format('YYYY-MM-DD'),
-            ],
-        },
     ]
+
+    const weekOption =
+        moment().day() >= 5
+            ? {
+                  id: 'next-week',
+                  label: 'Próx. semana',
+                  value: [
+                      moment().add(1, 'week').day(1).format('YYYY-MM-DD'),
+                      moment().add(1, 'week').day(7).format('YYYY-MM-DD'),
+                  ],
+              }
+            : {
+                  id: 'this-week',
+                  label: 'Esta semana',
+                  value: [
+                      moment().format('YYYY-MM-DD'),
+                      moment().day(7).format('YYYY-MM-DD'),
+                  ],
+              }
 
     return (
         <div className="flex flex-col gap-2">
@@ -50,13 +65,17 @@ export const DateRadio = ({ date, setDate }) => {
                             name="arrows-horizontal"
                         />
                         <span>
-                            {moment(date[1])?.locale('es').format('ddd D MMM')}
+                            {date[1]
+                                ? moment(date[1])
+                                      ?.locale('es')
+                                      .format('ddd D MMM')
+                                : 'INFINITO'}
                         </span>
                     </>
                 )}
             </div>
             <div className="flex flex-wrap gap-1">
-                {options.map((option, index) => (
+                {[...options, weekOption].map((option, index) => (
                     <div key={index} className="grow">
                         <input
                             id={`date-${index}`}
