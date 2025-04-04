@@ -1,0 +1,3 @@
+@utility pill {
+    @apply inline-block w-max text-nowrap bg-theme text-theme-contrast pb-0.5 pt-1 px-1.5 rounded typo-caps;
+}

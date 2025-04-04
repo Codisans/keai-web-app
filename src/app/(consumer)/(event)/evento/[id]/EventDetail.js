@@ -18,7 +18,9 @@ export const EventDetail = ({ event }) => {
                 <h1 className="typo-h3">{event.name}</h1>
                 <span className="pb-1 uppercase text-body text-grey flex gap-x-2">
                     {event.categories.map((c, i) => (
-                        <span key={i}>{c.name}</span>
+                        <span className={`pill theme--${c.slug}`} key={i}>
+                            {c.name}
+                        </span>
                     ))}
                 </span>
                 <div className="relative w-full mb-4 overflow-hidden aspect-video rounded-card">
@@ -47,13 +49,13 @@ export const EventDetail = ({ event }) => {
                         <ClipboardCopy text={event.formatted_address} />
                     </div>
 
-                    <p className="flex flex-col">
+                    <div className="flex flex-col">
                         <div
                             dangerouslySetInnerHTML={{
                                 __html: event.formatted_address,
                             }}
                         />
-                    </p>
+                    </div>
                 </div>
                 {/* <div className="col-span-12">
                     <Link href={`/mapa#${event.id}`}>Ver en mapa</Link>
