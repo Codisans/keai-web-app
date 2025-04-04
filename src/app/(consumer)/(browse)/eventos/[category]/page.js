@@ -30,7 +30,7 @@ const CategoryPage = async ({ params, searchParams }) => {
 
     return (
         <>
-            <div className="w-full py-8 flex flex-col gap-y-gutter">
+            <div className="w-full py-8 flex flex-col gap-y-6">
                 <EventCarousel heading="Para ti" events={events} />
                 <EventCarousel heading="Hoy" events={events} />
                 <EventCarousel heading="Ferias" events={events} />

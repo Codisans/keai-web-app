@@ -30,7 +30,7 @@ const Events = async ({ searchParams }) => {
 
     return (
         <>
-            <div className="w-full py-8 flex flex-col gap-y-gutter filter-open:hidden">
+            <div className="w-full py-8 flex flex-col gap-y-6 filter-open:hidden">
                 <ReccomendedEvents />
                 <UpcomingEvents />
                 <TodayEvents />
