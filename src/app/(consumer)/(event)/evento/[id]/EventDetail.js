@@ -1,6 +1,7 @@
 'use client'
 import { ConsumerContext } from '@/app/(consumer)/ConsumerContext'
 import { ClipboardCopy } from '@/components/atoms/ClipboardCopy'
+import { Price } from '@/components/atoms/Price'
 import { useContext, useEffect } from 'react'
 
 export const EventDetail = ({ event }) => {
@@ -38,6 +39,7 @@ export const EventDetail = ({ event }) => {
                         </li>
                     ))}
                 </ul>
+                <Price className="py-2" price={event.price} />
                 <div className="col-span-12 py-4">
                     <p>{event.description}</p>
                 </div>

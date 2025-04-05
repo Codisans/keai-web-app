@@ -1,5 +1,4 @@
 import { DateTime } from '@/components/atoms/DateTime'
-import { Price } from '@/components/atoms/Price'
 
 export const EventFooter = ({ event }) => {
     if (!event) return
