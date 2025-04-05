@@ -94,9 +94,9 @@
     --width-viewport: calc(100vw - var(--spacing-scrollbar));
 
     /* Borders */
-    --radius-button: 0.65rem;
-    --radius-card: 0.5rem;
-    --radius-ui: 0.5rem;
+    --radius-button: 0.4rem;
+    --radius-card: 0.6rem;
+    --radius-ui: 0.75rem;
     --radius: 0.5rem;
 
     /* Interactivity */
