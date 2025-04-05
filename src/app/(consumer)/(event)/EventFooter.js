@@ -4,8 +4,8 @@ export const EventFooter = ({ event }) => {
     if (!event) return
 
     return (
-        <footer className="sticky bottom-0 inset-x-0 z-footer shrink p-2 pb-6">
-            <div className="flex items-center justify-between p-1 rounded-[1rem] border-2 border-orange bg-white container">
+        <footer className="sticky bottom-0 inset-x-0 z-footer shrink p-2 pb-8">
+            <div className="flex items-center justify-between p-1 rounded-[0.75rem] border-2 border-orange bg-white container">
                 <div className="flex flex-row items-center gap-4 typo-h5 px-2">
                     <DateTime date={event.start_date} />
                     <span className="text-orange">•</span>

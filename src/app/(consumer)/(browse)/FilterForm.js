@@ -79,11 +79,11 @@ export const FilterForm = ({ className = '', datepicker = false }) => {
             urlSearchParams.delete('max_price')
         }
 
-        urlSearchParams.delete('tags')
+        urlSearchParams.delete('tags[]')
 
         if (selectedTags.length > 0) {
             selectedTags.forEach(tag => {
-                urlSearchParams.append('tags', tag.id)
+                urlSearchParams.append('tags[]', tag.id)
             })
         }
 
@@ -117,7 +117,7 @@ export const FilterForm = ({ className = '', datepicker = false }) => {
         urlSearchParams.delete('max_date')
         urlSearchParams.delete('min_price')
         urlSearchParams.delete('max_price')
-        urlSearchParams.delete('tags')
+        urlSearchParams.delete('tags[]')
         router.push(`${pathname}?${urlSearchParams.toString()}`)
     }
 

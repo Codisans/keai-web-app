@@ -3,21 +3,22 @@ import { EventCarousel } from '../EventCarousel'
 import api from '@/lib/api'
 import { EventResults } from '../EventResults'
 import { NoResultsText } from '@/components/atoms/NoResultsText'
+import moment from 'moment'
 
 export const metadata = {
     title: 'KEAI | Eventos',
 }
 
 const CategoryPage = async ({ params, searchParams }) => {
-    const urlSearchParams = new EventURLSearchParams(
-        searchParams
-            ? {
-                  categories: [params.category],
-                  ...searchParams,
-              }
-            : { categories: [params.category] },
-    )
-    const events = await api.getEvents(urlSearchParams.toListString())
+    const urlSearchParams = new URLSearchParams(searchParams)
+
+    urlSearchParams.append('categories[]', params.category)
+
+    if (urlSearchParams.get('min_date') == null) {
+        urlSearchParams.set('min_date', moment().format('YYYY-MM-DD'))
+    }
+
+    const events = await api.getEvents(urlSearchParams.toString())
 
     if (!events || events?.length === 0) return <NoResultsText />
 
