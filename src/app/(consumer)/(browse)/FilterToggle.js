@@ -8,14 +8,18 @@ export const FilterToggle = () => {
     const { filterIsOpen, setFilterIsOpen } = useConsumerContext()
 
     const getIndicatorCount = searchParams => {
+        const dateFilter =
+            searchParams.get('min_date') || searchParams.get('max_date') ? 1 : 0
         const priceFilter =
             searchParams.get('min_price') || searchParams.get('max_price')
                 ? 1
                 : 0
         const tagFilter =
             Number(searchParams.getAll('tags[]')?.length) > 0 ? 1 : 0
-        return 1 + priceFilter + tagFilter
+        return dateFilter + priceFilter + tagFilter
     }
+
+    const indicatorCount = getIndicatorCount(searchParams)
 
     return (
         <button
@@ -25,8 +29,11 @@ export const FilterToggle = () => {
             disabled={path
                 .split('/')
                 ?.some(x => ['favoritos', 'perfil', 'cuenta'].includes(x))}>
-            <span className="typo-small absolute -top-1 -right-1 bg-white text-black font-bold rounded-full h-4 w-4 flex items-center justify-center">
-                {getIndicatorCount(searchParams)}
+            <span
+                className={`typo-small absolute -top-1 -right-1 text-black shadow font-bold rounded-full h-4 w-4 flex items-center justify-center ${
+                    indicatorCount > 0 ? 'bg-orange' : 'bg-white'
+                }`}>
+                {indicatorCount}
             </span>
             <svg
                 className="w-6 h-6"

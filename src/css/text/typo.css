@@ -1,5 +1,5 @@
 @utility typo-button {
-    @apply text-button font-tenorite leading-none;
+    @apply text-button font-tenorite leading-none uppercase;
 }
 
 @utility typo-caps {

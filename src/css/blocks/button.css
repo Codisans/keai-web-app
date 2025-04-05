@@ -1,10 +1,10 @@
 @utility button {
-    @apply bg-black text-white inline-flex justify-center gap-2 items-center py-2 px-3 rounded;
+    @apply bg-black text-white inline-flex justify-center gap-2 items-center py-2 px-3 rounded-button typo-button;
     @apply current:text-orange;
 }
 
 @utility button-icon {
-    @apply bg-black text-white inline-flex justify-center items-center py-2 px-3 rounded;
+    @apply bg-black text-white inline-flex justify-center items-center py-2 px-3 rounded-button;
     @apply current:text-orange;
 }
 
@@ -14,6 +14,6 @@
 }
 
 @utility button-edit {
-    @apply bg-black text-white inline-flex justify-center gap-2 items-center py-0.5 px-1.5 text-small rounded;
+    @apply bg-black text-white inline-flex justify-center gap-2 items-center py-0.5 px-1.5 text-small rounded-button typo-button;
     @apply current:text-orange;
 }
