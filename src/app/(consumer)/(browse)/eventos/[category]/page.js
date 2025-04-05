@@ -1,4 +1,3 @@
-import { EventURLSearchParams } from '@/utils/EventURLSearchParams'
 import { EventCarousel } from '../EventCarousel'
 import api from '@/lib/api'
 import { EventResults } from '../EventResults'
