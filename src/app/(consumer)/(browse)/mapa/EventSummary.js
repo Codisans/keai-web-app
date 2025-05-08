@@ -38,18 +38,16 @@ export const EventSummary = ({ event }) => {
             <div
                 ref={eventSummaryRef}
                 className="fixed bottom-[4.8rem] inset-x-2 rounded-ui bg-white p-1 z-50 flex gap-3 border border-grey">
-                <div className="w-24 rounded overflow-hidden">
-                    <Image
-                        className="w-full h-24 object-cover"
+                <div className="flex-none w-24 rounded overflow-hidden">
+                    <img
+                        className="w-24 h-24 object-cover"
                         src={event.cover || '/placeholder.jpg'}
-                        width={96}
-                        height={96}
                         alt={event.name}
                     />
                     <CategoryColorBar categories={event.categories} />
                 </div>
                 <div className="flex flex-col grow p-1">
-                    <h3 className="text-h3">{event.name}</h3>
+                    <h3 className="text-h-card">{event.name}</h3>
                     <dl className="typo-obdy uppercase font-medium leading-[1] tracking-[0.4px] text-gray-500 flex gap-1 justify-between">
                         <dd>
                             <DateTime date={event.start_date} />
@@ -58,7 +56,7 @@ export const EventSummary = ({ event }) => {
                             <DateTime date={event.start_date} format="time" />
                         </dd>
                     </dl>
-                    <ul className="flex flex-wrap gap-x-2 gap-y- pt-2">
+                    <ul className="flex flex-wrap gap-x-2 gap-y-1 pt-2">
                         {event.tags?.map(tag => (
                             <li className="tag" key={tag.id}>
                                 {tag.name}
