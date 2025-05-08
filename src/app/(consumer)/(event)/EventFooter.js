@@ -14,7 +14,7 @@ export const EventFooter = ({ event }) => {
                 <div className="flex items-center gap-3">
                     <a
                         className="button"
-                        href="https://www.fatsoma.com/e/doa0v6aj/revenge-gets-spanked-revenge-x-house-of-spank-bank-holiday-sunday-brighton-fetish-week"
+                        href={event.link}
                         rel="noreferrer"
                         target="_blank">
                         Entradas
