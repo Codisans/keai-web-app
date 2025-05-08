@@ -36,7 +36,7 @@ export const EventSummary = ({ event }) => {
             <div
                 ref={eventSummaryRef}
                 className="fixed bottom-[4.8rem] inset-x-2 rounded-ui bg-white p-1 z-50 flex gap-3 border border-grey">
-                <div className="flex-none w-24 rounded overflow-hidden">
+                <div className="flex-none w-24 h-max rounded overflow-hidden">
                     <img
                         className="w-24 h-24 object-cover"
                         src={event.cover || '/placeholder.jpg'}
