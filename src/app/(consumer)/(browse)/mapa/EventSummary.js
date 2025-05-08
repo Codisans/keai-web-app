@@ -5,9 +5,7 @@ import { useClickOutside } from '@/hooks/useClickOutside'
 import Link from 'next/link'
 import { useContext, useRef } from 'react'
 import { MapContext } from './LeafletMap'
-import Image from 'next/image'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
-// import { Price } from '@/components/atoms/Price'
 import { CategoryColorBar } from '@/components/atoms/CategoryColorBar'
 
 export const EventSummary = ({ event }) => {
