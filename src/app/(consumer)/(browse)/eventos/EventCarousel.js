@@ -8,6 +8,7 @@ export const EventCarousel = ({
     heading,
     events,
     className = '',
+    theme = null,
     link = null,
 }) => {
     if (!events) return
@@ -17,10 +18,10 @@ export const EventCarousel = ({
     if (items?.length == 0) return
 
     return (
-        <div className={`${className} flex flex-col gap-y-2`}>
-            <div className="flex items-center justify-between px-gutter">
+        <div className={`${className} flex flex-col gap-y-2 ${theme ? `theme--${theme}` : ''}`}>
+            <div className="flex items-center gap-x-4 px-gutter">
                 {heading && (
-                    <h2 className="typo-button uppercase">{heading}</h2>
+                    <h2 className={`typo-button uppercase block px-2 pt-1.5 pb-0.5 rounded-button ${theme ? 'bg-theme text-theme-contrast' : ''}`}>{heading}</h2>
                 )}
                 {link && link}
             </div>
@@ -31,11 +32,11 @@ export const EventCarousel = ({
                     sticky: false,
                 }}
                 slidesPerView="auto"
+                spaceBetween="16px"
                 className="w-full !px-6">
                 {items?.map((event, i) => (
                     <SwiperSlide
                         key={i}
-                        className="pr-3 last:pr-0"
                         style={{ width: '16rem' }}>
                         <EventCard event={event} type="carousel" />
                     </SwiperSlide>

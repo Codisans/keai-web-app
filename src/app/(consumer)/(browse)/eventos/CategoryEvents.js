@@ -24,15 +24,11 @@ export const CategoryEvents = ({ category, className = '' }) => {
         <EventCarousel
             className={className}
             key={category.id}
-            heading={
-                <span
-                    className={`theme--${category?.slug} inline-block bg-theme text-theme-contrast px-2 py-0.5 rounded-button`}>
-                    {category.name}
-                </span>
-            }
+            heading={category.name}
+            theme={category.slug}
             link={
                 <Link
-                    className="typo-caps underline"
+                    className="typo-caps underline block mt-0.5"
                     href={`/eventos/${category.id}`}>
                     Ver mas
                 </Link>
