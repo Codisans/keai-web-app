@@ -17,9 +17,11 @@ export const EventCarousel = ({
     if (items?.length == 0) return
 
     return (
-        <div className={`${className} flex flex-col gap-y-gg`}>
+        <div className={`${className} flex flex-col gap-y-2`}>
             <div className="flex items-center justify-between px-gutter">
-                {heading && <h2 className="typo-h5 uppercase">{heading}</h2>}
+                {heading && (
+                    <h2 className="typo-button uppercase">{heading}</h2>
+                )}
                 {link && link}
             </div>
 

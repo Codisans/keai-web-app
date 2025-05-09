@@ -46,7 +46,14 @@ export const EventSummary = ({ event }) => {
                 </div>
                 <div className="flex flex-col grow p-1">
                     <h3 className="text-h-card">{event.name}</h3>
-                    <dl className="typo-obdy uppercase font-medium leading-[1] tracking-[0.4px] text-gray-500 flex gap-1 justify-between">
+                    <ul className="flex flex-wrap gap-x-2 gap-y-1 py-1">
+                        {event.tags?.map(tag => (
+                            <li className="tag" key={tag.id}>
+                                {tag.name}
+                            </li>
+                        ))}
+                    </ul>
+                    <dl className="typo-button text-black/80 flex gap-1 justify-between mt-auto">
                         <dd>
                             <DateTime date={event.start_date} />
                         </dd>
@@ -54,13 +61,6 @@ export const EventSummary = ({ event }) => {
                             <DateTime date={event.start_date} format="time" />
                         </dd>
                     </dl>
-                    <ul className="flex flex-wrap gap-x-2 gap-y-1 pt-2">
-                        {event.tags?.map(tag => (
-                            <li className="tag" key={tag.id}>
-                                {tag.name}
-                            </li>
-                        ))}
-                    </ul>
                 </div>
                 <Link href={`/evento/${event.id}`} className="absolute inset-0">
                     <span className="sr-only">{event.name}</span>

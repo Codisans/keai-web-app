@@ -27,7 +27,7 @@ export const CategoryEvents = ({ category, className = '' }) => {
             key={category.id}
             heading={
                 <span
-                    className={`theme--${category.slug} bg-theme text-white px-1 rounded-button`}>
+                    className={`theme--${category?.slug} bg-theme text-theme-contrast px-2 py-0.5 rounded-button`}>
                     {category.name}
                 </span>
             }
