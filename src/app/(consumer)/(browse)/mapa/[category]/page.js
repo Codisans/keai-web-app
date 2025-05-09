@@ -1,6 +1,6 @@
 import api from '@/lib/api'
 import { EventMarker } from '../EventMarker'
-
+import moment from 'moment'
 export const metadata = {
     title: 'KEAI | Mapa ',
 }
@@ -9,6 +9,14 @@ const MapCategory = async ({ params, searchParams }) => {
     const urlSearchParams = new URLSearchParams(searchParams)
 
     urlSearchParams.set('categories[]', params.category)
+
+    if (
+        urlSearchParams.get('min_date') == null &&
+        urlSearchParams.get('max_date') == null
+    ) {
+        urlSearchParams.set('min_date', moment().format('YYYY-MM-DD'))
+        urlSearchParams.set('max_date', moment().day(7).format('YYYY-MM-DD'))
+    }
 
     const events = await api.getEvents(urlSearchParams.toString())
 
