@@ -16,8 +16,6 @@ const CategoryPage = async ({ params, searchParams }) => {
 
     urlSearchParams.set('categories[]', params.category)
 
-    console.log(urlSearchParams.toString())
-
     const events = await api.getEvents(urlSearchParams.toString())
 
     if (Object.keys(searchParams)?.length != 0)

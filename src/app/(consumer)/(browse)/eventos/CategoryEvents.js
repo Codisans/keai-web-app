@@ -11,7 +11,6 @@ export const CategoryEvents = ({ category, className = '' }) => {
     const [categoryEvents, setCategoryEvents] = useState([])
 
     useEffect(() => {
-        console.log(category, events)
         if (!events || events?.length == 0 || !category) return
 
         const filteredEvents = events.filter(event =>
@@ -27,7 +26,7 @@ export const CategoryEvents = ({ category, className = '' }) => {
             key={category.id}
             heading={
                 <span
-                    className={`theme--${category?.slug} bg-theme text-theme-contrast px-2 py-0.5 rounded-button`}>
+                    className={`theme--${category?.slug} inline-block bg-theme text-theme-contrast px-2 py-0.5 rounded-button`}>
                     {category.name}
                 </span>
             }

@@ -1,12 +1,8 @@
 'use client'
 
 import { Loading } from '@/app/Loading'
-// import { useEffect } from 'react'
 
 export const TagListing = ({ tags }) => {
-    // useEffect(() => {
-    //     console.log(tags)
-    // }, [tags])
 
     return (
         <ul className="w-full grow relative">

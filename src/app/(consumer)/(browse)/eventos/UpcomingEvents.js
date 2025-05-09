@@ -10,7 +10,6 @@ export const UpcomingEvents = () => {
 
     useEffect(() => {
         if (!events) return
-        console.log(events)
 
         setItems(
             events

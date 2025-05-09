@@ -8,7 +8,6 @@ export const EventDetail = ({ event }) => {
     const { setSelectedEvent } = useContext(ConsumerContext)
 
     useEffect(() => {
-        console.log(event)
         setSelectedEvent(event)
         return () => setSelectedEvent(null)
     }, [])
