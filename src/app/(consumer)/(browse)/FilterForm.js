@@ -20,7 +20,10 @@ export const FilterForm = ({ className = '', datepicker = false }) => {
     const searchParams = useSearchParams()
 
     const today = moment().format('YYYY-MM-DD')
-    const defaultDate = [today, datepicker ? null : today]
+    const defaultDate = [
+        today,
+        datepicker ? null : moment().day(7).format('YYYY-MM-DD'),
+    ]
     const [date, setDate] = useState(defaultDate)
     const [startDate, setStartDate] = useState(
         date[0] ? new Date(date[0]) : null,
@@ -81,9 +84,9 @@ export const FilterForm = ({ className = '', datepicker = false }) => {
 
         urlSearchParams.delete('tags[]')
 
-        if (selectedTags.length > 0) {
+        if (selectedTags?.length > 0) {
             selectedTags.forEach(tag => {
-                urlSearchParams.append('tags[]', tag.id)
+                urlSearchParams.set('tags[]', tag.id)
             })
         }
 
@@ -122,96 +125,94 @@ export const FilterForm = ({ className = '', datepicker = false }) => {
     }
 
     return (
-        <>
-            <form
-                onSubmit={handleSubmit}
-                className={`${filterIsOpen ? 'open' : ''} ${className}`}>
-                <div className="w-full h-full pointer-events-auto bg-white">
-                    <div className="flex justify-end z-50 sticky top-0 p-4 w-full bg-white shadow">
-                        <h2 className="sr-only">Filtros:</h2>
-                        <div className="flex gap-grid">
-                            <button
-                                className="button bg-white underline text-black"
-                                type="button"
-                                onClick={handleClear}>
-                                Restablecer
-                            </button>
-                            <button
-                                className="button"
-                                type="button"
-                                onClick={handleSubmit}>
-                                Buscar
-                            </button>
-                        </div>
-                    </div>
-                    <div className="w-full flex flex-col relative z-40">
-                        <FilterSection>
-                            <DateRadio
-                                date={date}
-                                setDate={value => {
-                                    setDate(value)
-                                    setShowDatePicker(false)
-                                    setStartDate(null)
-                                    setEndDate(null)
-                                }}
-                                showDatePicker={showDatePicker}
-                                setShowDatePicker={setShowDatePicker}
-                            />
-                            {datepicker && (
-                                <div className="max-w-full mx-auto pt-1 flex flex-col gap-y-2">
-                                    <button
-                                        className={`block w-full text-center typo-caps border-grey border py-2 px-1 rounded ${
-                                            showDatePicker
-                                                ? 'border-primary bg-primary'
-                                                : 'bg-white'
-                                        }`}
-                                        type="button"
-                                        disabled={showDatePicker}
-                                        onClick={() => {
-                                            setShowDatePicker(true)
-                                            setDate(defaultDate)
-                                        }}>
-                                        Otras fechas
-                                    </button>
-                                    {showDatePicker && (
-                                        <CustomDatePicker
-                                            date={date}
-                                            setDate={setDate}
-                                            startDate={startDate}
-                                            endDate={endDate}
-                                            setStartDate={setStartDate}
-                                            setEndDate={setEndDate}
-                                        />
-                                    )}
-                                </div>
-                            )}
-                        </FilterSection>
-
-                        <FilterSection legend="Tags">
-                            <TagsAutocomplete
-                                selectedTags={selectedTags}
-                                setSelectedTags={setSelectedTags}
-                                tags={tags}
-                            />
-                        </FilterSection>
-
-                        <FilterSection
-                            legend="Precio:"
-                            indicator={
-                                <span className="text-caps">
-                                    {getPriceIndicatorText(priceValue)}
-                                </span>
-                            }>
-                            <div className="flex flex-wrap gap-x-3 gap-y-2 w-full px-12 pt-10">
-                                <PriceSlider
-                                    priceValue={priceValue}
-                                    setPriceValue={setPriceValue}
-                                />
-                            </div>
-                        </FilterSection>
+        <form
+            onSubmit={handleSubmit}
+            className={`${filterIsOpen ? 'open' : ''} ${className}`}>
+            <div className="w-auto h-full pointer-events-auto bg-white">
+                <div className="flex justify-end z-50 sticky top-0 p-4 w-full bg-white shadow">
+                    <h2 className="sr-only">Filtros:</h2>
+                    <div className="flex gap-grid">
+                        <button
+                            className="button bg-white underline text-black"
+                            type="button"
+                            onClick={handleClear}>
+                            Restablecer
+                        </button>
+                        <button
+                            className="button"
+                            type="button"
+                            onClick={handleSubmit}>
+                            Buscar
+                        </button>
                     </div>
                 </div>
-            </form>
-        </>
+                <div className="w-full flex flex-col relative z-40">
+                    <FilterSection>
+                        <DateRadio
+                            date={date}
+                            setDate={value => {
+                                setDate(value)
+                                setShowDatePicker(false)
+                                setStartDate(null)
+                                setEndDate(null)
+                            }}
+                            showDatePicker={showDatePicker}
+                            setShowDatePicker={setShowDatePicker}
+                        />
+                        {datepicker && (
+                            <div className="max-w-full mx-auto pt-1 flex flex-col gap-y-2">
+                                <button
+                                    className={`block w-full text-center typo-caps border-grey border py-2 px-1 rounded ${
+                                        showDatePicker
+                                            ? 'border-primary bg-primary'
+                                            : 'bg-white'
+                                    }`}
+                                    type="button"
+                                    disabled={showDatePicker}
+                                    onClick={() => {
+                                        setShowDatePicker(true)
+                                        setDate(defaultDate)
+                                    }}>
+                                    Otras fechas
+                                </button>
+                                {showDatePicker && (
+                                    <CustomDatePicker
+                                        date={date}
+                                        setDate={setDate}
+                                        startDate={startDate}
+                                        endDate={endDate}
+                                        setStartDate={setStartDate}
+                                        setEndDate={setEndDate}
+                                    />
+                                )}
+                            </div>
+                        )}
+                    </FilterSection>
+
+                    <FilterSection legend="Tags">
+                        <TagsAutocomplete
+                            selectedTags={selectedTags}
+                            setSelectedTags={setSelectedTags}
+                            tags={tags}
+                        />
+                    </FilterSection>
+
+                    <FilterSection
+                        legend="Precio:"
+                        indicator={
+                            <span className="text-caps">
+                                {getPriceIndicatorText(priceValue)}
+                            </span>
+                        }>
+                        <div className="flex flex-wrap gap-x-3 gap-y-2 w-full px-12 pt-10">
+                            <PriceSlider
+                                priceValue={priceValue}
+                                setPriceValue={setPriceValue}
+                            />
+                        </div>
+                    </FilterSection>
+                </div>
+            </div>
+        </form>
     )
 }

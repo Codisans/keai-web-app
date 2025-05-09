@@ -7,7 +7,7 @@ const MapLayout = ({ children }) => {
     return (
         <>
             <MapHeader />
-            <FilterForm className="open:block w-full right-2 ml-2 max-w-[420px] hidden fixed z-header top-[6.8rem] border border-grey bottom-[4.6rem] rounded overflow-hidden select-none" />
+            <FilterForm className="open:block max-sm:left-2 sm:w-full right-2 max-w-[620px] hidden fixed z-header top-[6.8rem] border border-grey bottom-[4.6rem] rounded overflow-hidden select-none" />
             <main className="w-full grow relative flex">
                 <Map>{children}</Map>
                 <DateIndicator />

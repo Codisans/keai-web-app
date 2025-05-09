@@ -18,7 +18,7 @@ export const ThisWeekEvents = () => {
             events
                 .filter(
                     e =>
-                        today.isBefore(moment(e.end_date)) &&
+                        today.isBefore(moment(e.start_date)) &&
                         sunday.isAfter(moment(e.start_date)),
                 )
                 .slice(0, 20),

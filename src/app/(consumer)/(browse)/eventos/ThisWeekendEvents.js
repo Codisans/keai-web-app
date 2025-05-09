@@ -19,7 +19,8 @@ export const ThisWeekendEvents = () => {
         setItems(
             events
                 ?.filter(
-                    e => min.isBefore(e.end_date) && end.isAfter(e.start_date),
+                    e =>
+                        min.isBefore(e.start_date) && end.isAfter(e.start_date),
                 )
                 .slice(0, 20),
         )
