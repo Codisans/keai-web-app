@@ -1,21 +1,16 @@
 import api from '@/lib/api'
 import { EventMarker } from '../EventMarker'
-import { EventURLSearchParams } from '@/utils/EventURLSearchParams'
 
 export const metadata = {
     title: 'KEAI | Mapa ',
 }
 
 const MapCategory = async ({ params, searchParams }) => {
-    const urlSearchParams = new EventURLSearchParams(
-        searchParams
-            ? {
-                  categories: [params.category],
-                  ...searchParams,
-              }
-            : { categories: [params.category] },
-    )
-    const events = await api.getEvents(urlSearchParams.toMapString())
+    const urlSearchParams = new URLSearchParams(searchParams)
+
+    urlSearchParams.set('categories[]', params.category)
+
+    const events = await api.getEvents(urlSearchParams.toString())
 
     if (!events) return
 
