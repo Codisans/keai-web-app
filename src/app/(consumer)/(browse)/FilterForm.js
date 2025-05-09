@@ -62,10 +62,7 @@ export const FilterForm = ({ className = '', datepicker = false }) => {
         }
 
         if (date[1]) {
-            urlSearchParams.set(
-                'max_date',
-                moment(date[1]).add(1, 'day').format('YYYY-MM-DD'),
-            )
+            urlSearchParams.set('max_date', date[1])
         } else {
             urlSearchParams.delete('max_date')
         }
