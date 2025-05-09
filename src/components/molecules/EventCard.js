@@ -27,8 +27,10 @@ export const EventCard = ({
                         </div>
                         <CategoryColorBar categories={event.categories} />
                     </div>
-                    <div className="flex flex-col pt-1">
-                        <h3 className="text-h-card">{event.name}</h3>
+                    <div className="flex flex-col gap-y-1 pt-2">
+                        <h3 className="text-h-card leading-none w-full text-nowrap overflow-hidden text-ellipsis">
+                            {event.name}
+                        </h3>
                         <div className="flex flex-row gap-x-4 typo-small">
                             <DateTime date={event.start_date} />
                             <span className="text-orange">•</span>

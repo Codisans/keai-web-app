@@ -35,7 +35,7 @@ export const EventSummary = ({ event }) => {
         event && (
             <div
                 ref={eventSummaryRef}
-                className="fixed bottom-[4.8rem] inset-x-2 rounded-ui bg-white p-1 z-50 flex gap-3 border border-grey">
+                className="fixed bottom-[4.8rem] inset-x-2 rounded-ui bg-white p-1 z-50 flex gap-2 border border-grey">
                 <div className="flex-none w-24 h-max rounded overflow-hidden">
                     <img
                         className="w-24 h-24 object-cover"
@@ -45,7 +45,9 @@ export const EventSummary = ({ event }) => {
                     <CategoryColorBar categories={event.categories} />
                 </div>
                 <div className="flex flex-col grow p-1">
-                    <h3 className="text-h-card">{event.name}</h3>
+                    <h3 className="text-h-card leading-none py-0.5 w-full overflow-hidden text-ellipsis text-nowrap">
+                        {event.name}
+                    </h3>
                     <ul className="flex flex-wrap gap-x-2 gap-y-1 py-1">
                         {event.tags?.map(tag => (
                             <li className="tag" key={tag.id}>
