@@ -34,7 +34,7 @@ export const EventCard = ({
                         <div className="flex flex-row gap-x-4 typo-small">
                             <DateTime date={event.start_date} />
                             <span className="text-orange">•</span>
-                            <DateTime date={event.end_date} format="time" />
+                            <DateTime date={event.start_date} format="time" />
                         </div>
 
                         {price && (
@@ -85,7 +85,7 @@ export const EventCard = ({
                         <div className="flex flex-row gap-x-4 typo-small">
                             <DateTime date={event.start_date} />
                             <span className="text-orange">•</span>
-                            <DateTime date={event.end_date} format="time" />
+                            <DateTime date={event.start_date} format="time" />
                         </div>
                         {price && <p className="typo-small">${event.price}</p>}
                         {tags && (
