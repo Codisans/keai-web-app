@@ -4,8 +4,11 @@ import moment from 'moment'
 export const DateRadio = ({ date, setDate }) => {
     moment.locale('es')
     const today = moment().format('YYYY-MM-DD')
+    const isWeekend = moment().weekday() >= 5 || moment().weekday() == 0
+    const startOfWeek = moment().startOf('week')
+    const isSunday = moment().weekday() == 0
 
-    const options = [
+    const baseOptions = [
         {
             id: 'today',
             label: 'Hoy',
@@ -19,26 +22,27 @@ export const DateRadio = ({ date, setDate }) => {
                 moment().add(1, 'days').format('YYYY-MM-DD'),
             ],
         },
-        {
-            id: 'this-weekend',
-            label: 'Este FDS',
-            value: [
-                moment().isAfter(moment().day(5))
-                    ? moment().format('YYYY-MM-DD')
-                    : moment().day(5).format('YYYY-MM-DD'),
-                moment().day(7).format('YYYY-MM-DD'),
-            ],
-        },
     ]
 
+    const weekendOption =  {
+        id: 'this-weekend',
+        label: 'Este FDS',
+        value: [
+            isWeekend
+                ? moment().format('YYYY-MM-DD')
+                : startOfWeek.day(5).format('YYYY-MM-DD'),
+            moment().weekday(0).format('YYYY-MM-DD'),
+        ],
+    }
+
     const weekOption =
-        moment().day() >= 5
+        isWeekend
             ? {
                   id: 'next-week',
                   label: 'Próx. semana',
                   value: [
-                      moment().add(1, 'week').day(1).format('YYYY-MM-DD'),
-                      moment().add(1, 'week').day(7).format('YYYY-MM-DD'),
+                      moment().day(0).add(1, 'day').format('YYYY-MM-DD'),
+                      moment().day(7).format('YYYY-MM-DD'),
                   ],
               }
             : {
@@ -46,9 +50,11 @@ export const DateRadio = ({ date, setDate }) => {
                   label: 'Esta semana',
                   value: [
                       moment().format('YYYY-MM-DD'),
-                      moment().day(7).format('YYYY-MM-DD'),
+                      moment().day(0).format('YYYY-MM-DD'),
                   ],
               }
+
+    const options = isSunday ? [...baseOptions, weekOption] : [...baseOptions, weekendOption, weekOption]
 
     return (
         <div className="flex flex-col gap-2">
@@ -75,7 +81,7 @@ export const DateRadio = ({ date, setDate }) => {
                 )}
             </div>
             <div className="flex flex-wrap gap-1">
-                {[...options, weekOption].map((option, index) => (
+                {options.map((option, index) => (
                     <div key={index} className="grow">
                         <input
                             id={`date-${index}`}

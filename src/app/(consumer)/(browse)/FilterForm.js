@@ -11,8 +11,9 @@ import { getPriceIndicatorText } from '@/utils/filterUtils'
 import { useSearchParams } from 'next/navigation'
 import { useConsumerContext } from '@/app/(consumer)/ConsumerContext'
 import { CustomDatePicker } from './CustomDatePicker'
+import { getDateObject } from '@/utils/getDateObject'
 
-export const FilterForm = ({ className = '', datepicker = false }) => {
+export const FilterForm = ({ className = '', isMap = false }) => {
     const { filterIsOpen, setFilterIsOpen } = useConsumerContext()
     const { tags } = useConsumerContext()
     const router = useRouter()
@@ -22,13 +23,11 @@ export const FilterForm = ({ className = '', datepicker = false }) => {
     const today = moment().format('YYYY-MM-DD')
     const defaultDate = [
         today,
-        datepicker ? null : moment().day(7).format('YYYY-MM-DD'),
+        isMap ? moment().day(0).format('YYYY-MM-DD') : null,
     ]
     const [date, setDate] = useState(defaultDate)
-    const [startDate, setStartDate] = useState(
-        date[0] ? new Date(date[0]) : null,
-    )
-    const [endDate, setEndDate] = useState(date[1] ? new Date(date[1]) : null)
+    const [startDate, setStartDate] = useState(getDateObject(date[0]))
+    const [endDate, setEndDate] = useState(getDateObject(date[1]))
     const [showDatePicker, setShowDatePicker] = useState(false)
 
     const [priceValue, setPriceValue] = useState([0, 105])
@@ -159,34 +158,33 @@ export const FilterForm = ({ className = '', datepicker = false }) => {
                             showDatePicker={showDatePicker}
                             setShowDatePicker={setShowDatePicker}
                         />
-                        {datepicker && (
-                            <div className="max-w-full mx-auto pt-1 flex flex-col gap-y-2">
-                                <button
-                                    className={`block w-full text-center typo-caps border-grey border py-2 px-1 rounded ${
-                                        showDatePicker
-                                            ? 'border-primary bg-primary'
-                                            : 'bg-white'
-                                    }`}
-                                    type="button"
-                                    disabled={showDatePicker}
-                                    onClick={() => {
-                                        setShowDatePicker(true)
-                                        setDate(defaultDate)
-                                    }}>
-                                    Otras fechas
-                                </button>
-                                {showDatePicker && (
-                                    <CustomDatePicker
-                                        date={date}
-                                        setDate={setDate}
-                                        startDate={startDate}
-                                        endDate={endDate}
-                                        setStartDate={setStartDate}
-                                        setEndDate={setEndDate}
-                                    />
-                                )}
-                            </div>
-                        )}
+             
+                        <div className="max-w-full mx-auto pt-1 flex flex-col gap-y-2">
+                            <button
+                                className={`block w-full text-center typo-caps border-grey border py-2 px-1 rounded ${
+                                    showDatePicker
+                                        ? 'border-primary bg-primary'
+                                        : 'bg-white'
+                                }`}
+                                type="button"
+                                disabled={showDatePicker}
+                                onClick={() => {
+                                    setShowDatePicker(true)
+                                    setDate(defaultDate)
+                                }}>
+                                Otras fechas
+                            </button>
+                            {showDatePicker && (
+                                <CustomDatePicker
+                                    date={date}
+                                    setDate={setDate}
+                                    startDate={startDate}
+                                    endDate={endDate}
+                                    setStartDate={setStartDate}
+                                    setEndDate={setEndDate}
+                                />
+                            )}
+                        </div>
                     </FilterSection>
 
                     <FilterSection legend="Tags">

@@ -2,6 +2,8 @@ import DatePicker from 'react-datepicker'
 import { registerLocale, setDefaultLocale } from 'react-datepicker'
 import { es } from 'date-fns/locale/es'
 import moment from 'moment'
+import { getDateObject } from '@/utils/getDateObject'
+
 export const CustomDatePicker = ({
     setDate,
     startDate,
@@ -12,7 +14,6 @@ export const CustomDatePicker = ({
 }) => {
     registerLocale('es', es)
     setDefaultLocale('es')
-    const today = moment().format('YYYY-MM-DD')
 
     const onChange = dates => {
         const [start, end] = dates
@@ -28,11 +29,10 @@ export const CustomDatePicker = ({
         <div className="flex justify-center items-center">
             <DatePicker
                 locale="es"
-                selected={startDate}
                 onChange={onChange}
                 startDate={startDate}
                 endDate={endDate}
-                minDate={today}
+                minDate={getDateObject(moment().format('YYYY-MM-DD'))}
                 selectsRange
                 inline
                 {...props}

@@ -7,7 +7,6 @@ const EventsLayout = ({ children }) => {
             <EventsHeader />
             <div className="grow">
                 <FilterForm
-                    datepicker={true}
                     className="hidden [&+*]:block open:block open:[&+*]:hidden"
                 />
                 <div className='w-full overflow-hidden'>{children}</div>
