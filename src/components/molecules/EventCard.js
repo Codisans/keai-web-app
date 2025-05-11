@@ -17,25 +17,22 @@ export const EventCard = ({
     switch (type) {
         case 'carousel':
             return (
-                <div className="flex flex-col relative w-full">
-                    <div className="w-full overflow-hidden rounded">
-                        <div className="w-full aspect-[16/9] relative overflow-hidden">
-                            <img
-                                className="absolute inset-0 w-full h-full object-cover"
-                                src={event.cover || '/images/placeholder.jpg'}
-                            />
-                        </div>
-                        <CategoryColorBar categories={event.categories} />
+                <div className="flex flex-col relative w-full rounded-card overflow-hidden shadow-card">
+                    <div className="w-full aspect-[16/9] relative overflow-hidden">
+                        <img
+                            className="absolute inset-0 w-full h-full object-cover"
+                            src={event.cover || '/images/placeholder.jpg'}
+                        />
                     </div>
-                    <div className="flex flex-col gap-y-1 pt-2">
-                        <h3 className="text-h-card leading-none w-full text-nowrap overflow-hidden text-ellipsis">
-                            {event.name}
-                        </h3>
+                    <div className="flex flex-col gap-y-1 px-2 py-1">
                         <div className="flex flex-row gap-x-4 typo-small">
                             <DateTime date={event.start_date} />
                             <span className="text-orange">•</span>
                             <DateTime date={event.start_date} format="time" />
                         </div>
+                        <h3 className="text-h-card leading-none w-full text-nowrap overflow-hidden text-ellipsis">
+                            {event.name}
+                        </h3>
 
                         {price && (
                             <p className="typo-caps">Desde: $ {event.price}</p>
@@ -70,7 +67,7 @@ export const EventCard = ({
             )
         case 'list':
             return (
-                <div className="grid grid-cols-12 gap-grid relative group/card w-full">
+                <div className="grid grid-cols-12 gap-grid relative group/card w-full shadow-card">
                     <div className="col-span-4 overflow-hidden rounded-card h-min">
                         <div className="relative aspect-[16/9] w-full">
                             <img

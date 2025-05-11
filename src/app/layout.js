@@ -22,7 +22,7 @@ const RootLayout = ({ children }) => {
                 <meta name="apple-mobile-web-app-title" content="KEAI" />
                 <link rel="manifest" href="/site.webmanifest" />
             </head>
-            <body className="flex flex-col w-full overflow-y-auto font-sans overscroll-none h-svh">
+            <body className="flex flex-col w-full overflow-y-auto bg-white-off font-sans overscroll-none h-svh">
                 <AppContextProvider>{children}</AppContextProvider>
                 <GoogleAnalytics gaId="G-YKTP4XWEGV" />
             </body>

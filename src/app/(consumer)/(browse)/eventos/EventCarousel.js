@@ -26,22 +26,24 @@ export const EventCarousel = ({
                 {link && link}
             </div>
 
-            <Swiper
-                modules={[FreeMode]}
-                freeMode={{
-                    sticky: false,
-                }}
-                slidesPerView="auto"
-                spaceBetween="16px"
-                className="w-full !px-6">
-                {items?.map((event, i) => (
-                    <SwiperSlide
+            <div className='w-full'>
+                <Swiper
+                    modules={[FreeMode]}
+                    freeMode={{
+                        sticky: false,
+                    }}
+                    slidesPerView="auto"
+                    spaceBetween="16px"
+                    className="w-full !px-6 !overflow-visible">
+                    {items?.map((event, i) => (
+                        <SwiperSlide
                         key={i}
                         style={{ width: '16rem' }}>
-                        <EventCard event={event} type="carousel" />
-                    </SwiperSlide>
-                ))}
-            </Swiper>
+                            <EventCard event={event} type="carousel" />
+                        </SwiperSlide>
+                    ))}
+                </Swiper>
+            </div>
         </div>
     )
 }

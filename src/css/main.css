@@ -1,6 +1,7 @@
 @import './libs/_';
-@import './_theme';
 @import './_tailwind';
+@import './_variants';
+@import './_theme';
 @import './resets/_';
 @import './text/_';
 @import './layout/_';

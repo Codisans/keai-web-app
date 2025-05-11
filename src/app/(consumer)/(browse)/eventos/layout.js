@@ -10,7 +10,7 @@ const EventsLayout = ({ children }) => {
                     datepicker={true}
                     className="hidden [&+*]:block open:block open:[&+*]:hidden"
                 />
-                <div>{children}</div>
+                <div className='w-full overflow-hidden'>{children}</div>
             </div>
         </>
     )

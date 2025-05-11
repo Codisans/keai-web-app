@@ -1,0 +1,32 @@
+@custom-variant mouse {
+    @media ((hover: hover) and (pointer: fine)) {
+        @slot;
+    }
+}
+
+@custom-variant touch {
+    @media ((hover: none) and (pointer: coarse)) {
+        @slot;
+    }
+}
+
+@custom-variant current {
+    .current &,
+    &.current {
+        @slot;
+    }
+}
+
+@custom-variant open {
+    .open &,
+    &.open {
+        @slot;
+    }
+}
+
+@custom-variant selected {
+    .selected &,
+    &.selected {
+        @slot;
+    }
+}
