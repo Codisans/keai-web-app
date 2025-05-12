@@ -13,7 +13,7 @@ export const EventsHeader = async () => {
                 {/* <CategoryNav categories={categories} /> */}
                 <CategoryBar categories={categories} view="listing" />
             </header>
-            <div className="flex gap-grid px-grid-gap py-grid-gap">
+            <div className="flex gap-grid px-grid-gap pb-grid-gap">
                 <SearchInput />
                 <FilterToggle />
             </div>
