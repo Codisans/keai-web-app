@@ -104,9 +104,6 @@ export const useAuth = ({ middleware, redirectIfAuthenticated } = {}) => {
     }
 
     useEffect(() => {
-        if (error?.response?.status === 401) {
-            router.push('/entrar')
-        }
         if (middleware === 'guest' && redirectIfAuthenticated && user)
             router.push(redirectIfAuthenticated)
         if (
