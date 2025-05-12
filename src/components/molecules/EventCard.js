@@ -53,13 +53,13 @@ export const EventCard = ({
                         className="absolute inset-0"></Link>
                     {toggle && !remove && (
                         <SaveEventButton
-                            className="absolute top-1 z-10 right-1"
+                            className="absolute mix-blend-difference top-1 z-10 right-1 text-white"
                             eventId={event.id}
                         />
                     )}
                     {remove && (
                         <RemoveEventButton
-                            className="absolute bottom-0 z-10 right-1"
+                            className="absolute mix-blend-difference bottom-0 z-10 right-1 text-white"
                             eventId={event.id}
                         />
                     )}
@@ -100,13 +100,13 @@ export const EventCard = ({
                         className="absolute inset-0"></Link>
                     {toggle && !remove && (
                         <SaveEventButton
-                            className="absolute top-1 z-10 right-1"
+                            className="absolute top-1 z-10 right-1 mix-blend-difference text-white"
                             eventId={event.id}
                         />
                     )}
                     {remove && (
                         <RemoveEventButton
-                            className="absolute bottom-0 z-10 right-1"
+                            className="absolute bottom-0 z-10 right-1 mix-blend-difference text-white"
                             eventId={event.id}
                         />
                     )}

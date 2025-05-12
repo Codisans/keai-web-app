@@ -7,7 +7,7 @@ const UserLayout = ({ children }) => {
         <>
             <ProfileHeader />
             <ConsumerMenu />
-            <main className="w-full grow relative flex flex-col mx-auto max-w-2xl pt-20">
+            <main className="w-full grow relative flex flex-col mx-auto max-w-2xl pt-20 min-h-svh">
                 {children}
             </main>
             <ConsumerFooter />

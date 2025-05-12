@@ -3,7 +3,7 @@ import { ToggleEventButton } from './ToggleEventButton'
 
 export const SaveEventButton = ({ eventId, className = '' }) => {
     return (
-        <ToggleEventButton className={`${className} mix-blend-difference text-white`} eventId={eventId}>
+        <ToggleEventButton className={`${className}`} eventId={eventId}>
             <span className="sr-only">Guardar evento</span>
             <Symbol
                 className="w-6 h-6 hidden selected:block"
