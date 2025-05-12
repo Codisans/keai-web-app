@@ -4,15 +4,23 @@ import { useApi } from '@/hooks/api'
 import { useEffect, useState } from 'react'
 import { EventCarousel } from './EventCarousel'
 
-export const UpcomingEvents = () => {
+export const UpcomingEvents = ({ category = null }) => {
     const { events } = useApi()
     const [items, setItems] = useState([])
 
     useEffect(() => {
         if (!events) return
 
+        let results = []
+
+        if(category) {
+            results = events.filter(event => event.categories.some(c => c.id === parseInt(category)))
+        } else {
+            results = events
+        }
+
         setItems(
-            events
+            results
                 ?.sort(
                     (a, b) => new Date(a.start_date) - new Date(b.start_date),
                 )

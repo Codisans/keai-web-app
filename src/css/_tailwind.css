@@ -68,7 +68,7 @@
     --radius: 0.5rem;
 
     /* Misc */
-    --shadow-card: rgba(75, 80, 94, 0.08) 0px 14px 36px 0px;
+    --shadow-card: rgba(75, 80, 94, 0.12) 0px 14px 36px 0px;
 
     /* Interactivity */
     --transition-clip-path: clip-path;

@@ -3,6 +3,7 @@
 import { EventResults } from '../EventResults'
 import moment from 'moment'
 import { UserTagCarousels } from './UserTagCarousels'
+import { UpcomingEvents } from '../UpcomingEvents'
 
 export const CategoryEventListing = ({ params, searchParams }) => {
     
@@ -27,6 +28,7 @@ export const CategoryEventListing = ({ params, searchParams }) => {
     return (
         <>
             <div className="w-full py-8 flex flex-col gap-y-6">
+                <UpcomingEvents category={params.category} />
                 <UserTagCarousels category={params.category} />
             </div>
         </>
