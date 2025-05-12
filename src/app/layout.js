@@ -4,7 +4,7 @@ import { GoogleAnalytics } from '@next/third-parties/google'
 
 const RootLayout = ({ children }) => {
     return (
-        <html className="select-none overscroll-none h-svh" lang="es">
+        <html className="select-none overscroll-none" lang="es">
             <head>
                 <link
                     rel="icon"
@@ -22,7 +22,7 @@ const RootLayout = ({ children }) => {
                 <meta name="apple-mobile-web-app-title" content="KEAI" />
                 <link rel="manifest" href="/site.webmanifest" />
             </head>
-            <body className="flex flex-col w-full overflow-y-auto bg-white-off font-sans overscroll-none h-svh">
+            <body className="bg-white-off font-sans overscroll-none">
                 <AppContextProvider>{children}</AppContextProvider>
                 <GoogleAnalytics gaId="G-YKTP4XWEGV" />
             </body>

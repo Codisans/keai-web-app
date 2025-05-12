@@ -5,14 +5,14 @@ import { FilterForm } from '../FilterForm'
 
 const MapLayout = ({ children }) => {
     return (
-        <>
+        <div className="w-full flex flex-col grow">
             <MapHeader />
             <FilterForm isMap={true} className="open:block max-sm:left-2 sm:w-full right-2 max-w-[620px] hidden fixed z-header top-[6.8rem] border border-grey bottom-[4.6rem] rounded overflow-hidden select-none" />
-            <main className="w-full grow relative flex">
+            <main className="w-full h-full grow relative flex">
                 <Map>{children}</Map>
                 <DateIndicator />
             </main>
-        </>
+        </div>
     )
 }
 

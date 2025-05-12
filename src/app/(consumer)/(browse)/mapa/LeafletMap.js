@@ -65,7 +65,7 @@ export default function LeafletMap({ children }) {
                 setActiveEvent: setActiveEvent,
                 activeMarkerRef: activeMarkerRef,
             }}>
-            <div id="map" className="w-full h-full relative">
+            <div id="map" className="w-full h-auto relative">
                 {isReady && children}
             </div>
             <EventSummary event={activeEvent} />
