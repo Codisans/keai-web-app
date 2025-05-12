@@ -1,39 +1,11 @@
-import { EventCarousel } from '../EventCarousel'
-import { EventResults } from '../EventResults'
-import api from '@/lib/api'
-import moment from 'moment'
+import { CategoryEventListing } from './CategoryEventListing'
 
 export const metadata = {
     title: 'KEAI | Eventos',
 }
 
-const CategoryPage = async ({ params, searchParams }) => {
-    const urlSearchParams = new URLSearchParams(searchParams)
-
-    if (urlSearchParams.get('min_date') == null) {
-        urlSearchParams.set('min_date', moment().format('YYYY-MM-DD'))
-    }
-
-    urlSearchParams.set('categories[]', params.category)
-
-    const events = await api.getEvents(urlSearchParams.toString())
-
-    if (Object.keys(searchParams)?.length != 0)
-        return (
-            <div className="w-full py-8 flex flex-col gap-y-gutter">
-                <EventResults events={events} />
-            </div>
-        )
-
-    return (
-        <>
-            <div className="w-full py-8 flex flex-col gap-y-6">
-                <EventCarousel heading="Para ti" events={events} />
-                <EventCarousel heading="Hoy" events={events} />
-                <EventCarousel heading="Ferias" events={events} />
-            </div>
-        </>
-    )
+const CategoryPage = ({ params, searchParams }) => {
+    return <CategoryEventListing params={params} searchParams={searchParams} />
 }
 
 export default CategoryPage
