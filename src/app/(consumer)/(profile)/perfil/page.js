@@ -12,7 +12,7 @@ const Profile = () => {
                 <h2 className="pt-8 pb-4 typo-h3">Tus proximos eventos</h2>
                 <EventTabs />
             </section>
-            <section className="px-gutter flex flex-col grow overflow-y-auto">
+            <section className="px-gutter flex flex-col grow overflow-y-auto clip-inset-0">
                 <UpcomingEvents />
             </section>
         </>
