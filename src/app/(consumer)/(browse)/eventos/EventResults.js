@@ -1,5 +1,6 @@
 'use client'
 
+import { Loading } from '@/app/Loading'
 import { NoResultsText } from '@/components/atoms/NoResultsText'
 import { EventCard } from '@/components/molecules/EventCard'
 import { useApi } from '@/hooks/api'
@@ -9,7 +10,7 @@ export const EventResults = ({ searchParams }) => {
     const { getEvents } = useApi()
     const [results, setResults] = useState([])
 
-    useEffect(async () => {
+    useEffect(() => {
         const fetchEvents = async () => {
             try {
                 const eventsData = await getEvents({ searchParams })
@@ -23,7 +24,7 @@ export const EventResults = ({ searchParams }) => {
         fetchEvents()
     }, [searchParams])
 
-    if (!results) return null
+    if (!results) return <Loading />
 
     if (results?.length === 0) return <NoResultsText />
 

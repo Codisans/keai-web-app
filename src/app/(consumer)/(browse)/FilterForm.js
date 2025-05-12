@@ -89,7 +89,11 @@ export const FilterForm = ({ className = '', isMap = false }) => {
             })
         }
 
-        router.push(`${pathname}?${urlSearchParams.toString()}`)
+        if(urlSearchParams.size == 1 && urlSearchParams.get('min_date') == today) {
+            router.push(pathname)
+        } else {
+            router.push(`${pathname}?${urlSearchParams.toString()}`)
+        }
     }
 
     const getMinPriceParam = value => {
