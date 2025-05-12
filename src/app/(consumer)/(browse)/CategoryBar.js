@@ -3,12 +3,12 @@
 import { FreeMode } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Suspense } from 'react'
-import { Symbol } from '@/components/atoms/Symbol'
 import { _categories } from '@/constants/categories'
-import { NavLink } from '@/components/atoms/NavLink'
+import { CategoryButton, CategoryButtonFallback } from '@/components/atoms/CategoryButton'
 
-export const CategoryBar = ({ categories }) => {
+export const CategoryBar = ({ categories, view = 'listing' }) => {
     if (!categories) return null
+
     const cateogryList = categories
         ?.filter(c => Object.keys(_categories).includes(c.slug))
         ?.sort((a, b) => _categories[a.slug].order - _categories[b.slug].order)
@@ -22,39 +22,18 @@ export const CategoryBar = ({ categories }) => {
                 spaceBetween={12}
                 className="w-full !px-grid-gap">
                 <SwiperSlide style={{ width: 'max-content' }}>
-                    <Suspense fallback={<CategoryCardFallback />}>
-                        <CategoryCard />
+                    <Suspense fallback={<CategoryButtonFallback />}>
+                        <CategoryButton view={view} />
                     </Suspense>
                 </SwiperSlide>
                 {cateogryList?.map((category, i) => (
                     <SwiperSlide key={i} style={{ width: 'max-content' }}>
-                        <Suspense fallback={<CategoryCardFallback />}>
-                            <CategoryCard category={category} />
+                        <Suspense fallback={<CategoryButtonFallback />}>
+                            <CategoryButton category={category} view={view} />
                         </Suspense>
                     </SwiperSlide>
                 ))}
             </Swiper>
         </nav>
-    )
-}
-
-export const CategoryCard = ({ category }) => {
-    return (
-        <NavLink
-            pathname={category ? `/mapa/${category?.id}` : '/mapa'}
-            exactPath={true}
-            className={`button-category theme--${category?.slug}`}>
-            <span>{category?.name || 'Todos'}</span>
-            <Symbol className="flex-none block w-4 h-4" name={category?.slug} />
-        </NavLink>
-    )
-}
-
-export const CategoryCardFallback = () => {
-    return (
-        <div className="button-category">
-            <span>Keai</span>
-            <Symbol className="flex-none block w-4 h-4" name="logotype" />
-        </div>
     )
 }

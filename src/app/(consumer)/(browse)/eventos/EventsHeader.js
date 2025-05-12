@@ -1,7 +1,8 @@
 import { FilterToggle } from '../FilterToggle'
-import { CategoryNav } from './CategoryNav'
 import api from '@/lib/api'
 import { SearchInput } from '../SearchInput'
+import { CategoryBar } from '../CategoryBar'
+// import { CategoryNav } from './CategoryNav'
 
 export const EventsHeader = async () => {
     const categories = await api.getCategories()
@@ -9,7 +10,8 @@ export const EventsHeader = async () => {
     return (
         <div className="sticky top-0 inset-x-0 shadow z-header bg-white shrink">
             <header className="w-full">
-                <CategoryNav categories={categories} />
+                {/* <CategoryNav categories={categories} /> */}
+                <CategoryBar categories={categories} view="listing" />
             </header>
             <div className="flex gap-grid px-grid-gap py-grid-gap">
                 <SearchInput />
