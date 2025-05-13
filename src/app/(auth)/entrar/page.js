@@ -1,6 +1,5 @@
 'use client'
 
-import Input from '@/components/atoms/Input'
 import InputError from '@/components/atoms/InputError'
 import Label from '@/components/atoms/Label'
 import { useAuth } from '@/hooks/auth'
