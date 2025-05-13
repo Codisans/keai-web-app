@@ -29,12 +29,12 @@ export const FilterToggle = () => {
             disabled={path
                 .split('/')
                 ?.some(x => ['favoritos', 'perfil', 'cuenta'].includes(x))}>
-            <span
-                className={`typo-small absolute top-0 right-0 bg-black font-bold rounded-full h-4 w-4 flex items-center justify-center ${
-                    indicatorCount > 0 ? 'text-orange' : 'text-white'
-                }`}>
-                {indicatorCount}
-            </span>
+            {indicatorCount > 0 && (
+                <span
+                    className="typo-small absolute top-0 right-0 bg-black font-bold rounded-full h-4 w-4 flex items-center justify-center text-white">
+                    {indicatorCount}
+                </span>
+            )}
             <svg
                 className="w-6 h-6"
                 aria-hidden="true"
