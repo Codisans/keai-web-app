@@ -1,7 +1,7 @@
 import '@/css/main.css'
 import { AppContextProvider } from './AppContext'
 import { GoogleAnalytics } from '@next/third-parties/google'
-
+import { Analytics } from '@vercel/analytics/react'
 const RootLayout = ({ children }) => {
     return (
         <html className="select-none overscroll-none" lang="es">
@@ -25,6 +25,7 @@ const RootLayout = ({ children }) => {
             <body className="bg-white-off font-sans overscroll-none min-h-svh">
                 <AppContextProvider>{children}</AppContextProvider>
                 <GoogleAnalytics gaId="G-YKTP4XWEGV" />
+                <Analytics />
             </body>
         </html>
     )
