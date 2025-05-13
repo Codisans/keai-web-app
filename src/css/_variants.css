@@ -10,30 +10,22 @@
     }
 }
 
-@custom-variant current {
-    .current &,
-    &.current {
-        @slot;
-    }
-}
+@custom-variant error (.error &, &.error);
 
-@custom-variant alt {
-    .alt &,
-    &.alt {
-        @slot;
-    }
-}
+@custom-variant dark (.dark &, &.dark);
 
-@custom-variant open {
-    .open &,
-    &.open {
-        @slot;
-    }
-}
+@custom-variant current (.current &, &.current);
 
-@custom-variant selected {
-    .selected &,
-    &.selected {
-        @slot;
-    }
-}
+@custom-variant alt (.alt &, &.alt);
+
+@custom-variant open (.open &, &.open);
+
+@custom-variant selected (.selected &, &.selected);
+
+@custom-variant map (.map &, &.map);
+
+@custom-variant has-map (&:has(.map));
+
+@custom-variant listing (.listing &, &.listing);
+
+@custom-variant has-listing (&:has(.listing));

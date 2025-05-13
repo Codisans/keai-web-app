@@ -56,11 +56,11 @@ const Login = () => {
             <div className={`pb-4 ${errors.email ? 'error' : ''}`}>
                 <Label htmlFor="email">Correo</Label>
 
-                <Input
+                <input
                     id="email"
                     type="email"
                     value={email}
-                    className="block mt-1 w-full error:border-error"
+                    className="form-input w-full"
                     onChange={event => setEmail(event.target.value)}
                     required
                     autoFocus
@@ -73,11 +73,11 @@ const Login = () => {
             <div className={`pb-4 ${errors.password ? 'error' : ''}`}>
                 <Label htmlFor="password">Clave</Label>
 
-                <Input
+                <input
                     id="password"
                     type="password"
                     value={password}
-                    className="block mt-1 w-full error:border-error"
+                    className="form-input w-full"
                     onChange={event => setPassword(event.target.value)}
                     required
                     autoComplete="current-password"
@@ -105,9 +105,9 @@ const Login = () => {
                 </label>
             </div>
 
-            <div className="flex flex-col items-center gap-4">
+            <div className="flex flex-col items-center gap-4 dark">
                 <button
-                    className="w-18 flex justify-center items-center button"
+                    className="w-18 flex justify-center items-center hover:text-orange button"
                     type="submit">
                     {isLoading ? (
                         <DataUsageIcon className="h-[1em] w-[1em] animate-spin text-grey" />
@@ -116,7 +116,7 @@ const Login = () => {
                     )}
                 </button>
                 <TextLink href="/recuperar-clave">Recuperar clave</TextLink>
-                <Link className="button" href="/crear-cuenta">
+                <Link className="button bg-orange text-black" href="/crear-cuenta">
                     Crear cuenta
                 </Link>
             </div>

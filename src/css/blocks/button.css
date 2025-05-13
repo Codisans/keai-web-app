@@ -1,6 +1,6 @@
 @utility button-base {
     @apply bg-white text-black inline-flex justify-center gap-2 items-center py-2 px-3 rounded-button typo-button cursor-pointer;
-    @apply current:bg-orange;
+    @apply current:bg-orange current:text-black;
     @apply dark:bg-black dark:text-white;
     @apply active:shadow-inset hover:shadow-inset;
 }

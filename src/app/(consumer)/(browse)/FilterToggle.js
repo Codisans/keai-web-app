@@ -25,7 +25,7 @@ export const FilterToggle = () => {
         <button
             onClick={() => setFilterIsOpen(s => !s)}
             type="button"
-            className={`button-icon relative pointer-events-auto ${filterIsOpen ? 'current' : ''}`}
+            className={`button-icon map:ring map:ring-grey relative pointer-events-auto ${filterIsOpen ? 'current' : ''}`}
             disabled={path
                 .split('/')
                 ?.some(x => ['favoritos', 'perfil', 'cuenta'].includes(x))}>

@@ -27,7 +27,7 @@ export const SearchInput = () => {
     return (
         <form
             onSubmit={handleSubmit}
-            className="relative bg-white grow rounded group pointer-events-auto z-header">
+            className="relative bg-white h-max grow rounded group pointer-events-auto z-header">
             <input
                 className="pl-10 pr-3 h-10 w-full rounded border border-grey peer"
                 placeholder="Keai?"
