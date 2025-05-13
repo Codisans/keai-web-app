@@ -69,6 +69,7 @@
 
     /* Misc */
     --shadow-card: rgba(75, 80, 94, 0.12) 0px 14px 36px 0px;
+    --shadow-inset: inset 0 0 12px rgba(0,0,0,0.1), 0 0 8px #fff;
 
     /* Interactivity */
     --transition-clip-path: clip-path;

@@ -17,6 +17,13 @@
     }
 }
 
+@custom-variant alt {
+    .alt &,
+    &.alt {
+        @slot;
+    }
+}
+
 @custom-variant open {
     .open &,
     &.open {

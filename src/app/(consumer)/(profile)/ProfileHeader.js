@@ -17,23 +17,23 @@ export const ProfileHeader = () => {
     return (
         <header className="fixed top-0 left-0 right-0 shadow z-header bg-white shrink">
             <nav className="w-full p-grid-gap">
-                <ul className="w-full grid grid-cols-5 gap-grid">
-                    <li className="col-span-3 flex items-center">
+                <ul className="w-full flex justify-end gap-x-2 items-center">
+                    <li className="mr-auto">
                         <Link className="block w-max" href="/eventos">
                             <Logo />
                         </Link>
                     </li>
-                    <li className="col-span-1">
+                    <li>
                         <NavLink
                             pathname="/cuenta"
-                            className="button-icon w-full">
+                            className="button-icon w-20">
                             <SettingsIcon />
                         </NavLink>
                     </li>
-                    <li className="col-span-1">
+                    <li>
                         <button
                             onClick={() => setMenuIsOpen(s => !s)}
-                            className={`w-full button-icon ${menuIsOpen ? 'active' : ''}`}
+                            className={`w-20 button-icon ${menuIsOpen ? 'active' : ''}`}
                             type="button">
                             <span
                                 className={`burger ${menuIsOpen ? 'open' : ''}`}></span>

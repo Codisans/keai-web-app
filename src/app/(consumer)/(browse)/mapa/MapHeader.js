@@ -9,7 +9,7 @@ export const MapHeader = async () => {
         <>
             <header className="fixed z-header inset-x-0 top-0 pointer-events-none">
                 {categories && <CategoryBar categories={categories} view="map" />}
-                <div className="absolute top-[3.7rem] inset-x-grid-gap flex gap-grid">
+                <div className="absolute top-[3.7rem] inset-x-grid-gap flex gap-grid alt">
                     <SearchInput />
                     <FilterToggle />
                 </div>

@@ -130,19 +130,19 @@ export const FilterForm = ({ className = '', isMap = false }) => {
     return (
         <form
             onSubmit={handleSubmit}
-            className={`${filterIsOpen ? 'open' : ''} ${className}`}>
+            className={`${filterIsOpen ? 'open' : ''} max-w-[480px] ${className}`}>
             <div className="w-auto h-full pointer-events-auto bg-white">
                 <div className="flex justify-end z-50 sticky top-0 p-4 w-full bg-white shadow">
                     <h2 className="sr-only">Filtros:</h2>
                     <div className="flex gap-grid">
                         <button
-                            className="button bg-white underline text-black"
+                            className="button underline"
                             type="button"
                             onClick={handleClear}>
                             Restablecer
                         </button>
                         <button
-                            className="button"
+                            className="button bg-black text-orange"
                             type="button"
                             onClick={handleSubmit}>
                             Buscar

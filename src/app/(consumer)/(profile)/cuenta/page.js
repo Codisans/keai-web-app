@@ -10,8 +10,7 @@ const Cuenta = () => {
         <>
             <div className="py-12 w-full px-gutter flex flex-col gap-8 max-w-7xl mx-auto">
                 <h1 className="typo-h1">Cuenta</h1>
-                <AccountDetail />
-                <ul className="flex flex-col px-grid-gap gap-grid">
+                <ul className="flex flex-wrap gap-2 px-2">
                     <li>
                         <Button>Privacidad</Button>
                     </li>
@@ -26,6 +25,7 @@ const Cuenta = () => {
                         </Button>
                     </li>
                 </ul>
+                <AccountDetail />
             </div>
         </>
     )

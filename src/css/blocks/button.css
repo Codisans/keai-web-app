@@ -1,24 +1,29 @@
-@utility button {
-    @apply bg-black text-white inline-flex justify-center gap-2 items-center py-2 px-3 rounded-button typo-button;
-    @apply current:text-orange;
+@utility button-base {
+    @apply bg-white text-black inline-flex justify-center gap-2 items-center py-2 px-3 rounded-button typo-button cursor-pointer;
+    @apply current:bg-orange;
+    @apply active:shadow-inset hover:shadow-inset;
 }
 
-@utility button-small {
-    @apply bg-black text-white inline-flex justify-center gap-2 items-center py-0.5 px-1.5 text-small rounded-button typo-button;
-    @apply current:text-orange;
-}
+@layer components {
+    .button {
+        @apply button-base pt-2.5;
+    }
 
-@utility button-icon {
-    @apply bg-black text-white inline-flex justify-center items-center py-2 px-3 rounded-button;
-    @apply current:text-orange;
-}
+    .button-small {
+        @apply button-base;
+    }
 
-@utility button-category {
-    @apply relative w-max flex-nowrap flex gap-1.5 items-center text-white rounded bg-theme px-1.5 py-1 border-2 border-theme;
-    @apply before:absolute before:inset-0 before:rounded-[0.45rem] before:hidden before:border-2 before:border-white current:before:block;
-}
+    .button-icon {
+        @apply button-base alt:border alt:border-grey;
+    }
 
-@utility button-edit {
-    @apply bg-black text-white inline-flex justify-center gap-2 items-center py-0.5 px-1.5 text-small rounded-button typo-button;
-    @apply current:text-orange;
+    .button-category {
+        @apply relative w-max flex-nowrap flex gap-1.5 items-center text-white rounded bg-theme px-1.5 py-1 border-2 border-theme;
+        @apply before:absolute before:inset-0 before:rounded-[0.45rem] before:hidden before:border-2 before:border-white current:before:block;
+    }
+    
+    .button-edit {
+        @apply bg-black text-white inline-flex justify-center gap-2 items-center py-0.5 px-1.5 text-small rounded-button typo-button;
+
+    }
 }

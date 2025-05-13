@@ -30,8 +30,8 @@ export const FilterToggle = () => {
                 .split('/')
                 ?.some(x => ['favoritos', 'perfil', 'cuenta'].includes(x))}>
             <span
-                className={`typo-small absolute -top-1 -right-1 text-black shadow font-bold rounded-full h-4 w-4 flex items-center justify-center ${
-                    indicatorCount > 0 ? 'bg-orange' : 'bg-white'
+                className={`typo-small absolute top-0 right-0 bg-black font-bold rounded-full h-4 w-4 flex items-center justify-center ${
+                    indicatorCount > 0 ? 'text-orange' : 'text-white'
                 }`}>
                 {indicatorCount}
             </span>
