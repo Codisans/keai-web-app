@@ -39,9 +39,9 @@ export const EventCard = ({
                         )}
 
                         {tags && (
-                            <ul className="flex flex-wrap gap-x-2 pt-1">
+                            <ul className="flex flex-wrap gap-1 pt-0.5">
                                 {event.tags.map(tag => (
-                                    <li key={tag.id} className="tag">
+                                    <li key={tag.id} className="tag text-small">
                                         {tag.name}
                                     </li>
                                 ))}
@@ -67,18 +67,15 @@ export const EventCard = ({
             )
         case 'list':
             return (
-                <div className="grid grid-cols-12 gap-grid relative group/card w-full shadow-card">
-                    <div className="col-span-4 overflow-hidden rounded-card h-min">
-                        <div className="relative aspect-[16/9] w-full">
-                            <img
-                                className="absolute inset-0 w-full h-full object-cover group-hover/card:scale-105 transition-transform ease-in-out duration-500"
-                                src={event.cover || '/images/placeholder.jpg'}
-                            />
-                        </div>
-                        <CategoryColorBar categories={event.categories} />
+                <div className="grid grid-cols-12 gap-grid relative group/card w-full">
+                    <div className="relative aspect-[16/9] col-span-4 overflow-hidden rounded-card">
+                        <img
+                            className="absolute inset-0 w-full h-full object-cover group-hover/card:scale-105 transition-transform ease-in-out duration-500"
+                            src={event.cover || '/images/placeholder.jpg'}
+                        />
                     </div>
                     <div className="col-span-8 flex flex-col">
-                        <h3 className="typo-h4 pr-8 text-wrap">{event.name}</h3>
+                        <h3 className="typo-h-card overflow-hidden text-ellipsis text-nowrap">{event.name}</h3>
                         <div className="flex flex-row gap-x-4 typo-small">
                             <DateTime date={event.start_date} />
                             <span className="text-orange">•</span>
@@ -86,9 +83,9 @@ export const EventCard = ({
                         </div>
                         {price && <p className="typo-small">${event.price}</p>}
                         {tags && (
-                            <ul className="flex flex-wrap gap-x-2 pt-1">
+                            <ul className="flex flex-wrap gap-1 pt-1">
                                 {event.tags.map(tag => (
-                                    <li key={tag.id} className="tag">
+                                    <li key={tag.id} className="tag text-small">
                                         {tag.name}
                                     </li>
                                 ))}
@@ -100,13 +97,13 @@ export const EventCard = ({
                         className="absolute inset-0"></Link>
                     {toggle && !remove && (
                         <SaveEventButton
-                            className="absolute top-1 z-10 right-1 mix-blend-difference text-white"
+                            className="absolute top-1 z-10 right-1 text-black"
                             eventId={event.id}
                         />
                     )}
                     {remove && (
                         <RemoveEventButton
-                            className="absolute bottom-0 z-10 right-1 mix-blend-difference text-white"
+                            className="absolute bottom-0 z-10 right-1 text-black"
                             eventId={event.id}
                         />
                     )}

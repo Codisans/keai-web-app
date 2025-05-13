@@ -1,7 +1,7 @@
 @utility tag {
-    @apply inline-block w-max text-nowrap bg-orange text-black pb-0.5 pt-1 px-1.5 rounded typo-caps;
+    @apply block w-max text-nowrap bg-black/80 text-white pb-0.5 pt-1 px-1.5 rounded typo-caps;
 }
 
 @utility toggle-tag {
-    @apply inline-block w-max text-nowrap bg-white border-black border-2 text-black pb-0.5 pt-1 px-1.5 rounded typo-caps selected:border-orange selected:bg-orange;
+    @apply block w-max text-nowrap bg-white border-black border-2 text-black pb-0.5 pt-1 px-1.5 rounded typo-caps selected:border-orange selected:bg-orange;
 }

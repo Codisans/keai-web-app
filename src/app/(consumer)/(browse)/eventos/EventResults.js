@@ -40,7 +40,7 @@ export const EventResults = ({ searchParams }) => {
                     <li
                         className="w-full border-t border-grey first:border-t-0 py-grid-gap"
                         key={i}>
-                        <EventCard type="list" event={event} />
+                        <EventCard type="list" event={event} tags={true} />
                     </li>
                 ))}
             </ul>
