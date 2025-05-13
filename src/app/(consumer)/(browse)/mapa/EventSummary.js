@@ -6,7 +6,6 @@ import Link from 'next/link'
 import { useContext, useRef } from 'react'
 import { MapContext } from './LeafletMap'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
-import { CategoryColorBar } from '@/components/atoms/CategoryColorBar'
 
 export const EventSummary = ({ event }) => {
     const eventSummaryRef = useRef(null)
@@ -42,7 +41,6 @@ export const EventSummary = ({ event }) => {
                         src={event.cover || '/placeholder.jpg'}
                         alt={event.name}
                     />
-                    <CategoryColorBar categories={event.categories} />
                 </div>
                 <div className="flex flex-col grow p-1">
                     <h3 className="text-h-card leading-none py-0.5 w-full overflow-hidden text-ellipsis text-nowrap">

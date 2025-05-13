@@ -1,7 +1,6 @@
 import { DateTime } from '../atoms/DateTime'
 import Link from 'next/link'
 import { SaveEventButton } from '../atoms/SaveEventButton'
-import { CategoryColorBar } from '../atoms/CategoryColorBar'
 import { RemoveEventButton } from '../atoms/RemoveEventButton'
 
 export const EventCard = ({
