@@ -20,7 +20,7 @@ export const EventFooter = ({ event }) => {
                     />
                 </div>
                 <a
-                    className="button py-3.5 px-6"
+                    className="button dark py-3.5 px-6"
                     href={event.link}
                     rel="noreferrer"
                     target="_blank">
