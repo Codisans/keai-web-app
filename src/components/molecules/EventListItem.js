@@ -15,7 +15,7 @@ export const EventListItem = props => {
             <div className="col-span-8 flex flex-col">
                 <h3 className="typo-h4">{event.name}</h3>
                 <DateTime date={event.start_date} />
-                <p className="typo-small">${event.price}</p>
+                <p className="text-small">${event.price}</p>
             </div>
             <Link
                 href={`/evento/${event.id}`}

@@ -2,8 +2,8 @@
 @import './_variants';
 @import './_tailwind';
 @import './_theme';
+@import './_typo';
 @import './resets/_';
-@import './text/_';
 @import './layout/_';
 @import './utils/_';
 @import './blocks/_';

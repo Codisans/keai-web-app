@@ -1,6 +1,9 @@
 @charset "UTF-8";
 
 :root {
+    --dp-cell-font-size: var(--text-md);
+    --dp-heading-font-size: var(--text-sm);
+
     --cell-width: 2.4rem;
     --cell-height: 2.4rem;
     --dp-border-radius: 0.5rem;
@@ -50,8 +53,8 @@
 }
 
 .react-datepicker {
-    font-size: var(--text-button);
-    font-family: var(--font-secondary);
+    font-size: var(--text-md);
+    font-family: var(--font-sans);
     background-color: var(--dp-background-color);
     color: var(--dp-text-color);
     /* border: 1px solid var(--dp-border-color); */
@@ -123,8 +126,8 @@
 .react-datepicker-year-header {
     margin-top: 0;
     color: var(--dp-text-color);
-    font-size: var(--text-body);
-    font-family: var(--font-primary);
+    font-size: var(--dp-heading-font-size);
+    font-family: var(--font-sans);
     font-weight: bold;
     text-transform: capitalize;
 }
@@ -404,8 +407,8 @@ h2.react-datepicker__current-month {
 .react-datepicker__day-names {
     white-space: nowrap;
     margin-bottom: -8px;
-    font-size: var(--text-body);
-    font-family: var(--font-primary);
+    font-size: var(--dp-heading-font-size);
+    font-family: var(--font-sans);
     text-transform: uppercase;
 }
 

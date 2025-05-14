@@ -25,13 +25,13 @@ export const FilterToggle = () => {
         <button
             onClick={() => setFilterIsOpen(s => !s)}
             type="button"
-            className={`button-icon map:ring map:ring-grey relative pointer-events-auto ${filterIsOpen ? 'current' : ''}`}
+            className={`button-icon relative pointer-events-auto ${filterIsOpen ? 'current' : ''}`}
             disabled={path
                 .split('/')
                 ?.some(x => ['favoritos', 'perfil', 'cuenta'].includes(x))}>
             {indicatorCount > 0 && (
                 <span
-                    className="typo-small absolute top-0 right-0 bg-black font-bold rounded-full h-4 w-4 flex items-center justify-center text-white">
+                    className="text-small absolute top-0 right-0 bg-black font-bold rounded-full h-4 w-4 flex items-center justify-center text-white">
                     {indicatorCount}
                 </span>
             )}

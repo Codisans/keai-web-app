@@ -23,13 +23,13 @@ export const EventCard = ({
                             src={event.cover || '/images/placeholder.jpg'}
                         />
                     </div>
-                    <div className="flex flex-col gap-y-1 px-2 py-1">
-                        <div className="flex flex-row gap-x-4 typo-small">
+                    <div className="flex flex-col gap-y-1.5 px-2 py-1.5">
+                        <div className="flex flex-row gap-x-4 text-xs typo-date text-gray-500">
                             <DateTime date={event.start_date} />
                             <span className="text-orange">•</span>
                             <DateTime date={event.start_date} format="time" />
                         </div>
-                        <h3 className="text-h-card leading-none w-full text-nowrap overflow-hidden text-ellipsis">
+                        <h3 className="typo-lg w-full text-nowrap overflow-hidden text-ellipsis">
                             {event.name}
                         </h3>
 
@@ -38,9 +38,9 @@ export const EventCard = ({
                         )}
 
                         {tags && (
-                            <ul className="flex flex-wrap gap-1 pt-0.5">
+                            <ul className="flex flex-wrap gap-1">
                                 {event.tags.map(tag => (
-                                    <li key={tag.id} className="tag text-small">
+                                    <li key={tag.id} className="tag-sm">
                                         {tag.name}
                                     </li>
                                 ))}
@@ -74,17 +74,17 @@ export const EventCard = ({
                         />
                     </div>
                     <div className="col-span-8 flex flex-col">
-                        <h3 className="typo-h-card overflow-hidden text-ellipsis text-nowrap">{event.name}</h3>
-                        <div className="flex flex-row gap-x-4 typo-small">
+                        <div className="flex flex-row gap-x-4 text-xs typo-date text-gray-500">
                             <DateTime date={event.start_date} />
                             <span className="text-orange">•</span>
                             <DateTime date={event.start_date} format="time" />
                         </div>
-                        {price && <p className="typo-small">${event.price}</p>}
+                        <h3 className="typo-regular text-lg py-1.5 overflow-hidden text-ellipsis text-nowrap">{event.name}</h3>
+                        {price && <p className="text-sm">${event.price}</p>}
                         {tags && (
-                            <ul className="flex flex-wrap gap-1 pt-1">
+                            <ul className="flex flex-wrap gap-1">
                                 {event.tags.map(tag => (
-                                    <li key={tag.id} className="tag text-small">
+                                    <li key={tag.id} className="tag-sm">
                                         {tag.name}
                                     </li>
                                 ))}

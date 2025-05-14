@@ -28,7 +28,7 @@ export const CategoryEvents = ({ category, className = '' }) => {
             theme={category.slug}
             link={
                 <Link
-                    className="typo-caps underline block mt-0.5"
+                    className="typo-caps text-xs underline block"
                     href={`/eventos/${category.id}`}>
                     Ver mas
                 </Link>

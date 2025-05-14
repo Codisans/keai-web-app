@@ -16,14 +16,14 @@ export const EventDetail = ({ event }) => {
         <div className="flex flex-col pb-12 px-grid-gap pt-grid-gap">
             <div className="flex flex-col-reverse">
                 <h1 className="typo-h3">{event.name}</h1>
-                <ul className="pb-2 uppercase text-body text-grey flex gap-1.5 flex-wrap">
+                <ul className="pb-2 uppercase typo-body text-grey flex gap-1.5 flex-wrap">
                     {event.categories.map((c, i) => (
-                        <li className={`pill theme--${c.slug}`} key={i}>
+                        <li className={`tag-lg bg-orange`} key={i}>
                             {c.name}
                         </li>
                     ))}
                     {event.tags?.map((tag, i) => (
-                        <li key={i} className="tag">
+                        <li key={i} className="tag-lg">
                             {tag.name}
                         </li>
                     ))}
@@ -38,7 +38,7 @@ export const EventDetail = ({ event }) => {
             <div className="flex flex-col gap-y-4 py-4">
                 <Price className="typo-button block" price={event.price} />
                 <div className="flex flex-col">
-                    <h3 className="uppercase text-small font-semibold text-grey-dark">
+                    <h3 className="uppercase text-sm font-semibold text-grey-dark">
                         Direccion
                     </h3>
                     <div className="inline-block">

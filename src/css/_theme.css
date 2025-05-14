@@ -5,50 +5,32 @@
         --color-theme-accent: #fff;
     }
 
-    .theme--bienestar {
-        --color-theme: #00c7be;
-        --color-theme-contrast: #fff;
-        --color-theme-accent: #000;
-    }
-
     .theme--cultura {
-        --color-theme: #5856d6;
-        --color-theme-contrast: #fff;
-        --color-theme-accent: #000;
-    }
-
-    .theme--educacion {
-        --color-theme: #8e4b21;
+        --color-theme: #6f1926;
         --color-theme-contrast: #fff;
         --color-theme-accent: #000;
     }
 
     .theme--entretencion {
-        --color-theme: #ff2d55;
-        --color-theme-contrast: #fff;
-        --color-theme-accent: #000;
-    }
-
-    .theme--deporte {
-        --color-theme: #ff3b30;
-        --color-theme-contrast: #fff;
-        --color-theme-accent: #000;
-    }
-
-    .theme--familiar {
-        --color-theme: #32ade6;
+        --color-theme: #de324c;
         --color-theme-contrast: #fff;
         --color-theme-accent: #000;
     }
 
     .theme--gastronomia {
-        --color-theme: #34c759;
+        --color-theme: #95cf92;
         --color-theme-contrast: #fff;
         --color-theme-accent: #000;
     }
 
-    .theme--negocios {
-        --color-theme: #1c3983;
+    .theme--deporte {
+        --color-theme: #369acc;
+        --color-theme-contrast: #fff;
+        --color-theme-accent: #000;
+    }
+
+    .theme--bienestar {
+        --color-theme: #9656a2;
         --color-theme-contrast: #fff;
         --color-theme-accent: #000;
     }

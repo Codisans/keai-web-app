@@ -1,30 +1,41 @@
 @utility button-base {
-    @apply bg-white text-black inline-flex justify-center gap-2 items-center py-2 px-3 rounded-button typo-button cursor-pointer;
-    @apply current:bg-orange current:text-black;
-    @apply dark:bg-black dark:text-white dark:hover:text-orange;
-    @apply active:shadow-inset hover:shadow-inset;
+    @apply border inline-flex typo-button justify-center gap-2 items-center py-3 px-3.5 rounded-button cursor-pointer;
+    
+    @apply bg-white-true hover:bg-gray-100  border-gray-300 text-black;
+    @apply current:bg-orange current:border-orange current:text-black current:hover:bg-orange-light;
+    @apply selected:bg-orange selected:border-orange selected:text-black selected:hover:bg-orange-light;
+
+    @apply dark:bg-gray-800 dark:text-white dark:hover:bg-gray-700;
+    @apply light:bg-gray-200 light:text-black light:hover:bg-gray-300;
 }
 
 @layer components {
     .button {
-        @apply button-base pt-2.5;
+        @apply button-base text-sm;
     }
 
-    .button-small {
-        @apply button-base;
+    .button-sm {
+        @apply button-base text-xs py-2 px-2.5;
+    }
+
+    .button-lg {
+        @apply button-base text-md py-3 px-5 rounded-lg;
     }
 
     .button-icon {
-        @apply button-base alt:border alt:border-grey;
+        @apply button-base py-1.5 text-xs;
+    }
+
+    .button-tag {
+        @apply border typo-caps border-gray-700 bg-white-true shadow-button text-black selected:bg-gray-700 selected:text-white px-1.5 pb-1 pt-1.5 cursor-pointer rounded-tag text-sm;
     }
 
     .button-category {
-        @apply relative w-max flex-nowrap flex gap-1.5 items-center text-white rounded bg-theme px-1.5 py-1 border-2 border-theme;
-        @apply before:absolute before:inset-0 before:rounded-[0.45rem] before:hidden before:border-2 before:border-white current:before:block;
+        @apply button-base text-xs current:hover:bg-theme/90 current:text-theme-contrast current:border-theme current:bg-theme current:[&_svg]:text-theme-contrast  [&_svg]:text-theme text-black rounded bg-white-true px-3 py-2.5;
     }
     
     .button-edit {
-        @apply bg-black text-white inline-flex justify-center gap-2 items-center py-0.5 px-1.5 text-small rounded-button typo-button;
+        @apply bg-black text-white inline-flex justify-center gap-2 items-center py-1 px-1.5 text-sm rounded-button cursor-pointer;
 
     }
 }

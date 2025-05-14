@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Dongle&display=swap');
+
+@font-face {
+    font-family: 'Tenorite';
+    src:
+        url('/tenorite-regular-webfont.woff2') format('woff2'),
+        url('/tenorite-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Numans';
+    src: url('/numans-regular-webfont.woff2') format('woff2'),
+         url('/numans-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@theme {
+    --font-primary: var(--google-font-fira-sans, sans-serif);
+    --font-tenorite: 'Tenorite', sans-serif;
+    --font-sans: var(--google-font-fira-sans, sans-serif);
+    --font-fira-sans: var(--google-font-fira-sans, sans-serif);
+    --text-h1: 2.5rem;
+    --text-h2: 2rem;
+    --text-h3: 1.5rem;
+    --text-h4: 1.25rem;
+    --text-h5: 1.15rem;
+    --text-body: 1.25rem;
+    
+    --text-xl: 1.5rem;
+    --text-xl--line-height: 1;
+
+    --text-lg: 1.125rem;
+    --text-lg--line-height: 1;
+
+    --text-md: 1rem;
+    --text-md--line-height: 1;
+
+    --text-sm: 0.875rem;
+    --text-sm--line-height: 1;
+
+    --text-xs: 0.75rem;
+    --text-xs--line-height: 1;
+
+    --text-caps: 0.875rem;
+    --text-logo: 2rem;
+    --text-h-card: 1rem;
+}
+
+@utility typo-regular {
+    @apply font-sans font-normal tracking-normal;
+}
+
+@utility typo-button {
+    @apply font-sans font-medium uppercase tracking-wide;
+}
+
+@utility typo-date {
+    @apply font-sans font-medium uppercase tracking-wide;
+}
+  
+@utility typo-tag {
+    @apply font-sans uppercase;
+}
+
+@utility typo-caps {
+    @apply font-sans uppercase font-medium tracking-wide;
+}
+
+@utility typo-body {
+    @apply text-md font-sans;
+}
+
+@utility typo-h1 {
+    @apply text-h1 font-tenorite;
+}
+
+@utility typo-h2 {
+    @apply text-h2 font-sans;
+}
+
+@utility typo-h3 {
+    @apply text-h3 font-sans;
+}
+
+@utility typo-h4 {
+    @apply text-h4 font-sans;
+}
+
+@utility typo-h5 {
+    @apply text-h5 font-sans;
+}
+
+@utility typo-logo {
+    @apply text-logo font-tenorite;
+}

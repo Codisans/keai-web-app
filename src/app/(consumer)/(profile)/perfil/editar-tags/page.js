@@ -30,7 +30,7 @@ export default function EditarTags() {
                 {allTags.map(tag => (
                     <ToggleTagButton
                         key={tag.id}
-                        className="toggle-tag"
+                        className="button-tag"
                         tagId={tag.id}
                         onClick={() => saveTag(tag.id)}>
                         {tag.name}

@@ -2,25 +2,27 @@
 
 @theme {
     /* Colors */
-    --color-black: #2b2b2b;
     --color-black-true: #000;
-    --color-white: #fff;
-    --color-white-off: #f7f7f7;
+    --color-white-true: #fff;
+    --color-white: #f7f7f7;
+    --color-black: #2b2b2b;
+    --color-canvas: #f6f6f6;
     --color-grey-light: #ebebeb;
     --color-grey: #dddddd;
-    --color-grey-dark: #797979;
+    --color-grey-dark: #333333;
 
     --color-red: #ff4a5c;
     --color-blue: #31285b;
     --color-green: #115748;
     --color-orange: #faac4a;
+    --color-orange-light: #f2b364;
     --color-pink: #f2abab;
 
     --color-error: #e34a4a;
 
     --color-theme: var(--color-orange);
-    --color-theme-contrast: var(--color-white);
-    --color-theme-accent: var(--color-black);
+    --color-theme-contrast: var(--color-black);
+    --color-theme-accent: var(--color-white);
 
     --color-primary: #faac4a;
     --color-secondary: #f8ac4c;
@@ -31,22 +33,6 @@
     --color-green-2: #24B595;
     --color-green-3: #115748; */
 
-    /* Typography */
-    --font-primary: 'Tenorite', sans-serif;
-    --font-tenorite: 'Tenorite', sans-serif;
-    --font-sans: 'Open Sans', sans-serif;
-
-    --text-h1: 2.5rem;
-    --text-h2: 2rem;
-    --text-h3: 1.5rem;
-    --text-h4: 1.25rem;
-    --text-h5: 1.15rem;
-    --text-body: 1rem;
-    --text-small: 0.75rem;
-    --text-caps: 0.875rem;
-    --text-button: 1rem;
-    --text-logo: 2rem;
-    --text-h-card: 1rem;
 
     /* Spacing */
     --spacing-header: 4rem;
@@ -66,10 +52,13 @@
     --radius-card: 0.6rem;
     --radius-ui: 0.75rem;
     --radius: 0.5rem;
+    --radius-tag: 0.5rem;
 
     /* Misc */
     --shadow-card: rgba(75, 80, 94, 0.12) 0px 14px 36px 0px;
-    --shadow-inset: inset 0 0 12px rgba(0,0,0,0.1), 0 0 8px #fff;
+    --shadow-inset: inset 0 0 12px rgba(0,0,0,0.1);
+
+    --shadow-button: rgba(75, 80, 94, 0.12) 0px 14px 36px 0px;
 
     /* Interactivity */
     --transition-clip-path: clip-path;
@@ -82,3 +71,4 @@
     --ease-fade: cubic-bezier(0.645, 0.045, 0.355, 1);
     --ease-rollover: cubic-bezier(0.16, 0.16, 0.2, 0.9);
 }
+

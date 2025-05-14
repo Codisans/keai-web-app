@@ -17,25 +17,25 @@ export const ConsumerMenu = () => {
                 <nav className="my-auto">
                     <ul className="flex flex-col items-end gap-grid p-gutter">
                         <li>
-                            <NavLink className="button" pathname="/eventos">
+                            <NavLink className="button-icon" pathname="/eventos">
                                 <HomeIcon />
                                 <span>Inicio</span>
                             </NavLink>
                         </li>
                         <li>
-                            <NavLink className="button" pathname="/mapa">
+                            <NavLink className="button-icon" pathname="/mapa">
                                 <MapIcon />
                                 <span>Mapa</span>
                             </NavLink>
                         </li>
                         <li>
-                            <NavLink className="button" pathname="/cuenta">
+                            <NavLink className="button-icon" pathname="/cuenta">
                                 <SettingsIcon />
                                 <span>Cuenta</span>
                             </NavLink>
                         </li>
                         <li>
-                            <NavLink className="button" pathname="/perfil">
+                            <NavLink className="button-icon" pathname="/perfil">
                                 <PersonIcon />
                                 <span>Perfil</span>
                             </NavLink>

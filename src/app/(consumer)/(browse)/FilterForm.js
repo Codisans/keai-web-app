@@ -136,13 +136,13 @@ export const FilterForm = ({ className = '', isMap = false }) => {
                     <h2 className="sr-only">Filtros:</h2>
                     <div className="flex gap-grid">
                         <button
-                            className="button underline"
+                            className="text-xs typo-caps underline p-2"
                             type="button"
                             onClick={handleClear}>
                             Restablecer
                         </button>
                         <button
-                            className="button bg-black text-orange"
+                            className="button dark"
                             type="button"
                             onClick={handleSubmit}>
                             Buscar
@@ -165,10 +165,10 @@ export const FilterForm = ({ className = '', isMap = false }) => {
              
                         <div className="max-w-full mx-auto pt-1 flex flex-col gap-y-2">
                             <button
-                                className={`block w-full text-center typo-caps border-grey border py-2 px-1 rounded ${
+                                className={`button-base w-full text-xs ${
                                     showDatePicker
-                                        ? 'border-primary bg-primary'
-                                        : 'bg-white'
+                                        ? 'selected'
+                                        : ''
                                 }`}
                                 type="button"
                                 disabled={showDatePicker}

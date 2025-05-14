@@ -5,22 +5,22 @@ export const EventFooter = ({ event }) => {
 
     return (
         <footer className="sticky bottom-0 inset-x-0 z-footer shrink p-2 pb-8">
-            <div className="flex items-center justify-between gap-x-5 pl-4 p-1 rounded-[0.75rem] border-2 border-black bg-white container">
-                <div className="flex flex-row items-center gap-4 pt-0.5 ml-auto">
+            <div className="flex items-center justify-between gap-x-6 pl-4 p-1 rounded-[0.75rem] border-2 border-black bg-white container">
+                <div className="typo-date text-md flex flex-row items-center gap-4 pt-0.5 ml-auto">
                     <DateTime
-                        className="typo-button block"
+                        className="block"
                         date={event.start_date}
                         format="ddd D MMM"
                     />
                     <span className="text-orange">•</span>
                     <DateTime
-                        className="typo-button block"
+                        className="block"
                         date={event.start_date}
                         format="time"
                     />
                 </div>
                 <a
-                    className="button dark py-3.5 px-6"
+                    className="button-lg dark"
                     href={event.link}
                     rel="noreferrer"
                     target="_blank">

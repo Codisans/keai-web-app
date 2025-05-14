@@ -14,13 +14,15 @@
 
 @custom-variant dark (.dark &, &.dark);
 
+@custom-variant light (.light &, &.light);
+
 @custom-variant current (.current &, &.current);
+
+@custom-variant selected (.selected &, &.selected);
 
 @custom-variant alt (.alt &, &.alt);
 
 @custom-variant open (.open &, &.open);
-
-@custom-variant selected (.selected &, &.selected);
 
 @custom-variant map (.map &, &.map);
 

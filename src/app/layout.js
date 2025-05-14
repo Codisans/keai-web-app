@@ -2,9 +2,19 @@ import '@/css/main.css'
 import { AppContextProvider } from './AppContext'
 import { GoogleAnalytics } from '@next/third-parties/google'
 import { Analytics } from '@vercel/analytics/react'
+import { Fira_Sans } from 'next/font/google'
+ 
+const fira = Fira_Sans({
+    subsets: ['latin'],
+    weight: ['300', '400', '600'],
+    preload: true,
+    display: 'swap',
+    variable: '--google-font-fira-sans',
+})
+
 const RootLayout = ({ children }) => {
     return (
-        <html className="select-none overscroll-none" lang="es">
+        <html className={`${fira.className} select-none overscroll-none`} style={{ "--google-font-fira-sans": fira.style.fontFamily }} lang="es">
             <head>
                 <link
                     rel="icon"

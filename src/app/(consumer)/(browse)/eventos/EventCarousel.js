@@ -21,7 +21,7 @@ export const EventCarousel = ({
         <div className={`${className} flex flex-col gap-y-2 ${theme ? `theme--${theme}` : ''}`}>
             <div className="flex items-center gap-x-4 px-gutter">
                 {heading && (
-                    <h2 className={`typo-button uppercase block px-2 pt-1.5 pb-0.5 rounded-button ${theme ? 'bg-theme text-theme-contrast' : ''}`}>{heading}</h2>
+                    <h2 className={`tag-lg light`}>{heading}</h2>
                 )}
                 {link && link}
             </div>

@@ -25,7 +25,7 @@ export const DateIndicator = () => {
 export const DateCard = ({ date, className = '' }) => {
     return (
         <div
-            className={`flex flex-col items-center typo-small font-bold uppercase px-1 ${className}`}>
+            className={`flex flex-col items-center typo-caps font-bold uppercase px-1 ${className}`}>
             <span className="tracking-widest">{moment(date).format('DD')}</span>
             <span>{moment(date).format('MMM')}</span>
         </div>

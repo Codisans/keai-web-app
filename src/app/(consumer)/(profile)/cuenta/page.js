@@ -1,5 +1,5 @@
+import Link from 'next/link'
 import { AccountDetail } from './AccountDetail'
-import { Button } from '@/components/atoms/Button'
 
 export const metadata = {
     title: 'KEAI | Cuenta',
@@ -12,17 +12,17 @@ const Cuenta = () => {
                 <h1 className="typo-h1">Cuenta</h1>
                 <ul className="flex flex-wrap gap-2 px-2">
                     <li>
-                        <Button>Privacidad</Button>
+                        <Link className='button-sm' href="/privacidad">Privacidad</Link>
                     </li>
                     <li>
-                        <Button href="/restablecer-clave">
+                        <Link className='button-sm' href="/restablecer-clave">
                             Preferencias marketing
-                        </Button>
+                        </Link>
                     </li>
                     <li>
-                        <Button href="/restablecer-clave">
+                        <Link className='button-sm' href="/restablecer-clave">
                             Restablecer clave
-                        </Button>
+                        </Link>
                     </li>
                 </ul>
                 <AccountDetail />

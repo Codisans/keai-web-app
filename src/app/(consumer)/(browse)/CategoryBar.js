@@ -14,12 +14,12 @@ export const CategoryBar = ({ categories, view = 'listing' }) => {
         ?.sort((a, b) => _categories[a.slug].order - _categories[b.slug].order)
 
     return (
-        <nav className="w-full py-3 pointer-events-auto">
+        <nav className="w-full py-2 pointer-events-auto">
             <Swiper
                 freeMode={true}
                 slidesPerView="auto"
                 modules={[FreeMode]}
-                spaceBetween={12}
+                spaceBetween={8}
                 className="w-full !px-grid-gap">
                 <SwiperSlide style={{ width: 'max-content' }}>
                     <Suspense fallback={<CategoryButtonFallback />}>
