@@ -32,7 +32,7 @@ const RootLayout = ({ children }) => {
                 <meta name="apple-mobile-web-app-title" content="KEAI" />
                 <link rel="manifest" href="/site.webmanifest" />
             </head>
-            <body className="bg-white-off font-sans overscroll-none min-h-svh">
+            <body className="bg-white font-sans overscroll-none min-h-svh">
                 <AppContextProvider>{children}</AppContextProvider>
                 <GoogleAnalytics gaId="G-YKTP4XWEGV" />
                 <Analytics />

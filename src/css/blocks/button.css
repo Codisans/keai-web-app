@@ -7,6 +7,7 @@
 
     @apply dark:bg-gray-800 dark:text-white dark:hover:bg-gray-700;
     @apply light:bg-gray-200 light:text-black light:hover:bg-gray-300;
+    @apply alt:bg-orange alt:text-black alt:hover:bg-orange-light;
 }
 
 @layer components {

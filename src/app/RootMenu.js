@@ -29,12 +29,12 @@ export const RootMenu = () => {
             ) : (
                 <>
                     <li>
-                        <Link className="button" href="/crear-cuenta">
+                        <Link className="button alt" href="/crear-cuenta">
                             Registrar
                         </Link>
                     </li>
                     <li>
-                        <Link className="button" href="/entrar">
+                        <Link className="button dark" href="/entrar">
                             Ingresar
                         </Link>
                     </li>
