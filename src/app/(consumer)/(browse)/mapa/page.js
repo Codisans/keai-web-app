@@ -2,7 +2,6 @@ import { Loading } from '@/app/Loading'
 import { EventMarker } from './EventMarker'
 import api from '@/lib/api'
 import moment from 'moment'
-// import { TestBlock } from '@/components/atoms/TestBlock'
 
 export const metadata = {
     title: 'KEAI | Mapa',
