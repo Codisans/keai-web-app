@@ -31,7 +31,7 @@ export const DateRadio = ({ date, setDate }) => {
             isWeekend
                 ? moment().format('YYYY-MM-DD')
                 : startOfWeek.day(5).format('YYYY-MM-DD'),
-            moment().weekday(0).format('YYYY-MM-DD'),
+            startOfWeek.day(7).format('YYYY-MM-DD'),
         ],
     }
 
@@ -41,8 +41,8 @@ export const DateRadio = ({ date, setDate }) => {
                   id: 'next-week',
                   label: 'Próx. semana',
                   value: [
-                      moment().day(0).add(1, 'day').format('YYYY-MM-DD'),
-                      moment().day(7).format('YYYY-MM-DD'),
+                      moment().day(7).add(1, 'day').format('YYYY-MM-DD'),
+                      moment().day(14).format('YYYY-MM-DD'),
                   ],
               }
             : {
@@ -50,7 +50,7 @@ export const DateRadio = ({ date, setDate }) => {
                   label: 'Esta semana',
                   value: [
                       moment().format('YYYY-MM-DD'),
-                      moment().day(0).format('YYYY-MM-DD'),
+                      startOfWeek.day(7).format('YYYY-MM-DD'),
                   ],
               }
 
