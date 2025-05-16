@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import moment from 'moment'
-import { PriceSlider } from './PriceSlider'
+import { PriceRadio } from './PriceRadio'
 import { FilterSection } from './FilterSection'
 import { DateRadio } from './DateRadio'
 import { usePathname, useRouter } from 'next/navigation'
@@ -30,7 +30,7 @@ export const FilterForm = ({ className = '', isMap = false }) => {
     const [endDate, setEndDate] = useState(getDateObject(date[1]))
     const [showDatePicker, setShowDatePicker] = useState(false)
 
-    const [priceValue, setPriceValue] = useState([0, 105])
+    const [priceValue, setPriceValue] = useState([null, null])
     const [selectedTags, setSelectedTags] = useState([])
 
     useEffect(() => {
@@ -38,8 +38,8 @@ export const FilterForm = ({ className = '', isMap = false }) => {
         const paramsMinDate = urlSearchParams.get('min_date')
         const paramsMaxDate = urlSearchParams.get('max_date')
         setPriceValue([
-            urlSearchParams.get('min_price') || 0,
-            urlSearchParams.get('max_price') || 105,
+            urlSearchParams.get('min_price') || null,
+            urlSearchParams.get('max_price') || null,
         ])
         setSelectedTags(urlSearchParams.get('tags') || [])
 
@@ -113,7 +113,7 @@ export const FilterForm = ({ className = '', isMap = false }) => {
 
     const handleClear = () => {
         setDate(defaultDate)
-        setPriceValue([0, 105])
+        setPriceValue([null, null])
         setStartDate(null)
         setEndDate(null)
         setSelectedTags([])
@@ -200,18 +200,11 @@ export const FilterForm = ({ className = '', isMap = false }) => {
                     </FilterSection>
 
                     <FilterSection
-                        legend="Precio:"
-                        indicator={
-                            <span className="text-caps">
-                                {getPriceIndicatorText(priceValue)}
-                            </span>
-                        }>
-                        <div className="flex flex-wrap gap-x-3 gap-y-2 w-full px-12 pt-10">
-                            <PriceSlider
-                                priceValue={priceValue}
-                                setPriceValue={setPriceValue}
-                            />
-                        </div>
+                        legend="Precio">
+                        <PriceRadio
+                            priceValue={priceValue}
+                            setPriceValue={setPriceValue}
+                        />
                     </FilterSection>
                 </div>
             </div>
