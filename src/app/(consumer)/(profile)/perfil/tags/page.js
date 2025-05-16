@@ -1,6 +1,5 @@
 'use client'
 
-import { NavLink } from '@/components/atoms/NavLink'
 import { ToggleTagButton } from '@/components/atoms/ToggleTagButton'
 import { useApi } from '@/hooks/api'
 import { useUserTags } from '@/hooks/userTags'
