@@ -19,12 +19,9 @@ export default function EditarTags() {
     }, [tags])
 
     return (
-        <div className="px-gutter pt-8">
-            <div className="flex justify-between items-end">
-                <h2 className="typo-caps">Seleccionar Tags</h2>
-                <NavLink className="button" href="/perfil">
-                    Listo
-                </NavLink>
+        <div className="container pt-8">
+            <div className="flex justify-between items-end pb-4">
+                <h2 className="typo-lg">Selecciona los tags de eventos que te interesan</h2>
             </div>
             <div className="flex flex-wrap gap-x-2 gap-y-1 py-4">
                 {allTags.map(tag => (

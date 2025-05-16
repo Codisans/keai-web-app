@@ -42,7 +42,7 @@
 }
 
 @utility typo-button {
-    @apply font-sans font-medium uppercase tracking-wide;
+    @apply font-sans font-semibold uppercase tracking-wide;
 }
 
 @utility typo-date {
@@ -82,5 +82,5 @@
 }
 
 @utility typo-logo {
-    @apply text-logo font-tenorite;
+    @apply text-[1em] font-tenorite leading-tight;
 }
