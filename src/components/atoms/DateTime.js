@@ -1,5 +1,7 @@
 'use client'
 import moment from 'moment'
+import 'moment/locale/es'
+moment.locale('es')
 
 export const DateTime = ({ date, format = 'date', className = '' }) => {
     const getFormat = () => {
