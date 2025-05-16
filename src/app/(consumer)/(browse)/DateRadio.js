@@ -58,7 +58,7 @@ export const DateRadio = ({ date, setDate }) => {
 
     return (
         <div className="flex flex-col gap-2">
-            <div className="w-full flex justify-between items-center gap-1 typo-caps">
+            <div className="w-full flex justify-between items-center gap-2 typo-caps">
                 {date[0] != '' && (
                     <span>
                         {moment(date[0])?.locale('es').format('ddd D MMM')}
@@ -80,7 +80,7 @@ export const DateRadio = ({ date, setDate }) => {
                     </>
                 )}
             </div>
-            <div className="flex flex-wrap gap-1">
+            <div className="flex flex-wrap gap-2">
                 {options.map((option, index) => (
                     <div key={index} className="grow">
                         <input
@@ -98,7 +98,7 @@ export const DateRadio = ({ date, setDate }) => {
                             }}
                         />
                         <label
-                            className="button-base w-full text-xs typo-caps peer-checked:bg-primary peer-checked:hover:bg-primary/80 peer-checked:border-primary"
+                            className="button px-1 w-full text-xs typo-caps peer-checked:bg-primary peer-checked:hover:bg-primary/80 peer-checked:border-primary"
                             htmlFor={`date-${index}`}>
                             {option.label}
                         </label>

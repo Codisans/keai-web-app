@@ -7,7 +7,7 @@ const MapLayout = ({ children }) => {
     return (
         <div className="w-full flex flex-col grow">
             <MapHeader />
-            <FilterForm isMap={true} className="open:block max-[496px]:left-2 min-[496px]:w-full right-2 hidden fixed z-header top-[6.8rem] border border-grey bottom-[4.6rem] rounded overflow-hidden select-none" />
+            <FilterForm isMap={true} className="open:block max-[496px]:left-2 min-[496px]:w-full right-2 hidden fixed z-header top-26 border border-grey bottom-18 rounded overflow-hidden select-none" />
 
             <main className="w-full h-full grow relative flex">
                 <Map>{children}</Map>

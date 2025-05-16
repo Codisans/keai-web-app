@@ -131,10 +131,10 @@ export const FilterForm = ({ className = '', isMap = false }) => {
         <form
             onSubmit={handleSubmit}
             className={`${filterIsOpen ? 'open' : ''} max-w-[480px] ${className}`}>
-            <div className="w-auto h-full pointer-events-auto bg-white">
-                <div className="flex justify-end z-50 sticky top-0 p-4 w-full bg-white shadow">
+            <div className="w-auto h-full p-2 overflow-y-auto pointer-events-auto bg-white">
+                <div className="flex justify-end w-full">
                     <h2 className="sr-only">Filtros:</h2>
-                    <div className="flex gap-grid">
+                    <div className="flex gap-2">
                         <button
                             className="text-xs typo-caps underline p-2"
                             type="button"
@@ -149,7 +149,7 @@ export const FilterForm = ({ className = '', isMap = false }) => {
                         </button>
                     </div>
                 </div>
-                <div className="w-full flex flex-col relative z-40">
+                <div className="w-full flex flex-col mt-2">
                     <FilterSection>
                         <DateRadio
                             date={date}
@@ -163,7 +163,7 @@ export const FilterForm = ({ className = '', isMap = false }) => {
                             setShowDatePicker={setShowDatePicker}
                         />
              
-                        <div className="max-w-full mx-auto pt-1 flex flex-col gap-y-2">
+                        <div className="max-w-full mx-auto pt-2 flex flex-col gap-y-2">
                             <button
                                 className={`button-base w-full text-xs ${
                                     showDatePicker
