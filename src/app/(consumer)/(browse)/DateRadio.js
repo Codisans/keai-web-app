@@ -98,7 +98,7 @@ export const DateRadio = ({ date, setDate }) => {
                             }}
                         />
                         <label
-                            className="button px-1 w-full text-xs typo-caps peer-checked:bg-primary peer-checked:hover:bg-primary/80 peer-checked:border-primary"
+                            className="button-radio peer-checked:bg-primary peer-checked:hover:bg-primary/80 peer-checked:border-primary"
                             htmlFor={`date-${index}`}>
                             {option.label}
                         </label>

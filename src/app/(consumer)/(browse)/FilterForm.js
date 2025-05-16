@@ -112,7 +112,7 @@ export const FilterForm = ({ className = '', isMap = false }) => {
         <form
             onSubmit={handleSubmit}
             className={`${filterIsOpen ? 'open' : ''} max-w-[480px] ${className}`}>
-            <div className="w-auto h-full p-2 overflow-y-auto pointer-events-auto bg-white">
+            <div className="w-auto h-full p-2 overflow-y-auto pointer-events-auto bg-white-true">
                 <div className="flex justify-end w-full">
                     <h2 className="sr-only">Filtros:</h2>
                     <div className="flex gap-2">
@@ -146,7 +146,7 @@ export const FilterForm = ({ className = '', isMap = false }) => {
              
                         <div className="max-w-full mx-auto pt-2 flex flex-col gap-y-2">
                             <button
-                                className={`button-base w-full text-xs ${
+                                className={`button-radio w-full ${
                                     showDatePicker
                                         ? 'selected'
                                         : ''

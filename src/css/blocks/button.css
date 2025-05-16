@@ -33,9 +33,12 @@
     .button-category {
         @apply button-base text-xs h-10 font-semibold current:hover:bg-theme/90 current:text-theme-contrast current:border-theme current:bg-theme current:[&_svg]:text-theme-contrast [&_svg]:text-theme text-black rounded bg-white-true px-3.5;
     }
+
+    .button-radio {
+        @apply button-base w-full text-xs typo-button px-1 h-8 bg-white border-gray-300 text-black;
+    }
     
     .button-edit {
         @apply bg-black text-white inline-flex justify-center gap-2 items-center py-1 px-1.5 text-sm rounded-button cursor-pointer;
-
     }
 }

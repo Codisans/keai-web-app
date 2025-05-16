@@ -42,7 +42,7 @@
 }
 
 @utility typo-button {
-    @apply font-sans font-semibold uppercase tracking-wide;
+    @apply font-sans font-bold uppercase tracking-wide;
 }
 
 @utility typo-date {
