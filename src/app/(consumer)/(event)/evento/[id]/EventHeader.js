@@ -5,9 +5,9 @@ import { BackButton } from '@/components/atoms/BackButton'
 
 export const EventHeader = ({ eventId }) => {
     return (
-        <header className="sticky inset-x-0 top-0 bg-white shadow z-header shrink">
-            <nav className="w-full p-grid-gap">
-                <ul className="grid w-full grid-cols-5 gap-grid">
+        <header className="sticky inset-x-0 top-0 bg-white shadow z-header h-14">
+            <nav className="container py-2">
+                <ul className="grid w-full grid-cols-5 gap-2">
                     <li className="col-span-1">
                         <BackButton className="button-icon w-full">
                             <svg
@@ -33,7 +33,7 @@ export const EventHeader = ({ eventId }) => {
                     </li>
                     <li className="col-start-5 col-end-6">
                         <SaveEventButton
-                            className="button-icon w-full"
+                            className="button-icon w-full text-gray-300 selected:text-black selected:border-gray-300 selected:bg-white-true"
                             eventId={eventId}
                         />
                     </li>
