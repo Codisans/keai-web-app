@@ -1,5 +1,4 @@
 'use client'
-import { Symbol } from '@/components/atoms/Symbol'
 
 export const PriceRadio = ({ priceValue, setPriceValue }) => {
     const options = [
