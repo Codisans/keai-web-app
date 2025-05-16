@@ -10,7 +10,7 @@ export const PriceRadio = ({ priceValue, setPriceValue }) => {
         {
             id: 'free',
             label: 'Gratis',
-            value: [0, 0],
+            value: [null, 0],
         },
         {
             id: 'paid',

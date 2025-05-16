@@ -53,7 +53,7 @@ export const FilterForm = ({ className = '', isMap = false }) => {
         e?.preventDefault()
         setFilterIsOpen(false)
 
-        if (date[0]) {
+        if (date[0] && date[0] != today) {
             urlSearchParams.set('min_date', date[0])
         } else {
             urlSearchParams.delete('min_date')
@@ -65,17 +65,14 @@ export const FilterForm = ({ className = '', isMap = false }) => {
             urlSearchParams.delete('max_date')
         }
 
-        const minPrice = getMinPriceParam(priceValue)
-        const maxPrice = getMaxPriceParam(priceValue)
-
-        if (minPrice) {
-            urlSearchParams.set('min_price', minPrice)
+        if (priceValue[0] !== null) {
+            urlSearchParams.set('min_price', priceValue[0])
         } else {
             urlSearchParams.delete('min_price')
         }
 
-        if (maxPrice) {
-            urlSearchParams.set('max_price', maxPrice)
+        if (priceValue[1] !== null) {
+            urlSearchParams.set('max_price', priceValue[1])
         } else {
             urlSearchParams.delete('max_price')
         }
@@ -93,21 +90,6 @@ export const FilterForm = ({ className = '', isMap = false }) => {
         } else {
             router.push(`${pathname}?${urlSearchParams.toString()}`)
         }
-    }
-
-    const getMinPriceParam = value => {
-        if (value[0] === 0) return null
-
-        if (value[0] >= 100) {
-            return 100000
-        }
-
-        return value[0] * 1000
-    }
-
-    const getMaxPriceParam = value => {
-        if (value[1] === 105) return null
-        return value[1] * 1000
     }
 
     const handleClear = () => {
