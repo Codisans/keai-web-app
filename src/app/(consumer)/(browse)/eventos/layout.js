@@ -7,7 +7,7 @@ const EventsLayout = ({ children }) => {
             <EventsHeader />
             <div className="grow">
                 <FilterForm className="open:block max-[496px]:left-2 min-[496px]:w-full right-2 hidden fixed z-header top-28 border border-grey bottom-18 rounded overflow-hidden select-none" />
-                <div className='w-full overflow-hidden'>{children}</div>
+                <div className='w-full overflow-hidden bg-white-true'>{children}</div>
             </div>
         </>
     )
