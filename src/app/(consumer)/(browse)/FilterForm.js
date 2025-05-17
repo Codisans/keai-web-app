@@ -22,7 +22,7 @@ export const FilterForm = ({ className = '', isMap = false }) => {
     const today = moment().format('YYYY-MM-DD')
     const defaultDate = [
         today,
-        isMap ? moment().day(0).format('YYYY-MM-DD') : null,
+        isMap ? moment().day(7).format('YYYY-MM-DD') : null,
     ]
     const [date, setDate] = useState(defaultDate)
     const [startDate, setStartDate] = useState(getDateObject(date[0]))
