@@ -21,7 +21,7 @@ const UserLayout = ({ children }) => {
         <>
             <ProfileHeader />
             <ConsumerMenu />
-            <main className="w-full grow min-h-[calc(100svh-1.75rem)]">
+            <main className="w-full grow min-h-[calc(100svh-1.75rem)] bg-white-true">
                 {children}
             </main>
             <ConsumerFooter />
