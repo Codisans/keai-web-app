@@ -50,7 +50,7 @@ export const DateRadio = ({ date, setDate }) => {
                   label: 'Esta semana',
                   value: [
                       moment().format('YYYY-MM-DD'),
-                      startOfWeek.day(7).format('YYYY-MM-DD'),
+                      moment().day(7).format('YYYY-MM-DD'),
                   ],
               }
 
@@ -58,19 +58,21 @@ export const DateRadio = ({ date, setDate }) => {
 
     return (
         <div className="flex flex-col gap-2">
-            <div className="w-full flex justify-between items-center gap-2 typo-caps">
+            <div className="w-full grid grid-cols-5 items-center gap-2 typo-caps">
                 {date[0] != '' && (
-                    <span>
+                    <span className='col-span-2'>
                         {moment(date[0])?.locale('es').format('ddd D MMM')}
                     </span>
                 )}
                 {date[1] != '' && date[0] != date[1] && (
                     <>
-                        <Symbol
-                            className="w-6 h-6 rotate-45 -my-2"
-                            name="arrows-horizontal"
-                        />
-                        <span>
+                        <span className='col-span-1'>
+                            <Symbol
+                                className="w-6 h-6 rotate-45 -my-2 mx-auto"
+                                name="arrows-horizontal"
+                            />
+                        </span>
+                        <span className='col-span-2 text-right'>
                             {date[1]
                                 ? moment(date[1])
                                       ?.locale('es')
