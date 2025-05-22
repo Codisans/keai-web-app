@@ -17,7 +17,7 @@ export default function EditarTags() {
     useEffect(() => {
         if (!tags) return
 
-        const sortedTags = [...tags].sort((a, b) => a.name.localeCompare(b.name))
+        const sortedTags = tags.sort((a, b) => a.name.localeCompare(b.name))
         setAllTags(sortedTags)
         setDisplayedTags(sortedTags)
     }, [tags])
@@ -32,7 +32,7 @@ export default function EditarTags() {
 
         const filteredTags = allTags.filter(tag => tag.name.toLowerCase().includes(search.toLowerCase())).sort((a, b) => a.name.localeCompare(b.name))
         setDisplayedTags(filteredTags)
-    }, [search])
+    }, [search, allTags])
 
     return (
         <div className="container pt-8">
