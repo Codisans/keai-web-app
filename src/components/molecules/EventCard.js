@@ -8,8 +8,8 @@ export const EventCard = ({
     type = 'carousel',
     toggle = true,
     remove = false,
-    price = false,
-    tags = false,
+    showPrice = false,
+    showTags = true,
 }) => {
     if (!event) return null
 
@@ -33,19 +33,10 @@ export const EventCard = ({
                             {event.name}
                         </h3>
 
-                        {price && (
+                        {showPrice && (
                             <p className="typo-caps">Desde: $ {event.price}</p>
                         )}
-
-                        {tags && (
-                            <ul className="flex flex-wrap gap-1">
-                                {event.tags.map(tag => (
-                                    <li key={tag.id} className="tag-sm">
-                                        {tag.name}
-                                    </li>
-                                ))}
-                            </ul>
-                        )}
+                        {showTags && <EventTags tags={event.tags} />}
                     </div>
                     <Link
                         href={`/evento/${event.id}`}
@@ -80,16 +71,8 @@ export const EventCard = ({
                             <DateTime date={event.start_date} format="time" />
                         </div>
                         <h3 className="typo-regular text-lg py-1.5 overflow-hidden text-ellipsis text-nowrap">{event.name}</h3>
-                        {price && <p className="text-sm">${event.price}</p>}
-                        {tags && (
-                            <ul className="flex flex-wrap gap-1">
-                                {event.tags.map(tag => (
-                                    <li key={tag.id} className="tag-sm">
-                                        {tag.name}
-                                    </li>
-                                ))}
-                            </ul>
-                        )}
+                        {showPrice && <p className="text-sm">${event.price}</p>}
+                        {showTags && <EventTags tags={event.tags} />}
                     </div>
                     <Link
                         href={`/evento/${event.id}`}
@@ -109,4 +92,23 @@ export const EventCard = ({
                 </div>
             )
     }
+}
+
+export const EventTags = ({tags}) => {
+    if(!tags || tags.length == 0) return
+    console.log(tags)
+
+    const visibleTags = tags.splice(0, 2)
+    const hiddenTagCount = tags.splice(2).length
+
+    return (
+        <ul className="flex flex-wrap gap-1">
+            {visibleTags.map(tag => (
+                <li key={tag.id} className="tag-sm">
+                    {tag.name}
+                </li>
+            ))}
+            {hiddenTagCount > 0 && <li className='tag-sm'>+{hiddenTagCount}</li>}
+        </ul>
+    )
 }
