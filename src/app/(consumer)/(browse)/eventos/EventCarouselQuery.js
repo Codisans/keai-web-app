@@ -18,7 +18,7 @@ export const EventCarouselQuery = ({
 
     useEffect(() => {
         const fetchEvents = async () => {
-            const eventsData = await getEvents({ searchParams })
+            const eventsData = await getEvents(searchParams)
             setEvents(eventsData)
         }
 

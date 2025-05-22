@@ -1,3 +1,6 @@
+'use client'
+
+import { DateTime } from '@/components/atoms/DateTime'
 import { Symbol } from '@/components/atoms/Symbol'
 import moment from 'moment'
 
@@ -59,28 +62,31 @@ export const DateRadio = ({ date, setDate }) => {
     return (
         <div className="flex flex-col gap-2">
             <div className="w-full grid grid-cols-5 items-center gap-2 typo-caps">
-                {date[0] != '' && (
-                    <span className='col-span-2'>
-                        {moment(date[0])?.locale('es').format('ddd D MMM')}
-                    </span>
-                )}
-                {date[1] != '' && date[0] != date[1] && (
-                    <>
-                        <span className='col-span-1'>
-                            <Symbol
-                                className="w-6 h-6 rotate-45 -my-2 mx-auto"
-                                name="arrows-horizontal"
-                            />
-                        </span>
-                        <span className='col-span-2 text-right'>
-                            {date[1]
-                                ? moment(date[1])
-                                      ?.locale('es')
-                                      .format('ddd D MMM')
-                                : 'INFINITO'}
-                        </span>
-                    </>
-                )}
+                {date[0] == today && date[1] == null
+                    ? 
+                        <span className='col-span-full'>Todas las fehcas</span>
+                    :
+                        <>
+                            {date[0] != '' && (
+                                <span className='col-span-2'>
+                                    <DateTime date={date[0]} format='ddd D MMM' />
+                                </span>
+                            )}
+                            {date[1] != '' && date[0] != date[1] && (
+                                <>
+                                    <span className='col-span-1'>
+                                        <Symbol
+                                            className="w-6 h-6 rotate-45 -my-2 mx-auto"
+                                            name="arrows-horizontal"
+                                        />
+                                    </span>
+                                    <span className='col-span-2 text-right'>
+                                    <DateTime date={date[1]} format='ddd D MMM' />
+                                    </span>
+                                </>
+                            )}
+                        </>
+                }
             </div>
             <div className="flex flex-wrap gap-2">
                 {options.map((option, index) => (

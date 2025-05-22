@@ -13,7 +13,7 @@ export const EventResults = ({ searchParams }) => {
     useEffect(() => {
         const fetchEvents = async () => {
             try {
-                const eventsData = await getEvents({ searchParams })
+                const eventsData = await getEvents(searchParams)
                 setResults(eventsData)
             } catch (error) {
                 console.error('Error fetching events:', error)

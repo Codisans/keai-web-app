@@ -96,7 +96,6 @@ export const EventCard = ({
 
 export const EventTags = ({tags}) => {
     if(!tags || tags.length == 0) return
-    console.log(tags)
 
     const visibleTags = tags.splice(0, 2)
     const hiddenTagCount = tags.splice(2).length

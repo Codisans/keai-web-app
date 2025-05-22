@@ -45,17 +45,24 @@ export const useApi = () => {
         return event?.data ?? null
     }
 
-    const getEvents = async ({ searchParams }) => {
-        const searchParamsString =
-            typeof searchParams === 'string'
-                ? searchParams
-                : (searchParams?.toString() ?? null)
-        return axios
-            .get(`/api/events?${searchParamsString}`)
-            .then(res => res.data.data ?? [])
-            .catch(error => {
-                throw new Error('Error getting events', error)
-            })
+    const getEvents = async (searchParams) => {
+        const categories = searchParams.get("categories[]")?.split(",")
+        const tags = searchParams.get("tags[]")?.split(",")
+        const minDate = searchParams.get("min_date")
+        const maxDate = searchParams.get("max_date")
+        const minPrice = searchParams.get("min_price")
+        const maxPrice = searchParams.get("max_price")
+        // console.log(categories, tags, minDate, maxDate, minPrice, maxPrice)
+        
+        return await events?.filter((event) => {
+            if (categories && !event.cateogories?.some(c => categories.includes(c.id))) return false
+            if (tags && !event.tags?.some(t => tags.includes(t.id))) return false
+            if (minDate && !moment(event.start_date).isSameOrAfter(moment(minDate))) return false
+            if (maxDate && !moment(event.start_date).isSameOrBefore(moment(maxDate))) return false
+            if (minPrice && !(Number(event.price) >= Number(minPrice))) return false
+            if (maxPrice && !(Number(event.price) <= Number(maxPrice))) return false
+            return true
+        })
     }
 
     const getCategoryEvents = async categoryId => {
