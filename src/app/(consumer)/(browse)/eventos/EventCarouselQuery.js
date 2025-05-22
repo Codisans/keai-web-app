@@ -49,7 +49,7 @@ export const EventCarouselQuery = ({
                         <SwiperSlide
                         key={i}
                         style={{ width: '16rem' }}>
-                            <EventCard event={event} type="carousel" />
+                            <EventCard event={event} type="carousel" showTags={true} />
                         </SwiperSlide>
                     ))}
                 </Swiper>

@@ -39,7 +39,7 @@ export const EventCarousel = ({
                         <SwiperSlide
                         key={i}
                         style={{ width: '16rem' }}>
-                            <EventCard event={event} tags={true} type="carousel" />
+                            <EventCard event={event} showTags={true} type="carousel" />
                         </SwiperSlide>
                     ))}
                 </Swiper>
