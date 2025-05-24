@@ -3,6 +3,7 @@ import { ConsumerContext } from '@/app/(consumer)/ConsumerContext'
 import { ClipboardCopy } from '@/components/atoms/ClipboardCopy'
 import { DateTime } from '@/components/atoms/DateTime'
 import { Logo } from '@/components/atoms/Logo'
+import { Symbol } from '@/components/atoms/Symbol'
 import { useContext, useEffect } from 'react'
 
 export const EventDetail = ({ event }) => {
@@ -61,16 +62,23 @@ export const EventDetail = ({ event }) => {
                                 __html: event.formatted_address,
                             }}
                             />
-                        <ClipboardCopy className='inline ml-2' text={event.formatted_address} />
+                        <ClipboardCopy className='inline-block ml-2 -mb-1 [font-size:1.25rem]' text={event.formatted_address} />
                     </div>
                 </div>
             </section>
-            
+
             <div className="flex flex-col gap-y-6 pt-8">
                 <p>{event.description}</p>
                 {/* <div className="col-span-12">
                     <Link href={`/mapa#${event.id}`}>Ver en mapa</Link>
-                </div> */}
+                    </div> */}
+            </div>
+       
+            <div className='py-8 flex gap-x-2 justify-center items-center'>
+                <span>Compartir: </span>
+                <a className='button-icon light' href={`whatsapp://send?text=${window.location.href}`}>
+                    <Symbol className="w-6 h-6" name="whatsapp" />
+                </a>
             </div>
         </div>
     )

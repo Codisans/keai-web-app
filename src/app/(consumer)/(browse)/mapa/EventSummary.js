@@ -34,26 +34,26 @@ export const EventSummary = ({ event }) => {
         event && (
             <div
                 ref={eventSummaryRef}
-                className="fixed bottom-[4.8rem] inset-x-2 rounded-ui bg-white p-1 z-50 flex gap-2 border border-grey">
-                <div className="flex-none w-24 h-max rounded overflow-hidden">
+                className="fixed bottom-[4.5rem] left-2 max-w-[420px] right-2 rounded bg-white p-1 z-50 grid grid-cols-4 gap-2 border border-grey">
+                <div className="flex-none col-span-1 h-max rounded-sm overflow-hidden">
                     <img
-                        className="w-24 h-24 object-cover"
+                        className="aspect-sqaure w-full object-cover"
                         src={event.cover || '/placeholder.jpg'}
                         alt={event.name}
                     />
                 </div>
-                <div className="flex flex-col grow p-1">
-                    <h3 className="text-h-card leading-none py-0.5 w-full overflow-hidden text-ellipsis text-nowrap">
+                <div className="col-span-3 flex flex-col p-1">
+                    <h3 className="text-sm py-0.5 w-full overflow-hidden text-ellipsis text-nowrap">
                         {event.name}
                     </h3>
                     <ul className="flex flex-wrap gap-x-2 gap-y-1 py-1">
                         {event.tags?.map(tag => (
-                            <li className="tag" key={tag.id}>
+                            <li className="tag-sm" key={tag.id}>
                                 {tag.name}
                             </li>
                         ))}
                     </ul>
-                    <dl className="typo-button text-black/80 flex gap-1 justify-between mt-auto">
+                    <dl className="typo-date text-sm text-black/80 flex gap-1 justify-between mt-auto">
                         <dd>
                             <DateTime date={event.start_date} />
                         </dd>

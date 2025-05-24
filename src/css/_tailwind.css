@@ -48,11 +48,12 @@
     --width-viewport: calc(100vw - var(--spacing-scrollbar));
 
     /* Borders */
-    --radius-button: 0.4rem;
+    --radius-button: 0.5rem;
     --radius-card: 0.6rem;
     --radius-ui: 0.75rem;
     --radius: 0.5rem;
     --radius-tag: 0.5rem;
+    --radius-sm: 0.4rem;
 
     /* Misc */
     --shadow-card: rgba(75, 80, 94, 0.12) 0px 14px 36px 0px;

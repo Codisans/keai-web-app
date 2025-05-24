@@ -2,7 +2,7 @@
 import PersonIcon from '@mui/icons-material/Person'
 import SettingsIcon from '@mui/icons-material/Settings'
 import { LogoutButton } from '@/components/atoms/LogoutButton'
-import { Pullout } from '@/components/templates/Pullout'
+import { Pullout } from '@/components/molecules/Pullout'
 import { useConsumerContext } from '../ConsumerContext'
 import { NavLink } from '@/components/atoms/NavLink'
 import HomeIcon from '@mui/icons-material/Home'

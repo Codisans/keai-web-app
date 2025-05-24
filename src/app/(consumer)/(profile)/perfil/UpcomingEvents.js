@@ -22,7 +22,7 @@ export const UpcomingEvents = () => {
                 <li
                     className="w-full border-t border-grey py-grid-gap first:border-t-0"
                     key={i}>
-                    <EventCard event={event} type="list" remove={true} />
+                    <EventCard event={event} type="list" remove={true} showTags={false} />
                 </li>
             ))}
         </ul>

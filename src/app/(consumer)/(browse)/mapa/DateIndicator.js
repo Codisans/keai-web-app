@@ -10,7 +10,7 @@ export const DateIndicator = () => {
     const maxDate = searchParams.get('max_date') || today
 
     return (
-        <div className="absolute bottom-gutter right-gutter z-20 flex gap-x-1 pointer-events-none bg-white-true rounded-button p-1 items-center border border-grey gap-1">
+        <div className="absolute bottom-gutter right-gutter z-20 flex gap-x-1 pointer-events-none bg-white-true rounded p-1 items-center border border-grey gap-1">
             {minDate !== maxDate && (
                 <>
                     <DateCard date={minDate} />

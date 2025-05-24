@@ -7,7 +7,7 @@ export const EventFooter = ({ event }) => {
                 rel="noreferrer"
                 target="_blank"
                 className="button-lg font-bold bg-orange hover:brightness-75 w-full">
-                    Entradas
+                    Detalles + Entradas 
             </a>
         </footer>
     )

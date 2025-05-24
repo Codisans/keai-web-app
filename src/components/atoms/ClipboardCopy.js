@@ -13,7 +13,7 @@ export const ClipboardCopy = ({ text, className }) => {
     }
 
     return (
-        <button className={className} onClick={handleCopy}>
+        <button className={`${className} active:opacity-60`} onClick={handleCopy}>
             <svg
                 className="w-[1em] h-[1em]"
                 xmlns="http://www.w3.org/2000/svg"
