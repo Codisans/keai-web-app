@@ -6,21 +6,19 @@ import { useApi } from "@/hooks/api"
 import { useSearchParams } from "next/navigation"
 import moment from "moment"
 
-export const EventMarkersLayer = () => {
+export const EventsLayer = () => {
     const [events, setEvents] = useState([])
     const searchParams = useSearchParams()
     const { getEvents } = useApi()
 
     useEffect(() => {
         const params = new URLSearchParams(searchParams)
-        console.log(searchParams)
 
-        if(params.size == 0) {
+        if(searchParams.size == 0) {
             params.set("min_date", moment().format("YYYY-MM-DD"))
             params.set("max_date", moment().add(4, "days").format("YYYY-MM-DD"))
         }
 
-        console.log(params.toString())
         const fetchEvents = async () => {
             try {
                 const eventsData = await getEvents(params)
