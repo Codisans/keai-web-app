@@ -81,10 +81,10 @@ export const EventDetail = ({ event }) => {
                 <a className='button-icon' href={`whatsapp://send?text=${window.location.href}`}>
                     <Symbol className="w-6 h-6" name="whatsapp" />
                 </a>
-                <a className='button-icon' href={`http://ig.me?text=${window.location.href}`}>
+                <a className='button-icon' href={`instagram://sharesheet?text=${window.location.href}`}>
                     <Symbol className="w-6 h-6" name="instagram" />
                 </a>
-                <a className='button-icon' href={`http://m.me?text=${window.location.href}`}>
+                <a className='button-icon' href={`messenger://send?text=${window.location.href}`}>
                     <Symbol className="w-6 h-6" name="facebook" />
                 </a>
             </div>
