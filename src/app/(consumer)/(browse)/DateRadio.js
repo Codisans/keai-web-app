@@ -44,8 +44,8 @@ export const DateRadio = ({ date, setDate }) => {
                   id: 'next-week',
                   label: 'Próx. semana',
                   value: [
-                      moment().day(7).add(1, 'day').format('YYYY-MM-DD'),
-                      moment().day(14).format('YYYY-MM-DD'),
+                      moment().day(0).add(1, 'day').format('YYYY-MM-DD'),
+                      moment().day(7).format('YYYY-MM-DD'),
                   ],
               }
             : {
