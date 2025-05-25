@@ -1,9 +1,9 @@
 'use client'
 
 import { NavLink } from "./NavLink"
-import LoginIcon from '@mui/icons-material/Login';
-import PersonIcon from '@mui/icons-material/Person';
-import { useAuth } from "@/hooks/auth";
+import LoginIcon from '@mui/icons-material/Login'
+import PersonIcon from '@mui/icons-material/Person'
+import { useAuth } from "@/hooks/auth"
 
 export const ProfileButton = ({ ...props }) => {
     const { user } = useAuth()
