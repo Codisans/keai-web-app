@@ -63,7 +63,7 @@ export const EventDetail = ({ event }) => {
                             }}
                             />
                     </div>
-                    <Link href={`/mapa/#${event.id}`} className='relative flex flex-col gap-y-1 items-center justify-center w-min'>
+                    <Link href={`/mapa/#${event.id}`} className='ml-auto relative flex flex-col gap-y-1 items-center justify-center w-min'>
                         <Logo className="text-h1 mt-1" type="logotype" />
                         <span className='font-bold text-xs typo-caps leading-tight'>Mapa</span>
                     </Link>
