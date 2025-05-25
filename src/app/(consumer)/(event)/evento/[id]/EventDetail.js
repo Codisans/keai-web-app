@@ -3,6 +3,7 @@ import { ConsumerContext } from '@/app/(consumer)/ConsumerContext'
 import { DateTime } from '@/components/atoms/DateTime'
 import { Logo } from '@/components/atoms/Logo'
 import { Symbol } from '@/components/atoms/Symbol'
+import Link from 'next/link'
 import { useContext, useEffect } from 'react'
 
 export const EventDetail = ({ event }) => {
@@ -62,10 +63,10 @@ export const EventDetail = ({ event }) => {
                             }}
                             />
                     </div>
-                    <a href={`/mapa/#${event.id}`} className='relative flex flex-col gap-y-1 items-center justify-center w-min'>
+                    <Link href={`/mapa/#${event.id}`} className='relative flex flex-col gap-y-1 items-center justify-center w-min'>
                         <Logo className="text-h1 mt-1" type="logotype" />
                         <span className='font-bold text-xs typo-caps leading-tight'>Mapa</span>
-                    </a>
+                    </Link>
                 </div>
             </section>
 
@@ -80,7 +81,7 @@ export const EventDetail = ({ event }) => {
                 <a className='button-icon' href={`whatsapp://send?text=${window.location.href}`}>
                     <Symbol className="w-6 h-6" name="whatsapp" />
                 </a>
-                <a className='button-icon' href={`https://www.instagram.com/?url=${window.location.href}`}>
+                <a className='button-icon' href={`http://ig.me/${window.location.href}`}>
                     <Symbol className="w-6 h-6" name="instagram" />
                 </a>
                 <a className='button-icon' href={`http://m.me/${window.location.href}`}>
