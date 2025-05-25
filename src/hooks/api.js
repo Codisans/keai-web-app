@@ -46,6 +46,7 @@ export const useApi = () => {
     }
 
     const getEvents = async (searchParams) => {
+        console.log(searchParams.toString())
         const categories = searchParams.get("categories[]")?.split(",")
         const tags = searchParams.get("tags[]")?.split(",")
         const minDate = searchParams.get("min_date")

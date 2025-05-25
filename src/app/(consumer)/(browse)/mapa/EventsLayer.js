@@ -19,6 +19,7 @@ export const EventsLayer = ({ searchParams }) => {
 
         const fetchEvents = async (p) => {
             try {
+                console.log(p, p.toString())
                 const eventsData = await getEvents(p)
                 setEvents(eventsData)
             } catch (error) {
