@@ -78,13 +78,13 @@ export const EventDetail = ({ event }) => {
        
             <div className='py-8 flex gap-x-2 justify-center items-center'>
                 <span>Compartir: </span>
-                <a className='button-icon' href={`whatsapp://send?text=${window.location.href}`}>
+                <a className='button-icon' href={`whatsapp://send?text=${encodeURIComponent(window.location.href)}`}>
                     <Symbol className="w-6 h-6" name="whatsapp" />
                 </a>
-                <a className='button-icon' href={`instagram://sharesheet?text=${window.location.href}`}>
+                <a className='button-icon' href={`instagram://sharesheet?text=${encodeURIComponent(window.location.href)}`}>
                     <Symbol className="w-6 h-6" name="instagram" />
                 </a>
-                <a className='button-icon' href={`messenger://send?text=${window.location.href}`}>
+                <a className='button-icon' href={`fb-messenger://share?link=${encodeURIComponent(window.location.href)}`}>
                     <Symbol className="w-6 h-6" name="facebook" />
                 </a>
             </div>
