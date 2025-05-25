@@ -12,18 +12,28 @@ import { useConsumerContext } from '@/app/(consumer)/ConsumerContext'
 import { CustomDatePicker } from './CustomDatePicker'
 import { getDateObject } from '@/utils/getDateObject'
 
+export const defaultMapDate = () => {
+    return [
+        moment().format('YYYY-MM-DD'),
+        moment().add(4, "days").format('YYYY-MM-DD'),
+    ]
+}
+
+export const defaultListDate = () => {
+    return [
+        moment().format('YYYY-MM-DD'),
+        null
+    ]
+}
+
 export const FilterForm = ({ className = '', isMap = false }) => {
     const { filterIsOpen, setFilterIsOpen } = useConsumerContext()
     const { tags } = useConsumerContext()
     const router = useRouter()
     const pathname = usePathname()
     const searchParams = useSearchParams()
+    const defaultDate = isMap ? defaultMapDate() : defaultListDate()
 
-    const today = moment().format('YYYY-MM-DD')
-    const defaultDate = [
-        today,
-        isMap ? moment().add(7, "days").format('YYYY-MM-DD') : null,
-    ]
     const [date, setDate] = useState(defaultDate)
     const [startDate, setStartDate] = useState(getDateObject(date[0]))
     const [endDate, setEndDate] = useState(getDateObject(date[1]))

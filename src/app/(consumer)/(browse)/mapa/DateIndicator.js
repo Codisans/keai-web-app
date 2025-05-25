@@ -2,12 +2,12 @@
 
 import { useSearchParams } from 'next/navigation'
 import moment from 'moment'
+import { defaultMapDate } from '../FilterForm'
 
 export const DateIndicator = () => {
     const searchParams = useSearchParams()
-    const today = moment().format('YYYY-MM-DD')
-    const minDate = searchParams.get('min_date') || today
-    const maxDate = searchParams.get('max_date') || today
+    const minDate = searchParams.get('min_date') || defaultMapDate()[0]
+    const maxDate = searchParams.get('max_date') || defaultMapDate()[1]
 
     return (
         <div className="absolute bottom-gutter right-gutter z-20 flex gap-x-1 pointer-events-none bg-white-true rounded p-1 items-center border border-grey gap-1">

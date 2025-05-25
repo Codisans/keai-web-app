@@ -17,7 +17,7 @@ export const EventMarkersLayer = () => {
 
         if(params.size == 0) {
             params.set("min_date", moment().format("YYYY-MM-DD"))
-            params.set("max_date", moment().add(7, "days").format("YYYY-MM-DD"))
+            params.set("max_date", moment().add(4, "days").format("YYYY-MM-DD"))
         }
 
         console.log(params.toString())
