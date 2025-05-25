@@ -33,7 +33,7 @@ export const EventsLayer = ({ searchParams }) => {
 
     return (
         <>
-            {events?.map(event => (
+            {events?.length > 0 && events?.map(event => (
                 <EventMarker key={event.id} event={event} />
             ))}
         </>
