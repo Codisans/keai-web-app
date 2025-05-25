@@ -64,7 +64,7 @@ export const DateRadio = ({ date, setDate }) => {
             <div className="w-full grid grid-cols-5 items-center gap-2 typo-caps">
                 {date[0] == today && date[1] == null
                     ? 
-                        <span className='col-span-full'>Todas las fehcas</span>
+                        <span className='col-span-full'>Fechas: TODAS</span>
                     :
                         <>
                             {date[0] != '' && (
