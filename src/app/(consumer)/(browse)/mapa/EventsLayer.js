@@ -3,18 +3,16 @@
 import { useEffect, useState } from "react"
 import { EventMarker } from "./EventMarker"
 import { useApi } from "@/hooks/api"
-import { useSearchParams } from "next/navigation"
 import moment from "moment"
 
-export const EventsLayer = () => {
+export const EventsLayer = ({ searchParams }) => {
     const [events, setEvents] = useState([])
-    const searchParams = useSearchParams()
     const { getEvents } = useApi()
 
     useEffect(() => {
         const params = new URLSearchParams(searchParams)
 
-        if(searchParams.size == 0) {
+        if(params.size == 0) {
             params.set("min_date", moment().format("YYYY-MM-DD"))
             params.set("max_date", moment().add(4, "days").format("YYYY-MM-DD"))
         }

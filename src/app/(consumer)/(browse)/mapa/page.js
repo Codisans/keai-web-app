@@ -4,11 +4,10 @@ export const metadata = {
     title: 'KEAI | Mapa',
 }
 
-const MapPage = () => {
-
+const MapPage = async ({ searchParams }) => {
     return (
         <>
-           <EventsLayer />
+           <EventsLayer searchParams={await searchParams} />
         </>
     )
 }
