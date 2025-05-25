@@ -32,6 +32,7 @@ export const FilterForm = ({ className = '', isMap = false }) => {
     const router = useRouter()
     const pathname = usePathname()
     const searchParams = useSearchParams()
+    const today = moment().format('YYYY-MM-DD')
     const defaultDate = isMap ? defaultMapDate() : defaultListDate()
 
     const [date, setDate] = useState(defaultDate)
