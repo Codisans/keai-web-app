@@ -19,9 +19,9 @@ export const EventsLayer = () => {
             params.set("max_date", moment().add(4, "days").format("YYYY-MM-DD"))
         }
 
-        const fetchEvents = async () => {
+        const fetchEvents = async (p) => {
             try {
-                const eventsData = await getEvents(params)
+                const eventsData = await getEvents(p)
                 setEvents(eventsData)
             } catch (error) {
                 console.error('Error fetching events:', error)
@@ -29,7 +29,7 @@ export const EventsLayer = () => {
             }
         }
 
-        fetchEvents()
+        fetchEvents(params)
     }, [searchParams])
 
     return (
