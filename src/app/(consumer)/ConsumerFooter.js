@@ -1,8 +1,8 @@
 'use client'
 import MapIcon from '@mui/icons-material/Map'
 import HomeIcon from '@mui/icons-material/Home'
-import PersonIcon from '@mui/icons-material/Person'
 import { NavLink } from '@/components/atoms/NavLink'
+import { ProfileButton } from '@/components/atoms/ProfileButton'
 
 export const ConsumerFooter = () => {
     return (
@@ -20,9 +20,7 @@ export const ConsumerFooter = () => {
                         </NavLink>
                     </li>
                     <li className="col-span-1">
-                        <NavLink className="button-icon w-full" href="/perfil">
-                            <PersonIcon />
-                        </NavLink>
+                        <ProfileButton className="button-icon w-full" />
                     </li>
                 </ul>
             </nav>

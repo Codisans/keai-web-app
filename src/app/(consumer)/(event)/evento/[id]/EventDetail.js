@@ -1,6 +1,5 @@
 'use client'
 import { ConsumerContext } from '@/app/(consumer)/ConsumerContext'
-import { ClipboardCopy } from '@/components/atoms/ClipboardCopy'
 import { DateTime } from '@/components/atoms/DateTime'
 import { Logo } from '@/components/atoms/Logo'
 import { Symbol } from '@/components/atoms/Symbol'
@@ -11,6 +10,7 @@ export const EventDetail = ({ event }) => {
     const isFree = event.price == null || parseInt(event.price) === 0
 
     useEffect(() => {
+        console.log(event)
         setSelectedEvent(event)
         return () => setSelectedEvent(null)
     }, [])
@@ -55,29 +55,36 @@ export const EventDetail = ({ event }) => {
                     />
                 </div>
                 <div className="flex flex-row gap-x-4 px-4 py-2">
-                    <Logo className="text-h1 mt-1" type="logotype" />
-                    <div className="inline-block">
+                    <div className="inline-block my-auto">
                         <div className='inline'
                             dangerouslySetInnerHTML={{
                                 __html: event.formatted_address,
                             }}
                             />
-                        <ClipboardCopy className='inline-block ml-2 -mb-1 [font-size:1.25rem]' text={event.formatted_address} />
                     </div>
+                    <a href={`/mapa/#${event.id}`} className='relative flex flex-col gap-y-1 items-center justify-center w-min'>
+                        <Logo className="text-h1 mt-1" type="logotype" />
+                        <span className='font-bold text-xs typo-caps leading-tight'>Mapa</span>
+                    </a>
                 </div>
             </section>
 
-            <div className="flex flex-col gap-y-6 pt-8">
-                <p>{event.description}</p>
-                {/* <div className="col-span-12">
-                    <Link href={`/mapa#${event.id}`}>Ver en mapa</Link>
-                    </div> */}
+            <div className="flex flex-col gap-y-4 pt-8">
+                <div dangerouslySetInnerHTML={{
+                        __html: event.description,
+                    }} />
             </div>
        
             <div className='py-8 flex gap-x-2 justify-center items-center'>
                 <span>Compartir: </span>
-                <a className='button-icon light' href={`whatsapp://send?text=${window.location.href}`}>
+                <a className='button-icon' href={`whatsapp://send?text=${window.location.href}`}>
                     <Symbol className="w-6 h-6" name="whatsapp" />
+                </a>
+                <a className='button-icon' href={`https://www.instagram.com/?url=${window.location.href}`} target="_blank" rel="noopener">
+                    <Symbol className="w-6 h-6" name="instagram" />
+                </a>
+                <a className='button-icon' href={`http://m.me/${window.location.href}`} target="_blank" rel="noopener">
+                    <Symbol className="w-6 h-6" name="facebook" />
                 </a>
             </div>
         </div>

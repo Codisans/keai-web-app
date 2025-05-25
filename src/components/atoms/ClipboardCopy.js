@@ -1,19 +1,14 @@
 'use client'
 
+import { copyText } from '@/utils/copyText'
+
 export const ClipboardCopy = ({ text, className }) => {
-    const handleCopy = () => {
-        navigator.clipboard
-            .writeText(text)
-            .then(() => {
-                console.log('Text copied to clipboard')
-            })
-            .catch(err => {
-                console.error('Failed to copy text: ', err)
-            })
+    const handleCopy = (text) => {
+        copyText(text)
     }
 
     return (
-        <button className={`${className} active:opacity-60`} onClick={handleCopy}>
+        <button className={`${className} active:opacity-60`} onClick={() => handleCopy(text)}>
             <svg
                 className="w-[1em] h-[1em]"
                 xmlns="http://www.w3.org/2000/svg"
