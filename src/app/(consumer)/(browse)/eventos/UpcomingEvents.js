@@ -1,6 +1,7 @@
 'use client'
 
 import { useApi } from '@/hooks/api'
+import moment from 'moment'
 import { useEffect, useState } from 'react'
 import { EventCarousel } from './EventCarousel'
 
@@ -22,7 +23,7 @@ export const UpcomingEvents = ({ category = null }) => {
         setItems(
             results
                 ?.sort(
-                    (a, b) => new Date(a.start_date) - new Date(b.start_date),
+                    (a, b) => moment(a.start_date).isBefore(moment(b.start_date)) ? -1 : 1,
                 )
                 .slice(0, 20),
         )
