@@ -18,13 +18,23 @@ export const ConsumerContext = createContext({
 export const ConsumerContextProvider = ({ children, categories, tags }) => {
     const path = usePathname()
     const [filterIsOpen, setFilterIsOpen] = useState(false)
+    const [highlightSearchButton, setHighlightSearchButton] = useState(false)
     const [menuIsOpen, setMenuIsOpen] = useState(false)
     const [selectedEvent, setSelectedEvent] = useState(null)
     const [selectedCategory, setSelectedCategory] = useState(null)
 
+    const openFilter = () => {
+        setFilterIsOpen(true)
+    }
+
+    const closeFilter = () => {
+        setFilterIsOpen(false)
+        setHighlightSearchButton(false)
+    }
+
     useEffect(() => {
         setMenuIsOpen(false)
-        setFilterIsOpen(false)
+        closeFilter()
         setSelectedCategory(
             path.includes('/mapa/') || path.includes('/eventos/')
                 ? path.split('/').pop()
@@ -45,6 +55,10 @@ export const ConsumerContextProvider = ({ children, categories, tags }) => {
                 setSelectedCategory,
                 selectedEvent,
                 setSelectedEvent,
+                highlightSearchButton,
+                setHighlightSearchButton,
+                openFilter,
+                closeFilter,
             }}>
             {children}
         </ConsumerContext.Provider>

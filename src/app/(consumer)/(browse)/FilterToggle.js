@@ -5,7 +5,7 @@ import { useConsumerContext } from '@/app/(consumer)/ConsumerContext'
 export const FilterToggle = () => {
     const path = usePathname()
     const searchParams = useSearchParams()
-    const { filterIsOpen, setFilterIsOpen } = useConsumerContext()
+    const { filterIsOpen, openFilter, closeFilter } = useConsumerContext()
 
     const getIndicatorCount = searchParams => {
         const dateFilter =
@@ -23,7 +23,7 @@ export const FilterToggle = () => {
 
     return (
         <button
-            onClick={() => setFilterIsOpen(s => !s)}
+            onClick={() => filterIsOpen ? closeFilter() : openFilter()}
             type="button"
             className={`button-icon relative pointer-events-auto ${filterIsOpen ? 'current' : ''}`}
             disabled={path

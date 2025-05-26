@@ -27,7 +27,7 @@ export const defaultListDate = () => {
 }
 
 export const FilterForm = ({ className = '', isMap = false }) => {
-    const { filterIsOpen, setFilterIsOpen } = useConsumerContext()
+    const { filterIsOpen, closeFilter, highlightSearchButton, setHighlightSearchButton } = useConsumerContext()
     const { tags } = useConsumerContext()
     const router = useRouter()
     const pathname = usePathname()
@@ -62,7 +62,7 @@ export const FilterForm = ({ className = '', isMap = false }) => {
     const handleSubmit = e => {
         const urlSearchParams = new URLSearchParams(searchParams)
         e?.preventDefault()
-        setFilterIsOpen(false)
+        closeFilter()
 
         if (date[0]) {
             urlSearchParams.set('min_date', date[0])
@@ -122,6 +122,7 @@ export const FilterForm = ({ className = '', isMap = false }) => {
     return (
         <form
             onSubmit={handleSubmit}
+            onInput={() => setHighlightSearchButton(true)}
             className={`${filterIsOpen ? 'open' : ''} max-w-[480px] ${className}`}>
             <div className="w-auto h-full p-2 overflow-y-auto pointer-events-auto bg-white-true">
                 <div className="flex justify-end w-full">
@@ -134,7 +135,7 @@ export const FilterForm = ({ className = '', isMap = false }) => {
                             Restablecer
                         </button>
                         <button
-                            className="button dark"
+                            className={`button ${highlightSearchButton ? 'dark' : ''}`}
                             type="button"
                             onClick={handleSubmit}>
                             Buscar

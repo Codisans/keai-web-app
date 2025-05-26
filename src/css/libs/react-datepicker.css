@@ -4,8 +4,8 @@
     --dp-cell-font-size: var(--text-md);
     --dp-heading-font-size: var(--text-sm);
 
-    --cell-width: 2.4rem;
-    --cell-height: 2.4rem;
+    --cell-width: 2.1rem;
+    --cell-height: 2.1rem;
     --dp-border-radius: 0.5rem;
 
     --dp-background-color: #f0f0f0;
@@ -13,6 +13,7 @@
     --dp-text-color: #000;
 
     --dp-month-button-color: transparent;
+    --dp-month-button-width: 1.8rem;
 
     --dp-border-color: #aeaeae;
 
@@ -32,6 +33,18 @@
     --dp-rgb-highlighted-color: 49.8551020408, 189.6448979592, 62.5632653061;
     --dp-rgb-holidays-color: 207, 82.9642857143, 0;
     --dp-overlay-background-color: #333;
+
+    @media (min-width: 370px) {
+        --cell-width: 2.2rem;
+        --cell-height: 2.2rem;
+        --dp-month-button-width: 1.9rem;
+    }
+
+    @media (min-width: 391px) {
+        --cell-width: 2.4rem;
+        --cell-height: 2.4rem;
+        --dp-month-button-width: 2rem;
+    }
 }
 
 .react-datepicker__navigation-icon::before,
@@ -100,7 +113,8 @@
     border-bottom: 1px solid var(--dp-border-color);
     border-top-left-radius: var(--dp-border-radius);
     padding: 8px 0;
-    margin: 0 2rem;
+    margin: 0 auto;
+    width: max-content;
     position: relative;
 }
 .react-datepicker__header--time {
@@ -159,7 +173,7 @@ h2.react-datepicker__current-month {
     padding: 0;
     border: none;
     z-index: 1;
-    width: 2rem;
+    width: var(--dp-month-button-width);
     text-indent: -999em;
     overflow: hidden;
     background-color: var(--dp-month-button-color);
