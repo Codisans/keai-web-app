@@ -91,7 +91,7 @@ export const EventDetail = ({ event }) => {
                     </li>
                     <li>
                         <a className='button-icon' href={`fb-messenger://share?link=${encodeURIComponent(window.location.href)}`}>
-                            <Symbol className="w-6 h-6" name="facebook" />
+                            <Symbol className="w-6 h-6" name="fb-messenger" />
                         </a>
                     </li>
                 </ul>
