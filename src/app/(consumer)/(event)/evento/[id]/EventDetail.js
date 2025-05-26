@@ -76,17 +76,25 @@ export const EventDetail = ({ event }) => {
                     }} />
             </div>
        
-            <div className='py-8 flex gap-x-2 justify-center items-center'>
-                <span>Compartir: </span>
-                <a className='button-icon' href={`whatsapp://send?text=${encodeURIComponent(window.location.href)}`}>
-                    <Symbol className="w-6 h-6" name="whatsapp" />
-                </a>
-                <a className='button-icon' href={`instagram://sharesheet?text=${encodeURIComponent(window.location.href)}`}>
-                    <Symbol className="w-6 h-6" name="instagram" />
-                </a>
-                <a className='button-icon' href={`fb-messenger://share?link=${encodeURIComponent(window.location.href)}`}>
-                    <Symbol className="w-6 h-6" name="facebook" />
-                </a>
+            <div className='py-8 flex flex-col gap-y-2 justify-center items-center tracking-widest typo-caps'>
+                <h2 className='text-sm font-bold'>Compartir</h2>
+                <ul className='flex gap-x-2 flex-row flex-nowrap'>
+                    <li>
+                        <a className='button-icon' href={`whatsapp://send?text=${encodeURIComponent(window.location.href)}`}>
+                            <Symbol className="w-6 h-6" name="whatsapp" />
+                        </a>
+                    </li>
+                    <li>
+                        <a className='button-icon' href={`instagram://sharesheet?text=${encodeURIComponent(window.location.href)}`}>
+                            <Symbol className="w-6 h-6" name="instagram" />
+                        </a>
+                    </li>
+                    <li>
+                        <a className='button-icon' href={`fb-messenger://share?link=${encodeURIComponent(window.location.href)}`}>
+                            <Symbol className="w-6 h-6" name="facebook" />
+                        </a>
+                    </li>
+                </ul>
             </div>
         </div>
     )
