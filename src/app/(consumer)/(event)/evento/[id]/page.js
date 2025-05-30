@@ -3,9 +3,17 @@ import { EventFooter } from './EventFooter'
 import { EventHeader } from './EventHeader'
 import api from '@/lib/api'
 
-export const metadata = {
-    title: 'KEAI | Evento',
-}
+export async function generateMetadata(
+    { params }
+  ) {
+    // read route params
+    const event = await api.getEvent(params.id)
+   
+    return {
+      title: `${event.name} | KEAI`,
+      description: event.description,
+    }
+  }
 
 const Event = async ({ params }) => {
     const event = await api.getEvent(params.id)
