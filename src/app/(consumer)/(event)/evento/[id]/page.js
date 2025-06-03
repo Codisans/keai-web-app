@@ -6,12 +6,28 @@ import api from '@/lib/api'
 export async function generateMetadata(
     { params }
   ) {
-    // read route params
     const event = await api.getEvent(params.id)
    
     return {
-      title: `${event.name} | KEAI`,
-      description: event.description,
+      title: `KEAI | ${event.name}`,
+      description: event.description?.slice(0, 155).concat('...'),
+      alternates: {
+        canonical: `https://keai.cl/evento/${event.id}`,
+      },
+      openGraph: {
+        title: `KEAI | ${event.name}`,
+        description: event.description?.slice(0, 155).concat('...'),
+        url: `https://keai.cl/evento/${event.id}`,
+        locale: 'es_CL',
+        type: 'website',
+        siteName: 'KEAI',
+        images: [{
+          url: event.cover,
+          width: 256,
+          height: 144,
+          alt: event.name,
+        }],
+      },
     }
   }
 
