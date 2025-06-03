@@ -70,7 +70,9 @@ export const EventCard = ({
                             <span className="text-orange">•</span>
                             <DateTime date={event.start_date} format="time" />
                         </div>
-                        <h3 className="typo-regular text-lg py-1.5 overflow-hidden text-ellipsis text-nowrap">{event.name}</h3>
+                        <h3 className="typo-regular text-lg py-1.5 overflow-hidden text-ellipsis text-nowrap">
+                            {event.name}
+                        </h3>
                         {showPrice && <p className="text-sm">${event.price}</p>}
                         {showTags && <EventTags tags={event.tags} />}
                     </div>
@@ -94,11 +96,11 @@ export const EventCard = ({
     }
 }
 
-export const EventTags = ({tags}) => {
-    if(!tags || tags.length == 0) return
+export const EventTags = ({ tags }) => {
+    if (!tags || tags.length == 0) return
 
-    const visibleTags = tags.splice(0, 2)
-    const hiddenTagCount = tags.splice(2).length
+    const visibleTags = tags.slice(0, 2)
+    const hiddenTagCount = tags.slice(2).length
 
     return (
         <ul className="flex flex-wrap gap-1">
@@ -107,7 +109,9 @@ export const EventTags = ({tags}) => {
                     {tag.name}
                 </li>
             ))}
-            {hiddenTagCount > 0 && <li className='tag-sm'>+{hiddenTagCount}</li>}
+            {hiddenTagCount > 0 && (
+                <li className="tag-sm">+{hiddenTagCount}</li>
+            )}
         </ul>
     )
 }
