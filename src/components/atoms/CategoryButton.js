@@ -1,15 +1,23 @@
-import { NavLink } from "./NavLink"
-import { Symbol } from "./Symbol"
+import { NavLink } from './NavLink'
+import { Symbol } from './Symbol'
 
 export const CategoryButton = ({ category, view = 'listing' }) => {
     const isMapView = view === 'map'
 
     return (
         <NavLink
-            pathname={category ? `/${isMapView ? 'mapa' : 'eventos'}/${category?.id}` : `/${isMapView ? 'mapa' : 'eventos'}`}
+            pathname={
+                category
+                    ? `/${isMapView ? 'mapa' : 'eventos'}/${category?.id}`
+                    : `/${isMapView ? 'mapa' : 'eventos'}`
+            }
             exactPath={true}
+            style={{ '--color-theme': category?.color }}
             className={`button-category theme--${category?.slug}`}>
-            <Symbol className="flex-none block w-4 h-4" name={category?.slug} />
+            <Symbol
+                className="flex-none block w-4 h-4"
+                name={category?.svg_identifier}
+            />
             <span>{category?.name || 'Todos'}</span>
         </NavLink>
     )

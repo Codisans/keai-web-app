@@ -3,15 +3,16 @@
 import { FreeMode } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Suspense } from 'react'
-import { _categories } from '@/constants/categories'
-import { CategoryButton, CategoryButtonFallback } from '@/components/atoms/CategoryButton'
+import {
+    CategoryButton,
+    CategoryButtonFallback,
+} from '@/components/atoms/CategoryButton'
+import { useApi } from '@/hooks/api'
 
-export const CategoryBar = ({ categories, view = 'listing' }) => {
+export const CategoryBar = ({ view = 'listing' }) => {
+    const { categories } = useApi()
+
     if (!categories) return null
-
-    const cateogryList = categories
-        ?.filter(c => Object.keys(_categories).includes(c.slug))
-        ?.sort((a, b) => _categories[a.slug].order - _categories[b.slug].order)
 
     return (
         <nav className="w-full py-2 pointer-events-auto">
@@ -26,7 +27,7 @@ export const CategoryBar = ({ categories, view = 'listing' }) => {
                         <CategoryButton view={view} />
                     </Suspense>
                 </SwiperSlide>
-                {cateogryList?.map((category, i) => (
+                {categories?.map((category, i) => (
                     <SwiperSlide key={i} style={{ width: 'max-content' }}>
                         <Suspense fallback={<CategoryButtonFallback />}>
                             <CategoryButton category={category} view={view} />
