@@ -99,8 +99,8 @@ export const EventCard = ({
 export const EventTags = ({ tags }) => {
     if (!tags || tags.length == 0) return
 
-    const visibleTags = tags.slice(0, 2)
-    const hiddenTagCount = tags.slice(2).length
+    const visibleTags = tags.slice(0, 4)
+    const hiddenTagCount = tags.slice(4).length
 
     return (
         <ul className="flex flex-wrap gap-1">
