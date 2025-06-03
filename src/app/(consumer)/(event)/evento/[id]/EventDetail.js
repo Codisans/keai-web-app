@@ -2,7 +2,7 @@
 import { ConsumerContext } from '@/app/(consumer)/ConsumerContext'
 import { DateTime } from '@/components/atoms/DateTime'
 import { Logo } from '@/components/atoms/Logo'
-import { Symbol } from '@/components/atoms/Symbol'
+import { ShareLinks } from './ShareLinks'
 import Link from 'next/link'
 import { useContext, useEffect } from 'react'
 
@@ -21,7 +21,7 @@ export const EventDetail = ({ event }) => {
             <div className="flex flex-col-reverse">
                 <h1 className="text-xl font-medium px-gutter">{event.name}</h1>
                 <ul className="pb-3 uppercase typo-body text-grey flex gap-1.5 flex-wrap">
-                    {isFree && <li className='tag-lg bg-orange'>Gratis</li>}
+                    {isFree && <li className="tag-lg bg-orange">Gratis</li>}
                     {event.categories.map((c, i) => (
                         <li className={`tag-lg bg-orange`} key={i}>
                             {c.name}
@@ -41,7 +41,7 @@ export const EventDetail = ({ event }) => {
                 </div>
             </div>
 
-            <section className='bg-white text-black border border-gray-300 rounded-2xl overflow-hidden mt-4'>
+            <section className="bg-white text-black border border-gray-300 rounded-2xl overflow-hidden mt-4">
                 <div className="typo-date font-medium text-md flex flex-row items-center gap-4 px-4 py-2 border-b border-gray-300">
                     <DateTime
                         className="block"
@@ -57,45 +57,33 @@ export const EventDetail = ({ event }) => {
                 </div>
                 <div className="flex flex-row gap-x-4 px-4 py-2">
                     <div className="inline-block my-auto">
-                        <div className='inline'
+                        <div
+                            className="inline"
                             dangerouslySetInnerHTML={{
                                 __html: event.formatted_address,
                             }}
-                            />
+                        />
                     </div>
-                    <Link href={`/mapa/#${event.id}`} className='ml-auto relative flex flex-col gap-y-1 items-center justify-center w-min'>
+                    <Link
+                        href={`/mapa/#${event.id}`}
+                        className="ml-auto relative flex flex-col gap-y-1 items-center justify-center w-min">
                         <Logo className="text-h1 mt-1" type="logotype" />
-                        <span className='font-bold text-xs typo-caps leading-tight'>Mapa</span>
+                        <span className="font-bold text-xs typo-caps leading-tight">
+                            Mapa
+                        </span>
                     </Link>
                 </div>
             </section>
 
             <div className="flex flex-col gap-y-4 pt-8">
-                <div dangerouslySetInnerHTML={{
+                <div
+                    dangerouslySetInnerHTML={{
                         __html: event.description,
-                    }} />
+                    }}
+                />
             </div>
-       
-            <div className='py-8 flex flex-col gap-y-2 justify-center items-center tracking-widest typo-caps'>
-                <h2 className='text-sm font-bold'>Compartir</h2>
-                <ul className='flex gap-x-2 flex-row flex-nowrap'>
-                    <li>
-                        <a className='button-icon' href={`whatsapp://send?text=${encodeURIComponent(window.location.href)}`}>
-                            <Symbol className="w-6 h-6" name="whatsapp" />
-                        </a>
-                    </li>
-                    <li>
-                        <a className='button-icon' href={`instagram://sharesheet?text=${encodeURIComponent(window.location.href)}`}>
-                            <Symbol className="w-6 h-6" name="instagram" />
-                        </a>
-                    </li>
-                    <li>
-                        <a className='button-icon' href={`fb-messenger://share?link=${encodeURIComponent(window.location.href)}`}>
-                            <Symbol className="w-6 h-6" name="fb-messenger" />
-                        </a>
-                    </li>
-                </ul>
-            </div>
+
+            <ShareLinks event={event} />
         </div>
     )
 }
