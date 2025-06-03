@@ -15,19 +15,21 @@ import { getDateObject } from '@/utils/getDateObject'
 export const defaultMapDate = () => {
     return [
         moment().format('YYYY-MM-DD'),
-        moment().add(4, "days").format('YYYY-MM-DD'),
+        moment().add(4, 'days').format('YYYY-MM-DD'),
     ]
 }
 
 export const defaultListDate = () => {
-    return [
-        moment().format('YYYY-MM-DD'),
-        null
-    ]
+    return [moment().format('YYYY-MM-DD'), null]
 }
 
 export const FilterForm = ({ className = '', isMap = false }) => {
-    const { filterIsOpen, closeFilter, highlightSearchButton, setHighlightSearchButton } = useConsumerContext()
+    const {
+        filterIsOpen,
+        closeFilter,
+        highlightSearchButton,
+        setHighlightSearchButton,
+    } = useConsumerContext()
     const { tags } = useConsumerContext()
     const router = useRouter()
     const pathname = usePathname()
@@ -96,7 +98,10 @@ export const FilterForm = ({ className = '', isMap = false }) => {
             })
         }
 
-        if(urlSearchParams.size == 1 && urlSearchParams.get('min_date') == today) {
+        if (
+            urlSearchParams.size == 1 &&
+            urlSearchParams.get('min_date') == today
+        ) {
             router.push(pathname)
         } else {
             router.push(`${pathname}?${urlSearchParams.toString()}`)
@@ -124,8 +129,8 @@ export const FilterForm = ({ className = '', isMap = false }) => {
             onSubmit={handleSubmit}
             onInput={() => setHighlightSearchButton(true)}
             className={`${filterIsOpen ? 'open' : ''} max-w-[480px] ${className}`}>
-            <div className="w-auto h-full p-2 overflow-y-auto pointer-events-auto bg-white-true">
-                <div className="flex justify-end w-full">
+            <div className="w-auto h-full px-2 pb-4 overflow-y-auto pointer-events-auto bg-white-true">
+                <div className="flex justify-end w-full sticky z-30 top-0 bg-white-true py-2">
                     <h2 className="sr-only">Filtros:</h2>
                     <div className="flex gap-2">
                         <button
@@ -142,7 +147,7 @@ export const FilterForm = ({ className = '', isMap = false }) => {
                         </button>
                     </div>
                 </div>
-                <div className="w-full flex flex-col mt-2">
+                <div className="w-full flex flex-col">
                     <FilterSection>
                         <DateRadio
                             date={date}
@@ -155,13 +160,11 @@ export const FilterForm = ({ className = '', isMap = false }) => {
                             showDatePicker={showDatePicker}
                             setShowDatePicker={setShowDatePicker}
                         />
-             
+
                         <div className="max-w-full mx-auto pt-2 flex flex-col gap-y-2">
                             <button
                                 className={`button-radio w-full ${
-                                    showDatePicker
-                                        ? 'selected'
-                                        : ''
+                                    showDatePicker ? 'selected' : ''
                                 }`}
                                 type="button"
                                 disabled={showDatePicker}
@@ -192,8 +195,7 @@ export const FilterForm = ({ className = '', isMap = false }) => {
                         />
                     </FilterSection>
 
-                    <FilterSection
-                        legend="Precio">
+                    <FilterSection legend="Precio">
                         <PriceRadio
                             priceValue={priceValue}
                             setPriceValue={setPriceValue}
