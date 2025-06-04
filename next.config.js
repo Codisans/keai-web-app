@@ -16,10 +16,6 @@ module.exports = {
                         key: 'Referrer-Policy',
                         value: 'strict-origin-when-cross-origin',
                     },
-                    {
-                        key: 'Content-Security-Policy',
-                        value: "default-src 'self'; script-src 'self'; img-src 'self' https://api.keai.cl https://api.keai.cl/storage data: blob:;",
-                    },
                 ],
             },
             {
@@ -33,6 +29,23 @@ module.exports = {
                         key: 'Cache-Control',
                         value: 'no-cache, no-store, must-revalidate',
                     },
+                    {
+                        key: 'Content-Security-Policy',
+                        value: "default-src 'self'; script-src 'self'; img-src 'self' https://api.keai.cl https://api.keai.cl/storage data: blob:;",
+                    },
+                ],
+            },
+            {
+                source: '/(.css)',
+                headers: [
+                    {
+                        key: 'Content-Type',
+                        value: 'text/css; charset=utf-8',
+                    },
+                    // {
+                    //     key: 'Cache-Control',
+                    //     value: 'no-cache, no-store, must-revalidate',
+                    // },
                     {
                         key: 'Content-Security-Policy',
                         value: "default-src 'self'; script-src 'self'; img-src 'self' https://api.keai.cl https://api.keai.cl/storage data: blob:;",
