@@ -1,0 +1,6 @@
+@utility mask-icon {
+    mask-image: var(--mask-image-url);
+    mask-size: contain;
+    mask-position: center;
+    mask-repeat: no-repeat;
+}

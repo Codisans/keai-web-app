@@ -15,13 +15,16 @@ export const CategoryButton = ({ category, view = 'listing' }) => {
             style={{ '--color-theme': category?.color }}
             className={`button-category theme--${category?.slug}`}>
             {category?.svg_identifier ? (
-                <img
-                    className="w-4 h-4"
-                    src={category?.svg_identifier}
-                    alt={category.slug}
-                />
+                <span
+                    className="inline-block w-4 h-4 bg-theme mask-icon"
+                    style={{
+                        '--mask-image-url': `url(${category?.svg_identifier})`,
+                    }}></span>
             ) : (
-                <Symbol className="flex-none block w-4 h-4" name="logotype" />
+                <Symbol
+                    className="flex-none block w-4 h-4 text-white"
+                    name="logotype"
+                />
             )}
             <span>{category?.name || 'Todos'}</span>
         </NavLink>
