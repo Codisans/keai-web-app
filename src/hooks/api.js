@@ -52,6 +52,7 @@ export const useApi = () => {
         const maxDate = searchParams.get('max_date')
         const minPrice = searchParams.get('min_price')
         const maxPrice = searchParams.get('max_price')
+        const keywords = searchParams.get('keywords')
 
         return await events?.filter(event => {
             if (
@@ -76,6 +77,15 @@ export const useApi = () => {
             if (minPrice && !(Number(event.price) >= Number(minPrice)))
                 return false
             if (maxPrice && !(Number(event.price) <= Number(maxPrice)))
+                return false
+            const eventDataString = JSON.stringify(event).toLowerCase()
+            if (
+                keywords &&
+                !keywords
+                    .toLowerCase()
+                    .split(' ')
+                    .some(w => eventDataString.includes(w))
+            )
                 return false
             return true
         })
