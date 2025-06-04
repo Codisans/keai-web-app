@@ -14,10 +14,15 @@ export const CategoryButton = ({ category, view = 'listing' }) => {
             exactPath={true}
             style={{ '--color-theme': category?.color }}
             className={`button-category theme--${category?.slug}`}>
-            <Symbol
-                className="flex-none block w-4 h-4"
-                name={category?.svg_identifier}
-            />
+            {category?.svg_identifier ? (
+                <img
+                    className="w-4 h-4"
+                    src={category?.svg_identifier}
+                    alt={category.slug}
+                />
+            ) : (
+                <Symbol className="flex-none block w-4 h-4" name="logotype" />
+            )}
             <span>{category?.name || 'Todos'}</span>
         </NavLink>
     )
