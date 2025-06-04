@@ -1,4 +1,7 @@
 module.exports = {
+    images: {
+        domains: ['api.keai.cl'],
+    },
     async headers() {
         return [
             {
@@ -42,10 +45,10 @@ module.exports = {
                         key: 'Content-Type',
                         value: 'text/css; charset=utf-8',
                     },
-                    // {
-                    //     key: 'Cache-Control',
-                    //     value: 'no-cache, no-store, must-revalidate',
-                    // },
+                    {
+                        key: 'Cache-Control',
+                        value: 'no-cache, no-store, must-revalidate',
+                    },
                     {
                         key: 'Content-Security-Policy',
                         value: "default-src 'self'; script-src 'self'; img-src 'self' https://api.keai.cl https://api.keai.cl/storage data: blob:;",
