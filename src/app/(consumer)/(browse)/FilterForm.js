@@ -11,6 +11,7 @@ import { useSearchParams } from 'next/navigation'
 import { useConsumerContext } from '@/app/(consumer)/ConsumerContext'
 import { CustomDatePicker } from './CustomDatePicker'
 import { getDateObject } from '@/utils/getDateObject'
+import { useApi } from '@/hooks/api'
 
 export const defaultMapDate = () => {
     return [
@@ -30,7 +31,7 @@ export const FilterForm = ({ className = '', isMap = false }) => {
         highlightSearchButton,
         setHighlightSearchButton,
     } = useConsumerContext()
-    const { tags } = useConsumerContext()
+    const { tags } = useApi()
     const router = useRouter()
     const pathname = usePathname()
     const searchParams = useSearchParams()
@@ -64,6 +65,7 @@ export const FilterForm = ({ className = '', isMap = false }) => {
     const handleSubmit = e => {
         const urlSearchParams = new URLSearchParams(searchParams)
         e?.preventDefault()
+        console.log(selectedTags)
         closeFilter()
 
         if (date[0]) {
@@ -94,7 +96,7 @@ export const FilterForm = ({ className = '', isMap = false }) => {
 
         if (selectedTags?.length > 0) {
             selectedTags.forEach(tag => {
-                urlSearchParams.set('tags[]', tag.id)
+                urlSearchParams.append('tags[]', tag.id)
             })
         }
 

@@ -10,7 +10,7 @@ export default function TagsAutocomplete({
     return (
         <Autocomplete
             multiple
-            options={tags}
+            options={tags ?? []}
             getOptionLabel={tag => tag.name}
             filterSelectedOptions
             value={selectedTags}
