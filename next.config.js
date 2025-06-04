@@ -31,7 +31,7 @@ module.exports = {
                     },
                     {
                         key: 'Content-Security-Policy',
-                        value: "default-src 'self'; script-src 'self'",
+                        value: "default-src 'self'; script-src 'self'; img-src 'self' https://api.keai.cl https://api.keai.cl/storage data: blob:;",
                     },
                 ],
             },
