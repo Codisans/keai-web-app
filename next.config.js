@@ -34,7 +34,7 @@ module.exports = {
                     },
                     {
                         key: 'Content-Security-Policy',
-                        value: "default-src 'self'; script-src 'self'; img-src 'self' https://api.keai.cl https://api.keai.cl/storage data: blob:;",
+                        value: "default-src 'self'; script-src 'self';",
                     },
                 ],
             },
@@ -43,7 +43,7 @@ module.exports = {
                 headers: [
                     {
                         key: 'Content-Type',
-                        value: 'text/css; charset=utf-8',
+                        value: 'text/css; image/svg+xml; image/png; charset=utf-8',
                     },
                     {
                         key: 'Cache-Control',
@@ -51,7 +51,7 @@ module.exports = {
                     },
                     {
                         key: 'Content-Security-Policy',
-                        value: "default-src 'self'; script-src 'self'; img-src 'self' https://api.keai.cl https://api.keai.cl/storage data: blob:;",
+                        value: "default-src 'self'; script-src 'self'; img-src 'self' https://api.keai.cl;",
                     },
                 ],
             },
