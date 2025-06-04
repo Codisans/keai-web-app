@@ -9,14 +9,14 @@
 
 @theme {
     --font-tenorite: 'Tenorite', sans-serif;
-    --font-sans: var(--google-font-sans, sans-serif);
+    --font-sans: 'open-sans', sans-serif;
     --text-h1: 2.5rem;
     --text-h2: 2rem;
     --text-h3: 1.5rem;
     --text-h4: 1.25rem;
     --text-h5: 1.15rem;
     --text-body: 1.25rem;
-    
+
     --text-xl: 1.5rem;
     --text-xl--line-height: 1.2;
 
@@ -48,7 +48,7 @@
 @utility typo-date {
     @apply font-sans font-medium uppercase tracking-wide;
 }
-  
+
 @utility typo-tag {
     @apply font-sans uppercase;
 }

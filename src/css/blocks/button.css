@@ -1,6 +1,6 @@
 @utility button-base {
     @apply border inline-flex typo-button justify-center gap-2 items-center h-10 px-3.5 rounded-button cursor-pointer;
-    
+
     @apply bg-white-true hover:bg-gray-100  border-gray-300 text-black;
     @apply current:bg-orange current:border-orange current:text-black current:hover:bg-orange-light;
     @apply selected:bg-orange selected:border-orange selected:text-black selected:hover:bg-orange-light;
@@ -32,13 +32,13 @@
     }
 
     .button-category {
-        @apply button-base text-xs h-10 font-semibold current:hover:bg-theme/90 current:text-theme-contrast current:border-theme current:bg-theme current:[&_svg]:text-theme-contrast [&_svg]:text-theme text-black rounded bg-white-true px-3.5;
+        @apply button-base text-xs h-10 current:hover:bg-theme/90 current:text-theme-contrast current:border-theme current:bg-theme current:[&_svg]:text-theme-contrast [&_svg]:text-theme text-black rounded bg-white-true px-3.5;
     }
 
     .button-radio {
         @apply button-base w-full text-xs typo-button px-1 h-8 bg-white border-gray-300 text-black;
     }
-    
+
     .button-edit {
         @apply bg-black text-white inline-flex justify-center gap-2 items-center py-1 px-1.5 text-sm rounded-button cursor-pointer;
     }

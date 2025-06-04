@@ -2,19 +2,10 @@ import '@/css/main.css'
 import { AppContextProvider } from './AppContext'
 import { GoogleAnalytics } from '@next/third-parties/google'
 import { Analytics } from '@vercel/analytics/react'
-import { Open_Sans } from 'next/font/google'
- 
-const openSans = Open_Sans({
-    subsets: ['latin'],
-    weight: ['300', '400', '600'],
-    preload: true,
-    display: 'swap',
-    variable: '--google-font-sans',
-})
 
 const RootLayout = ({ children }) => {
     return (
-        <html className={`${openSans.className} select-none overscroll-none`} style={{ "--google-font-sans": openSans.style.fontFamily }} lang="es">
+        <html className="select-none overscroll-none" lang="es">
             <head>
                 <link
                     rel="icon"
@@ -31,6 +22,10 @@ const RootLayout = ({ children }) => {
                 />
                 <meta name="apple-mobile-web-app-title" content="KEAI" />
                 <link rel="manifest" href="/site.webmanifest" />
+                <link
+                    rel="stylesheet"
+                    href="https://use.typekit.net/scs5wvk.css"
+                />
             </head>
             <body className="bg-white font-sans overscroll-none min-h-svh">
                 <AppContextProvider>{children}</AppContextProvider>
