@@ -16,7 +16,7 @@ export const CategoryButton = ({ category, view = 'listing' }) => {
             className={`button-category theme--${category?.slug}`}>
             {category?.svg_identifier ? (
                 <span
-                    className="inline-block w-4 h-4 bg-theme current:bg-theme-contrast mask-icon"
+                    className="inline-block w-4 h-4 bg-theme current:bg-white mask-icon"
                     style={{
                         '--mask-image-url': `url(${category?.svg_identifier})`,
                     }}></span>
