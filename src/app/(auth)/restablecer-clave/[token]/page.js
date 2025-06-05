@@ -1,12 +1,10 @@
 'use client'
 
-import Input from '@/components/atoms/Input'
-import InputError from '@/components/atoms/InputError'
-import Label from '@/components/atoms/Label'
 import { useAuth } from '@/hooks/auth'
 import { useEffect, useState } from 'react'
 import { useSearchParams } from 'next/navigation'
 import AuthSessionStatus from '@/app/(auth)/AuthSessionStatus'
+import { FormField } from '@/components/molecules/FormField'
 
 const PasswordReset = () => {
     const searchParams = useSearchParams()
@@ -20,6 +18,7 @@ const PasswordReset = () => {
     const [status, setStatus] = useState(null)
 
     const submitForm = event => {
+        console.log(errors)
         event.preventDefault()
 
         resetPassword({
@@ -36,73 +35,51 @@ const PasswordReset = () => {
     }, [searchParams.get('email')])
 
     return (
-        <>
+        <div className="flex flex-col gap-8">
             {/* Session Status */}
             <AuthSessionStatus className="mb-4" status={status} />
 
-            <form onSubmit={submitForm}>
+            <form className="flex flex-col gap-4" onSubmit={submitForm}>
                 {/* Email Address */}
-                <div>
-                    <Label htmlFor="email">Email</Label>
-
-                    <Input
-                        id="email"
-                        type="email"
-                        value={email}
-                        className="block mt-1 w-full"
-                        onChange={event => setEmail(event.target.value)}
-                        required
-                        autoFocus
-                    />
-
-                    <InputError messages={errors.email} className="mt-2" />
-                </div>
+                <FormField
+                    label="Correo"
+                    name="email"
+                    type="email"
+                    value={email}
+                    onChange={event => setEmail(event.target.value)}
+                    required
+                    autoFocus
+                />
 
                 {/* Password */}
-                <div className="mt-4">
-                    <Label htmlFor="password">Password</Label>
-                    <Input
-                        id="password"
-                        type="password"
-                        value={password}
-                        className="block mt-1 w-full"
-                        onChange={event => setPassword(event.target.value)}
-                        required
-                    />
-
-                    <InputError messages={errors.password} className="mt-2" />
-                </div>
+                <FormField
+                    label="Clave"
+                    name="password"
+                    type="password"
+                    value={password}
+                    onChange={event => setPassword(event.target.value)}
+                    required
+                />
 
                 {/* Confirm Password */}
-                <div className="mt-4">
-                    <Label htmlFor="passwordConfirmation">
-                        Confirm Password
-                    </Label>
+                <FormField
+                    label="Confirmar clave"
+                    name="passwordConfirmation"
+                    type="password"
+                    value={passwordConfirmation}
+                    onChange={event =>
+                        setPasswordConfirmation(event.target.value)
+                    }
+                    required
+                />
 
-                    <Input
-                        id="passwordConfirmation"
-                        type="password"
-                        value={passwordConfirmation}
-                        className="block mt-1 w-full"
-                        onChange={event =>
-                            setPasswordConfirmation(event.target.value)
-                        }
-                        required
-                    />
-
-                    <InputError
-                        messages={errors.password_confirmation}
-                        className="mt-2"
-                    />
-                </div>
-
-                <div className="flex items-center justify-end mt-4">
-                    <button className="button" type="submit">
-                        Reset Password
+                <div className="flex justify-end gap-4">
+                    <button className="button dark" type="submit">
+                        Restablecer clave
                     </button>
                 </div>
             </form>
-        </>
+        </div>
     )
 }
 

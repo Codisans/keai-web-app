@@ -1,11 +1,9 @@
 'use client'
 
-import Input from '@/components/atoms/Input'
-import InputError from '@/components/atoms/InputError'
-import Label from '@/components/atoms/Label'
 import { useAuth } from '@/hooks/auth'
 import { useState } from 'react'
-import { TextLink } from '@/components/atoms/TextLink'
+import { FormField } from '@/components/molecules/FormField'
+import Link from 'next/link'
 
 const Page = () => {
     const { register } = useAuth({
@@ -17,10 +15,11 @@ const Page = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [passwordConfirmation, setPasswordConfirmation] = useState('')
-    const [accountType, setAccountType] = useState('app_user')
-    const [errors, setErrors] = useState([])
+    // const [accountType, setAccountType] = useState('app_user')
+    // const [errors, setErrors] = useState([])
 
     const submitForm = event => {
+        console.log(errors)
         event.preventDefault()
 
         register({
@@ -33,118 +32,61 @@ const Page = () => {
     }
 
     return (
-        <form onSubmit={submitForm}>
-            {/* Name */}
-            <div>
-                <Label htmlFor="name">Nombre</Label>
-
-                <Input
-                    id="name"
-                    type="text"
-                    value={name}
-                    className="block mt-1 w-full"
-                    onChange={event => setName(event.target.value)}
-                    required
-                    autoFocus
-                />
-
-                <InputError messages={errors.name} className="mt-2" />
+        <form className="flex flex-col gap-4" onSubmit={submitForm}>
+            <div className="flex flex-row items-center justify-end gap-4">
+                <span className="text-sm">Ya tienes una cuenta?</span>
+                <Link className="button alt" href="/entrar">
+                    Entrar
+                </Link>
             </div>
+            {/* Name */}
+            <FormField
+                label="Nombre"
+                name="name"
+                type="text"
+                value={name}
+                onChange={event => setName(event.target.value)}
+                required
+                autoFocus
+            />
 
             {/* Email Address */}
-            <div className="mt-4">
-                <Label htmlFor="email">Correo</Label>
-
-                <Input
-                    id="email"
-                    type="email"
-                    value={email}
-                    className="block mt-1 w-full"
-                    onChange={event => setEmail(event.target.value)}
-                    required
-                />
-
-                <InputError messages={errors.email} className="mt-2" />
-            </div>
+            <FormField
+                label="Correo"
+                name="email"
+                type="email"
+                value={email}
+                onChange={event => setEmail(event.target.value)}
+                required
+            />
 
             {/* Password */}
-            <div className="mt-4">
-                <Label htmlFor="password">Clave</Label>
-
-                <Input
-                    id="password"
-                    type="password"
-                    value={password}
-                    className="block mt-1 w-full"
-                    onChange={event => setPassword(event.target.value)}
-                    required
-                    autoComplete="new-password"
-                />
-
-                <InputError messages={errors.password} className="mt-2" />
-            </div>
+            <FormField
+                label="Clave"
+                name="password"
+                type="password"
+                value={password}
+                onChange={event => setPassword(event.target.value)}
+                required
+                autoComplete="new-password"
+            />
 
             {/* Confirm Password */}
-            <div className="mt-4">
-                <Label htmlFor="passwordConfirmation">Confirmar clave</Label>
+            <FormField
+                label="Confirmar clave"
+                name="passwordConfirmation"
+                type="password"
+                value={passwordConfirmation}
+                onChange={event => setPasswordConfirmation(event.target.value)}
+                required
+            />
 
-                <Input
-                    id="passwordConfirmation"
-                    type="password"
-                    value={passwordConfirmation}
-                    className="block mt-1 w-full"
-                    onChange={event =>
-                        setPasswordConfirmation(event.target.value)
-                    }
-                    required
-                />
-
-                <InputError
-                    messages={errors.password_confirmation}
-                    className="mt-2"
-                />
-            </div>
-
-            {/* Account type */}
-            <div className="mt-4 flex gap-grid">
-                <div>
-                    <Input
-                        className="hidden peer"
-                        id="consumer"
-                        value="app_user"
-                        name="account-type"
-                        onChange={event => setAccountType(event.target.value)}
-                        type="radio"
-                        checked={accountType == 'app_user'}
-                    />
-                    <Label
-                        className="inline-flex justify-center items-center text-button px-3 h-10 rounded-button bg-white border border-grey text-black peer-checked:bg-black/10"
-                        htmlFor="consumer">
-                        Consumidor
-                    </Label>
-                </div>
-                <div>
-                    <Input
-                        className="hidden peer"
-                        id="event_admin"
-                        value="event_admin"
-                        name="account-type"
-                        onChange={event => setAccountType(event.target.value)}
-                        type="radio"
-                        checked={accountType == 'event_admin'}
-                    />
-                    <Label
-                        className="inline-flex justify-center items-center text-button px-3 h-10 rounded-button bg-white border border-grey text-black peer-checked:bg-black/10"
-                        htmlFor="event_admin">
-                        Administrador
-                    </Label>
-                </div>
-            </div>
-
-            <div className="flex items-center justify-end mt-4 gap-4">
-                <TextLink href="/entrar">Ya tienes una cuenta?</TextLink>
-                <button className="button" type="submit">
-                    Crear
+            <div className="flex items-center justify-end gap-4">
+                {/* <Link className="text-sm underline-out" href="/entrar">
+                    Ya tienes una cuenta?
+                </Link> */}
+                <button className="button dark" type="submit">
+                    Crear cuenta
                 </button>
             </div>
         </form>

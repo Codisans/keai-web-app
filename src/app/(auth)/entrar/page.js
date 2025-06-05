@@ -1,14 +1,12 @@
 'use client'
 
-import InputError from '@/components/atoms/InputError'
-import Label from '@/components/atoms/Label'
 import { useAuth } from '@/hooks/auth'
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import AuthSessionStatus from '@/app/(auth)/AuthSessionStatus'
-import { TextLink } from '@/components/atoms/TextLink'
 import DataUsageIcon from '@mui/icons-material/DataUsage'
 import Link from 'next/link'
+import { FormField } from '@/components/molecules/FormField'
 
 const Login = () => {
     const router = useRouter()
@@ -49,44 +47,42 @@ const Login = () => {
     }
 
     return (
-        <form className="w-full" onSubmit={submitForm}>
+        <form className="w-full flex flex-col gap-4" onSubmit={submitForm}>
             <AuthSessionStatus className="py-grid-gap" status={status} />
-            {/* Email Address */}
-            <div className={`pb-4 ${errors.email ? 'error' : ''}`}>
-                <Label htmlFor="email">Correo</Label>
 
-                <input
-                    id="email"
-                    type="email"
-                    value={email}
-                    className="form-input w-full"
-                    onChange={event => setEmail(event.target.value)}
-                    required
-                    autoFocus
-                />
-
-                <InputError messages={errors.email} className="mt-2" />
+            <div className="flex flex-row items-center justify-end gap-4">
+                <span className="text-sm">No tienes cuenta?</span>
+                <Link className="button alt" href="/crear-cuenta">
+                    Crear cuenta
+                </Link>
             </div>
+
+            {/* Email Address */}
+            <FormField
+                label="Correo"
+                name="email"
+                type="email"
+                value={email}
+                onChange={event => setEmail(event.target.value)}
+                error={errors.email}
+                required
+                autoFocus
+            />
 
             {/* Password */}
-            <div className={`pb-4 ${errors.password ? 'error' : ''}`}>
-                <Label htmlFor="password">Clave</Label>
-
-                <input
-                    id="password"
-                    type="password"
-                    value={password}
-                    className="form-input w-full"
-                    onChange={event => setPassword(event.target.value)}
-                    required
-                    autoComplete="current-password"
-                />
-
-                <InputError messages={errors.password} className="mt-2" />
-            </div>
+            <FormField
+                label="Clave"
+                name="password"
+                type="password"
+                value={password}
+                onChange={event => setPassword(event.target.value)}
+                error={errors.password}
+                required
+                autoComplete="current-password"
+            />
 
             {/* Remember Me */}
-            <div className="block pb-4">
+            <div className="block">
                 <label
                     htmlFor="remember_me"
                     className="inline-flex items-center">
@@ -104,20 +100,17 @@ const Login = () => {
                 </label>
             </div>
 
-            <div className="flex flex-col items-center gap-4 dark">
-                <button
-                    className="w-18 flex justify-center items-center hover:text-orange button"
-                    type="submit">
+            <div className="flex flex-row items-center justify-end gap-4">
+                <Link className="text-sm underline-out" href="/recuperar-clave">
+                    Recuperar clave
+                </Link>
+                <button className="button dark" type="submit">
                     {isLoading ? (
                         <DataUsageIcon className="h-[1em] w-[1em] animate-spin text-grey" />
                     ) : (
                         <span>Entrar</span>
                     )}
                 </button>
-                <TextLink href="/recuperar-clave">Recuperar clave</TextLink>
-                <Link className="button bg-orange text-black" href="/crear-cuenta">
-                    Crear cuenta
-                </Link>
             </div>
         </form>
     )
