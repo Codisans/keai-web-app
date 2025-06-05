@@ -20,17 +20,13 @@ export const EventListing = ({ searchParams }) => {
     }
 
     if (Object.keys(searchParams)?.length != 0)
-        return (
-            <div className="w-full py-8 flex flex-col gap-y-gutter">
-                <EventResults searchParams={urlSearchParams} />
-            </div>
-        )
+        return <EventResults searchParams={urlSearchParams} />
 
     return (
         <div className="w-full py-8 flex flex-col gap-y-6">
             <ReccomendedEvents />
             <UpcomingEvents />
-            
+
             {categories?.map((category, i) => (
                 <CategoryEvents key={i} category={category} />
             ))}
