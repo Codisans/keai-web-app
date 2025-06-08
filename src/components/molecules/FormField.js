@@ -8,6 +8,7 @@ export const FormField = ({
     value,
     onChange,
     error,
+    options,
     ...props
 }) => {
     return (
@@ -16,14 +17,54 @@ export const FormField = ({
             <label className="typo-body text-xs" htmlFor={name}>
                 {label}
             </label>
-            <input
-                className="w-full form-input"
+            <FormInput
                 id={name}
                 value={value}
                 onChange={onChange}
                 type={type}
+                options={options}
                 {...props}
             />
         </div>
     )
+}
+
+export const FormInput = ({
+    className = '',
+    type = 'text',
+    label,
+    name,
+    value,
+    onChange,
+    error,
+    options,
+    ...props
+}) => {
+    switch (type) {
+        case 'select':
+            return (
+                <select
+                    className="w-full form-select"
+                    id={name}
+                    value={value}
+                    onChange={onChange}>
+                    {options.map(option => (
+                        <option key={option.value} value={option.value}>
+                            {option.label}
+                        </option>
+                    ))}
+                </select>
+            )
+        default:
+            return (
+                <input
+                    className="w-full form-input"
+                    id={name}
+                    value={value}
+                    onChange={onChange}
+                    type={type}
+                    {...props}
+                />
+            )
+    }
 }
