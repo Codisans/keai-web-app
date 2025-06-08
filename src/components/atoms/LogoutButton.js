@@ -7,9 +7,9 @@ export const LogoutButton = ({ className = '' }) => {
     const { logout } = useAuth()
 
     return (
-        <button className={`button ${className}`} onClick={logout}>
+        <button className={`button-icon ${className}`} onClick={logout}>
             <LogoutIcon />
-            <span className="sr-only">Cerrar session</span>
+            <span>Cerrar session</span>
         </button>
     )
 }

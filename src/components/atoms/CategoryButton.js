@@ -21,9 +21,14 @@ export const CategoryButton = ({ category, view = 'listing' }) => {
                         '--mask-image-url': `url(${category?.svg_identifier})`,
                     }}></span>
             ) : (
-                <Symbol className="flex-none block w-4 h-4" name="logotype" />
+                <Symbol
+                    className="flex-none block w-4 h-4 current:text-white"
+                    name="logotype"
+                />
             )}
-            <span>{category?.name || 'Todos'}</span>
+            <span className="current:text-white">
+                {category?.name || 'Todos'}
+            </span>
         </NavLink>
     )
 }
