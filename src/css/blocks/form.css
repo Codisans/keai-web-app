@@ -1,3 +1,7 @@
 .form-input {
     @apply bg-white-true py-2 px-3 rounded-button border border-grey error:border-error;
 }
+
+.form-select {
+    @apply bg-white-true py-2 px-3 rounded-button border border-grey error:border-error;
+}

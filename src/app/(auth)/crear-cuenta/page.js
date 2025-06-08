@@ -15,6 +15,8 @@ const Page = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [passwordConfirmation, setPasswordConfirmation] = useState('')
+    const [dob, setDob] = useState('')
+    const [gender, setGender] = useState('')
     const [errors, setErrors] = useState([])
 
     const submitForm = event => {
@@ -49,6 +51,32 @@ const Page = () => {
                 autoFocus
             />
 
+            {/* Gender */}
+            <FormField
+                label="Genero"
+                name="gender"
+                type="select"
+                options={[
+                    { value: '', label: '-- Selecciona --' },
+                    { value: 'male', label: 'Masculino' },
+                    { value: 'female', label: 'Femenino' },
+                    { value: 'other', label: 'Otro' },
+                ]}
+                value={gender}
+                onChange={event => setGender(event.target.value)}
+                required
+            />
+
+            {/* Date of Birth */}
+            <FormField
+                label="Fecha de nacimiento"
+                name="dob"
+                type="date"
+                value={dob}
+                onChange={event => setDob(event.target.value)}
+                required
+            />
+
             {/* Email Address */}
             <FormField
                 label="Correo"
@@ -79,6 +107,8 @@ const Page = () => {
                 onChange={event => setPasswordConfirmation(event.target.value)}
                 required
             />
+
+            <input type="hidden" name="role" value="app_user" />
 
             <div className="flex items-center justify-end gap-4">
                 {/* <Link className="text-sm underline-out" href="/entrar">
