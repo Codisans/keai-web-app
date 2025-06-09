@@ -30,13 +30,10 @@ export const FormField = ({
 }
 
 export const FormInput = ({
-    className = '',
     type = 'text',
-    label,
     name,
     value,
     onChange,
-    error,
     options,
     ...props
 }) => {
