@@ -8,7 +8,7 @@ export const EventFooter = ({ event }) => {
                     href={event.link}
                     rel="noreferrer"
                     target="_blank"
-                    className="button-lg alt tracking-widest text-xl font-semibold font-sans hover:brightness-75 w-full">
+                    className="button-lg dark w-full">
                     Entradas
                 </a>
             </div>
