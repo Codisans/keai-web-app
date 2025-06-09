@@ -29,7 +29,7 @@ export const EventCard = ({
                             <span className="text-orange">•</span>
                             <DateTime date={event.start_date} format="time" />
                         </div>
-                        <h3 className="typo-lg w-full text-nowrap overflow-hidden text-ellipsis">
+                        <h3 className="typo-lg w-full text-nowrap overflow-hidden text-ellipsis pr-1">
                             {event.name}
                         </h3>
 
@@ -81,7 +81,7 @@ export const EventCard = ({
                         className="absolute inset-0"></Link>
                     {toggle && !remove && (
                         <SaveEventButton
-                            className="absolute top-1 z-10 right-1 text-black"
+                            className="absolute top-0 z-10 right-0 text-black"
                             eventId={event.id}
                         />
                     )}
