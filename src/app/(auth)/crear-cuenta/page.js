@@ -108,8 +108,6 @@ const Page = () => {
                 required
             />
 
-            <input type="hidden" name="role" value="app_user" />
-
             <div className="flex items-center justify-end gap-4">
                 {/* <Link className="text-sm underline-out" href="/entrar">
                     Ya tienes una cuenta?
