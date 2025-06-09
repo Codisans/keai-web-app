@@ -1,8 +1,11 @@
+import { colorIsDark } from '@/utils/getColorContrast'
 import { NavLink } from './NavLink'
 import { Symbol } from './Symbol'
 
 export const CategoryButton = ({ category, view = 'listing' }) => {
     const isMapView = view === 'map'
+
+    const themeColorIsDark = colorIsDark(category?.color)
 
     return (
         <NavLink
@@ -16,7 +19,7 @@ export const CategoryButton = ({ category, view = 'listing' }) => {
             className={`button-category theme--${category?.slug}`}>
             {category?.svg_identifier ? (
                 <span
-                    className="inline-block w-4 h-4 bg-theme current:bg-white mask-icon"
+                    className={`inline-block w-4 h-4 bg-theme mask-icon ${themeColorIsDark ? 'current:bg-white' : 'current:bg-black'}`}
                     style={{
                         '--mask-image-url': `url(${category?.svg_identifier})`,
                     }}></span>
@@ -26,7 +29,8 @@ export const CategoryButton = ({ category, view = 'listing' }) => {
                     name="logotype"
                 />
             )}
-            <span className="current:text-white">
+            <span
+                className={`text-black ${themeColorIsDark ? 'current:text-white' : 'current:text-black'}`}>
                 {category?.name || 'Todos'}
             </span>
         </NavLink>
