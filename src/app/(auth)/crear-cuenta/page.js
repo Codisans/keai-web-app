@@ -1,7 +1,7 @@
 'use client'
 
 import { useAuth } from '@/hooks/auth'
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { FormField } from '@/components/molecules/FormField'
 import Link from 'next/link'
 
@@ -11,6 +11,12 @@ const Page = () => {
         redirectIfAuthenticated: '/perfil',
     })
 
+    const passwordRef = useRef()
+    const emailRef = useRef()
+    const nameRef = useRef()
+    const genderRef = useRef()
+    const dobRef = useRef()
+
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -19,8 +25,31 @@ const Page = () => {
     const [gender, setGender] = useState('')
     const [errors, setErrors] = useState([])
 
+    useEffect(() => {
+        Object.keys(errors).forEach(key => {
+            switch (key) {
+                case 'password':
+                    passwordRef.current.classList.add('error')
+                    break
+                case 'name':
+                    nameRef.current.classList.add('error')
+                    break
+                case 'dob':
+                    dobRef.current.classList.add('error')
+                    break
+                case 'email':
+                    emailRef.current.classList.add('error')
+                    break
+                case 'gender':
+                    genderRef.current.classList.add('error')
+                    break
+                default:
+                    break
+            }
+        })
+    }, [errors])
+
     const submitForm = event => {
-        console.log(errors)
         event.preventDefault()
 
         register({
@@ -40,73 +69,136 @@ const Page = () => {
                     Entrar
                 </Link>
             </div>
-            {/* Name */}
-            <FormField
-                label="Nombre"
-                name="name"
-                type="text"
-                value={name}
-                onChange={event => setName(event.target.value)}
-                required
-                autoFocus
-            />
 
-            {/* Gender */}
-            <FormField
-                label="Genero"
-                name="gender"
-                type="select"
-                options={[
-                    { value: '', label: '-- Selecciona --' },
-                    { value: 'male', label: 'Masculino' },
-                    { value: 'female', label: 'Femenino' },
-                    { value: 'other', label: 'Otro' },
-                ]}
-                value={gender}
-                onChange={event => setGender(event.target.value)}
-                required
-            />
+            <div ref={nameRef} className="w-full flex flex-col gap-y-2">
+                {/* Name */}
+                <FormField
+                    label="Nombre"
+                    name="name"
+                    type="text"
+                    value={name}
+                    onChange={event => {
+                        setName(event.target.value)
+                        nameRef.current.classList.remove('error')
+                    }}
+                    required
+                    autoFocus
+                />
+                {errors['name']?.length > 0 && (
+                    <div className="typo-regular text-xs flex flex-col gap-y-2 text-error">
+                        {errors['name'].map((err, i) => (
+                            <p key={i}>{err}</p>
+                        ))}
+                    </div>
+                )}
+            </div>
 
-            {/* Date of Birth */}
-            <FormField
-                label="Fecha de nacimiento"
-                name="dob"
-                type="date"
-                value={dob}
-                onChange={event => setDob(event.target.value)}
-                required
-            />
+            <div ref={genderRef} className="w-full flex flex-col gap-y-2">
+                {/* Gender */}
+                <FormField
+                    label="Genero"
+                    name="gender"
+                    type="select"
+                    options={[
+                        { value: '', label: '-- Selecciona --' },
+                        { value: 'male', label: 'Masculino' },
+                        { value: 'female', label: 'Femenino' },
+                        { value: 'other', label: 'Otro' },
+                    ]}
+                    value={gender}
+                    onChange={event => {
+                        setGender(event.target.value)
+                        genderRef.current.classList.remove('error')
+                    }}
+                    required
+                />
+                {errors['gender']?.length > 0 && (
+                    <div className="typo-regular text-xs flex flex-col gap-y-2 text-error">
+                        {errors['gender'].map((err, i) => (
+                            <p key={i}>{err}</p>
+                        ))}
+                    </div>
+                )}
+            </div>
 
-            {/* Email Address */}
-            <FormField
-                label="Correo"
-                name="email"
-                type="email"
-                value={email}
-                onChange={event => setEmail(event.target.value)}
-                required
-            />
+            <div ref={dobRef} className="w-full flex flex-col gap-y-2">
+                {/* Date of Birth */}
+                <FormField
+                    label="Fecha de nacimiento"
+                    name="dob"
+                    type="date"
+                    value={dob}
+                    onChange={event => {
+                        setDob(event.target.value)
+                        dobRef.current.classList.remove('error')
+                    }}
+                    required
+                />
+                {errors['dob']?.length > 0 && (
+                    <div className="typo-regular text-xs flex flex-col gap-y-2 text-error">
+                        {errors['dob'].map((err, i) => (
+                            <p key={i}>{err}</p>
+                        ))}
+                    </div>
+                )}
+            </div>
 
-            {/* Password */}
-            <FormField
-                label="Clave"
-                name="password"
-                type="password"
-                value={password}
-                onChange={event => setPassword(event.target.value)}
-                required
-                autoComplete="new-password"
-            />
+            <div ref={emailRef} className="w-full flex flex-col gap-y-2">
+                {/* Email Address */}
+                <FormField
+                    label="Correo"
+                    name="email"
+                    type="email"
+                    value={email}
+                    onChange={event => {
+                        setEmail(event.target.value)
+                        emailRef.current.classList.remove('error')
+                    }}
+                    required
+                />
+                {errors['email']?.length > 0 && (
+                    <div className="typo-regular text-xs flex flex-col gap-y-2 text-error">
+                        {errors['email'].map((err, i) => (
+                            <p key={i}>{err}</p>
+                        ))}
+                    </div>
+                )}
+            </div>
 
-            {/* Confirm Password */}
-            <FormField
-                label="Confirmar clave"
-                name="passwordConfirmation"
-                type="password"
-                value={passwordConfirmation}
-                onChange={event => setPasswordConfirmation(event.target.value)}
-                required
-            />
+            <div ref={passwordRef} className="w-full flex flex-col gap-y-4">
+                {/* Password */}
+                <FormField
+                    label="Clave"
+                    name="password"
+                    type="password"
+                    value={password}
+                    onChange={event => {
+                        setPassword(event.target.value)
+                        passwordRef.current.classList.remove('error')
+                    }}
+                    required
+                    autoComplete="new-password"
+                />
+                {/* Confirm Password */}
+                <FormField
+                    label="Confirmar clave"
+                    name="passwordConfirmation"
+                    type="password"
+                    value={passwordConfirmation}
+                    onChange={event => {
+                        setPasswordConfirmation(event.target.value)
+                        passwordRef.current.classList.remove('error')
+                    }}
+                    required
+                />
+                {errors['password']?.length > 0 && (
+                    <div className="typo-regular text-xs flex flex-col gap-y-2 text-error">
+                        {errors['password'].map((err, i) => (
+                            <p key={i}>{err}</p>
+                        ))}
+                    </div>
+                )}
+            </div>
 
             <div className="flex items-center justify-end gap-4">
                 {/* <Link className="text-sm underline-out" href="/entrar">
