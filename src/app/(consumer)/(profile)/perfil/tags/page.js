@@ -13,7 +13,6 @@ export default function EditarTags() {
     const [displayedTags, setDisplayedTags] = useState([])
     const [search, setSearch] = useState('')
 
-
     useEffect(() => {
         if (!tags) return
 
@@ -25,30 +24,45 @@ export default function EditarTags() {
     useEffect(() => {
         if (!allTags) return
 
-        if(search === '') {
+        if (search === '') {
             setDisplayedTags(allTags)
             return
         }
 
-        const filteredTags = allTags.filter(tag => tag.name.toLowerCase().includes(search.toLowerCase())).sort((a, b) => a.name.localeCompare(b.name))
+        const filteredTags = allTags
+            .filter(tag =>
+                tag.name.toLowerCase().includes(search.toLowerCase()),
+            )
+            .sort((a, b) => a.name.localeCompare(b.name))
         setDisplayedTags(filteredTags)
     }, [search, allTags])
 
     return (
         <div className="container pt-8">
             <div className="flex justify-between items-end pb-4">
-                <h2 className="typo-lg">Selecciona los tags de eventos que te interesan</h2>
+                <h2 className="typo-lg">
+                    Selecciona los tags de eventos que te interesan
+                </h2>
             </div>
-            <div className='pb-4 flex items-center gap-2'>
-                <input className='form-input' placeholder="Filtrar tags" type="text" value={search} onChange={(e) => setSearch(e.target.value)} />
-                {
-                    search !== '' && (
-                    <button className='button-icon' onClick={() => setSearch('')}>
-                        <span className='sr-only'>Limpiar búsqueda</span>
-                        <Symbol name="cross" className='w-4 h-4' />
-                    </button>
-                    )
-                }
+            <div className="pb-4 flex items-center gap-2">
+                <input
+                    className="form-input"
+                    placeholder="Filtrar tags"
+                    type="text"
+                    value={search}
+                    onChange={e => setSearch(e.target.value)}
+                />
+                <div className="w-13">
+                    {search !== '' && (
+                        <button
+                            className="button-icon"
+                            onClick={() => setSearch('')}
+                            type="button">
+                            <span className="sr-only">Limpiar búsqueda</span>
+                            <Symbol name="cross" className="w-4 h-4" />
+                        </button>
+                    )}
+                </div>
             </div>
             <div className="flex flex-wrap gap-x-2 gap-y-1 py-4">
                 {displayedTags.map(tag => (
