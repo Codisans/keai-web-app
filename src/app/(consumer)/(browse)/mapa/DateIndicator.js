@@ -10,7 +10,7 @@ export const DateIndicator = () => {
     const maxDate = searchParams.get('max_date') || defaultMapDate()[1]
 
     return (
-        <div className="absolute bottom-gutter right-gutter z-20 flex gap-x-1 pointer-events-none bg-white-true rounded p-1 items-center border border-grey gap-1">
+        <div className="absolute bottom-gutter right-gutter z-20 flex gap-x-0.5 pointer-events-none bg-white-true rounded p-1 items-center border border-grey gap-1">
             {minDate !== maxDate && (
                 <>
                     <DateCard date={minDate} />
@@ -25,7 +25,7 @@ export const DateIndicator = () => {
 export const DateCard = ({ date, className = '' }) => {
     return (
         <div
-            className={`flex flex-col gap-y-1 items-center typo-date text-sm px-1 ${className}`}>
+            className={`flex flex-col gap-y-1 items-center typo-button text-sm px-0.5 ${className}`}>
             <span>{moment(date).format('DD')}</span>
             <span>{moment(date).format('MMM')}</span>
         </div>
