@@ -5,13 +5,15 @@ import moment from 'moment'
 export const useApi = () => {
     const today = moment().format('YYYY-MM-DD')
 
-    const { data: events } = useSWR(`/api/events?min_date=${today}`, () =>
-        axios
-            .get(`/api/events?min_date=${today}`)
-            .then(res => res.data?.data ?? [])
-            .catch(error => {
-                throw new Error('Error getting events', error)
-            }),
+    const { data: events } = useSWR(
+        `/api/events?min_date=${today}&sort_by=start_date&sort_order=asc`,
+        () =>
+            axios
+                .get(`/api/events?min_date=${today}`)
+                .then(res => res.data?.data ?? [])
+                .catch(error => {
+                    throw new Error('Error getting events', error)
+                }),
     )
 
     const { data: categories } = useSWR('/api/categories', () =>

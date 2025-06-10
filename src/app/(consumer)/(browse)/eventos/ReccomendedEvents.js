@@ -13,18 +13,23 @@ export const ReccomendedEvents = () => {
     useEffect(() => {
         if (!userTags || !events) return
 
-        const tagIds = userTags.map((tag) => tag.id)
-        const filteredEvents = events.filter((event) => tagIds.some((id) => event.tags.some((t) => t.id === id)))
+        const tagIds = userTags.map(tag => tag.id)
+        const filteredEvents = events.filter(event =>
+            tagIds.some(id => event.tags.some(t => t.id === id)),
+        )
         const sortedEvents = filteredEvents.sort((a, b) => {
-            const aTags = a.tags.filter((tag) => tagIds.includes(tag.id))
-            const bTags = b.tags.filter((tag) => tagIds.includes(tag.id))
+            const aTags = a.tags.filter(tag => tagIds.includes(tag.id))
+            const bTags = b.tags.filter(tag => tagIds.includes(tag.id))
             const aIntersectionCount = aTags.length
             const bIntersectionCount = bTags.length
             const delta = bIntersectionCount - aIntersectionCount
 
-            if(delta !== 0) return delta
+            if (delta !== 0) return delta
 
-            return new Date(a.start_date) - new Date(b.start_date)
+            return (
+                new Date(a.start_date).getTime() -
+                new Date(b.start_date).getTime()
+            )
         })
 
         setItems(sortedEvents?.slice(0, 20))
