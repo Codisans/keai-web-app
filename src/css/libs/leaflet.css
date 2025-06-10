@@ -21,3 +21,9 @@ a[href="https://www.maptiler.com"]
 .leaflet-bottom {
     z-index: 5;
 }
+
+.leaflet-marker-icon {
+    background-color: var(--color-theme);
+    padding: 3px !important;
+    border-radius: 4px;
+}
