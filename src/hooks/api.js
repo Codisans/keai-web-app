@@ -9,7 +9,9 @@ export const useApi = () => {
         `/api/events?min_date=${today}&sort_by=start_date&sort_order=asc`,
         () =>
             axios
-                .get(`/api/events?min_date=${today}`)
+                .get(
+                    `/api/events?min_date=${today}&sort_by=start_date&sort_order=asc`,
+                )
                 .then(res => res.data?.data ?? [])
                 .catch(error => {
                     throw new Error('Error getting events', error)
