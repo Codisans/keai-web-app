@@ -1,19 +1,28 @@
 'use client'
 
-import { markerIcons } from '@/lib/leaflet'
 import { useContext, useEffect, useRef } from 'react'
 import { MapContext } from './LeafletMap'
 import L from 'leaflet'
 import { useRouter } from 'next/navigation'
+import { Icon } from 'leaflet'
 
 export const EventMarker = ({ event }) => {
     const { mapRef, activeEvent, setActiveEvent, activeMarkerRef } =
         useContext(MapContext)
     const router = useRouter()
     const markerRef = useRef(null)
-    const categorySlug = event.categories[0]?.slug || null
+
+    const icon = new Icon({
+        iconUrl: event.categories[0]?.svg_idenftifier || 'keai-logotype.svg',
+        iconSize: [24, 24],
+        iconAnchor: [12, 30],
+        shadowUrl: '/keai-marker-shadow.svg',
+        shadowSize: [32, 32],
+        shadowAnchor: [16, 32],
+    })
 
     useEffect(() => {
+        console.log(event)
         if (
             !event.coordinates?.latitude ||
             !event.coordinates?.longitude ||
@@ -24,7 +33,7 @@ export const EventMarker = ({ event }) => {
         markerRef.current = L.marker(
             [event.coordinates?.latitude, event.coordinates?.longitude],
             {
-                icon: markerIcons[categorySlug] || markerIcons.keai,
+                icon: icon,
                 alt: event.name,
             },
         )
@@ -49,6 +58,11 @@ export const EventMarker = ({ event }) => {
 
         mapRef.current.addLayer(markerRef.current)
         markerRef.current._icon.setAttribute('id', event.id)
+
+        if (event.categories[0]?.color) {
+            markerRef.current.style['--color-theme'] =
+                event.categories[0]?.color
+        }
 
         return () => {
             markerRef.current?.removeEventListener('click', clickHandler)
