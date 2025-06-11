@@ -5,7 +5,7 @@ import { BackButton } from '@/components/atoms/BackButton'
 
 export const EventHeader = ({ eventId }) => {
     return (
-        <header className="sticky inset-x-0 top-0 bg-white shadow z-header h-14">
+        <header className="sticky inset-x-0 top-0 bg-white border-b border-grey z-header h-14">
             <nav className="container py-2">
                 <ul className="grid w-full grid-cols-5 gap-2">
                     <li className="col-span-1">
