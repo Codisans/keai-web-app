@@ -36,17 +36,10 @@ export const useApi = () => {
             }),
     )
 
-    const getEvent = eventId => {
-        const { data: event } = useSWR(`/api/events/${eventId}`, () =>
-            axios
-                .get(`/api/events/${eventId}`)
-                .then(res => res.data.data ?? [])
-                .catch(error => {
-                    throw new Error('Error getting event', error)
-                }),
-        )
-
-        return event?.data ?? null
+    const getEvent = async eventId => {
+        const id = Number(eventId)
+        const event = await events?.filter(e => e.id === id)?.pop()
+        return event ?? null
     }
 
     const getEvents = async searchParams => {
