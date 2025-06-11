@@ -6,7 +6,7 @@ import L from 'leaflet'
 import { useRouter } from 'next/navigation'
 import { Icon } from 'leaflet'
 
-export const EventMarker = ({ event }) => {
+export const EventMarker = ({ event, targetEvent = false }) => {
     const { mapRef, activeEvent, setActiveEvent, activeMarkerRef } =
         useContext(MapContext)
     const router = useRouter()
@@ -22,7 +22,6 @@ export const EventMarker = ({ event }) => {
     })
 
     useEffect(() => {
-        console.log(event)
         if (
             !event.coordinates?.latitude ||
             !event.coordinates?.longitude ||
@@ -59,18 +58,24 @@ export const EventMarker = ({ event }) => {
         mapRef.current.addLayer(markerRef.current)
         markerRef.current._icon.setAttribute('id', event.id)
 
-        if (event.categories[0]?.color) {
-            markerRef.current.style['--color-theme'] =
-                event.categories[0]?.color
+        if (event.categories[0]?.color && markerRef.current) {
+            markerRef.current?.style?.setProperty(
+                '--color-theme',
+                event.categories[0]?.color,
+            )
+        }
+
+        if (targetEvent) {
+            clickHandler()
         }
 
         return () => {
             markerRef.current?.removeEventListener('click', clickHandler)
             markerRef.current?.remove()
 
-            if (activeEvent != event) return
-
-            setActiveEvent(null)
+            if (activeEvent?.id == event.id) {
+                setActiveEvent(null)
+            }
         }
     }, [mapRef.current])
 
