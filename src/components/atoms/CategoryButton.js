@@ -1,4 +1,4 @@
-import { colorIsDark } from '@/utils/getColorContrast'
+import { colorIsDark } from '@/utils/colorIsDark'
 import { NavLink } from './NavLink'
 import { Symbol } from './Symbol'
 

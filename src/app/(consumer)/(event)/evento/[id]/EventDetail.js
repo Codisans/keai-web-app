@@ -5,6 +5,7 @@ import { ShareLinks } from './ShareLinks'
 import Link from 'next/link'
 import { useContext, useEffect } from 'react'
 import { Symbol } from '@/components/atoms/Symbol'
+import { colorIsDark } from '@/utils/colorIsDark'
 
 export const EventDetail = ({ event }) => {
     const { setSelectedEvent } = useContext(ConsumerContext)
@@ -20,17 +21,25 @@ export const EventDetail = ({ event }) => {
             <div className="flex flex-col-reverse">
                 <h1 className="text-xl font-medium px-gutter">{event.name}</h1>
                 <ul className="pb-3 uppercase typo-body text-grey flex gap-1.5 flex-wrap">
-                    {isFree && <li className="tag-lg bg-theme">Gratis</li>}
-                    {event.categories.map((c, i) => (
-                        <li className={`tag-lg alt`} key={i}>
-                            {c.name}
-                        </li>
-                    ))}
+                    {event.categories.map((c, i) => {
+                        const contrast = colorIsDark(c.color)
+                            ? 'text-white'
+                            : 'text-black'
+                        return (
+                            <li
+                                className={`tag-lg bg-theme text-theme-contrast ${contrast}`}
+                                style={{ '--color-theme': c.color ?? null }}
+                                key={i}>
+                                {c.name}
+                            </li>
+                        )
+                    })}
                     {event.tags?.map((tag, i) => (
                         <li key={i} className="tag-lg">
                             {tag.name}
                         </li>
                     ))}
+                    {isFree && <li className="tag-lg">Gratis</li>}
                 </ul>
                 <div className="relative w-full mb-2 overflow-hidden aspect-video rounded-card">
                     <img
