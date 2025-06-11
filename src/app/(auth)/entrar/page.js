@@ -101,7 +101,7 @@ const Login = () => {
             </div>
 
             <div className="flex flex-row items-center justify-end gap-4">
-                <Link className="text-sm underline-out" href="/recuperar-clave">
+                <Link className="text-sm underline" href="/recuperar-clave">
                     Recuperar clave
                 </Link>
                 <button className="button dark" type="submit">
