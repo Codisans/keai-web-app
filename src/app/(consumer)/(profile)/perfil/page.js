@@ -7,7 +7,9 @@ export const metadata = {
 const Profile = () => {
     return (
         <section className="container">
-            <h2 className="pt-8 pb-4 typo-h3">Tus proximos eventos</h2>
+            <h2 className="pt-8 pb-4 typo-regular text-lg">
+                Tus proximos eventos:
+            </h2>
             <UpcomingEvents />
         </section>
     )

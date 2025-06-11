@@ -16,6 +16,16 @@ export const UpcomingEvents = () => {
         setEvents(filteredEvents)
     }, [userEvents])
 
+    if (events.length == 0) {
+        return (
+            <div className="py-4 flex flex-col gap-y-4 text-center">
+                <p className="py-4 px-2 text-black/80 bg-white border-grey typo-button text-xs border rounded-button w-full">
+                    No tienes eventos guardados aun!
+                </p>
+            </div>
+        )
+    }
+
     return (
         <ul className="w-full flex flex-col">
             {events?.map((event, i) => (

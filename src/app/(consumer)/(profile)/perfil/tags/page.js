@@ -40,19 +40,21 @@ export default function EditarTags() {
     return (
         <div className="container pt-8">
             <div className="flex justify-between items-end pb-4">
-                <h2 className="typo-lg">
+                <h2 className="typo-regula leading-snug text-md max-w-[200px]">
                     Selecciona los tags de eventos que te interesan
                 </h2>
             </div>
             <div className="pb-4 flex items-center gap-2">
-                <input
-                    className="form-input"
-                    placeholder="Filtrar tags"
-                    type="text"
-                    value={search}
-                    onChange={e => setSearch(e.target.value)}
-                />
-                <div className="w-13">
+                <div className="grow">
+                    <input
+                        className="form-input"
+                        placeholder="Filtrar tags"
+                        type="text"
+                        value={search}
+                        onChange={e => setSearch(e.target.value)}
+                    />
+                </div>
+                <div className="w-12">
                     {search !== '' && (
                         <button
                             className="button-icon"
