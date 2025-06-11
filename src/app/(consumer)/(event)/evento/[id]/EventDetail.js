@@ -11,7 +11,6 @@ export const EventDetail = ({ event }) => {
     const isFree = event.price == null || parseInt(event.price) === 0
 
     useEffect(() => {
-        console.log(event)
         setSelectedEvent(event)
         return () => setSelectedEvent(null)
     }, [])

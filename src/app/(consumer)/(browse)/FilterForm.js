@@ -65,7 +65,6 @@ export const FilterForm = ({ className = '', isMap = false }) => {
     const handleSubmit = e => {
         const urlSearchParams = new URLSearchParams(searchParams)
         e?.preventDefault()
-        console.log(selectedTags)
         closeFilter()
 
         if (date[0]) {
