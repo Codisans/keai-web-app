@@ -8,7 +8,7 @@ export const AccountDetail = () => {
 
     return (
         user && (
-            <div className="flex flex-col gap-y-2 text-lg">
+            <div className="flex flex-col text-lg rounded-2xl border border-grey overflow-hidden">
                 <DetailRow label="User ID" value={user.id} />
                 <DetailRow label="Name" value={user.name} />
                 <DetailRow label="User email" value={user.email} />
@@ -17,10 +17,10 @@ export const AccountDetail = () => {
                     label="Fecha de nacimiento"
                     value={moment(user.dob).format('DD-MM-YYYY')}
                 />
-                <DetailRow
+                {/* <DetailRow
                     label="Account type"
                     value={user.roles.flatMap(role => role.name).join(', ')}
-                />
+                /> */}
                 <DetailRow
                     label="Usuario creado"
                     value={moment(user.created_at).format('DD-MM-YYYY')}
@@ -36,11 +36,11 @@ export const AccountDetail = () => {
 
 export const DetailRow = ({ label, value }) => {
     return (
-        <div className="grid grid-cols-3 gap-x-2 gap-y-6 items-end text-lg typo-regular">
-            <span className="col-span-1 text-right typo-caps text-xs">
-                {label}:
+        <div className="grid border-t border-grey first:border-t-0 grid-cols-12 gap-x-2 items-center">
+            <span className="col-span-5 bg-white text-right typo-caps text-xs border-grey border-r p-2">
+                {label}
             </span>
-            <span className="col-span-2">{value}</span>
+            <span className="col-span-7 p-2 text-sm typo-regular">{value}</span>
         </div>
     )
 }

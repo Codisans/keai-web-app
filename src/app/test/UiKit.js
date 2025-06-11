@@ -8,18 +8,14 @@ export const UiKit = () => {
                 <h1 className="typo-xl mt-8">UiKit</h1>
             </section>
             <section className="flex flex-col gap-y-8 mt-12">
-                <div className="flex flex-col gap-y-2">
-                    <div className="typo-h1">Typo-h1</div>
-                    <div className="typo-h2">Typo-h2</div>
-                    <div className="typo-h3">Typo-h3</div>
-                    <div className="typo-h4">Typo-h4</div>
-                    <div className="typo-h5">Typo-h5</div>
-                </div>
                 <div className="flex flex-col gap-y-2 typo-regular">
-                    <div className="text-sm">Typo-sm</div>
-                    <div className="text-md">Typo-md</div>
-                    <div className="text-lg">Typo-lg</div>
+                    <div className="text-3xl">Typo-3xl</div>
+                    <div className="text-2xl">Typo-2xl</div>
                     <div className="text-xl">Typo-xl</div>
+                    <div className="text-lg">Typo-lg</div>
+                    <div className="text-md">Typo-md</div>
+                    <div className="text-sm">Typo-sm</div>
+                    <div className="text-xs">Typo-xs</div>
                 </div>
             </section>
             <section className="flex flex-col gap-y-8 mt-12">

@@ -18,23 +18,23 @@
         }
 
         h1 {
-            @apply text-h1;
+            @apply text-3xl;
         }
 
         h2 {
-            @apply text-h2;
+            @apply text-2xl;
         }
 
         h3 {
-            @apply text-h3;
+            @apply text-xl;
         }
 
         h4 {
-            @apply text-h4;
+            @apply text-lg;
         }
 
         h5 {
-            @apply text-h5;
+            @apply text-md;
         }
 
         ul,
