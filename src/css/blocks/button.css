@@ -28,7 +28,7 @@
     }
 
     .button-tag {
-        @apply border typo-caps border-black bg-white-true shadow-button text-black selected:bg-black selected:text-white px-1.5 h-8 cursor-pointer rounded-tag text-sm;
+        @apply border typo-caps border-black bg-white-true text-black selected:bg-black selected:text-white px-2 h-8 cursor-pointer rounded-tag text-sm;
     }
 
     .button-category {
