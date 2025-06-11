@@ -2,8 +2,13 @@
 
 import { useEffect, useRef, useState, createContext } from 'react'
 import L from 'leaflet'
-import { markerIcons } from '@/lib/leaflet'
 import { EventSummary } from './EventSummary'
+
+const deviceLocationMarker = new Icon({
+    iconUrl: '/device-location-marker.png',
+    iconSize: [32, 32],
+    iconAnchor: [16, 16],
+})
 
 export const MapContext = createContext({
     mapRef: null,
@@ -36,7 +41,7 @@ export default function LeafletMap({ children }) {
                 deviceRef.current = L.marker(
                     [position.coords.latitude, position.coords.longitude],
                     {
-                        icon: markerIcons.deviceLocation,
+                        icon: deviceLocationMarker,
                     },
                 ).addTo(mapRef.current)
 
