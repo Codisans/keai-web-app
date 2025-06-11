@@ -1,0 +1,38 @@
+@keyframes walk {
+    0% {
+        background-position: 5% 5%;
+    }
+    25% {
+        background-position: 95% 5%;
+    }
+    50% {
+        background-position: 95% 95%;
+    }
+    75% {
+        background-position: 5% 95%;
+    }
+    100% {
+        background-position: 5% 5%;
+    }
+}
+
+.pictures-background {
+    background-image: url(/pictures.jpg);
+    background-size: 1000%;
+    background-repeat: no-repeat;
+    clip-path: url(#logotype-clip-path);
+}
+
+.collage-background {
+    background-image: url(/collage.jpeg);
+    background-size: 1000%;
+    background-repeat: no-repeat;
+    clip-path: url(#logotype-clip-path);
+}
+
+.gradient-background {
+    background-image: url(/gradient-bg.png);
+    background-size: 1200%;
+    background-repeat: no-repeat;
+    clip-path: url(#logotype-clip-path);
+}

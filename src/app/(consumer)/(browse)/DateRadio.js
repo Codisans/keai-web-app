@@ -109,7 +109,7 @@ export const DateRadio = ({ date, setDate }) => {
                             }}
                         />
                         <label
-                            className="button-radio peer-checked:bg-primary peer-checked:hover:bg-primary/80 peer-checked:border-primary"
+                            className="button-radio"
                             htmlFor={`date-${index}`}>
                             {option.label}
                         </label>

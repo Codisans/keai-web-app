@@ -1,7 +1,6 @@
 @import './libs/_';
 @import './_variants';
 @import './_tailwind';
-@import './_theme';
 @import './_typo';
 @import './resets/_';
 @import './layout/_';

@@ -19,8 +19,8 @@
 
     --dp-highlighted-color: #3dcc4a;
     --dp-muted-color: #ccc;
-    --dp-selected-color: var(--color-orange);
-    --dp-selected-hover-color: var(--color-orange);
+    --dp-selected-color: var(--color-theme);
+    --dp-selected-hover-color: var(--color-theme-accent);
     --dp-is-selecting-range-color: #faab4a59;
     --dp-selected-text-color: var(--color-white);
     --dp-disabled-color: #ccc;

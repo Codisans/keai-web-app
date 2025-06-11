@@ -37,9 +37,7 @@ export const PriceRadio = ({ priceValue, setPriceValue }) => {
                             setPriceValue(option.value)
                         }}
                     />
-                    <label
-                        className="button-radio peer-checked:bg-primary peer-checked:hover:bg-primary/80 peer-checked:border-primary"
-                        htmlFor={`price-${index}`}>
+                    <label className="button-radio" htmlFor={`price-${index}`}>
                         {option.label}
                     </label>
                 </div>

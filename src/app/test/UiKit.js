@@ -1,11 +1,11 @@
-import { Logo } from "@/components/atoms/Logo"
+import { Logo } from '@/components/atoms/Logo'
 
 export const UiKit = () => {
     return (
-        <div className="container bg-canvas">
+        <div className="container bg-white-true">
             <section>
-                <Logo className="text-h1" type="app" />
-                <h1 className="typo-h1">UiKit</h1>
+                <Logo className="[font-size:5rem]" type="vertical" />
+                <h1 className="typo-xl mt-8">UiKit</h1>
             </section>
             <section className="flex flex-col gap-y-8 mt-12">
                 <div className="flex flex-col gap-y-2">

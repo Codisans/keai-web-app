@@ -18,15 +18,16 @@ export const EventCarousel = ({
     if (items?.length == 0) return
 
     return (
-        <div className={`${className} flex flex-col gap-y-2 ${theme ? `theme--${theme}` : ''}`}>
+        <div
+            className={`${className} flex flex-col gap-y-2 ${theme ? `theme--${theme}` : ''}`}>
             <div className="flex items-center gap-x-4 px-gutter">
                 {heading && (
-                    <h2 className={`tag-lg light font-semibold`}>{heading}</h2>
+                    <h2 className={`typo-button text-sm p-2`}>{heading}</h2>
                 )}
                 {link && link}
             </div>
 
-            <div className='w-full'>
+            <div className="w-full">
                 <Swiper
                     modules={[FreeMode]}
                     freeMode={{
@@ -36,10 +37,12 @@ export const EventCarousel = ({
                     spaceBetween="16px"
                     className="w-full !px-6 !overflow-visible">
                     {items?.map((event, i) => (
-                        <SwiperSlide
-                        key={i}
-                        style={{ width: '16rem' }}>
-                            <EventCard event={event} showTags={true} type="carousel" />
+                        <SwiperSlide key={i} style={{ width: '16rem' }}>
+                            <EventCard
+                                event={event}
+                                showTags={true}
+                                type="carousel"
+                            />
                         </SwiperSlide>
                     ))}
                 </Swiper>

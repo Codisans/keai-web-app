@@ -5,7 +5,7 @@ import { Symbol } from './Symbol'
 export const CategoryButton = ({ category, view = 'listing' }) => {
     const isMapView = view === 'map'
 
-    const themeColorIsDark = colorIsDark(category?.color)
+    const themeColorIsDark = colorIsDark(category?.color ?? '#ffc258')
 
     return (
         <NavLink
@@ -25,7 +25,7 @@ export const CategoryButton = ({ category, view = 'listing' }) => {
                     }}></span>
             ) : (
                 <Symbol
-                    className="flex-none block w-4 h-4 current:text-white"
+                    className={`flex-none block w-4 h-4 ${themeColorIsDark ? 'current:text-white' : 'current:text-black'}`}
                     name="logotype"
                 />
             )}

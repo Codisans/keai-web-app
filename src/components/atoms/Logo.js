@@ -9,7 +9,7 @@ export const Logo = ({ className = 'text-logo', type = 'horizontal' }) => {
             className={`${className} ${type == 'horizontal' ? 'flex-row' : 'flex-col-reverse'} flex flex-none flex-nowrap justify-center items-center select-none w-max h-max`}>
             <div className="typo-logo">keai</div>
             <Symbol
-                className={`visible block text-primary w-[1em] h-[1em] ${type == 'horizontal' ? 'w-[1em] h-[1em]' : 'w-[1.25em] h-[1.25em]'}`}
+                className={`visible block text-theme w-[1em] h-[1em] ${type == 'horizontal' ? 'w-[1em] h-[1em]' : 'w-[1.25em] h-[1.25em]'}`}
                 name="logotype"
             />
         </div>

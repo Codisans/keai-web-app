@@ -22,6 +22,10 @@
 
 @custom-variant alt (.alt &, &.alt);
 
+@custom-variant primary (.primary &, &.primary);
+
+@custom-variant secondary (.secondary &, &.secondary);
+
 @custom-variant open (.open &, &.open);
 
 @custom-variant map (.map &, &.map);

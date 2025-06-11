@@ -26,7 +26,7 @@ export const EventCard = ({
                     <div className="flex flex-col gap-y-1.5 px-2 py-1.5">
                         <div className="flex flex-row gap-x-4 text-xs typo-date text-gray-500">
                             <DateTime date={event.start_date} />
-                            <span className="text-orange">•</span>
+                            <span className="text-theme">•</span>
                             <DateTime date={event.start_date} format="time" />
                         </div>
                         <h3 className="typo-lg w-full text-nowrap overflow-hidden text-ellipsis pr-1">
@@ -67,7 +67,7 @@ export const EventCard = ({
                     <div className="col-span-8 flex flex-col">
                         <div className="flex flex-row gap-x-4 text-xs typo-date text-gray-500">
                             <DateTime date={event.start_date} />
-                            <span className="text-orange">•</span>
+                            <span className="text-theme">•</span>
                             <DateTime date={event.start_date} format="time" />
                         </div>
                         <h3 className="typo-regular text-lg py-1.5 overflow-hidden text-ellipsis text-nowrap">

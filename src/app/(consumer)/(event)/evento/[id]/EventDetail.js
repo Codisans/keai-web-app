@@ -21,9 +21,9 @@ export const EventDetail = ({ event }) => {
             <div className="flex flex-col-reverse">
                 <h1 className="text-xl font-medium px-gutter">{event.name}</h1>
                 <ul className="pb-3 uppercase typo-body text-grey flex gap-1.5 flex-wrap">
-                    {isFree && <li className="tag-lg bg-orange">Gratis</li>}
+                    {isFree && <li className="tag-lg bg-theme">Gratis</li>}
                     {event.categories.map((c, i) => (
-                        <li className={`tag-lg bg-orange`} key={i}>
+                        <li className={`tag-lg alt`} key={i}>
                             {c.name}
                         </li>
                     ))}
@@ -48,7 +48,7 @@ export const EventDetail = ({ event }) => {
                         date={event.start_date}
                         format="ddd D MMM"
                     />
-                    <span className="text-orange">•</span>
+                    <span className="text-theme">•</span>
                     <DateTime
                         className="block"
                         date={event.start_date}
@@ -68,7 +68,7 @@ export const EventDetail = ({ event }) => {
                         href={`/mapa/#${event.id}`}
                         className="ml-auto relative px-2 -mr-1 flex flex-col gap-y-1 items-center justify-center w-min">
                         <Symbol
-                            class="w-8 h-8 text-primary mt-1"
+                            class="w-8 h-8 text-theme mt-1"
                             name="logotype"
                         />
                         <span className="font-bold text-xs typo-caps leading-tight">
