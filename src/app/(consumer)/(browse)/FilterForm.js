@@ -67,7 +67,7 @@ export const FilterForm = ({ className = '', isMap = false }) => {
         e?.preventDefault()
         closeFilter()
 
-        if (date[0]) {
+        if (date[0] && date[0] !== today) {
             urlSearchParams.set('min_date', date[0])
         } else {
             urlSearchParams.delete('min_date')
