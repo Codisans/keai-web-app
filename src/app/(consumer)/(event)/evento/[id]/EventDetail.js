@@ -1,10 +1,10 @@
 'use client'
 import { ConsumerContext } from '@/app/(consumer)/ConsumerContext'
 import { DateTime } from '@/components/atoms/DateTime'
-import { Logo } from '@/components/atoms/Logo'
 import { ShareLinks } from './ShareLinks'
 import Link from 'next/link'
 import { useContext, useEffect } from 'react'
+import { Symbol } from '@/components/atoms/Symbol'
 
 export const EventDetail = ({ event }) => {
     const { setSelectedEvent } = useContext(ConsumerContext)
@@ -55,7 +55,7 @@ export const EventDetail = ({ event }) => {
                         format="time"
                     />
                 </div>
-                <div className="flex flex-row gap-x-4 px-4 py-2">
+                <div className="flex flex-row gap-x-2 px-4 py-2">
                     <div className="inline-block my-auto">
                         <div
                             className="inline"
@@ -66,8 +66,11 @@ export const EventDetail = ({ event }) => {
                     </div>
                     <Link
                         href={`/mapa/#${event.id}`}
-                        className="ml-auto relative flex flex-col gap-y-1 items-center justify-center w-min">
-                        <Logo className="text-h1 mt-1" type="logotype" />
+                        className="ml-auto relative px-2 -mr-1 flex flex-col gap-y-1 items-center justify-center w-min">
+                        <Symbol
+                            class="w-8 h-8 text-primary mt-1"
+                            name="logotype"
+                        />
                         <span className="font-bold text-xs typo-caps leading-tight">
                             Mapa
                         </span>
