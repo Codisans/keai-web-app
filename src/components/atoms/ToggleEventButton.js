@@ -13,6 +13,8 @@ export const ToggleEventButton = ({ eventId, className = '', children }) => {
         setIsSaved(userEvents?.map(e => String(e.id)).includes(String(eventId)))
     }, [userEvents])
 
+    if (!userEvents) return
+
     return (
         <button
             className={`${className} ${isSaved ? 'selected' : ''} disabled:opacity-50`}
