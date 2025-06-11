@@ -1,12 +1,12 @@
 'use client'
 import PersonIcon from '@mui/icons-material/Person'
 import SettingsIcon from '@mui/icons-material/Settings'
+import HomeIcon from '@mui/icons-material/Home'
+import MapIcon from '@mui/icons-material/Map'
 import { LogoutButton } from '@/components/atoms/LogoutButton'
 import { Pullout } from '@/components/molecules/Pullout'
 import { useConsumerContext } from '../ConsumerContext'
 import { NavLink } from '@/components/atoms/NavLink'
-import HomeIcon from '@mui/icons-material/Home'
-import MapIcon from '@mui/icons-material/Map'
 
 export const ConsumerMenu = () => {
     const { menuIsOpen, setMenuIsOpen } = useConsumerContext()
@@ -17,7 +17,9 @@ export const ConsumerMenu = () => {
                 <nav className="my-auto">
                     <ul className="flex flex-col items-end gap-grid p-gutter">
                         <li>
-                            <NavLink className="button-icon" pathname="/eventos">
+                            <NavLink
+                                className="button-icon"
+                                pathname="/eventos">
                                 <HomeIcon />
                                 <span>Inicio</span>
                             </NavLink>
@@ -41,7 +43,7 @@ export const ConsumerMenu = () => {
                             </NavLink>
                         </li>
                         <li>
-                            <LogoutButton className="gap-2" />
+                            <LogoutButton />
                         </li>
                     </ul>
                 </nav>
