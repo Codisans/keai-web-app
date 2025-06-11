@@ -5,9 +5,9 @@
     @apply current:bg-theme current:border-theme current:text-theme-contrast current:hover:bg-theme;
     @apply selected:bg-theme selected:border-theme selected:text-theme-contrast selected:hover:bg-theme;
 
-    @apply dark:bg-black dark:text-white dark:hover:bg-black-true;
+    @apply dark:border-black dark:bg-black dark:text-white dark:hover:bg-black-true;
     @apply light:bg-gray-200 light:text-black light:hover:bg-gray-300;
-    @apply alt:bg-theme alt:text-theme-contrast alt:hover:bg-theme-accent;
+    @apply alt:border-black alt:bg-theme alt:text-theme-contrast alt:hover:bg-theme-accent;
 }
 
 @layer components {

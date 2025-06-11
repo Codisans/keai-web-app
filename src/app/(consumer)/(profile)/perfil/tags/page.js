@@ -61,7 +61,7 @@ export default function EditarTags() {
                             onClick={() => setSearch('')}
                             type="button">
                             <span className="sr-only">Limpiar búsqueda</span>
-                            <Symbol name="cross" className="w-4 h-4" />
+                            <Symbol name="cross" className="w-6 h-6" />
                         </button>
                     )}
                 </div>

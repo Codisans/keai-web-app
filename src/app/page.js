@@ -13,10 +13,12 @@ const Home = () => {
                 <Logo className="[font-size:5rem]" type="vertical" />
                 <div className="py-6 flex flex-col items-center gap-y-10 col-start-1 col-end-13 md:col-end-7 text-center">
                     <h1 className="text-lg font-medium">
-                        Descubre lo que pasa en tu ciudad
+                        Descubre la vida de tu ciudad.
                     </h1>
                 </div>
-                <LoginLinks />
+                <Link className="button-lg alt" href="/eventos">
+                    Explorar eventos
+                </Link>
             </section>
             <img
                 className="w-full max-w-content mx-auto block"
@@ -27,9 +29,7 @@ const Home = () => {
                     Encuentra panoramas y entérate de todo lo que está pasando
                     cerca de ti.
                 </p>
-                <Link className="button-lg dark" href="/eventos">
-                    Explorar eventos
-                </Link>
+                <LoginLinks />
             </section>
         </div>
     )
