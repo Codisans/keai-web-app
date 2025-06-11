@@ -1,12 +1,15 @@
 import { Logo } from '@/components/atoms/Logo'
+import Link from 'next/link'
 
-const AuthCard = ({ children }) => (
-    <div className="py-header px-grid-gap flex flex-col items-center rounded-ui gap-y-6 mx-auto max-w-md">
-        <div className="flex flex-col items-center gap-1 py-10">
-            <Logo className="[font-size:6rem]" type="logotype" />
-            <span className="text-4xl font-bold lowercase">Keai</span>
-        </div>
-        <div className="w-full p-grid-gap">{children}</div>
+const AuthCard = () => (
+    <div className="py-header px-grid-gap flex flex-col items-center rounded-ui gap-y-10 mx-auto max-w-md">
+        <Link href="/">
+            <Logo
+                className="[font-size:4rem] md:[font-size:5rem]"
+                type="vertical"
+            />
+            <span className="sr-only">Keai home</span>
+        </Link>
     </div>
 )
 

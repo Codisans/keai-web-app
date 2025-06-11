@@ -10,6 +10,7 @@
 @theme {
     --font-tenorite: 'Tenorite', sans-serif;
     --font-sans: 'open-sans', sans-serif;
+
     --text-h1: 2.5rem;
     --text-h2: 2rem;
     --text-h3: 1.5rem;
@@ -82,5 +83,6 @@
 }
 
 @utility typo-logo {
-    @apply text-[1em] font-tenorite leading-tight;
+    @apply font-tenorite pt-[0.2em];
+    line-height: 0.6;
 }

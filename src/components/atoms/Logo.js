@@ -5,16 +5,14 @@ import { useEffect, useRef } from 'react'
 
 export const Logo = ({ className = 'text-logo', type = 'horizontal' }) => {
     return (
-        <span
-            className={`${className} flex flex-none flex-nowrap justify-center items-center select-none ${type == 'horizontal' ? '' : 'flex-col-reverse'} ${type == 'app' ? 'bg-black w-[2em] h-[2em] pt-[0.15em] rounded-[0.25em] text-white' : 'w-max h-max'}`}>
-            <span className={type == 'logotype' ? 'sr-only' : 'typo-logo'}>
-                keai
-            </span>
+        <div
+            className={`${className} ${type == 'horizontal' ? 'flex-row' : 'flex-col-reverse'} flex flex-none flex-nowrap justify-center items-center select-none w-max h-max`}>
+            <div className="typo-logo">keai</div>
             <Symbol
-                className={`visible block text-primary ${type == 'horizontal' ? 'w-[1em] h-[1em]' : 'w-[0.8em] h-[0.8em]'}`}
+                className={`visible block text-primary w-[1em] h-[1em] ${type == 'horizontal' ? 'w-[1em] h-[1em]' : 'w-[1.25em] h-[1.25em]'}`}
                 name="logotype"
             />
-        </span>
+        </div>
     )
 }
 
