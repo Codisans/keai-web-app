@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState, createContext } from 'react'
-import L from 'leaflet'
+import L, { Icon } from 'leaflet'
 import { EventSummary } from './EventSummary'
 
 const deviceLocationMarker = new Icon({

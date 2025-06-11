@@ -2,9 +2,8 @@
 
 import { useContext, useEffect, useRef } from 'react'
 import { MapContext } from './LeafletMap'
-import L from 'leaflet'
+import L, { Icon } from 'leaflet'
 import { useRouter } from 'next/navigation'
-import { Icon } from 'leaflet'
 
 export const EventMarker = ({ event, targetEvent = false }) => {
     const { mapRef, activeEvent, setActiveEvent, activeMarkerRef } =
