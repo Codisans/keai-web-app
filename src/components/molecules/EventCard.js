@@ -43,7 +43,7 @@ export const EventCard = ({
                         className="absolute inset-0"></Link>
                     {toggle && !remove && (
                         <SaveEventButton
-                            className="absolute mix-blend-difference top-1 z-10 right-1 text-white"
+                            className="absolute mix-blend-difference p-1 top-0 z-10 right-0 text-white"
                             eventId={event.id}
                         />
                     )}
@@ -56,6 +56,10 @@ export const EventCard = ({
                 </div>
             )
         case 'list':
+            const title =
+                event.name.length > 42
+                    ? `${event.name.split(0, 40)}...`
+                    : event.name
             return (
                 <div className="grid grid-cols-12 gap-grid relative group/card w-full">
                     <div className="relative aspect-[16/9] col-span-4 overflow-hidden rounded-card">
@@ -70,8 +74,8 @@ export const EventCard = ({
                             <span className="text-theme">•</span>
                             <DateTime date={event.start_date} format="time" />
                         </div>
-                        <h3 className="typo-regular text-lg py-1.5 overflow-hidden text-ellipsis text-nowrap">
-                            {event.name}
+                        <h3 className="typo-regular text-md py-1.5 pr-5">
+                            {title}
                         </h3>
                         {showPrice && <p className="text-sm">${event.price}</p>}
                         {showTags && <EventTags tags={event.tags} />}
@@ -81,13 +85,13 @@ export const EventCard = ({
                         className="absolute inset-0"></Link>
                     {toggle && !remove && (
                         <SaveEventButton
-                            className="absolute top-0 z-10 right-0 text-black"
+                            className="absolute -top-2 p-2 z-10 -right-2 text-black"
                             eventId={event.id}
                         />
                     )}
                     {remove && (
                         <RemoveEventButton
-                            className="absolute bottom-0 z-10 right-1 text-black"
+                            className="absolute -bottom-2 p-1 z-10 -right-1 text-black"
                             eventId={event.id}
                         />
                     )}

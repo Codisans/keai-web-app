@@ -10,7 +10,7 @@ export const RemoveEventButton = ({ eventId, className = '' }) => {
 
     return (
         <button
-            className={`p-1 disabled:opacity-50 ${className}`}
+            className={`disabled:opacity-50 ${className}`}
             onClick={() => {
                 setIsLoading(true)
                 saveEvent(eventId)
