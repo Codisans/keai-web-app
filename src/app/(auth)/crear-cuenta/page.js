@@ -93,6 +93,28 @@ const Page = () => {
                 )}
             </div>
 
+            <div ref={emailRef} className="w-full flex flex-col gap-y-2">
+                {/* Email Address */}
+                <FormField
+                    label="Correo"
+                    name="email"
+                    type="email"
+                    value={email}
+                    onChange={event => {
+                        setEmail(event.target.value)
+                        emailRef.current.classList.remove('error')
+                    }}
+                    required
+                />
+                {errors['email']?.length > 0 && (
+                    <div className="typo-regular text-xs flex flex-col gap-y-2 text-error">
+                        {errors['email'].map((err, i) => (
+                            <p key={i}>{err}</p>
+                        ))}
+                    </div>
+                )}
+            </div>
+
             <div ref={genderRef} className="w-full flex flex-col gap-y-2">
                 {/* Gender */}
                 <FormField
@@ -137,28 +159,6 @@ const Page = () => {
                 {errors['dob']?.length > 0 && (
                     <div className="typo-regular text-xs flex flex-col gap-y-2 text-error">
                         {errors['dob'].map((err, i) => (
-                            <p key={i}>{err}</p>
-                        ))}
-                    </div>
-                )}
-            </div>
-
-            <div ref={emailRef} className="w-full flex flex-col gap-y-2">
-                {/* Email Address */}
-                <FormField
-                    label="Correo"
-                    name="email"
-                    type="email"
-                    value={email}
-                    onChange={event => {
-                        setEmail(event.target.value)
-                        emailRef.current.classList.remove('error')
-                    }}
-                    required
-                />
-                {errors['email']?.length > 0 && (
-                    <div className="typo-regular text-xs flex flex-col gap-y-2 text-error">
-                        {errors['email'].map((err, i) => (
                             <p key={i}>{err}</p>
                         ))}
                     </div>
