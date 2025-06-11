@@ -1,6 +1,6 @@
 'use client'
 
-import { Loading } from '@/app/Loading'
+import { Loading } from '@/components/atoms/Loading'
 import { EventCard } from '@/components/molecules/EventCard'
 import { useUserEvents } from '@/hooks/userEvents'
 import moment from 'moment'

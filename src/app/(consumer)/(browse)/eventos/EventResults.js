@@ -1,6 +1,6 @@
 'use client'
 
-import { Loading } from '@/app/Loading'
+import { Loading } from '@/components/atoms/Loading'
 import { NoResultsText } from '@/components/atoms/NoResultsText'
 import { EventCard } from '@/components/molecules/EventCard'
 import { useApi } from '@/hooks/api'
