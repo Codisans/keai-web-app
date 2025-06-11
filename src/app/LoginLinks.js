@@ -2,7 +2,6 @@
 
 import { useAuth } from '@/hooks/auth'
 import Link from 'next/link'
-import PersonIcon from '@mui/icons-material/Person'
 
 export const LoginLinks = () => {
     const { user } = useAuth({ middleware: 'guest' })

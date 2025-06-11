@@ -40,7 +40,9 @@ export const EventCard = ({
                     </div>
                     <Link
                         href={`/evento/${event.id}`}
-                        className="absolute inset-0"></Link>
+                        className="absolute inset-0">
+                        <span className="sr-only">{event.name}</span>
+                    </Link>
                     {toggle && !remove && (
                         <SaveEventButton
                             className="absolute mix-blend-difference p-1 top-0 z-10 right-0 text-white"
@@ -56,10 +58,6 @@ export const EventCard = ({
                 </div>
             )
         case 'list':
-            const title =
-                event.name.length > 42
-                    ? `${event.name.split(0, 40)}...`
-                    : event.name
             return (
                 <div className="grid grid-cols-12 gap-grid relative group/card w-full">
                     <div className="relative aspect-[16/9] col-span-4 overflow-hidden rounded-card">
@@ -75,14 +73,18 @@ export const EventCard = ({
                             <DateTime date={event.start_date} format="time" />
                         </div>
                         <h3 className="typo-regular text-md py-1.5 pr-5">
-                            {title}
+                            {event.name.length > 42
+                                ? `${event.name.slice(0, 40)}...`
+                                : event.name}
                         </h3>
                         {showPrice && <p className="text-sm">${event.price}</p>}
                         {showTags && <EventTags tags={event.tags} />}
                     </div>
                     <Link
                         href={`/evento/${event.id}`}
-                        className="absolute inset-0"></Link>
+                        className="absolute inset-0">
+                        <span className="sr-only">{event.name}</span>
+                    </Link>
                     {toggle && !remove && (
                         <SaveEventButton
                             className="absolute -top-2 p-2 z-10 -right-2 text-black"
