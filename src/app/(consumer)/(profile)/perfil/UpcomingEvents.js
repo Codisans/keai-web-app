@@ -1,5 +1,6 @@
 'use client'
 
+import { Loading } from '@/app/Loading'
 import { EventCard } from '@/components/molecules/EventCard'
 import { useUserEvents } from '@/hooks/userEvents'
 import moment from 'moment'
@@ -7,7 +8,7 @@ import { useEffect, useState } from 'react'
 
 export const UpcomingEvents = () => {
     const { userEvents } = useUserEvents()
-    const [events, setEvents] = useState([])
+    const [events, setEvents] = useState(null)
 
     useEffect(() => {
         const filteredEvents = userEvents
@@ -16,7 +17,9 @@ export const UpcomingEvents = () => {
         setEvents(filteredEvents)
     }, [userEvents])
 
-    if (events.length == 0) {
+    if (!events) return <Loading />
+
+    if (events?.length === 0) {
         return (
             <div className="py-4 flex flex-col gap-y-4 text-center">
                 <p className="py-4 px-2 text-black/80 bg-white border-grey typo-button text-xs border rounded-button w-full">

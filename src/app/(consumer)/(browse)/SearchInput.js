@@ -57,7 +57,7 @@ export const SearchInput = () => {
                     {value != searchParams.get('keywords') && (
                         <button
                             type="submit"
-                            className="absolute right-0 m-1 py-1 px-1.5 bg-orange rounded">
+                            className="absolute right-0 m-1 py-1 px-1.5 bg-theme rounded">
                             <span className="sr-only">Search</span>
                             <Symbol className="w-6 h-6" name="arrow-right" />
                         </button>
