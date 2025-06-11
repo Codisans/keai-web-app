@@ -9,6 +9,7 @@ import moment from 'moment'
 
 export const EventResults = ({ searchParams }) => {
     const { getEvents } = useApi()
+    const [events, setEvents] = useState([])
     const [results, setResults] = useState([])
     const [sort, setSort] = useState('relevance')
 
@@ -16,10 +17,10 @@ export const EventResults = ({ searchParams }) => {
         const fetchEvents = async () => {
             try {
                 const eventsData = await getEvents(searchParams)
-                setResults(eventsData)
+                setEvents(eventsData)
             } catch (error) {
                 console.error('Error fetching events:', error)
-                setResults([])
+                setEvents([])
             }
         }
 
@@ -27,16 +28,14 @@ export const EventResults = ({ searchParams }) => {
     }, [searchParams])
 
     useEffect(() => {
+        if (!events) return
+
         if (sort !== 'relevance') {
-            setResults(r =>
-                [...r].sort((a, b) =>
-                    moment(a.start_date).isAfter(moment(b.start_date)) ? 1 : -1,
-                ),
-            )
+            setResults(events)
             return
         }
 
-        const newResults = [...results].map(event => {
+        const newResults = events.map(event => {
             let newEvent = { ...event }
             const tags = searchParams.get('tags[]')?.split(',') ?? []
             const tagsMatch = event.tags?.filter(t =>
@@ -46,7 +45,7 @@ export const EventResults = ({ searchParams }) => {
             return newEvent
         })
         setResults(newResults.sort((a, b) => b.relevance - a.relevance))
-    }, [sort])
+    }, [sort, events])
 
     if (!results) return <Loading />
 
