@@ -9,7 +9,7 @@ export const FilterToggle = () => {
 
     const getIndicatorCount = searchParams => {
         const dateFilter =
-            searchParams.get('min_date') || searchParams.get('max_date') ? 1 : 0
+            searchParams.get('min_date') && searchParams.get('max_date') ? 1 : 0
         const priceFilter =
             searchParams.get('min_price') || searchParams.get('max_price')
                 ? 1
@@ -23,15 +23,14 @@ export const FilterToggle = () => {
 
     return (
         <button
-            onClick={() => filterIsOpen ? closeFilter() : openFilter()}
+            onClick={() => (filterIsOpen ? closeFilter() : openFilter())}
             type="button"
             className={`button-icon relative pointer-events-auto ${filterIsOpen ? 'current' : ''}`}
             disabled={path
                 .split('/')
                 ?.some(x => ['favoritos', 'perfil', 'cuenta'].includes(x))}>
             {indicatorCount > 0 && (
-                <span
-                    className="text-small absolute top-0 right-0 bg-black font-bold rounded-full h-4 w-4 flex items-center justify-center text-white">
+                <span className="text-small absolute top-0 right-0 bg-black font-bold rounded-full h-4 w-4 flex items-center justify-center text-white">
                     {indicatorCount}
                 </span>
             )}
