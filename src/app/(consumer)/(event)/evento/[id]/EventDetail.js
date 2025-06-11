@@ -68,7 +68,7 @@ export const EventDetail = ({ event }) => {
                         href={`/mapa/#${event.id}`}
                         className="ml-auto relative px-2 -mr-1 flex flex-col gap-y-1 items-center justify-center w-min">
                         <Symbol
-                            class="w-8 h-8 text-theme mt-1"
+                            className="w-8 h-8 text-theme mt-1"
                             name="logotype"
                         />
                         <span className="font-bold text-xs typo-caps leading-tight">
