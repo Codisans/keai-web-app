@@ -5,7 +5,6 @@ import { NoResultsText } from '@/components/atoms/NoResultsText'
 import { EventCard } from '@/components/molecules/EventCard'
 import { useApi } from '@/hooks/api'
 import { useEffect, useState } from 'react'
-import moment from 'moment'
 
 export const EventResults = ({ searchParams }) => {
     const { getEvents } = useApi()
