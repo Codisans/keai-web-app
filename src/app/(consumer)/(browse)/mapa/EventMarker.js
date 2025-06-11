@@ -12,7 +12,7 @@ export const EventMarker = ({ event, targetEvent = false }) => {
     const markerRef = useRef(null)
 
     const icon = new Icon({
-        iconUrl: event.categories[0]?.svg_idenftifier || 'keai-logotype.svg',
+        iconUrl: event.categories[0]?.svg_idenftifier || '/keai-logotype.svg',
         iconSize: [24, 24],
         iconAnchor: [12, 30],
         shadowUrl: '/keai-marker-shadow.svg',
@@ -58,7 +58,7 @@ export const EventMarker = ({ event, targetEvent = false }) => {
         markerRef.current._icon.setAttribute('id', event.id)
 
         if (event.categories[0]?.color && markerRef.current) {
-            markerRef.current?.style?.setProperty(
+            markerRef.current._icon.style.setProperty(
                 '--color-theme',
                 event.categories[0]?.color,
             )
