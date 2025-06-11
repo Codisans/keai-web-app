@@ -104,12 +104,11 @@ const Login = () => {
                 <Link className="text-sm underline" href="/recuperar-clave">
                     Recuperar clave
                 </Link>
-                <button className="button dark" type="submit">
-                    {isLoading ? (
-                        <DataUsageIcon className="h-[1em] w-[1em] animate-spin text-grey" />
-                    ) : (
-                        <span>Entrar</span>
-                    )}
+                <button className="button dark relative" type="submit">
+                    <DataUsageIcon
+                        className={`absolute h-[1em] w-[1em] animate-spin text-grey ${isLoading ? '' : 'invisible'}`}
+                    />
+                    <span className={isLoading ? 'invisible' : ''}>Entrar</span>
                 </button>
             </div>
         </form>
