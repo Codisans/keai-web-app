@@ -1,7 +1,6 @@
 'use client'
 
-import { Swiper, SwiperSlide } from 'swiper/react'
-import { FreeMode } from 'swiper/modules'
+import useEmblaCarousel from 'embla-carousel-react'
 import { EventCard } from '@/components/molecules/EventCard'
 import { useEffect, useState } from 'react'
 import { useApi } from '@/hooks/api'
@@ -15,6 +14,7 @@ export const EventCarouselQuery = ({
 }) => {
     const { getEvents } = useApi()
     const [events, setEvents] = useState([])
+    const [emblaRef] = useEmblaCarousel({ dragFree: true })
 
     useEffect(() => {
         const fetchEvents = async () => {
@@ -28,31 +28,32 @@ export const EventCarouselQuery = ({
     if (!events || events.length == 0) return
 
     return (
-        <div className={`${className} flex flex-col gap-y-2 ${theme ? `theme--${theme}` : ''}`}>
+        <div
+            className={`${className} flex flex-col gap-y-2 ${theme ? `theme--${theme}` : ''}`}>
             <div className="flex items-center gap-x-4 px-gutter">
                 {heading && (
-                    <h2 className={`typo-button uppercase block px-2 pt-1.5 pb-0.5 rounded-button ${theme ? 'bg-theme text-theme-contrast' : ''}`}>{heading}</h2>
+                    <h2
+                        className={`typo-button uppercase block px-2 pt-1.5 pb-0.5 rounded-button ${theme ? 'bg-theme text-theme-contrast' : ''}`}>
+                        {heading}
+                    </h2>
                 )}
                 {link && link}
             </div>
 
-            <div className='w-full'>
-                <Swiper
-                    modules={[FreeMode]}
-                    freeMode={{
-                        sticky: false,
-                    }}
-                    slidesPerView="auto"
-                    spaceBetween="16px"
-                    className="w-full !px-6 !overflow-visible">
-                    {events?.map((event, i) => (
-                        <SwiperSlide
-                        key={i}
-                        style={{ width: '16rem' }}>
-                            <EventCard event={event} type="carousel" showTags={true} />
-                        </SwiperSlide>
-                    ))}
-                </Swiper>
+            <div className="w-full">
+                <div className="embla event-carousel" ref={emblaRef}>
+                    <div className="embla__container">
+                        {items?.map((event, i) => (
+                            <div className="embla__slide" key={i}>
+                                <EventCard
+                                    event={event}
+                                    showTags={true}
+                                    type="carousel"
+                                />
+                            </div>
+                        ))}
+                    </div>
+                </div>
             </div>
         </div>
     )

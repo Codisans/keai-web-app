@@ -29,7 +29,7 @@ export const EventCarousel = ({
             </div>
 
             <div className="w-full">
-                <div className="embla" ref={emblaRef}>
+                <div className="embla event-carousel" ref={emblaRef}>
                     <div className="embla__container">
                         {items?.map((event, i) => (
                             <div className="embla__slide" key={i}>
