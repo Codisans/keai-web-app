@@ -10,6 +10,7 @@ export const EventCard = ({
     remove = false,
     showPrice = false,
     showTags = true,
+    loading = 'lazy',
 }) => {
     if (!event) return null
 
@@ -21,6 +22,7 @@ export const EventCard = ({
                         <img
                             className="absolute inset-0 w-full h-full object-cover"
                             src={event.cover || '/images/placeholder.jpg'}
+                            loading={loading}
                         />
                     </div>
                     <div className="flex flex-col gap-y-1.5 px-2 py-1.5">
@@ -64,6 +66,7 @@ export const EventCard = ({
                         <img
                             className="absolute inset-0 w-full h-full object-cover group-hover/card:scale-105 transition-transform ease-in-out duration-500"
                             src={event.cover || '/images/placeholder.jpg'}
+                            loading={loading}
                         />
                     </div>
                     <div className="col-span-8 flex flex-col">

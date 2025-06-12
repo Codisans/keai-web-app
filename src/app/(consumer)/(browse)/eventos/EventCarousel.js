@@ -1,7 +1,6 @@
 'use client'
 
-import { Swiper, SwiperSlide } from 'swiper/react'
-import { FreeMode } from 'swiper/modules'
+import useEmblaCarousel from 'embla-carousel-react'
 import { EventCard } from '@/components/molecules/EventCard'
 
 export const EventCarousel = ({
@@ -11,6 +10,8 @@ export const EventCarousel = ({
     theme = null,
     link = null,
 }) => {
+    const [emblaRef] = useEmblaCarousel({ dragFree: true })
+
     if (!events) return
 
     const items = Array.isArray(events) ? events : [events]
@@ -28,24 +29,19 @@ export const EventCarousel = ({
             </div>
 
             <div className="w-full">
-                <Swiper
-                    modules={[FreeMode]}
-                    freeMode={{
-                        sticky: false,
-                    }}
-                    slidesPerView="auto"
-                    spaceBetween="16px"
-                    className="w-full !px-6 !overflow-visible">
-                    {items?.map((event, i) => (
-                        <SwiperSlide key={i} style={{ width: '16rem' }}>
-                            <EventCard
-                                event={event}
-                                showTags={true}
-                                type="carousel"
-                            />
-                        </SwiperSlide>
-                    ))}
-                </Swiper>
+                <div className="embla" ref={emblaRef}>
+                    <div className="embla__container">
+                        {items?.map((event, i) => (
+                            <div className="embla__slide" key={i}>
+                                <EventCard
+                                    event={event}
+                                    showTags={true}
+                                    type="carousel"
+                                />
+                            </div>
+                        ))}
+                    </div>
+                </div>
             </div>
         </div>
     )
