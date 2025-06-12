@@ -16,7 +16,7 @@ export const CategoryBar = ({ view = 'listing' }) => {
 
     return (
         <nav className="w-full py-2 pointer-events-auto">
-            <div className="embla" ref={emblaRef}>
+            <div className="embla overflow-hidden" ref={emblaRef}>
                 <div className="embla__container">
                     <div
                         className="embla__slide flex-none pl-2"
