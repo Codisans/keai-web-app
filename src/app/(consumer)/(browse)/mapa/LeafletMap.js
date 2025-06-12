@@ -45,10 +45,17 @@ export default function LeafletMap({ children }) {
                     },
                 ).addTo(mapRef.current)
 
-                mapRef.current?.setView(
-                    [position.coords.latitude, position.coords.longitude],
-                    12,
-                )
+                const eventId = window.location.href.split('#')[1]
+                if (!eventId)
+                    [
+                        mapRef.current?.setView(
+                            [
+                                position.coords.latitude,
+                                position.coords.longitude,
+                            ],
+                            12,
+                        ),
+                    ]
             })
         } else {
             console.warn('Unable to use geolocation services.')
