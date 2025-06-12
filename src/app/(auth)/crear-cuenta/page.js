@@ -101,7 +101,7 @@ const Page = () => {
                     type="email"
                     value={email}
                     onChange={event => {
-                        setEmail(event.target.value)
+                        setEmail(event.target.value?.toLowerCase())
                         emailRef.current.classList.remove('error')
                     }}
                     required
