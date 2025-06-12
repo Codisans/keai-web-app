@@ -36,11 +36,13 @@ export const AccountDetail = () => {
 
 export const DetailRow = ({ label, value }) => {
     return (
-        <div className="grid border-t border-grey first:border-t-0 grid-cols-12 gap-x-2 items-center">
-            <span className="col-span-5 bg-white text-right typo-caps text-xs border-grey border-r p-2">
+        <div className="grid border-t border-grey first:border-t-0 grid-cols-12 gap-x-2 ">
+            <span className="col-span-5 bg-white typo-caps text-xs border-grey border-r p-2 flex justify-end text-right items-center">
                 {label}
             </span>
-            <span className="col-span-7 p-2 text-sm typo-regular">{value}</span>
+            <span className="col-span-7 p-2 text-sm typo-regular flex items-center">
+                {value}
+            </span>
         </div>
     )
 }
