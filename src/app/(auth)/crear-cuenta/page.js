@@ -4,6 +4,7 @@ import { useAuth } from '@/hooks/auth'
 import { useEffect, useRef, useState } from 'react'
 import { FormField } from '@/components/molecules/FormField'
 import Link from 'next/link'
+import moment from 'moment'
 
 const Page = () => {
     const { register } = useAuth({
@@ -55,8 +56,10 @@ const Page = () => {
         register({
             name,
             email,
+            gender,
             password,
             password_confirmation: passwordConfirmation,
+            date_of_birth: moment(dob).format('YYYY-MM-DD'),
             setErrors,
         })
     }
