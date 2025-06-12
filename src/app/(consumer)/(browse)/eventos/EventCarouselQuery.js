@@ -43,7 +43,7 @@ export const EventCarouselQuery = ({
             <div className="w-full">
                 <div className="embla event-carousel" ref={emblaRef}>
                     <div className="embla__container">
-                        {items?.map((event, i) => (
+                        {events?.map((event, i) => (
                             <div className="embla__slide" key={i}>
                                 <EventCard
                                     event={event}
