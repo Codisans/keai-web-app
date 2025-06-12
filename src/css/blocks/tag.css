@@ -8,7 +8,7 @@
     }
 
     .tag-sm {
-        @apply tag-base text-xs;
+        @apply tag-base text-2xs rounded-[0.4rem];
     }
 
     .tag-lg {

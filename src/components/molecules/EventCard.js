@@ -17,7 +17,7 @@ export const EventCard = ({
     switch (type) {
         case 'carousel':
             return (
-                <div className="flex flex-col relative w-full rounded-card overflow-hidden shadow-card">
+                <div className="flex flex-col h-full relative w-full rounded-card overflow-hidden shadow-card">
                     <div className="w-full aspect-[16/9] relative overflow-hidden">
                         <img
                             className="absolute inset-0 w-full h-full object-cover"
@@ -108,19 +108,13 @@ export const EventCard = ({
 export const EventTags = ({ tags }) => {
     if (!tags || tags.length == 0) return
 
-    const visibleTags = tags.slice(0, 4)
-    const hiddenTagCount = tags.slice(4).length
-
     return (
-        <ul className="flex flex-wrap gap-1">
-            {visibleTags.map(tag => (
+        <ul className="flex flex-wrap gap-1 overflow-hidden max-h-[2.5rem] items-start">
+            {tags.map(tag => (
                 <li key={tag.id} className="tag-sm">
                     {tag.name}
                 </li>
             ))}
-            {hiddenTagCount > 0 && (
-                <li className="tag-sm">+{hiddenTagCount}</li>
-            )}
         </ul>
     )
 }
