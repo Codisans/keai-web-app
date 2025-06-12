@@ -25,8 +25,10 @@ const Page = () => {
     const [dob, setDob] = useState('')
     const [gender, setGender] = useState('')
     const [errors, setErrors] = useState([])
+    const [loading, setLoading] = useState(false)
 
     useEffect(() => {
+        setLoading(false)
         Object.keys(errors).forEach(key => {
             switch (key) {
                 case 'password':
@@ -52,6 +54,7 @@ const Page = () => {
 
     const submitForm = event => {
         event.preventDefault()
+        setLoading(true)
 
         register({
             name,
@@ -204,10 +207,10 @@ const Page = () => {
             </div>
 
             <div className="flex items-center justify-end gap-4">
-                {/* <Link className="text-sm underline-out" href="/entrar">
-                    Ya tienes una cuenta?
-                </Link> */}
-                <button className="button dark" type="submit">
+                <button
+                    className="button dark disabled:opacity-50"
+                    type="submit"
+                    disabled={loading}>
                     Crear cuenta
                 </button>
             </div>
