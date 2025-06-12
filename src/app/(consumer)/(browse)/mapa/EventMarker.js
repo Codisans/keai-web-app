@@ -12,6 +12,7 @@ export const EventMarker = ({ event, targetEvent = false }) => {
     const markerRef = useRef(null)
 
     const icon = new Icon({
+        className: 'leaflet-marker-icon--category',
         iconUrl: event.categories[0]?.svg_idenftifier || '/keai-logotype.svg',
         iconSize: [24, 24],
         iconAnchor: [12, 30],

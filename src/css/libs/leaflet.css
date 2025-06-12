@@ -22,7 +22,7 @@ a[href="https://www.maptiler.com"]
     z-index: 5;
 }
 
-.leaflet-marker-icon {
+.leaflet-marker-icon.leaflet-marker-icon--category {
     background-color: var(--color-theme);
     padding: 3px !important;
     border-radius: 4px;
