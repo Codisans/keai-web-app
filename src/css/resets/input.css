@@ -1,0 +1,4 @@
+input[type='date'],
+select {
+    -webkit-appearance: none;
+}
