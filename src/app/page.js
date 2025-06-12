@@ -16,7 +16,7 @@ const Home = () => {
                         Descubre la vida de tu ciudad.
                     </h1>
                 </div>
-                <Link className="button-lg alt" href="/eventos">
+                <Link className="button alt" href="/eventos">
                     Explorar eventos
                 </Link>
             </section>

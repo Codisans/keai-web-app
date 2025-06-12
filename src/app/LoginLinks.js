@@ -10,19 +10,19 @@ export const LoginLinks = () => {
         <ul className="w-full flex flex-row justify-center items-center gap-2">
             {user ? (
                 <li>
-                    <Link className="button-lg dark" href="/perfil">
+                    <Link className="button dark" href="/perfil">
                         Ver perfil
                     </Link>
                 </li>
             ) : (
                 <>
                     <li>
-                        <Link className="button-lg alt" href="/crear-cuenta">
+                        <Link className="button alt" href="/crear-cuenta">
                             Crear usuario
                         </Link>
                     </li>
                     <li>
-                        <Link className="button-lg dark" href="/entrar">
+                        <Link className="button dark" href="/entrar">
                             Ingresar
                         </Link>
                     </li>
