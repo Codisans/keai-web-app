@@ -188,7 +188,7 @@ const Page = () => {
                 {/* Confirm Password */}
                 <FormField
                     label="Confirmar clave"
-                    name="passwordConfirmation"
+                    name="password_confirmation"
                     type="password"
                     value={passwordConfirmation}
                     onChange={event => {
