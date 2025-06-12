@@ -15,7 +15,7 @@ export const AccountDetail = () => {
                 <DetailRow label="Género" value={user.gender} />
                 <DetailRow
                     label="Fecha de nacimiento"
-                    value={moment(user.dob).format('DD-MM-YYYY')}
+                    value={moment(user.date_of_birth).format('DD-MM-YYYY')}
                 />
                 {/* <DetailRow
                     label="Account type"
