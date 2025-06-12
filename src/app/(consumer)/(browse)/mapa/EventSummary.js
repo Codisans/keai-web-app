@@ -34,16 +34,16 @@ export const EventSummary = ({ event }) => {
         event && (
             <div
                 ref={eventSummaryRef}
-                className="fixed bottom-[4.5rem] left-2 sm:max-w-[420px] right-2 rounded bg-white p-1 z-50 flex flex-row justify-start gap-2 border border-grey">
-                <div className="flex-none w-1/4 max-w-32 h-max rounded-sm overflow-hidden">
+                className="fixed bottom-[4.5rem] left-2 sm:max-w-[420px] flex flex-row right-2 rounded bg-white z-50 border border-grey">
+                <div className="flex-none w-1/4 p-1 max-w-32 h-max overflow-hidden">
                     <img
-                        className="aspect-sqaure w-full object-cover"
+                        className="aspect-sqaure w-full object-cover rounded-[0.25rem]"
                         src={event.cover || '/placeholder.jpg'}
                         alt={event.name}
                     />
                 </div>
-                <div className="flex flex-col px-1">
-                    <dl className="pt-1 typo-date text-xs text-black/80 flex gap-1 justify-between">
+                <div className="w-3/4 flex flex-col p-1">
+                    <dl className="pt-1 typo-date text-xs text-black/80 flex gap-1 justify-between pr-1">
                         <dd>
                             <DateTime date={event.start_date} />
                         </dd>
