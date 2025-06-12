@@ -34,26 +34,16 @@ export const EventSummary = ({ event }) => {
         event && (
             <div
                 ref={eventSummaryRef}
-                className="fixed bottom-[4.5rem] left-2 max-w-[420px] right-2 rounded bg-white p-1 z-50 grid grid-cols-4 gap-2 border border-grey">
-                <div className="flex-none col-span-1 h-max rounded-sm overflow-hidden">
+                className="fixed bottom-[4.5rem] left-2 sm:max-w-[420px] right-2 rounded bg-white p-1 z-50 flex flex-row justify-start gap-2 border border-grey">
+                <div className="flex-none w-1/4 max-w-32 h-max rounded-sm overflow-hidden">
                     <img
                         className="aspect-sqaure w-full object-cover"
                         src={event.cover || '/placeholder.jpg'}
                         alt={event.name}
                     />
                 </div>
-                <div className="col-span-3 flex flex-col p-1">
-                    <h3 className="text-sm py-0.5 w-full overflow-hidden text-ellipsis text-nowrap">
-                        {event.name}
-                    </h3>
-                    <ul className="flex flex-wrap gap-x-2 gap-y-1 py-1">
-                        {event.tags?.map(tag => (
-                            <li className="tag-sm" key={tag.id}>
-                                {tag.name}
-                            </li>
-                        ))}
-                    </ul>
-                    <dl className="typo-date text-sm text-black/80 flex gap-1 justify-between mt-auto">
+                <div className="flex flex-col px-1">
+                    <dl className="pt-1 typo-date text-xs text-black/80 flex gap-1 justify-between">
                         <dd>
                             <DateTime date={event.start_date} />
                         </dd>
@@ -61,6 +51,16 @@ export const EventSummary = ({ event }) => {
                             <DateTime date={event.start_date} format="time" />
                         </dd>
                     </dl>
+                    <h3 className="text-md typo-regular py-1.5 w-full overflow-hidden text-ellipsis text-nowrap">
+                        {event.name}
+                    </h3>
+                    <ul className="flex flex-wrap gap-1 max-h-10 overflow-hidden">
+                        {event.tags?.map(tag => (
+                            <li className="tag-sm" key={tag.id}>
+                                {tag.name}
+                            </li>
+                        ))}
+                    </ul>
                 </div>
                 <Link href={`/evento/${event.id}`} className="absolute inset-0">
                     <span className="sr-only">{event.name}</span>

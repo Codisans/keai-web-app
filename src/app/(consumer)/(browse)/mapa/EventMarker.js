@@ -43,13 +43,13 @@ export const EventMarker = ({ event, targetEvent = false }) => {
             }
 
             router.push(`#${event.id}`)
-            markerRef.current._icon.style.filter = 'brightness(0.8)'
             mapRef.current.panTo([
                 event.coordinates?.latitude,
                 event.coordinates?.longitude,
             ])
 
             activeMarkerRef.current = markerRef.current
+            markerRef.current._icon.style.filter = 'brightness(0.8)'
             setActiveEvent(event)
         }
 
