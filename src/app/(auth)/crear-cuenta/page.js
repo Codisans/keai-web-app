@@ -31,14 +31,14 @@ const Page = () => {
                 case 'password':
                     passwordRef.current.classList.add('error')
                     break
+                case 'email':
+                    emailRef.current.classList.add('error')
+                    break
                 case 'name':
                     nameRef.current.classList.add('error')
                     break
-                case 'dob':
+                case 'date_of_birth':
                     dobRef.current.classList.add('error')
-                    break
-                case 'email':
-                    emailRef.current.classList.add('error')
                     break
                 case 'gender':
                     genderRef.current.classList.add('error')
@@ -147,7 +147,7 @@ const Page = () => {
                 {/* Date of Birth */}
                 <FormField
                     label="Fecha de nacimiento"
-                    name="dob"
+                    name="date_of_birth"
                     type="date"
                     value={dob}
                     onChange={event => {
@@ -156,9 +156,9 @@ const Page = () => {
                     }}
                     required
                 />
-                {errors['dob']?.length > 0 && (
+                {errors['date_of_birth']?.length > 0 && (
                     <div className="typo-regular text-xs flex flex-col gap-y-2 text-error">
-                        {errors['dob'].map((err, i) => (
+                        {errors['date_of_birth'].map((err, i) => (
                             <p key={i}>{err}</p>
                         ))}
                     </div>
