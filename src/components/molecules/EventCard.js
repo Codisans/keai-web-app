@@ -2,6 +2,7 @@ import { DateTime } from '../atoms/DateTime'
 import Link from 'next/link'
 import { SaveEventButton } from '../atoms/SaveEventButton'
 import { RemoveEventButton } from '../atoms/RemoveEventButton'
+import Image from 'next/image'
 
 export const EventCard = ({
     event,
@@ -19,9 +20,12 @@ export const EventCard = ({
             return (
                 <div className="flex flex-col h-full relative w-full rounded-card overflow-hidden shadow-card">
                     <div className="w-full aspect-[16/9] relative overflow-hidden">
-                        <img
+                        <Image
                             className="absolute inset-0 w-full h-full object-cover"
-                            src={event.cover || '/images/placeholder.jpg'}
+                            src={event.cover}
+                            width={248}
+                            height={139}
+                            alt={event.name}
                             loading={loading}
                         />
                     </div>
@@ -63,9 +67,12 @@ export const EventCard = ({
             return (
                 <div className="grid grid-cols-12 gap-grid relative group/card w-full">
                     <div className="relative aspect-[16/9] col-span-4 overflow-hidden rounded-card">
-                        <img
+                        <Image
                             className="absolute inset-0 w-full h-full object-cover group-hover/card:scale-105 transition-transform ease-in-out duration-500"
-                            src={event.cover || '/images/placeholder.jpg'}
+                            src={event.cover}
+                            width={190}
+                            height={107}
+                            alt={event.name}
                             loading={loading}
                         />
                     </div>

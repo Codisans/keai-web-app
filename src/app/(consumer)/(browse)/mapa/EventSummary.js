@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { useContext, useRef } from 'react'
 import { MapContext } from './LeafletMap'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
+import Image from 'next/image'
 
 export const EventSummary = ({ event }) => {
     const eventSummaryRef = useRef(null)
@@ -36,9 +37,11 @@ export const EventSummary = ({ event }) => {
                 ref={eventSummaryRef}
                 className="fixed bottom-[4.5rem] left-2 sm:max-w-[420px] flex flex-row right-2 rounded bg-white z-50 border border-grey">
                 <div className="flex-none w-1/4 p-1 max-w-32 h-max overflow-hidden">
-                    <img
+                    <Image
                         className="aspect-sqaure w-full object-cover rounded-[0.25rem]"
-                        src={event.cover || '/placeholder.jpg'}
+                        src={event.cover}
+                        width={96}
+                        height={96}
                         alt={event.name}
                     />
                 </div>

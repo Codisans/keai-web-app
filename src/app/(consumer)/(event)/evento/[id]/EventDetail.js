@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { useContext, useEffect } from 'react'
 import { Symbol } from '@/components/atoms/Symbol'
 import { colorIsDark } from '@/utils/colorIsDark'
+import Image from 'next/image'
 
 export const EventDetail = ({ event }) => {
     const { setSelectedEvent } = useContext(ConsumerContext)
@@ -42,9 +43,12 @@ export const EventDetail = ({ event }) => {
                     {isFree && <li className="tag-lg">Gratis</li>}
                 </ul>
                 <div className="relative w-full mb-2 overflow-hidden aspect-video rounded-card">
-                    <img
+                    <Image
                         className="absolute inset-0 object-cover w-full h-full"
+                        width={584}
+                        height={328}
                         src={event.cover}
+                        alt={event.name}
                     />
                 </div>
             </div>
