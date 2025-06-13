@@ -1,7 +1,7 @@
 'use client'
 
 import { useAuth } from '@/hooks/auth'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import AuthSessionStatus from '@/app/(auth)/AuthSessionStatus'
 import DataUsageIcon from '@mui/icons-material/DataUsage'
@@ -17,6 +17,9 @@ const Login = () => {
         redirectIfAuthenticated: '/perfil',
     })
 
+    const emailRef = useRef(null)
+    const passwordRef = useRef(null)
+
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [shouldRemember, setShouldRemember] = useState(false)
@@ -30,6 +33,21 @@ const Login = () => {
             setStatus(null)
         }
     })
+
+    useEffect(() => {
+        Object.keys(errors).forEach(key => {
+            switch (key) {
+                case 'password':
+                    passwordRef.current.classList.add('error')
+                    break
+                case 'email':
+                    emailRef.current.classList.add('error')
+                    break
+                default:
+                    break
+            }
+        })
+    }, [errors])
 
     const submitForm = async event => {
         event.preventDefault()
@@ -57,29 +75,53 @@ const Login = () => {
                 </Link>
             </div>
 
-            {/* Email Address */}
-            <FormField
-                label="Correo"
-                name="email"
-                type="email"
-                value={email}
-                onChange={event => setEmail(event.target.value)}
-                error={errors.email}
-                required
-                autoFocus
-            />
+            <div ref={emailRef} className="w-full flex flex-col gap-y-2">
+                {/* Email Address */}
+                <FormField
+                    label="Correo"
+                    name="email"
+                    type="email"
+                    value={email}
+                    onChange={event => {
+                        setEmail(event.target.value?.toLowerCase())
+                        emailRef.current.classList.remove('error')
+                    }}
+                    error={errors.email}
+                    required
+                    autoFocus
+                />
+                {errors['email'] && (
+                    <div className="typo-regular text-xs flex flex-col gap-y-2 text-error">
+                        {errors['email'].map((err, i) => (
+                            <p key={i}>{err}</p>
+                        ))}
+                    </div>
+                )}
+            </div>
 
-            {/* Password */}
-            <FormField
-                label="Clave"
-                name="password"
-                type="password"
-                value={password}
-                onChange={event => setPassword(event.target.value)}
-                error={errors.password}
-                required
-                autoComplete="current-password"
-            />
+            <div ref={passwordRef} className="w-full flex flex-col gap-y-2">
+                {/* Password */}
+                <FormField
+                    label="Clave"
+                    name="password"
+                    type="password"
+                    value={password}
+                    onChange={event => {
+                        setPassword(event.target.value)
+                        passwordRef.current.classList.remove('error')
+                    }}
+                    error={errors.password}
+                    required
+                    autoComplete="current-password"
+                />
+                {errors['password'] && (
+                    <div className="typo-regular text-xs flex flex-col gap-y-2 text-error">
+                        {errors['password'].map((err, i) => (
+                            <p key={i}>{err}</p>
+                        ))}
+                    </div>
+                )}
+            </div>
 
             {/* Remember Me */}
             <div className="block">
