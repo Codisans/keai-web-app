@@ -7,9 +7,9 @@ import moment from 'moment'
 import { MapContext } from './LeafletMap'
 
 export const EventsLayer = ({ searchParams }) => {
-    const { setActiveEvent } = useContext(MapContext)
+    const { setSelectedEvent, targetEvent, setTargetEvent } =
+        useContext(MapContext)
     const [renderedEvents, setRenderedEvents] = useState([])
-    const [targetEvent, setTargetEvent] = useState(null)
     const { events, getEvents, getEvent } = useApi()
 
     useEffect(() => {
@@ -53,7 +53,7 @@ export const EventsLayer = ({ searchParams }) => {
             try {
                 const requestedEvent = await getEvent(eventId)
                 setTargetEvent(requestedEvent)
-                setActiveEvent(requestedEvent)
+                setSelectedEvent(requestedEvent)
             } catch (error) {
                 console.error('Error fetching events:', error)
             }
@@ -63,13 +63,14 @@ export const EventsLayer = ({ searchParams }) => {
 
     return (
         <>
-            {targetEvent && (
+            {targetEvent ? (
                 <EventMarker event={targetEvent} targetEvent={true} />
-            )}
-            {renderedEvents?.length > 0 &&
+            ) : (
+                renderedEvents?.length > 0 &&
                 renderedEvents?.map(event => (
                     <EventMarker key={event.id} event={event} />
-                ))}
+                ))
+            )}
         </>
     )
 }

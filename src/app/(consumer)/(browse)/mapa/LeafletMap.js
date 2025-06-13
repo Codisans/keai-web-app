@@ -12,17 +12,21 @@ const deviceLocationMarker = new Icon({
 
 export const MapContext = createContext({
     mapRef: null,
-    activeEvent: null,
-    setActiveEvent: () => {},
-    activeMarkerRef: null,
+    selectedEvent: null,
+    setSelectedEvent: () => {},
+    selectedMarkerRef: null,
+    targetEvent: null,
+    setTargetEvent: () => {},
 })
 
 export default function LeafletMap({ children }) {
     const mapRef = useRef(null)
     const deviceRef = useRef(null)
     const [isReady, setIsReady] = useState(false)
-    const [activeEvent, setActiveEvent] = useState(null)
-    const activeMarkerRef = useRef(null)
+
+    const [selectedEvent, setSelectedEvent] = useState(null)
+    const selectedMarkerRef = useRef(null)
+    const [targetEvent, setTargetEvent] = useState(null)
 
     useEffect(() => {
         mapRef.current = L.map('map', {
@@ -68,14 +72,16 @@ export default function LeafletMap({ children }) {
         <MapContext.Provider
             value={{
                 mapRef: mapRef,
-                activeEvent: activeEvent,
-                setActiveEvent: setActiveEvent,
-                activeMarkerRef: activeMarkerRef,
+                selectedEvent: selectedEvent,
+                setSelectedEvent: setSelectedEvent,
+                selectedMarkerRef: selectedMarkerRef,
+                targetEvent: targetEvent,
+                setTargetEvent: setTargetEvent,
             }}>
             <div id="map" className="w-full h-auto relative">
                 {isReady && children}
             </div>
-            <EventSummary event={activeEvent} />
+            <EventSummary event={selectedEvent} />
         </MapContext.Provider>
     )
 }

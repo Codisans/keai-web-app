@@ -6,8 +6,13 @@ import L, { Icon } from 'leaflet'
 import { useRouter } from 'next/navigation'
 
 export const EventMarker = ({ event, targetEvent = false }) => {
-    const { mapRef, activeEvent, setActiveEvent, activeMarkerRef } =
-        useContext(MapContext)
+    const {
+        mapRef,
+        selectedEvent,
+        selectedMarkerRef,
+        setSelectedEvent,
+        setTargetEvent,
+    } = useContext(MapContext)
     const router = useRouter()
     const markerRef = useRef(null)
 
@@ -38,8 +43,8 @@ export const EventMarker = ({ event, targetEvent = false }) => {
         )
 
         const clickHandler = () => {
-            if (activeMarkerRef.current?._icon) {
-                activeMarkerRef.current._icon.style.filter = ''
+            if (selectedMarkerRef.current?._icon) {
+                selectedMarkerRef.current._icon.style.filter = ''
             }
 
             router.push(`#${event.id}`)
@@ -48,9 +53,9 @@ export const EventMarker = ({ event, targetEvent = false }) => {
                 event.coordinates?.longitude,
             ])
 
-            activeMarkerRef.current = markerRef.current
+            selectedMarkerRef.current = markerRef.current
             markerRef.current._icon.style.filter = 'brightness(0.8)'
-            setActiveEvent(event)
+            setSelectedEvent(event)
         }
 
         markerRef.current.on('click', clickHandler)
@@ -66,6 +71,7 @@ export const EventMarker = ({ event, targetEvent = false }) => {
         }
 
         if (targetEvent) {
+            setTargetEvent(event)
             clickHandler()
         }
 
@@ -73,8 +79,8 @@ export const EventMarker = ({ event, targetEvent = false }) => {
             markerRef.current?.removeEventListener('click', clickHandler)
             markerRef.current?.remove()
 
-            if (activeEvent?.id == event.id) {
-                setActiveEvent(null)
+            if (selectedEvent?.id == event.id) {
+                setSelectedEvent(null)
             }
         }
     }, [mapRef.current])

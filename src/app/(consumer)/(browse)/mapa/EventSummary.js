@@ -10,8 +10,13 @@ import Image from 'next/image'
 
 export const EventSummary = ({ event }) => {
     const eventSummaryRef = useRef(null)
-    const { setActiveEvent, activeMarkerRef, activeEvent } =
-        useContext(MapContext)
+    const {
+        setSelectedEvent,
+        selectedMarkerRef,
+        selectedEvent,
+        setTargetEvent,
+    } = useContext(MapContext)
+
     const router = useRouter()
     const pathname = usePathname()
     const searchParams = useSearchParams()
@@ -19,10 +24,11 @@ export const EventSummary = ({ event }) => {
     useClickOutside(eventSummaryRef, e => {
         if (e.target.classList.contains('leaflet-marker-icon')) return
 
-        if (activeMarkerRef.current && activeEvent) {
-            setActiveEvent(null)
-            activeMarkerRef.current._icon.style.filter = ''
-            activeMarkerRef.current = null
+        if (selectedMarkerRef.current && selectedEvent) {
+            setTargetEvent(null)
+            setSelectedEvent(null)
+            selectedMarkerRef.current._icon.style.filter = ''
+            selectedMarkerRef.current = null
         }
 
         if (e.target.tagName === 'A') return
