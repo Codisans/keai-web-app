@@ -13,7 +13,7 @@ export const EventMarker = ({ event, targetEvent = false }) => {
 
     const icon = new Icon({
         className: 'leaflet-marker-icon--category',
-        iconUrl: event.categories[0]?.svg_idenftifier || '/keai-logotype.svg',
+        iconUrl: event.categories[0]?.svg_identifier || '/keai-logotype.svg',
         iconSize: [24, 24],
         iconAnchor: [12, 30],
         shadowUrl: '/keai-marker-shadow.svg',
