@@ -24,11 +24,12 @@ const Page = () => {
     const [passwordConfirmation, setPasswordConfirmation] = useState('')
     const [dob, setDob] = useState('')
     const [gender, setGender] = useState('')
-    const [errors, setErrors] = useState([])
+    const [errors, setErrors] = useState({})
     const [loading, setLoading] = useState(false)
 
     useEffect(() => {
         setLoading(false)
+        if (!errors) return
         Object.keys(errors).forEach(key => {
             switch (key) {
                 case 'password':
@@ -90,7 +91,7 @@ const Page = () => {
                     required
                     autoFocus
                 />
-                {errors['name']?.length > 0 && (
+                {Object.hasOwn(errors ?? {}, 'name') && (
                     <div className="typo-regular text-xs flex flex-col gap-y-2 text-error">
                         {errors['name'].map((err, i) => (
                             <p key={i}>{err}</p>
@@ -112,7 +113,7 @@ const Page = () => {
                     }}
                     required
                 />
-                {errors['email']?.length > 0 && (
+                {Object.hasOwn(errors ?? {}, 'email') && (
                     <div className="typo-regular text-xs flex flex-col gap-y-2 text-error">
                         {errors['email'].map((err, i) => (
                             <p key={i}>{err}</p>
@@ -140,7 +141,7 @@ const Page = () => {
                     }}
                     required
                 />
-                {errors['gender']?.length > 0 && (
+                {Object.hasOwn(errors ?? {}, 'gender') && (
                     <div className="typo-regular text-xs flex flex-col gap-y-2 text-error">
                         {errors['gender'].map((err, i) => (
                             <p key={i}>{err}</p>
@@ -162,7 +163,7 @@ const Page = () => {
                     }}
                     required
                 />
-                {errors['date_of_birth']?.length > 0 && (
+                {Object.hasOwn(errors ?? {}, 'date_of_birth') && (
                     <div className="typo-regular text-xs flex flex-col gap-y-2 text-error">
                         {errors['date_of_birth'].map((err, i) => (
                             <p key={i}>{err}</p>
@@ -197,7 +198,7 @@ const Page = () => {
                     }}
                     required
                 />
-                {errors['password']?.length > 0 && (
+                {Object.hasOwn(errors ?? {}, 'password') && (
                     <div className="typo-regular text-xs flex flex-col gap-y-2 text-error">
                         {errors['password'].map((err, i) => (
                             <p key={i}>{err}</p>

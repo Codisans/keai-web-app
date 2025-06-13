@@ -23,7 +23,7 @@ const Login = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [shouldRemember, setShouldRemember] = useState(false)
-    const [errors, setErrors] = useState([])
+    const [errors, setErrors] = useState({})
     const [status, setStatus] = useState(null)
 
     useEffect(() => {
@@ -35,6 +35,7 @@ const Login = () => {
     })
 
     useEffect(() => {
+        if (!errors) return
         Object.keys(errors).forEach(key => {
             switch (key) {
                 case 'password':
@@ -90,7 +91,7 @@ const Login = () => {
                     required
                     autoFocus
                 />
-                {errors['email'] && (
+                {Object.hasOwn(errors ?? {}, 'email') && (
                     <div className="typo-regular text-xs flex flex-col gap-y-2 text-error">
                         {errors['email'].map((err, i) => (
                             <p key={i}>{err}</p>
@@ -114,7 +115,7 @@ const Login = () => {
                     required
                     autoComplete="current-password"
                 />
-                {errors['password'] && (
+                {Object.hasOwn(errors ?? {}, 'password') && (
                     <div className="typo-regular text-xs flex flex-col gap-y-2 text-error">
                         {errors['password'].map((err, i) => (
                             <p key={i}>{err}</p>
