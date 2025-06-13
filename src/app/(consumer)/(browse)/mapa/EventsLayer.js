@@ -1,21 +1,31 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useContext } from 'react'
 import { EventMarker } from './EventMarker'
 import { useApi } from '@/hooks/api'
 import moment from 'moment'
+import { MapContext } from './LeafletMap'
 
 export const EventsLayer = ({ searchParams }) => {
+    const { setActiveEvent } = useContext(MapContext)
     const [renderedEvents, setRenderedEvents] = useState([])
     const [targetEvent, setTargetEvent] = useState(null)
     const { events, getEvents, getEvent } = useApi()
 
     useEffect(() => {
-        const params = new URLSearchParams(searchParams)
+        if (!events) return
 
-        if (params.size == 0) {
-            params.set('min_date', moment().format('YYYY-MM-DD'))
-            params.set('max_date', moment().add(4, 'days').format('YYYY-MM-DD'))
+        const urlSearchParams = new URLSearchParams()
+        Object.keys(searchParams).forEach(key => {
+            urlSearchParams.set(key, searchParams[key])
+        })
+
+        if (urlSearchParams.size === 0) {
+            urlSearchParams.set('min_date', moment().format('YYYY-MM-DD'))
+            urlSearchParams.set(
+                'max_date',
+                moment().add(4, 'days').format('YYYY-MM-DD'),
+            )
         }
 
         const fetchEvents = async p => {
@@ -28,24 +38,26 @@ export const EventsLayer = ({ searchParams }) => {
             }
         }
 
-        fetchEvents(params)
-    }, [searchParams])
+        fetchEvents(urlSearchParams)
+    }, [searchParams, events])
 
     useEffect(() => {
         if (!events) return
 
-        const id = window.location.href.split('#')[1]
-        if (!id) return
+        const urlHash = window.location.hash
+        if (urlHash == '') return
+
+        const eventId = urlHash.split('#')[1]
 
         const fetchTargetEvent = async () => {
             try {
-                const requestedEvent = await getEvent(id)
+                const requestedEvent = await getEvent(eventId)
                 setTargetEvent(requestedEvent)
+                setActiveEvent(requestedEvent)
             } catch (error) {
                 console.error('Error fetching events:', error)
             }
         }
-
         fetchTargetEvent()
     }, [events])
 

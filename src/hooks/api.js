@@ -45,8 +45,12 @@ export const useApi = () => {
     const getEvents = async searchParams => {
         const categories = searchParams.get('categories[]')?.split(',')
         const tags = searchParams.get('tags[]')?.split(',')
-        const minDate = moment(searchParams.get('min_date')).startOf('day')
-        const maxDate = moment(searchParams.get('max_date')).endOf('day')
+        const minDate = searchParams.get('min_date')
+            ? moment(searchParams.get('min_date')).startOf('day')
+            : moment().startOf('day')
+        const maxDate = searchParams.get('max_date')
+            ? moment(searchParams.get('max_date')).endOf('day')
+            : null
         const minPrice = searchParams.get('min_price')
         const maxPrice = searchParams.get('max_price')
         const keywords = searchParams.get('keywords')

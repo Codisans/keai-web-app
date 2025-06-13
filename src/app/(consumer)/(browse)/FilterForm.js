@@ -47,18 +47,14 @@ export const FilterForm = ({ className = '', isMap = false }) => {
     const [selectedTags, setSelectedTags] = useState([])
 
     useEffect(() => {
-        const urlSearchParams = new URLSearchParams(searchParams)
-        const paramsMinDate = urlSearchParams.get('min_date')
-        const paramsMaxDate = urlSearchParams.get('max_date')
         setPriceValue([
-            urlSearchParams.get('min_price') || null,
-            urlSearchParams.get('max_price') || null,
+            searchParams.get('min_price') || null,
+            searchParams.get('max_price') || null,
         ])
-        setSelectedTags(urlSearchParams.get('tags') || [])
-
+        setSelectedTags(searchParams.get('tags') || [])
         setDate([
-            paramsMinDate || defaultDate[0],
-            paramsMaxDate || defaultDate[1],
+            searchParams.get('min_date') || defaultDate[0],
+            searchParams.get('max_date') || defaultDate[1],
         ])
     }, [])
 
