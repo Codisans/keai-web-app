@@ -4,7 +4,7 @@ import { EventHeader } from './EventHeader'
 import api from '@/lib/api'
 
 export async function generateMetadata(props) {
-    const params = await props.params;
+    const params = await props.params
     const event = await api.getEvent(params.id)
 
     return {
@@ -33,7 +33,7 @@ export async function generateMetadata(props) {
 }
 
 const Event = async props => {
-    const params = await props.params;
+    const params = await props.params
     const event = await api.getEvent(params.id)
 
     return (

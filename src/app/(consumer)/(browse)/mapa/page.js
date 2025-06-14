@@ -5,10 +5,10 @@ export const metadata = {
 }
 
 const MapPage = async props => {
-    const searchParams = await props.searchParams;
+    const searchParams = await props.searchParams
     return (
         <>
-           <EventsLayer searchParams={await searchParams} />
+            <EventsLayer searchParams={await searchParams} />
         </>
     )
 }

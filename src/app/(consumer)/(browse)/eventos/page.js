@@ -5,7 +5,7 @@ export const metadata = {
 }
 
 const Events = async props => {
-    const searchParams = await props.searchParams;
+    const searchParams = await props.searchParams
 
     return (
         <>
