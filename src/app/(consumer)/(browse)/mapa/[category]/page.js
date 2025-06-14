@@ -5,7 +5,9 @@ export const metadata = {
     title: 'KEAI | Mapa ',
 }
 
-const MapCategory = async ({ params, searchParams }) => {
+const MapCategory = async props => {
+    const searchParams = await props.searchParams;
+    const params = await props.params;
     const urlSearchParams = new URLSearchParams(searchParams)
 
     urlSearchParams.set('categories[]', params.category)

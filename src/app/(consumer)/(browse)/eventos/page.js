@@ -4,7 +4,8 @@ export const metadata = {
     title: 'KEAI | Eventos',
 }
 
-const Events = ({ searchParams }) => {
+const Events = async props => {
+    const searchParams = await props.searchParams;
 
     return (
         <>

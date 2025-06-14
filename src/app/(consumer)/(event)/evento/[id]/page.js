@@ -3,7 +3,8 @@ import { EventFooter } from './EventFooter'
 import { EventHeader } from './EventHeader'
 import api from '@/lib/api'
 
-export async function generateMetadata({ params }) {
+export async function generateMetadata(props) {
+    const params = await props.params;
     const event = await api.getEvent(params.id)
 
     return {
@@ -31,7 +32,8 @@ export async function generateMetadata({ params }) {
     }
 }
 
-const Event = async ({ params }) => {
+const Event = async props => {
+    const params = await props.params;
     const event = await api.getEvent(params.id)
 
     return (
