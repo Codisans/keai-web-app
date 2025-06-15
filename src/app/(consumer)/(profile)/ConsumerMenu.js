@@ -1,12 +1,9 @@
 'use client'
-import PersonIcon from '@mui/icons-material/Person'
-import SettingsIcon from '@mui/icons-material/Settings'
-import HomeIcon from '@mui/icons-material/Home'
-import MapIcon from '@mui/icons-material/Map'
 import { LogoutButton } from '@/components/atoms/LogoutButton'
 import { Pullout } from '@/components/molecules/Pullout'
 import { useConsumerContext } from '../ConsumerContext'
 import { NavLink } from '@/components/atoms/NavLink'
+import { Symbol } from '@/components/atoms/Symbol'
 
 export const ConsumerMenu = () => {
     const { menuIsOpen, setMenuIsOpen } = useConsumerContext()
@@ -20,25 +17,31 @@ export const ConsumerMenu = () => {
                             <NavLink
                                 className="button-icon"
                                 pathname="/eventos">
-                                <HomeIcon />
+                                <Symbol className="w-6 h-6" name="home-icon" />
                                 <span>Inicio</span>
                             </NavLink>
                         </li>
                         <li>
                             <NavLink className="button-icon" pathname="/mapa">
-                                <MapIcon />
+                                <Symbol className="w-6 h-6" name="map-icon" />
                                 <span>Mapa</span>
                             </NavLink>
                         </li>
                         <li>
                             <NavLink className="button-icon" pathname="/cuenta">
-                                <SettingsIcon />
+                                <Symbol
+                                    className="w-6 h-6"
+                                    name="settings-icon"
+                                />
                                 <span>Cuenta</span>
                             </NavLink>
                         </li>
                         <li>
                             <NavLink className="button-icon" pathname="/perfil">
-                                <PersonIcon />
+                                <Symbol
+                                    className="w-6 h-6"
+                                    name="profile-icon"
+                                />
                                 <span>Perfil</span>
                             </NavLink>
                         </li>

@@ -2,7 +2,7 @@
 
 import { useUserEvents } from '@/hooks/userEvents'
 import { useState } from 'react'
-import DeleteIcon from '@mui/icons-material/Delete'
+import { Symbol } from '@/components/atoms/Symbol'
 
 export const RemoveEventButton = ({ eventId, className = '' }) => {
     const { saveEvent } = useUserEvents()
@@ -17,7 +17,7 @@ export const RemoveEventButton = ({ eventId, className = '' }) => {
             }}
             disabled={isLoading}
             type="button">
-            <DeleteIcon />
+            <Symbol className="w-6 h-6" name="trash-icon" />
         </button>
     )
 }

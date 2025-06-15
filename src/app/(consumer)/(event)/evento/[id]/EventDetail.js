@@ -7,6 +7,7 @@ import { useContext, useEffect } from 'react'
 import { Symbol } from '@/components/atoms/Symbol'
 import { colorIsDark } from '@/utils/colorIsDark'
 import Image from 'next/image'
+import ReportEvent from '@/components/atoms/ReportEvent'
 
 export const EventDetail = ({ event }) => {
     const { setSelectedEvent } = useContext(ConsumerContext)
@@ -99,6 +100,10 @@ export const EventDetail = ({ event }) => {
             </div>
 
             <ShareLinks event={event} />
+
+            <div className="mt-8">
+                <ReportEvent event={event} reporter="test" />
+            </div>
         </div>
     )
 }

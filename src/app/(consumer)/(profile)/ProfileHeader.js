@@ -1,18 +1,13 @@
 'use client'
-import SettingsIcon from '@mui/icons-material/Settings'
 import { Logo } from '@/components/atoms/Logo'
 import Link from 'next/link'
-import { useContext, useEffect } from 'react'
+import { useContext } from 'react'
 import { ConsumerContext } from '@/app/(consumer)/ConsumerContext'
 import { NavLink } from '@/components/atoms/NavLink'
+import { Symbol } from '@/components/atoms/Symbol'
 
 export const ProfileHeader = () => {
-    const { menuIsOpen, setMenuIsOpen, setSelectedCategory } =
-        useContext(ConsumerContext)
-
-    useEffect(() => {
-        setSelectedCategory(null)
-    }, [])
+    const { menuIsOpen, setMenuIsOpen } = useContext(ConsumerContext)
 
     return (
         <header className="fixed top-0 left-0 right-0 border-b border-grey z-header bg-white shrink">
@@ -27,7 +22,7 @@ export const ProfileHeader = () => {
                         <NavLink
                             pathname="/cuenta"
                             className="button-icon w-20">
-                            <SettingsIcon />
+                            <Symbol className="w-6 h-6" name="settings-icon" />
                         </NavLink>
                     </li>
                     <li>

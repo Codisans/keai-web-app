@@ -4,9 +4,9 @@ import { useAuth } from '@/hooks/auth'
 import { useEffect, useRef, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import AuthSessionStatus from '@/app/(auth)/AuthSessionStatus'
-import DataUsageIcon from '@mui/icons-material/DataUsage'
 import Link from 'next/link'
 import { FormField } from '@/components/molecules/FormField'
+import { Symbol } from '@/components/atoms/Symbol'
 
 const Login = () => {
     const router = useRouter()
@@ -148,7 +148,8 @@ const Login = () => {
                     Recuperar clave
                 </Link>
                 <button className="button dark relative" type="submit">
-                    <DataUsageIcon
+                    <Symbol
+                        name="spinner-icon"
                         className={`absolute h-[1em] w-[1em] animate-spin text-grey ${isLoading ? '' : 'invisible'}`}
                     />
                     <span className={isLoading ? 'invisible' : ''}>Entrar</span>

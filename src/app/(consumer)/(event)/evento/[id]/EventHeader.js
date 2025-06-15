@@ -1,7 +1,7 @@
-import HomeIcon from '@mui/icons-material/Home'
 import Link from 'next/link'
 import { SaveEventButton } from '@/components/atoms/SaveEventButton'
 import { BackButton } from '@/components/atoms/BackButton'
+import { Symbol } from '@/components/atoms/Symbol'
 
 export const EventHeader = ({ eventId }) => {
     return (
@@ -10,25 +10,12 @@ export const EventHeader = ({ eventId }) => {
                 <ul className="grid w-full grid-cols-5 gap-2">
                     <li className="col-span-1">
                         <BackButton className="button-icon w-full">
-                            <svg
-                                className="w-8 h-8 -m-1"
-                                aria-hidden="true"
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
-                                viewBox="0 0 24 24">
-                                <path
-                                    stroke="currentColor"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth="2"
-                                    d="M5 12h14M5 12l4-4m-4 4 4 4"
-                                />
-                            </svg>
+                            <Symbol className="w-6 h-6" name="back-arrow" />
                         </BackButton>
                     </li>
                     <li className="col-span-1">
                         <Link className="button-icon w-full" href="/eventos">
-                            <HomeIcon />
+                            <Symbol className="w-6 h-6" name="home-icon" />
                         </Link>
                     </li>
                     <li className="col-start-5 col-end-6">

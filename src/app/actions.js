@@ -1,46 +1,135 @@
 'use server'
 
-import webpush from 'web-push'
+const NOTION_API_VERSION = '2022-06-28'
+const NOTION_API_BASE = 'https://api.notion.com/v1'
 
-webpush.setVapidDetails(
-    '<mailto:your-email@example.com>',
-    process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY,
-    process.env.VAPID_PRIVATE_KEY,
-)
-
-let subscription = null
-
-export async function subscribeUser(sub) {
-    subscription = sub
-    // In a production environment, you would want to store the subscription in a database
-    // For example: await db.subscriptions.create({ data: sub })
-    return { success: true }
-}
-
-export async function unsubscribeUser() {
-    subscription = null
-    // In a production environment, you would want to remove the subscription from the database
-    // For example: await db.subscriptions.delete({ where: { ... } })
-    return { success: true }
-}
-
-export async function sendNotification(message) {
-    if (!subscription) {
-        throw new Error('No subscription available')
-    }
-
+/**
+ * Submit a single event report to Notion
+ * @param {Object} data - The event data to submit
+ * @param {string} data.event_name - The title of the event
+ * @param {string} data.event_id - The id of the event
+ * @param {string} data.report_date - When the event occurred
+ * @param {string} data.reporter - Name of the person reporting
+ */
+export async function submitEventReport(data) {
     try {
-        await webpush.sendNotification(
-            subscription,
-            JSON.stringify({
-                title: 'Test Notification',
-                body: message,
-                icon: '/icon.png',
+        const response = await fetch(`${NOTION_API_BASE}/pages`, {
+            method: 'POST',
+            headers: {
+                Authorization: `Bearer ${process.env.NOTION_API_KEY}`,
+                'Content-Type': 'application/json',
+                'Notion-Version': NOTION_API_VERSION,
+            },
+            body: JSON.stringify({
+                parent: {
+                    type: 'database_id',
+                    database_id: process.env.NOTION_EVENT_BUGS_DATABASE_ID,
+                },
+                properties: {
+                    event: {
+                        title: [
+                            {
+                                type: 'text',
+                                text: { content: data.event_name },
+                            },
+                        ],
+                    },
+                    event_id: {
+                        type: 'text',
+                        text: {
+                            content: data.event_id,
+                        },
+                    },
+                    report_date: {
+                        type: 'date',
+                        date: { start: data.report_date },
+                    },
+                    reporter: {
+                        type: 'text',
+                        text: {
+                            content: data.reporter,
+                        },
+                    },
+                },
             }),
-        )
+        })
+
+        if (!response.ok) {
+            throw new Error(`Notion API error: ${response.statusText}`)
+        }
+
         return { success: true }
     } catch (error) {
-        console.error('Error sending push notification:', error)
-        return { success: false, error: 'Failed to send notification' }
+        console.error('Error submitting event report:', error)
+        return { success: false, error: error.message }
+    }
+}
+
+/**
+ * Submit user feedback to Notion
+ * @param {Object} data - The feedback data to submit
+ * @param {string} data.feedback - The feedback content
+ * @param {string} data.category - Category of feedback (e.g., 'bug', 'feature', 'improvement')
+ * @param {string} data.user - Name of the user providing feedback
+ * @param {string} data.contact - Contact information
+ */
+export async function submitUserFeedback(data) {
+    try {
+        const response = await fetch(`${NOTION_API_BASE}/pages`, {
+            method: 'POST',
+            headers: {
+                Authorization: `Bearer ${process.env.NOTION_API_KEY}`,
+                'Content-Type': 'application/json',
+                'Notion-Version': NOTION_API_VERSION,
+            },
+            body: JSON.stringify({
+                parent: {
+                    database_id: process.env.NOTION_FEEDBACK_DATABASE_ID,
+                },
+                properties: {
+                    Feedback: {
+                        rich_text: [
+                            {
+                                text: {
+                                    content: data.feedback,
+                                },
+                            },
+                        ],
+                    },
+                    Category: {
+                        select: {
+                            name: data.category,
+                        },
+                    },
+                    User: {
+                        rich_text: [
+                            {
+                                text: {
+                                    content: data.user,
+                                },
+                            },
+                        ],
+                    },
+                    Contact: {
+                        rich_text: [
+                            {
+                                text: {
+                                    content: data.contact,
+                                },
+                            },
+                        ],
+                    },
+                },
+            }),
+        })
+
+        if (!response.ok) {
+            throw new Error(`Notion API error: ${response.statusText}`)
+        }
+
+        return { success: true }
+    } catch (error) {
+        console.error('Error submitting user feedback:', error)
+        return { success: false, error: error.message }
     }
 }

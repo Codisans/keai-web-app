@@ -1,5 +1,6 @@
 'use client'
-import CloseIcon from '@mui/icons-material/Close'
+
+import { Symbol } from '@/components/atoms/Symbol'
 
 export const Pullout = ({ isOpen, setIsOpen, children }) => {
     return (
@@ -16,7 +17,7 @@ export const Pullout = ({ isOpen, setIsOpen, children }) => {
                 <button
                     className="absolute top-grid-gap right-grid-gap text-icon"
                     onClick={() => setIsOpen(false)}>
-                    <CloseIcon />
+                    <Symbol className="w-6 h-6" name="cross" />
                 </button>
             </div>
         </div>

@@ -1,15 +1,15 @@
 'use client'
 
 import { NavLink } from './NavLink'
-import PersonIcon from '@mui/icons-material/Person'
 import { useAuth } from '@/hooks/auth'
+import { Symbol } from '@/components/atoms/Symbol'
 
 export const ProfileButton = ({ ...props }) => {
     const { user } = useAuth()
 
     return (
         <NavLink {...props} href={user ? '/perfil' : '/entrar'}>
-            <PersonIcon />
+            <Symbol className="w-6 h-6" name="profile-icon" />
         </NavLink>
     )
 }
