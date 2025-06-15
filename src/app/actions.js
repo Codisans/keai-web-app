@@ -35,20 +35,22 @@ export async function submitEventReport(data) {
                         ],
                     },
                     event_id: {
-                        type: 'text',
-                        text: {
-                            content: data.event_id,
-                        },
+                        type: 'number',
+                        number: data.event_id,
                     },
                     report_date: {
                         type: 'date',
                         date: { start: data.report_date },
                     },
                     reporter: {
-                        type: 'text',
-                        text: {
-                            content: data.reporter,
-                        },
+                        type: 'rich_text',
+                        rich_text: [
+                            {
+                                text: {
+                                    content: data.reporter,
+                                },
+                            },
+                        ],
                     },
                 },
             }),

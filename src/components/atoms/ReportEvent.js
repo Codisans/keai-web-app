@@ -16,7 +16,7 @@ export default function ReportEvent({ event, className = '' }) {
 
         const data = {
             event_name: event.name,
-            event_id: event.id?.toString(),
+            event_id: event.id,
             report_date: moment().format('YYYY-MM-DD'),
             reporter: 'test',
         }
