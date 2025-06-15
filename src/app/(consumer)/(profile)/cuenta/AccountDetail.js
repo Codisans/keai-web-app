@@ -17,10 +17,10 @@ export const AccountDetail = () => {
                     label="Fecha de nacimiento"
                     value={moment(user.date_of_birth).format('DD-MM-YYYY')}
                 />
-                <DetailRow
+                {/* <DetailRow
                     label="Account type"
                     value={JSON.stringify(user.roles)}
-                />
+                /> */}
                 <DetailRow
                     label="Usuario creado"
                     value={moment(user.created_at).format('DD-MM-YYYY')}
