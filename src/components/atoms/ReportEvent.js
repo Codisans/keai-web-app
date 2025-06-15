@@ -3,8 +3,11 @@
 import { useState } from 'react'
 import { submitEventReport } from '@/app/actions'
 import moment from 'moment'
+import { Symbol } from './Symbol'
+import { useAuth } from '@/hooks/auth'
 
 export default function ReportEvent({ event, className = '' }) {
+    const { user } = useAuth()
     const [status, setStatus] = useState({ type: '', message: '' })
     const [isSubmitting, setIsSubmitting] = useState(false)
 
@@ -15,10 +18,10 @@ export default function ReportEvent({ event, className = '' }) {
         setStatus({ type: '', message: '' })
 
         const data = {
-            event_name: event.name,
+            report_id: crypto.randomUUID(),
             event_id: event.id,
             report_date: moment().format('YYYY-MM-DD'),
-            reporter: 'test',
+            reporter: user?.id?.toString() ?? 'guest',
         }
 
         try {
@@ -48,10 +51,10 @@ export default function ReportEvent({ event, className = '' }) {
         <div className={className}>
             {status.message && (
                 <div
-                    className={`p-4 mb-6 rounded ${
+                    className={`p-4 rounded ${
                         status.type === 'success'
-                            ? 'bg-green-100 text-green-700'
-                            : 'bg-red-100 text-red-700'
+                            ? 'bg-green/10 text-green'
+                            : 'bg-error/10 text-error'
                     }`}>
                     {status.message}
                 </div>
@@ -59,11 +62,12 @@ export default function ReportEvent({ event, className = '' }) {
 
             <button
                 onClick={handleSubmit}
-                disabled={isSubmitting}
-                className={`w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 ${
+                disabled={isSubmitting || status.type === 'success'}
+                className={`button-icon ${
                     isSubmitting ? 'opacity-50 cursor-not-allowed' : ''
                 }`}>
-                {isSubmitting ? 'Submitting...' : 'Report Event'}
+                <Symbol name="report-icon" className="w-6 h-6" />
+                {isSubmitting ? 'Enviando...' : 'Reportar evento'}
             </button>
         </div>
     )

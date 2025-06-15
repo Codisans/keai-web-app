@@ -6,12 +6,13 @@ const NOTION_API_BASE = 'https://api.notion.com/v1'
 /**
  * Submit a single event report to Notion
  * @param {Object} data - The event data to submit
- * @param {string} data.event_name - The title of the event
+ * @param {string} data.report_id - The id of the report
  * @param {string} data.event_id - The id of the event
  * @param {string} data.report_date - When the event occurred
  * @param {string} data.reporter - Name of the person reporting
  */
 export async function submitEventReport(data) {
+    console.log(data)
     try {
         const response = await fetch(`${NOTION_API_BASE}/pages`, {
             method: 'POST',
@@ -26,11 +27,11 @@ export async function submitEventReport(data) {
                     database_id: process.env.NOTION_REPORTED_EVENTS_DATABASE_ID,
                 },
                 properties: {
-                    event: {
+                    id: {
                         title: [
                             {
                                 type: 'text',
-                                text: { content: data.event_name },
+                                text: { content: data.report_id },
                             },
                         ],
                     },

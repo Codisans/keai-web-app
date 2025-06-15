@@ -101,9 +101,10 @@ export const EventDetail = ({ event }) => {
 
             <ShareLinks event={event} />
 
-            <div className="mt-8">
-                <ReportEvent event={event} reporter="test" />
-            </div>
+            <ReportEvent
+                className="mt-8 w-full flex flex-col gap-y-2 justify-center text-center"
+                event={event}
+            />
         </div>
     )
 }
