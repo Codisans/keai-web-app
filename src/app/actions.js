@@ -23,7 +23,7 @@ export async function submitEventReport(data) {
             body: JSON.stringify({
                 parent: {
                     type: 'database_id',
-                    database_id: process.env.NOTION_EVENT_BUGS_DATABASE_ID,
+                    database_id: process.env.NOTION_REPORTED_EVENTS_DATABASE_ID,
                 },
                 properties: {
                     event: {
