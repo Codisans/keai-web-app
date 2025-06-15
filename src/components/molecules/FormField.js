@@ -52,6 +52,16 @@ export const FormInput = ({
                     ))}
                 </select>
             )
+        case 'textarea':
+            return (
+                <textarea
+                    className="w-full form-input"
+                    id={name}
+                    value={value}
+                    onChange={onChange}
+                    {...props}
+                />
+            )
         default:
             return (
                 <input

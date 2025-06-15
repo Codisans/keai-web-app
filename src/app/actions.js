@@ -90,34 +90,34 @@ export async function submitUserFeedback(data) {
                     database_id: process.env.NOTION_FEEDBACK_DATABASE_ID,
                 },
                 properties: {
-                    Feedback: {
+                    id: {
+                        title: [
+                            {
+                                type: 'text',
+                                text: { content: data.id },
+                            },
+                        ],
+                    },
+                    user_id: {
+                        type: 'number',
+                        number: data.user_id,
+                    },
+                    type: {
+                        type: 'rich_text',
                         rich_text: [
                             {
                                 text: {
-                                    content: data.feedback,
+                                    content: data.type,
                                 },
                             },
                         ],
                     },
-                    Category: {
-                        select: {
-                            name: data.category,
-                        },
-                    },
-                    User: {
+                    message: {
+                        type: 'rich_text',
                         rich_text: [
                             {
                                 text: {
-                                    content: data.user,
-                                },
-                            },
-                        ],
-                    },
-                    Contact: {
-                        rich_text: [
-                            {
-                                text: {
-                                    content: data.contact,
+                                    content: data.message,
                                 },
                             },
                         ],

@@ -46,6 +46,17 @@ export const ConsumerMenu = () => {
                             </NavLink>
                         </li>
                         <li>
+                            <NavLink
+                                className="button-icon"
+                                pathname="/feedback">
+                                <Symbol
+                                    className="w-6 h-6"
+                                    name="feedback-icon"
+                                />
+                                <span>Enviar feedback</span>
+                            </NavLink>
+                        </li>
+                        <li>
                             <LogoutButton />
                         </li>
                     </ul>
