@@ -132,7 +132,7 @@ export async function submitUserFeedback(data) {
 
         return { success: true }
     } catch (error) {
-        console.error('Error submitting user feedback:', error)
+        console.error('Error enviando feedback del usuario:', error)
         return { success: false, error: error.message }
     }
 }

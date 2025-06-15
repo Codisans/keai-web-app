@@ -29,18 +29,18 @@ export default function ReportEvent({ event, className = '' }) {
             if (result.success) {
                 setStatus({
                     type: 'success',
-                    message: 'Event reported successfully!',
+                    message: 'Gracias por reportar el evento!',
                 })
             } else {
                 setStatus({
                     type: 'error',
-                    message: result.error || 'Failed to submit event report',
+                    message: result.error || 'Error al reportar el evento',
                 })
             }
         } catch (error) {
             setStatus({
                 type: 'error',
-                message: 'An unexpected error occurred',
+                message: 'Error al reportar el evento',
             })
         } finally {
             setIsSubmitting(false)
@@ -60,15 +60,17 @@ export default function ReportEvent({ event, className = '' }) {
                 </div>
             )}
 
-            <button
-                onClick={handleSubmit}
-                disabled={isSubmitting || status.type === 'success'}
-                className={`button-icon ${
-                    isSubmitting ? 'opacity-50 cursor-not-allowed' : ''
-                }`}>
-                <Symbol name="report-icon" className="w-6 h-6" />
-                {isSubmitting ? 'Enviando...' : 'Reportar evento'}
-            </button>
+            {status.type !== 'success' && (
+                <button
+                    onClick={handleSubmit}
+                    disabled={isSubmitting}
+                    className={`button-icon ${
+                        isSubmitting ? 'opacity-50 cursor-not-allowed' : ''
+                    }`}>
+                    <Symbol name="report-icon" className="w-6 h-6" />
+                    {isSubmitting ? 'Enviando...' : 'Reportar evento'}
+                </button>
+            )}
         </div>
     )
 }
