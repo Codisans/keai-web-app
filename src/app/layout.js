@@ -2,6 +2,7 @@ import '@/css/main.css'
 import { AppContextProvider } from './AppContext'
 import { GoogleAnalytics } from '@next/third-parties/google'
 import { Analytics } from '@vercel/analytics/react'
+import { QueryProvider } from './QueryProvider'
 
 const RootLayout = ({ children }) => {
     return (
@@ -28,7 +29,9 @@ const RootLayout = ({ children }) => {
                 />
             </head>
             <body className="bg-white text-black font-sans overscroll-none min-h-svh">
-                <AppContextProvider>{children}</AppContextProvider>
+                <QueryProvider>
+                    <AppContextProvider>{children}</AppContextProvider>
+                </QueryProvider>
                 <GoogleAnalytics gaId="G-YKTP4XWEGV" />
                 <Analytics />
             </body>

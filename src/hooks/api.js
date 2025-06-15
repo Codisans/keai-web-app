@@ -1,13 +1,13 @@
-import useSWR from 'swr'
+import { useQuery } from '@tanstack/react-query'
 import axios from '@/lib/axios'
 import moment from 'moment'
 
 export const useApi = () => {
     const today = moment().format('YYYY-MM-DD')
 
-    const { data: events } = useSWR(
-        `/api/events?min_date=${today}&sort_by=start_date&sort_order=asc`,
-        () =>
+    const { data: events } = useQuery({
+        queryKey: ['events', today],
+        queryFn: () =>
             axios
                 .get(
                     `/api/events?min_date=${today}&sort_by=start_date&sort_order=asc`,
@@ -16,25 +16,29 @@ export const useApi = () => {
                 .catch(error => {
                     throw new Error('Error getting events', error)
                 }),
-    )
+    })
 
-    const { data: categories } = useSWR('/api/categories', () =>
-        axios
-            .get('/api/categories')
-            .then(res => res.data.data ?? [])
-            .catch(error => {
-                throw new Error('Error getting categories', error)
-            }),
-    )
+    const { data: categories } = useQuery({
+        queryKey: ['categories'],
+        queryFn: () =>
+            axios
+                .get('/api/categories')
+                .then(res => res.data.data ?? [])
+                .catch(error => {
+                    throw new Error('Error getting categories', error)
+                }),
+    })
 
-    const { data: tags } = useSWR('/api/tags', () =>
-        axios
-            .get('/api/tags')
-            .then(res => res.data ?? [])
-            .catch(error => {
-                throw new Error('Error getting tags', error)
-            }),
-    )
+    const { data: tags } = useQuery({
+        queryKey: ['tags'],
+        queryFn: () =>
+            axios
+                .get('/api/tags')
+                .then(res => res.data ?? [])
+                .catch(error => {
+                    throw new Error('Error getting tags', error)
+                }),
+    })
 
     const getEvent = async eventId => {
         const id = Number(eventId)

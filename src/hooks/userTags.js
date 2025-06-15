@@ -1,45 +1,53 @@
-import useSWR from 'swr'
+import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
 import axios from '@/lib/axios'
 
 export const useUserTags = () => {
-    const { data: userTags, mutate } = useSWR('/api/favorites/tags', () =>
-        axios
-            .get('/api/favorites/tags')
-            .then(res => res.data.data)
-            .catch(error => {
-                throw new Error('Error getting user tags', error)
-            }),
-    )
+    const queryClient = useQueryClient()
+
+    const { data: userTags } = useQuery({
+        queryKey: ['userTags'],
+        queryFn: () =>
+            axios
+                .get('/api/favorites/tags')
+                .then(res => res.data.data)
+                .catch(error => {
+                    throw new Error('Error getting user tags', error)
+                }),
+    })
 
     const csrf = () => axios.get('/sanctum/csrf-cookie')
 
-    const saveTag = async tagId => {
-        await csrf()
+    const saveTag = useMutation({
+        mutationFn: async tagId => {
+            await csrf()
+            return axios.post(`/api/favorites/tags?ids[]=${tagId}`)
+        },
+        onSuccess: () => {
+            queryClient.invalidateQueries({ queryKey: ['userTags'] })
+        },
+        onError: error => {
+            throw new Error('Error saving tag', error)
+        },
+    })
 
-        axios
-            .post(`/api/favorites/tags?ids[]=${tagId}`)
-            .then(() => mutate())
-            .catch(error => {
-                throw new Error('Error saving tag', error)
-            })
-    }
-
-    const saveTags = async tagIds => {
-        await csrf()
-
-        axios
-            .post(
+    const saveTags = useMutation({
+        mutationFn: async tagIds => {
+            await csrf()
+            return axios.post(
                 `/api/favorites/tags?${tagIds.map(t => `ids[]=${t}`).join('&')}`,
             )
-            .then(() => mutate())
-            .catch(error => {
-                throw new Error('Error saving tag', error)
-            })
-    }
+        },
+        onSuccess: () => {
+            queryClient.invalidateQueries({ queryKey: ['userTags'] })
+        },
+        onError: error => {
+            throw new Error('Error saving tag', error)
+        },
+    })
 
     return {
         userTags,
-        saveTag,
-        saveTags,
+        saveTag: saveTag.mutate,
+        saveTags: saveTags.mutate,
     }
 }
