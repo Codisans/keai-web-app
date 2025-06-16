@@ -35,6 +35,7 @@ const Login = () => {
     })
 
     useEffect(() => {
+        setIsLoading(false)
         if (!errors) return
         Object.keys(errors).forEach(key => {
             switch (key) {
@@ -61,8 +62,6 @@ const Login = () => {
             setErrors,
             setStatus,
         })
-            .then(() => setIsLoading(false))
-            .catch(() => setIsLoading(false))
     }
 
     return (
