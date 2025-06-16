@@ -7,9 +7,9 @@ import moment from 'moment'
 export const DateRadio = ({ date, setDate }) => {
     moment.locale('es')
     const today = moment().format('YYYY-MM-DD')
-    const isWeekend = moment().weekday() >= 5 || moment().weekday() == 0
+    const isWeekend = moment().day() >= 5 || moment().day() == 0
     const startOfWeek = moment().startOf('week')
-    const isSunday = moment().weekday() === 0
+    const isSunday = moment().day() === 0
 
     const baseOptions = [
         {
