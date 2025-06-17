@@ -1,19 +1,45 @@
 'use client'
 
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { submitEventReport } from '@/app/actions'
 import moment from 'moment'
 import { Symbol } from './Symbol'
 import { useAuth } from '@/hooks/auth'
 
+const reportOptions = [
+    {
+        id: '1',
+        label: 'Contenido inapropiado',
+        value: 'inappropriate_content',
+    },
+    {
+        id: '2',
+        label: 'Evento duplicado',
+        value: 'duplicate_event',
+    },
+    {
+        id: '3',
+        label: 'Información incorrecta',
+        value: 'incorrect_information',
+    },
+    {
+        id: '4',
+        label: 'Otro',
+        value: 'other',
+    },
+]
+
 export default function ReportEvent({ event, className = '' }) {
     const { user } = useAuth()
     const [status, setStatus] = useState({ type: '', message: '' })
     const [isSubmitting, setIsSubmitting] = useState(false)
+    const dialogRef = useRef(null)
+    const [reportMotive, setReportMotive] = useState('')
 
     if (!event) return null
 
     async function handleSubmit() {
+        dialogRef.current?.close()
         setIsSubmitting(true)
         setStatus({ type: '', message: '' })
 
@@ -21,6 +47,7 @@ export default function ReportEvent({ event, className = '' }) {
             report_id: crypto.randomUUID(),
             event_id: event.id,
             report_date: moment().format('YYYY-MM-DD'),
+            report_motive: reportMotive,
             reporter: user?.id?.toString() ?? 'guest',
         }
 
@@ -48,7 +75,7 @@ export default function ReportEvent({ event, className = '' }) {
     }
 
     return (
-        <div className={className}>
+        <form className={className}>
             {status.message && (
                 <div
                     className={`p-4 rounded ${
@@ -61,16 +88,57 @@ export default function ReportEvent({ event, className = '' }) {
             )}
 
             {status.type !== 'success' && (
-                <button
-                    onClick={handleSubmit}
-                    disabled={isSubmitting}
-                    className={`button-icon ${
-                        isSubmitting ? 'opacity-50 cursor-not-allowed' : ''
-                    }`}>
-                    <Symbol name="report-icon" className="w-6 h-6" />
-                    {isSubmitting ? 'Enviando...' : 'Reportar evento'}
-                </button>
+                <>
+                    <button
+                        onClick={() => dialogRef.current?.showModal()}
+                        type="button"
+                        disabled={isSubmitting}
+                        className={`button-icon ${
+                            isSubmitting ? 'opacity-50 cursor-not-allowed' : ''
+                        }`}>
+                        <Symbol name="report-icon" className="w-6 h-6" />
+                        {isSubmitting ? 'Enviando...' : 'Reportar evento'}
+                    </button>
+                    <dialog className="backdrop:bg-black/50" ref={dialogRef}>
+                        <button
+                            className="fixed inset-0 w-full h-full"
+                            type="button"
+                            onClick={() => dialogRef.current?.close()}>
+                            <span className="sr-only">Cerrar</span>
+                        </button>
+                        <div className="fixed z-10 inset-0 flex justify-center items-center pointer-events-none">
+                            <div className="flex flex-col w-max max-w-full p-4 gap-y-2 bg-white-true rounded pointer-events-auto">
+                                {reportOptions.map(option => (
+                                    <div key={option.id} className="relative">
+                                        <input
+                                            type="radio"
+                                            id={option.id}
+                                            name="reportMotive"
+                                            value={option.value}
+                                            onChange={e =>
+                                                setReportMotive(e.target.value)
+                                            }
+                                            className="sr-only peer"
+                                        />
+                                        <label
+                                            htmlFor={option.id}
+                                            className="button peer-checked:bg-black peer-checked:text-white light w-full cursor-pointer">
+                                            {option.label}
+                                        </label>
+                                    </div>
+                                ))}
+                                <button
+                                    onClick={handleSubmit}
+                                    disabled={reportMotive === ''}
+                                    type="button"
+                                    className="mt-4 button disabled:opacity-50 disabled:cursor-not-allowed alt w-full">
+                                    Enviar
+                                </button>
+                            </div>
+                        </div>
+                    </dialog>
+                </>
             )}
-        </div>
+        </form>
     )
 }

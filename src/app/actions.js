@@ -53,6 +53,16 @@ export async function submitEventReport(data) {
                             },
                         ],
                     },
+                    report_motive: {
+                        type: 'rich_text',
+                        rich_text: [
+                            {
+                                text: {
+                                    content: data.report_motive,
+                                },
+                            },
+                        ],
+                    },
                 },
             }),
         })

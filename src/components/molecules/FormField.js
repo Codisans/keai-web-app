@@ -55,7 +55,7 @@ export const FormInput = ({
         case 'textarea':
             return (
                 <textarea
-                    className="w-full form-input"
+                    className="w-full form-input min-h-36"
                     id={name}
                     value={value}
                     onChange={onChange}
