@@ -28,7 +28,7 @@ const RootLayout = ({ children }) => {
                     href="https://use.typekit.net/scs5wvk.css"
                 />
             </head>
-            <body className="bg-white text-black font-sans overscroll-none min-h-svh">
+            <body className="bg-white text-black font-sans min-h-svh">
                 <QueryProvider>
                     <AppContextProvider>{children}</AppContextProvider>
                 </QueryProvider>
