@@ -1,0 +1,9 @@
+.select__multi-value {
+    background-color: var(--color-black) !important;
+    border-radius: 0.4rem !important;
+    color: var(--color-white) !important;
+}
+
+.select__multi-value__label {
+    color: var(--color-white) !important;
+}

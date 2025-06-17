@@ -1,36 +1,31 @@
 'use client'
 
-import { AutoComplete } from 'primereact/autocomplete'
-import { useState } from 'react'
+import Select from 'react-select'
 
 export default function TagsAutocomplete({
     tags,
     selectedTags,
     setSelectedTags,
 }) {
-    const [tagSuggestions, setTagSuggestions] = useState([])
-
-    const search = e => {
-        if (!tags) return
-
-        const filteredTags = tags.filter(tag =>
-            tag.name.toLowerCase().includes(e.query.toLowerCase()),
-        )
-
-        setTagSuggestions(filteredTags.length > 0 ? filteredTags : tags)
-    }
-
     if (!tags) return
 
+    const options =
+        tags?.map(tag => ({
+            label: tag.name,
+            value: tag.id,
+        })) ?? []
+
     return (
-        <div className="card w-full flex justify-center">
-            <AutoComplete
-                field="name"
-                multiple
+        <div className="w-full flex justify-center">
+            <Select
+                defaultValue={[]}
+                isMulti
+                name="tags"
+                options={options}
                 value={selectedTags}
-                suggestions={tagSuggestions}
-                completeMethod={search}
                 onChange={e => setSelectedTags(e.value)}
+                className="basic-multi-select w-full"
+                classNamePrefix="select"
             />
         </div>
     )

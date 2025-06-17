@@ -1,5 +1,5 @@
 @utility tag-base {
-    @apply block typo-caps text-sm w-max text-nowrap bg-black text-white-true alt:bg-theme alt:text-theme-contrast  py-1 px-1.5 rounded;
+    @apply block typo-caps text-sm w-max text-nowrap bg-black text-white-true alt:bg-theme alt:text-theme-contrast py-1 px-1.5 rounded;
 }
 
 @layer components {

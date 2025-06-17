@@ -1,7 +1,5 @@
 'use client'
 import { createContext, useEffect, useState } from 'react'
-import { PrimeReactProvider } from 'primereact/api'
-import { Tailwind } from '@/lib/primeAutoComplete'
 
 export const AppContext = createContext({ isClient: false })
 
@@ -21,9 +19,7 @@ export const AppContextProvider = ({ children }) => {
                 filterOpen,
                 setFilterOpen,
             }}>
-            <PrimeReactProvider value={{ unstyled: true, pt: Tailwind }}>
-                {children}
-            </PrimeReactProvider>
+            {children}
         </AppContext.Provider>
     )
 }
