@@ -29,7 +29,6 @@ export default function TagsAutocomplete({
                 multiple
                 value={selectedTags}
                 suggestions={tagSuggestions}
-                inputClassName="form-input"
                 completeMethod={search}
                 onChange={e => setSelectedTags(e.value)}
             />
