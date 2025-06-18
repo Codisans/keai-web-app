@@ -83,7 +83,7 @@ export const useApi = () => {
                 !keywords
                     .toLowerCase()
                     .split(' ')
-                    .some(w => eventDataString.includes(w))
+                    .every(w => eventDataString.includes(w))
             )
                 return false
             return true
