@@ -45,13 +45,16 @@ export const FilterForm = ({ className = '', isMap = false }) => {
 
     const [priceValue, setPriceValue] = useState([null, null])
     const [selectedTags, setSelectedTags] = useState([])
+    const [tagInputValue, setTagInputValue] = useState('')
 
     useEffect(() => {
         setPriceValue([
             searchParams.get('min_price') || null,
             searchParams.get('max_price') || null,
         ])
-        setSelectedTags(searchParams.get('tags') || [])
+        setSelectedTags(
+            searchParams.getAll('tags[]').map(tag => Number(tag) || []),
+        )
         setDate([
             searchParams.get('min_date') || defaultDate[0],
             searchParams.get('max_date') || defaultDate[1],
@@ -91,7 +94,7 @@ export const FilterForm = ({ className = '', isMap = false }) => {
 
         if (selectedTags?.length > 0) {
             selectedTags.forEach(tag => {
-                urlSearchParams.append('tags[]', tag.id)
+                urlSearchParams.append('tags[]', tag)
             })
         }
 
@@ -111,6 +114,7 @@ export const FilterForm = ({ className = '', isMap = false }) => {
         setStartDate(null)
         setEndDate(null)
         setSelectedTags([])
+        setTagInputValue([])
         setShowDatePicker(false)
         const urlSearchParams = new URLSearchParams(searchParams)
         urlSearchParams.delete('min_date')
@@ -186,7 +190,9 @@ export const FilterForm = ({ className = '', isMap = false }) => {
 
                     <FilterSection legend="Tags">
                         <TagsAutocomplete
-                            selectedTags={selectedTags}
+                            value={tagInputValue}
+                            setValue={setTagInputValue}
+                            // selectedTags={selectedTags}
                             setSelectedTags={setSelectedTags}
                             tags={tags}
                         />
