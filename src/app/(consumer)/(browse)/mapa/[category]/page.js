@@ -2,7 +2,7 @@ import api from '@/lib/api'
 import { EventMarker } from '../EventMarker'
 import moment from 'moment'
 export const metadata = {
-    title: 'KEAI | Mapa ',
+    title: 'keai | Mapa ',
 }
 
 const MapCategory = async props => {

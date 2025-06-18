@@ -1,7 +1,7 @@
 import { UpcomingEvents } from './UpcomingEvents'
 
 export const metadata = {
-    title: 'KEAI | Perfil',
+    title: 'keai | Perfil',
 }
 
 const Profile = () => {

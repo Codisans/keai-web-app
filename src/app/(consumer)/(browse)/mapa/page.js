@@ -1,7 +1,7 @@
 import { EventsLayer } from './EventsLayer'
 
 export const metadata = {
-    title: 'KEAI | Mapa',
+    title: 'keai | Mapa',
 }
 
 const MapPage = async props => {

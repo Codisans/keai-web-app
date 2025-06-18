@@ -21,7 +21,7 @@ const RootLayout = ({ children }) => {
                     sizes="180x180"
                     href="/apple-touch-icon.png"
                 />
-                <meta name="apple-mobile-web-app-title" content="KEAI" />
+                <meta name="apple-mobile-web-app-title" content="keai" />
                 <link rel="manifest" href="/site.webmanifest" />
                 <link
                     rel="stylesheet"

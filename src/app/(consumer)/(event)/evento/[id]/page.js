@@ -20,18 +20,18 @@ export async function generateMetadata(props) {
         .concat('...')
 
     return {
-        title: `KEAI | ${event.name}`,
+        title: `keai | ${event.name}`,
         description: description,
         alternates: {
             canonical: `https://keai.cl/evento/${event.id}`,
         },
         openGraph: {
-            title: `KEAI | ${event.name}`,
+            title: `keai | ${event.name}`,
             description: description,
             url: `https://keai.cl/evento/${event.id}`,
             locale: 'es_CL',
             type: 'website',
-            siteName: 'KEAI',
+            siteName: 'keai',
             images: [
                 {
                     url: event.cover,

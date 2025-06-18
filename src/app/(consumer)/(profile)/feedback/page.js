@@ -1,7 +1,7 @@
 import FeedbackForm from '@/components/molecules/FeedbackForm'
 
 export const metadata = {
-    title: 'KEAI | Feedback',
+    title: 'keai | Feedback',
 }
 
 const Cuenta = () => {

@@ -1,7 +1,7 @@
 import { AccountDetail } from './AccountDetail'
 
 export const metadata = {
-    title: 'KEAI | Cuenta',
+    title: 'keai | Cuenta',
 }
 
 const Cuenta = () => {

@@ -1,7 +1,7 @@
 import { CategoryEventListing } from './CategoryEventListing'
 
 export const metadata = {
-    title: 'KEAI | Eventos',
+    title: 'keai | Eventos',
 }
 
 const CategoryPage = async props => {

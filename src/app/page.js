@@ -3,13 +3,13 @@ import { LoginLinks } from './LoginLinks'
 import Link from 'next/link'
 
 export const metadata = {
-    title: 'KEAI',
+    title: 'keai',
 }
 
 const Home = () => {
     return (
         <div className="min-h-svh bg-blue-light">
-            <section className="container pt-24 pb-4 flex flex-col items-center gap-y-1">
+            <header className="container pt-24 pb-4 flex flex-col items-center gap-y-1">
                 <Logo className="[font-size:5rem]" type="vertical" />
                 <div className="py-6 flex flex-col items-center gap-y-10 col-start-1 col-end-13 md:col-end-7 text-center">
                     <h1 className="text-lg font-medium">
@@ -19,7 +19,7 @@ const Home = () => {
                 <Link className="button alt" href="/eventos">
                     Explorar eventos
                 </Link>
-            </section>
+            </header>
             <img
                 className="w-full max-w-content mx-auto block"
                 src="/images/keai-poster.jpg"

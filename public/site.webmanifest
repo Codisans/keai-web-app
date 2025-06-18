@@ -1,6 +1,6 @@
 {
-    "name": "KEAI",
-    "short_name": "KEAI",
+    "name": "keai",
+    "short_name": "keai",
     "icons": [
         {
             "src": "/web-app-manifest-192x192.png",

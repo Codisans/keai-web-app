@@ -1,7 +1,7 @@
 import { EventListing } from './EventListing'
 
 export const metadata = {
-    title: 'KEAI | Eventos',
+    title: 'keai | Eventos',
 }
 
 const Events = async props => {
