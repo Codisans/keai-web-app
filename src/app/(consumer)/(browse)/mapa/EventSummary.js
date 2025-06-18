@@ -42,14 +42,16 @@ export const EventSummary = ({ event }) => {
             <div
                 ref={eventSummaryRef}
                 className="fixed bottom-[4.5rem] left-2 sm:max-w-[420px] flex flex-row right-2 rounded bg-white z-50 border border-grey">
-                <div className="flex-none w-1/4 p-1 max-w-32 h-max overflow-hidden">
-                    <Image
-                        className="aspect-sqaure w-full object-cover rounded-[0.25rem]"
-                        src={event.cover}
-                        width={96}
-                        height={96}
-                        alt={event.name}
-                    />
+                <div className="flex-none w-1/4 p-1 max-w-32 h-max">
+                    <div className="aspect-square relative w-full overflow-hidden rounded-[0.25rem]">
+                        <Image
+                            className="absolute inset-0 h-full w-full object-cover"
+                            src={event.cover}
+                            width={96}
+                            height={96}
+                            alt={event.name}
+                        />
+                    </div>
                 </div>
                 <div className="w-3/4 flex flex-col p-1">
                     <dl className="pt-1 typo-date text-xs text-black/80 flex gap-1 justify-between pr-1">
