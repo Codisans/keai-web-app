@@ -5,22 +5,25 @@ import { useEffect, useState } from 'react'
 
 export const ToggleTagButton = ({ tagId, className = '', children }) => {
     const { userTags, saveTag } = useUserTags()
-    const [isSelected, setIsSelected] = useState(false)
-    const [isLoading, setIsLoading] = useState(false)
+    const [isPending, setIsPending] = useState(false)
+    const [isSaved, setIsSaved] = useState(false)
 
     useEffect(() => {
+        setIsPending(false)
         if (!userTags) return
-        setIsSelected(userTags?.map(t => String(t.id)).includes(String(tagId)))
+        const saved = userTags?.map(t => String(t.id)).includes(String(tagId))
+        setIsSaved(saved)
     }, [userTags])
 
     return (
         <button
-            className={`${className} disabled:opacity-50 ${isSelected ? 'selected' : ''}`}
+            className={`${className} disabled:opacity-50 ${isSaved ? 'selected' : ''}`}
             onClick={() => {
-                setIsLoading(true)
-                saveTag(tagId).then(() => setIsLoading(false))
+                setIsSaved(s => !s)
+                setIsPending(true)
+                saveTag(tagId)
             }}
-            disabled={isLoading}
+            disabled={isPending}
             type="button">
             {children}
         </button>
