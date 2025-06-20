@@ -6,4 +6,5 @@
 
 .select__multi-value__label {
     color: var(--color-white) !important;
+    text-transform: uppercase !important;
 }
