@@ -17,8 +17,15 @@ export const CategoryBar = ({ view = 'listing' }) => {
     useEffect(() => {
         if (!emblaApi) return
 
-        const id = Number(pathname?.split('/')[2] ?? '0')
-        emblaApi?.scrollTo(Math.max(id - 1, 0))
+        const target = emblaApi
+            .slideNodes()
+            .filter(
+                node => node.dataset.categoryId === pathname?.split('/')[2],
+            )[0]
+
+        if (target) {
+            emblaApi?.scrollTo(Number(target.dataset.index))
+        }
     }, [pathname, emblaApi])
 
     if (!categories) return null
@@ -38,6 +45,8 @@ export const CategoryBar = ({ view = 'listing' }) => {
                         <div
                             className="embla__slide w-max flex-none pl-2 last:pr-2"
                             key={i}
+                            data-index={i}
+                            data-category-id={category.id}
                             style={{ width: 'max-content' }}>
                             <Suspense fallback={<CategoryButtonFallback />}>
                                 <CategoryButton
