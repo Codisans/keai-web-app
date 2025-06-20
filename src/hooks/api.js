@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query'
 import axios from '@/lib/axios'
 import moment from 'moment'
+import Fuse from 'fuse.js'
 
 export const useApi = () => {
     const today = moment().format('YYYY-MM-DD')
@@ -47,6 +48,7 @@ export const useApi = () => {
     }
 
     const getEvents = async searchParams => {
+        const keywords = searchParams.get('keywords')
         const categories = searchParams.get('categories[]')?.split(',')
         const tags = searchParams.get('tags[]')?.split(',')
         const minDate = searchParams.get('min_date')
@@ -57,9 +59,8 @@ export const useApi = () => {
             : null
         const minPrice = searchParams.get('min_price')
         const maxPrice = searchParams.get('max_price')
-        const keywords = searchParams.get('keywords')
 
-        return await events?.filter(event => {
+        const results = await events?.filter(event => {
             if (
                 categories &&
                 !event.categories?.some(c =>
@@ -77,17 +78,33 @@ export const useApi = () => {
                 return false
             if (maxPrice && !(Number(event.price) <= Number(maxPrice)))
                 return false
-            const eventDataString = JSON.stringify(event).toLowerCase()
-            if (
-                keywords &&
-                !keywords
-                    .toLowerCase()
-                    .split(' ')
-                    .every(w => eventDataString.includes(w))
-            )
-                return false
             return true
         })
+
+        if (!keywords) return results
+
+        const fuseOptions = {
+            isCaseSensitive: false,
+            includeScore: false,
+            shouldSort: true,
+            location: 0,
+            threshold: 0.6,
+            distance: 240,
+            findAllMatches: true,
+            ignoreFieldNorm: true,
+            keys: [
+                {
+                    name: 'name',
+                    weight: 0.6,
+                },
+                {
+                    name: 'description',
+                    weight: 0.4,
+                },
+            ],
+        }
+        const fuse = new Fuse(results, fuseOptions)
+        return fuse.search(keywords).map(r => r.item)
     }
 
     const getCategoryEvents = async categoryId => {

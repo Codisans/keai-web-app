@@ -40,7 +40,7 @@ export const EventResults = ({ searchParams }) => {
             const tagsMatch = event.tags?.filter(t =>
                 tags.includes(t.id.toString()),
             )
-            newEvent['relevance'] = tagsMatch.length
+            newEvent['relevance'] = tagsMatch?.length ?? 0
             return newEvent
         })
         setResults(newResults.sort((a, b) => b.relevance - a.relevance))

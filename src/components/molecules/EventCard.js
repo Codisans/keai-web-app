@@ -83,8 +83,8 @@ export const EventCard = ({
                             <DateTime date={event.start_date} format="time" />
                         </div>
                         <h3 className="typo-regular text-md py-1.5 pr-5">
-                            {event.name.length > 42
-                                ? `${event.name.slice(0, 40)}...`
+                            {event.name?.length > 42
+                                ? `${event.name?.slice(0, 40)}...`
                                 : event.name}
                         </h3>
                         {showPrice && <p className="text-sm">${event.price}</p>}
