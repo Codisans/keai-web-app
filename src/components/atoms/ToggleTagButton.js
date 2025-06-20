@@ -11,8 +11,14 @@ export const ToggleTagButton = ({ tagId, className = '', children }) => {
     useEffect(() => {
         setIsPending(false)
         if (!userTags) return
+
         const saved = userTags?.map(t => String(t.id)).includes(String(tagId))
+
         setIsSaved(saved)
+        return () => {
+            setIsSaved(saved)
+            setIsPending(false)
+        }
     }, [userTags])
 
     return (

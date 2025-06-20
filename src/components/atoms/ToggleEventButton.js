@@ -11,10 +11,16 @@ export const ToggleEventButton = ({ eventId, className = '', children }) => {
     useEffect(() => {
         setIsPending(false)
         if (!userEvents) return
+
         const saved = userEvents
             ?.map(e => String(e.id))
             .includes(String(eventId))
+
         setIsSaved(saved)
+        return () => {
+            setIsPending(false)
+            setIsSaved(saved)
+        }
     }, [userEvents])
 
     return (
