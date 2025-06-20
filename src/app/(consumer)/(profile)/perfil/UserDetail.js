@@ -13,7 +13,7 @@ export const UserDetail = () => {
                     Bienvenido <span className="font-bold">{user?.name}!</span>
                 </h2>
                 <div className="flex flex-row flex-nowrap justify-between items-center gap-2 p-2 bg-white-true  border border-grey rounded-button">
-                    <p className="typo-body text-sm">
+                    <p className="typo-body text-sm px-1">
                         Ayudanos a mejorar tu experiencia.
                     </p>
                     <Link

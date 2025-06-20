@@ -8,7 +8,7 @@ import { useEffect, useState } from 'react'
 
 export default function EditarTags() {
     const { tags } = useApi()
-    const { saveTag } = useUserTags()
+    const { saveTag, userTags } = useUserTags()
     const [allTags, setAllTags] = useState([])
     const [displayedTags, setDisplayedTags] = useState([])
     const [search, setSearch] = useState('')
@@ -39,11 +39,11 @@ export default function EditarTags() {
 
     return (
         <div className="container pt-8">
-            <div className="flex justify-between items-end pb-4">
-                <h2 className="typo-regula leading-snug text-md max-w-[200px]">
-                    Selecciona los tags de eventos que te interesan
+            {userTags?.length == 0 && (
+                <h2 className="bg-blue-light text-black border border-gray-300 rounded-2xl overflow-hidden p-4 typo-regular leading-snug text-md mb-4">
+                    Selecciona tus tags de interes para encontrar eventos.
                 </h2>
-            </div>
+            )}
             <div className="pb-4 flex items-center gap-2">
                 <div className="grow">
                     <input
