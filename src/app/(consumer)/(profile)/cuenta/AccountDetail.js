@@ -9,12 +9,12 @@ export const AccountDetail = () => {
     return (
         user && (
             <div className="flex flex-col text-lg rounded-2xl border border-grey overflow-hidden">
-                <DetailRow label="User ID" value={user.id} />
-                <DetailRow label="Name" value={user.name} />
-                <DetailRow label="User email" value={user.email} />
-                <DetailRow label="Género" value={user.gender} />
+                <DetailRow label="Usuario" value={user.id} />
+                <DetailRow label="Nombre" value={user.name} />
+                <DetailRow label="Email" value={user.email} />
+                {/* <DetailRow label="Género" value={user.gender} /> */}
                 <DetailRow
-                    label="Fecha de nacimiento"
+                    label="Nacimiento"
                     value={moment(user.date_of_birth).format('DD-MM-YYYY')}
                 />
                 {/* <DetailRow
@@ -22,11 +22,11 @@ export const AccountDetail = () => {
                     value={JSON.stringify(user.roles)}
                 /> */}
                 <DetailRow
-                    label="Usuario creado"
+                    label="Creado"
                     value={moment(user.created_at).format('DD-MM-YYYY')}
                 />
                 <DetailRow
-                    label="Última actualización"
+                    label="Actualizado"
                     value={moment(user.updated_at).format('DD-MM-YYYY')}
                 />
             </div>
