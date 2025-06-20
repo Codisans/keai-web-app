@@ -30,6 +30,7 @@ export const useAuth = ({ middleware, redirectIfAuthenticated } = {}) => {
         },
         onSuccess: () => {
             queryClient.invalidateQueries({ queryKey: ['user'] })
+            router.push('/perfil/tags')
         },
         onError: (error, { setErrors }) => {
             setErrors(error.response.data.errors)
