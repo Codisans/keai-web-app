@@ -5,24 +5,27 @@ import { useEffect, useState } from 'react'
 
 export const ToggleEventButton = ({ eventId, className = '', children }) => {
     const { userEvents, saveEvent } = useUserEvents()
+    const [isPending, setIsPending] = useState(false)
     const [isSaved, setIsSaved] = useState(false)
-    const [isLoading, setIsLoading] = useState(false)
 
     useEffect(() => {
+        setIsPending(false)
         if (!userEvents) return
-        setIsSaved(userEvents?.map(e => String(e.id)).includes(String(eventId)))
+        const saved = userEvents
+            ?.map(e => String(e.id))
+            .includes(String(eventId))
+        setIsSaved(saved)
     }, [userEvents])
-
-    if (!userEvents) return
 
     return (
         <button
             className={`${className} ${isSaved ? 'selected' : ''} disabled:opacity-50`}
             onClick={() => {
-                setIsLoading(true)
-                saveEvent(eventId).then(() => setIsLoading(false))
+                setIsSaved(s => !s)
+                setIsPending(true)
+                saveEvent(eventId)
             }}
-            disabled={isLoading}
+            disabled={isPending}
             type="button">
             {children}
         </button>
