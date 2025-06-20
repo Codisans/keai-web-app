@@ -1,16 +1,25 @@
 'use client'
 
 import useEmblaCarousel from 'embla-carousel-react'
-import { Suspense } from 'react'
+import { Suspense, useEffect } from 'react'
 import {
     CategoryButton,
     CategoryButtonFallback,
 } from '@/components/atoms/CategoryButton'
 import { useApi } from '@/hooks/api'
+import { usePathname } from 'next/navigation'
 
 export const CategoryBar = ({ view = 'listing' }) => {
+    const pathname = usePathname()
     const { categories } = useApi()
-    const [emblaRef] = useEmblaCarousel({ dragFree: true })
+    const [emblaRef, emblaApi] = useEmblaCarousel({ dragFree: true })
+
+    useEffect(() => {
+        if (!emblaApi) return
+
+        const id = Number(pathname?.split('/')[2] ?? '0')
+        emblaApi?.scrollTo(Math.max(id - 1, 0))
+    }, [pathname, emblaApi])
 
     if (!categories) return null
 
